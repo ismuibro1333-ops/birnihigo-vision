@@ -33,7 +33,7 @@ const Index = () => (
         <AnimatedSection>
           <p className="text-primary-foreground/70 text-sm uppercase tracking-[0.3em] mb-4 font-body font-medium">Birnihigo Poultry PLC</p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-tight mb-6">
-            The Future of<br />Food Security
+            Where Integrity<br />Is Farmed
           </h1>
           <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body leading-relaxed">
             Ethiopia's first fully integrated poultry ecosystem, producing 48 tons daily with a focus on sustainability and community.
