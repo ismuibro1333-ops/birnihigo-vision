@@ -38,7 +38,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Birnihigo Poultry" className="h-10 w-auto" />
+          <img src={logo} alt="Birnihigo Poultry" className="h-10 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(68%) sepia(61%) saturate(520%) hue-rotate(354deg) brightness(97%) contrast(90%)' }} />
         </Link>
 
         {/* Desktop */}
