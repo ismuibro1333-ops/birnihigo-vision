@@ -95,6 +95,30 @@ const Index = () => (
       </div>
     </section>
 
+    {/* Photo Gallery */}
+    <section className="section-padding bg-muted/50">
+      <div className="max-w-7xl mx-auto">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3 font-body">Our Operations</p>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground">On the Ground</h2>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { src: pic1, alt: "Birnihigo poultry close-up" },
+            { src: pic2, alt: "Community engagement and facility visit" },
+            { src: pic3, alt: "Modern poultry house interior" },
+          ].map((img, i) => (
+            <AnimatedSection key={img.alt} delay={i * 0.15}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
     {/* Sustainability Loop */}
     <section className="section-padding bg-primary/5">
       <div className="max-w-6xl mx-auto">

@@ -13,10 +13,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center">
-                <span className="text-primary font-display text-sm">B</span>
-              </div>
-              <span className="font-display text-lg">Birnihigo Poultry</span>
+              <img src={logo} alt="Birnihigo Poultry" className="h-10 w-auto brightness-0 invert" />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Ethiopia's first fully integrated poultry ecosystem — from farm to fork.
