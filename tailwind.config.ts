@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["DM Serif Display", "serif"],
+        display: ["Parkinsans", "sans-serif"],
         body: ["DM Sans", "sans-serif"],
       },
       colors: {
@@ -52,11 +52,12 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         cream: "hsl(var(--cream))",
-        emerald: "hsl(var(--emerald))",
-        "emerald-light": "hsl(var(--emerald-light))",
+        "cafe-noir": "hsl(var(--cafe-noir))",
+        saffron: "hsl(var(--saffron))",
+        dandelion: "hsl(var(--dandelion))",
+        chocolate: "hsl(var(--chocolate))",
         slate: "hsl(var(--slate))",
         "slate-light": "hsl(var(--slate-light))",
-        gold: "hsl(var(--gold))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
