@@ -1,6 +1,9 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import heroBg from "@/assets/hero-bg.jpg";
+import pic1 from "@/assets/pic1.jpg";
+import pic2 from "@/assets/pic2.jpg";
+import pic3 from "@/assets/pic3.jpg";
 import { Egg, Wheat, Factory, Truck, ArrowRight, Leaf, Recycle, Sprout } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -30,7 +33,7 @@ const Index = () => (
         <AnimatedSection>
           <p className="text-primary-foreground/70 text-sm uppercase tracking-[0.3em] mb-4 font-body font-medium">Birnihigo Poultry PLC</p>
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-tight mb-6">
-            The Future of<br />Food Security
+            Where Integrity<br />Is Farmed
           </h1>
           <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body leading-relaxed">
             Ethiopia's first fully integrated poultry ecosystem, producing 48 tons daily with a focus on sustainability and community.
@@ -85,6 +88,30 @@ const Index = () => (
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-3">{op.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{op.desc}</p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Photo Gallery */}
+    <section className="section-padding bg-muted/50">
+      <div className="max-w-7xl mx-auto">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground mb-3 font-body">Our Operations</p>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground">On the Ground</h2>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { src: pic1, alt: "Birnihigo poultry close-up" },
+            { src: pic2, alt: "Community engagement and facility visit" },
+            { src: pic3, alt: "Modern poultry house interior" },
+          ].map((img, i) => (
+            <AnimatedSection key={img.alt} delay={i * 0.15}>
+              <div className="rounded-2xl overflow-hidden aspect-[4/3]">
+                <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </AnimatedSection>
           ))}

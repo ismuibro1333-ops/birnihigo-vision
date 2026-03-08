@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.webp";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -37,10 +38,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-display text-sm">B</span>
-          </div>
-          <span className="font-display text-lg text-foreground">Birnihigo</span>
+          <img src={logo} alt="Birnihigo Poultry" className="h-10 w-auto" />
         </Link>
 
         {/* Desktop */}
