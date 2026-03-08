@@ -15,7 +15,7 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center">
                 <span className="text-primary font-display text-sm">B</span>
               </div>
-              <span className="font-display text-lg">We are a bold, eco-centric agribusiness built on values of nourishment, sustainability, and community empowerment.</span>
+              
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Ethiopia's first fully integrated poultry ecosystem — from farm to fork.
