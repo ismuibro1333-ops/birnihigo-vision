@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["DM Serif Display", "serif"],
+        display: ["Parkinsans", "sans-serif"],
         body: ["DM Sans", "sans-serif"],
       },
       colors: {

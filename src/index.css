@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,44 +6,45 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
+    --background: 35 39% 90%;
     --foreground: 215 28% 17%;
 
-    --card: 40 33% 98%;
+    --card: 35 39% 90%;
     --card-foreground: 215 28% 17%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 215 28% 17%;
 
-    --primary: 39 40% 21%;
-    --primary-foreground: 40 33% 98%;
+    --primary: 38 48% 21%;
+    --primary-foreground: 35 39% 90%;
 
-    --secondary: 215 28% 30%;
-    --secondary-foreground: 40 33% 98%;
+    --secondary: 37 70% 47%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 40 15% 92%;
+    --muted: 35 20% 85%;
     --muted-foreground: 215 14% 46%;
 
-    --accent: 34 82% 92%;
-    --accent-foreground: 39 40% 21%;
+    --accent: 35 99% 58%;
+    --accent-foreground: 38 48% 21%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 40 15% 88%;
-    --input: 40 15% 88%;
-    --ring: 39 40% 21%;
+    --border: 35 20% 82%;
+    --input: 35 20% 82%;
+    --ring: 38 48% 21%;
 
     --radius: 0.75rem;
 
-    --cream: 40 33% 98%;
-    --emerald: 39 40% 21%;
-    --emerald-light: 34 82% 92%;
+    --cream: 35 39% 90%;
+    --cafe-noir: 38 48% 21%;
+    --saffron: 35 99% 58%;
+    --dandelion: 40 100% 73%;
+    --chocolate: 37 70% 47%;
     --slate: 215 28% 30%;
     --slate-light: 215 14% 46%;
-    --gold: 34 82% 60%;
 
-    --font-display: 'DM Serif Display', serif;
+    --font-display: 'Parkinsans', sans-serif;
     --font-body: 'DM Sans', sans-serif;
 
     --sidebar-background: 0 0% 98%;
