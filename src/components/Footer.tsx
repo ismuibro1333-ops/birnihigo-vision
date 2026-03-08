@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/logo.webp";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
