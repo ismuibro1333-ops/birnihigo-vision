@@ -1,6 +1,9 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import heroBg from "@/assets/hero-bg.jpg";
+import pic1 from "@/assets/pic1.jpg";
+import pic2 from "@/assets/pic2.jpg";
+import pic3 from "@/assets/pic3.jpg";
 import { Egg, Wheat, Factory, Truck, ArrowRight, Leaf, Recycle, Sprout } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
