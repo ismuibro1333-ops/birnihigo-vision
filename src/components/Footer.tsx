@@ -56,9 +56,9 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-primary-foreground/60">Contact</h4>
             <div className="space-y-3 text-sm text-primary-foreground/70">
-              <div className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0" /> Awash Sebat, Afar Region, Ethiopia</div>
-              <div className="flex items-center gap-2"><Phone size={16} /> +251 11 123 4567</div>
-              <div className="flex items-center gap-2"><Mail size={16} /> info@birnihigo.com</div>
+              <div className="flex items-start gap-2"><MapPin size={16} className="mt-0.5 shrink-0" /> Birnihigo Integrated Farms PLC, Awash Sebat, Afar, Ethiopia</div>
+              <div className="flex items-center gap-2"><Phone size={16} /> <a href="tel:+251222241521" className="hover:text-primary-foreground transition-colors">+251 222 241 521</a></div>
+              <div className="flex items-center gap-2"><Mail size={16} /> <a href="mailto:info@birnihigo.org" className="hover:text-primary-foreground transition-colors">info@birnihigo.org</a></div>
             </div>
           </div>
 
