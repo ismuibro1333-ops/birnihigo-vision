@@ -89,11 +89,27 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden p-2 text-foreground"
+          className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-accent transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          <div className="flex flex-col justify-center items-center gap-[5px]">
+            <motion.span
+              animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="block w-5 h-[2px] bg-foreground rounded-full origin-center"
+            />
+            <motion.span
+              animate={open ? { opacity: 0, scaleX: 0 } : { opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.2 }}
+              className="block w-5 h-[2px] bg-foreground rounded-full"
+            />
+            <motion.span
+              animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="block w-5 h-[2px] bg-foreground rounded-full origin-center"
+            />
+          </div>
         </button>
       </div>
 
