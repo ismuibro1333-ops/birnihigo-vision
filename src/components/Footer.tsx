@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram, Youtube } from "lucide-react";
 import { useState } from "react";
+
+const socialLinks = [
+  { icon: Facebook, href: "https://facebook.com/birnihigo", label: "Facebook" },
+  { icon: Instagram, href: "https://instagram.com/birnihigo", label: "Instagram" },
+  { icon: Twitter, href: "https://twitter.com/birnihigo", label: "Twitter" },
+  { icon: Youtube, href: "https://youtube.com/@birnihigo", label: "YouTube" },
+  { icon: Linkedin, href: "https://linkedin.com/company/birnihigo", label: "LinkedIn" },
+];
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -15,17 +23,16 @@ const Footer = () => {
               <div className="w-8 h-8 rounded-full bg-primary-foreground flex items-center justify-center">
                 <span className="text-primary font-display text-sm">B</span>
               </div>
-              
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Ethiopia's first fully integrated poultry ecosystem — from farm to fork.
             </p>
             <div className="flex gap-3 mt-6">
-              {[Linkedin, Twitter, Facebook].map((Icon, i) =>
-              <a key={i} href="#" className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors">
-                  <Icon size={16} />
+              {socialLinks.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label} className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors">
+                  <s.icon size={16} />
                 </a>
-              )}
+              ))}
             </div>
           </div>
 

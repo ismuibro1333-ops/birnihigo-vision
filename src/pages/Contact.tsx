@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight, Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
 import { useState } from "react";
 
 type FormType = "general" | "partnership" | "media";
@@ -11,6 +11,16 @@ const contactTypes: { key: FormType; label: string }[] = [
   { key: "media", label: "Media Relations" },
 ];
 
+const socialLinks = [
+  { icon: Facebook, label: "Facebook", href: "https://facebook.com/birnihigo" },
+  { icon: Instagram, label: "Instagram", href: "https://instagram.com/birnihigo" },
+  { icon: Twitter, label: "Twitter/X", href: "https://twitter.com/birnihigo" },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com/@birnihigo" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/birnihigo" },
+];
+
+const CONTACT_EMAIL = "info@birnihigo.org";
+
 const Contact = () => {
   const [activeForm, setActiveForm] = useState<FormType>("general");
   const [submitted, setSubmitted] = useState(false);
@@ -18,6 +28,11 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const mailtoSubject = encodeURIComponent(`[${activeForm.charAt(0).toUpperCase() + activeForm.slice(1)}] ${form.subject}`);
+    const mailtoBody = encodeURIComponent(
+      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`;
     setSubmitted(true);
   };
 
@@ -56,22 +71,45 @@ const Contact = () => {
                   <MapPin size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-body text-sm font-medium text-foreground">Headquarters</p>
-                    <p className="text-sm text-muted-foreground font-body">Awash Sebat, Afar Region, Ethiopia</p>
+                    <p className="text-sm text-muted-foreground font-body">
+                      Birnihigo Integrated Farms PLC<br />
+                      Awash Sebat, Afar, Ethiopia<br />
+                      <span className="text-xs">(Off Route A1, near Melka Werer Research Station)</span>
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Phone size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-body text-sm font-medium text-foreground">Phone</p>
-                    <p className="text-sm text-muted-foreground font-body">+251 11 123 4567</p>
+                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-foreground transition-colors">+251 222 241 521</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-body text-sm font-medium text-foreground">Email</p>
-                    <p className="text-sm text-muted-foreground font-body">info@birnihigo.com</p>
+                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-muted-foreground font-body hover:text-foreground transition-colors">{CONTACT_EMAIL}</a>
                   </div>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="mt-8">
+                <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-muted-foreground">Follow Us</h4>
+                <div className="flex flex-wrap gap-2">
+                  {socialLinks.map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors text-muted-foreground"
+                    >
+                      <s.icon size={18} />
+                    </a>
+                  ))}
                 </div>
               </div>
             </AnimatedSection>
@@ -97,7 +135,13 @@ const Contact = () => {
               {submitted ? (
                 <div className="bg-accent rounded-2xl p-10 text-center">
                   <h3 className="font-display text-xl text-foreground mb-2">Message Sent</h3>
-                  <p className="text-sm text-muted-foreground font-body">We'll respond to your {activeForm} inquiry within 2 business days.</p>
+                  <p className="text-sm text-muted-foreground font-body">Your email client should have opened with your message to <strong>{CONTACT_EMAIL}</strong>. We'll respond within 2 business days.</p>
+                  <button
+                    onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
+                    className="mt-4 px-6 py-2 bg-primary text-primary-foreground text-sm font-body font-medium rounded-lg hover:bg-primary/90 transition-colors"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
