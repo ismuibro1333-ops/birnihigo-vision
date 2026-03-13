@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,55 +6,52 @@
 
 @layer base {
   :root {
-    --background: 35 39% 90%;
-    --foreground: 215 28% 17%;
+    --background: 0 0% 10%;
+    --foreground: 0 0% 92%;
 
-    --card: 35 39% 90%;
-    --card-foreground: 215 28% 17%;
+    --card: 0 0% 13%;
+    --card-foreground: 0 0% 92%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 215 28% 17%;
+    --popover: 0 0% 13%;
+    --popover-foreground: 0 0% 92%;
 
-    --primary: 38 48% 21%;
-    --primary-foreground: 35 39% 90%;
+    --primary: 168 100% 15%;
+    --primary-foreground: 0 0% 95%;
 
-    --secondary: 37 70% 47%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 40 38% 55%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 35 20% 85%;
-    --muted-foreground: 215 14% 46%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 55%;
 
-    --accent: 35 99% 58%;
-    --accent-foreground: 38 48% 21%;
+    --accent: 40 38% 55%;
+    --accent-foreground: 0 0% 10%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 35 20% 82%;
-    --input: 35 20% 82%;
-    --ring: 38 48% 21%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 168 100% 15%;
 
     --radius: 0.75rem;
 
-    --cream: 35 39% 90%;
-    --cafe-noir: 38 48% 21%;
-    --saffron: 35 99% 58%;
-    --dandelion: 40 100% 73%;
-    --chocolate: 37 70% 47%;
-    --slate: 215 28% 30%;
-    --slate-light: 215 14% 46%;
+    --onyx: 0 0% 10%;
+    --emerald: 168 100% 15%;
+    --gold: 40 38% 55%;
+    --gold-light: 40 50% 70%;
 
-    --font-display: 'Parkinsans', sans-serif;
-    --font-body: 'DM Sans', sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 12%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 168 100% 15%;
+    --sidebar-primary-foreground: 0 0% 95%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 168 100% 15%;
   }
 }
 
@@ -72,12 +69,15 @@
 
 @layer utilities {
   .glass {
-    @apply bg-background/70 backdrop-blur-xl border border-border/50 shadow-lg;
+    @apply bg-background/60 backdrop-blur-2xl border border-border/30;
   }
   .section-padding {
     @apply px-6 py-20 md:px-12 lg:px-24 lg:py-28;
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+  .gold-glow {
+    box-shadow: 0 0 40px hsl(40 38% 55% / 0.15);
   }
 }

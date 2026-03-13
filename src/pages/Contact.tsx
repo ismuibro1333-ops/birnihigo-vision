@@ -1,14 +1,15 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { MapPin, Phone, Mail, ArrowRight, Facebook, Instagram, Twitter, Youtube, Linkedin } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight, Facebook, Instagram, Twitter, Youtube, Linkedin, MessageCircle, Calendar } from "lucide-react";
 import { useState } from "react";
 
-type FormType = "general" | "partnership" | "media";
+type FormType = "general" | "partnership" | "media" | "investor";
 
-const contactTypes: { key: FormType; label: string }[] = [
-  { key: "general", label: "General Inquiry" },
-  { key: "partnership", label: "Partnership" },
-  { key: "media", label: "Media Relations" },
+const contactTypes: { key: FormType; label: string; email: string }[] = [
+  { key: "general", label: "General Inquiry", email: "info@birnihigo.org" },
+  { key: "partnership", label: "Partnership", email: "media@birnihigo.com" },
+  { key: "investor", label: "Investor Relations", email: "invest@birnihigo.com" },
+  { key: "media", label: "Media", email: "media@birnihigo.com" },
 ];
 
 const socialLinks = [
@@ -19,33 +20,41 @@ const socialLinks = [
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/birnihigo" },
 ];
 
-const CONTACT_EMAIL = "info@birnihigo.org";
+const departmentEmails = [
+  { dept: "General Inquiries", email: "info@birnihigo.org" },
+  { dept: "Investor Relations", email: "invest@birnihigo.com" },
+  { dept: "Careers & CBF Program", email: "careers@birnihigo.com" },
+  { dept: "Media & Partnerships", email: "media@birnihigo.com" },
+  { dept: "Schedule a Visit", email: "visit@birnihigo.com" },
+];
 
 const Contact = () => {
   const [activeForm, setActiveForm] = useState<FormType>("general");
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+
+  const activeType = contactTypes.find(ct => ct.key === activeForm)!;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoSubject = encodeURIComponent(`[${activeForm.charAt(0).toUpperCase() + activeForm.slice(1)}] ${form.subject}`);
+    const mailtoSubject = encodeURIComponent(`[${activeType.label}] ${form.subject}`);
     const mailtoBody = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\n${form.message}`
     );
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`;
+    window.location.href = `mailto:${activeType.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
     setSubmitted(true);
   };
 
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-padding bg-primary">
+      <section className="section-padding bg-card border-b border-border">
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
-            <p className="text-primary-foreground/60 text-sm uppercase tracking-[0.3em] mb-4 font-body">Contact Us</p>
-            <h1 className="font-display text-4xl md:text-5xl text-primary-foreground mb-6">The Gateway</h1>
-            <p className="text-primary-foreground/70 text-lg font-body leading-relaxed max-w-2xl mx-auto">
-              Whether you're a potential partner, investor, or media representative — we'd love to hear from you.
+            <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Contact Us</p>
+            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">We'd Love to Hear from You</h1>
+            <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
+              Whether you're a partner, investor, farmer, job seeker, or supporter — we welcome your questions, collaboration, and feedback.
             </p>
           </AnimatedSection>
         </div>
@@ -53,14 +62,14 @@ const Contact = () => {
 
       <section className="section-padding">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Map & Info */}
+          {/* Info Column */}
           <div className="lg:col-span-2">
             <AnimatedSection>
               <div className="bg-card border border-border rounded-2xl overflow-hidden mb-6">
                 <iframe
                   title="Birnihigo Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.0!2d39.96!3d9.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDknMDAuMCJOIDM5wrA1Nyc0NS42IkU!5e0!3m2!1sen!2set!4v1700000000000"
-                  className="w-full h-56"
+                  className="w-full h-48"
                   loading="lazy"
                   style={{ border: 0 }}
                 />
@@ -82,15 +91,42 @@ const Contact = () => {
                   <Phone size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-body text-sm font-medium text-foreground">Phone</p>
-                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-foreground transition-colors">+251 222 241 521</a>
+                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors">+251 222 241 521</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-body text-sm font-medium text-foreground">Email</p>
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-muted-foreground font-body hover:text-foreground transition-colors">{CONTACT_EMAIL}</a>
+                    <a href="mailto:info@birnihigo.org" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors">info@birnihigo.org</a>
                   </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MessageCircle size={18} className="text-primary mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-body text-sm font-medium text-foreground">WhatsApp</p>
+                    <p className="text-xs text-muted-foreground font-body">Available Mon–Sat, 8:00AM–6:00PM EAT</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Calendar size={18} className="text-primary mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-body text-sm font-medium text-foreground">Schedule a Visit</p>
+                    <a href="mailto:visit@birnihigo.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors">visit@birnihigo.com</a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Department Emails */}
+              <div className="mt-8">
+                <h4 className="font-display text-sm uppercase tracking-wider mb-3 text-muted-foreground">Department Emails</h4>
+                <div className="space-y-2">
+                  {departmentEmails.map((d) => (
+                    <div key={d.email} className="flex items-center justify-between text-sm">
+                      <span className="text-muted-foreground font-body">{d.dept}</span>
+                      <a href={`mailto:${d.email}`} className="text-accent font-body text-xs hover:underline">{d.email}</a>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -115,14 +151,14 @@ const Contact = () => {
             </AnimatedSection>
           </div>
 
-          {/* Forms */}
+          {/* Form Column */}
           <div className="lg:col-span-3">
             <AnimatedSection>
-              <div className="flex gap-2 mb-8">
+              <div className="flex gap-2 mb-8 flex-wrap">
                 {contactTypes.map((ct) => (
                   <button
                     key={ct.key}
-                    onClick={() => { setActiveForm(ct.key); setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
+                    onClick={() => { setActiveForm(ct.key); setSubmitted(false); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); }}
                     className={`px-4 py-2 rounded-lg text-sm font-body font-medium transition-colors ${
                       activeForm === ct.key ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
                     }`}
@@ -132,13 +168,17 @@ const Contact = () => {
                 ))}
               </div>
 
+              <p className="text-sm text-muted-foreground font-body mb-6">
+                Sending to: <span className="text-accent">{activeType.email}</span>
+              </p>
+
               {submitted ? (
-                <div className="bg-accent rounded-2xl p-10 text-center">
+                <div className="bg-primary/10 border border-primary/20 rounded-2xl p-10 text-center">
                   <h3 className="font-display text-xl text-foreground mb-2">Message Sent</h3>
-                  <p className="text-sm text-muted-foreground font-body">Your email client should have opened with your message to <strong>{CONTACT_EMAIL}</strong>. We'll respond within 2 business days.</p>
+                  <p className="text-sm text-muted-foreground font-body">Your email client should have opened with your message to <strong className="text-accent">{activeType.email}</strong>.</p>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: "", email: "", subject: "", message: "" }); }}
-                    className="mt-4 px-6 py-2 bg-primary text-primary-foreground text-sm font-body font-medium rounded-lg hover:bg-primary/90 transition-colors"
+                    onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); }}
+                    className="mt-4 px-6 py-2 bg-accent text-accent-foreground text-sm font-body font-semibold rounded-lg hover:brightness-110 transition-all"
                   >
                     Send Another Message
                   </button>
@@ -146,14 +186,18 @@ const Contact = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" required placeholder="Full Name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-                    <input type="email" required placeholder="Email Address" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
+                    <input type="text" required placeholder="Full Name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    <input type="email" required placeholder="Email Address" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
                   </div>
-                  <input type="text" required placeholder="Subject" value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring" />
-                  <textarea required placeholder="Your message..." rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none" />
-                  <button type="submit" className="w-full py-3 bg-primary text-primary-foreground font-body font-medium rounded-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <input type="text" required placeholder="Subject" value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    <input type="tel" placeholder="Phone (optional)" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                  </div>
+                  <textarea required placeholder="Your message..." rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
+                  <button type="submit" className="w-full py-3 bg-accent text-accent-foreground font-body font-semibold rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 gold-glow">
                     Send Message <ArrowRight size={16} />
                   </button>
+                  <p className="text-xs text-muted-foreground font-body text-center">We respect your privacy. Your data will not be shared.</p>
                 </form>
               )}
             </AnimatedSection>
