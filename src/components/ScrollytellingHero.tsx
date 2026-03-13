@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import scrollEgg from "@/assets/scroll-egg.jpg";
 import scrollChick from "@/assets/scroll-chick.jpg";
@@ -21,7 +21,6 @@ const ScrollytellingHero = () => {
     offset: ["start start", "end start"],
   });
 
-  // Each stage gets ~25% of scroll
   const activeIndex = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 1, 2, 3, 3]);
 
   return (
@@ -32,55 +31,60 @@ const ScrollytellingHero = () => {
           <StageImage key={stage.label} stage={stage} index={i} activeIndex={activeIndex} />
         ))}
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/40 to-primary/20 z-10" />
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30 z-10" />
 
-        {/* Content */}
-        <div className="relative z-20 max-w-5xl mx-auto px-6 text-center">
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-primary-foreground/70 text-sm uppercase tracking-[0.3em] mb-4 font-body font-medium"
-          >
-            Birnihigo Integrated Farms
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-tight mb-6"
-          >
-            From Egg to Table,<br />With Integrity
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-            className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body leading-relaxed"
-          >
-            Ethiopia's first fully integrated poultry ecosystem — scroll to explore our journey.
-          </motion.p>
+        {/* Glassmorphism Content Card */}
+        <div className="relative z-20 max-w-4xl mx-auto px-6">
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="glass rounded-2xl p-8 md:p-12 text-center gold-glow"
           >
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-primary-foreground text-primary font-body font-medium rounded-lg hover:bg-primary-foreground/90 transition-colors"
-              aria-label="Learn about our story"
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold"
             >
-              Our Story <ArrowRight size={16} />
-            </Link>
-            <Link
-              to="/investors"
-              className="inline-flex items-center gap-2 px-8 py-3 border border-primary-foreground/30 text-primary-foreground font-body font-medium rounded-lg hover:bg-primary-foreground/10 transition-colors"
-              aria-label="View investor relations"
+              Birnihigo Integrated Farms
+            </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="font-display text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-4"
             >
-              Investor Relations
-            </Link>
+              Pioneering East Africa's<br />Food Security
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-8 font-body leading-relaxed"
+            >
+              42-Hectares of Vertically Integrated Poultry Excellence — from hatchery to halal-certified processing.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-body font-semibold rounded-lg hover:brightness-110 transition-all gold-glow"
+              >
+                Our Story <ArrowRight size={16} />
+              </Link>
+              <Link
+                to="/investors"
+                className="inline-flex items-center gap-2 px-8 py-3 border border-accent/30 text-foreground font-body font-medium rounded-lg hover:border-accent/60 hover:bg-accent/5 transition-all"
+              >
+                Investor Relations
+              </Link>
+            </motion.div>
           </motion.div>
 
           {/* Stage indicators */}
@@ -93,8 +97,8 @@ const ScrollytellingHero = () => {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <div className="w-6 h-10 border-2 border-primary-foreground/40 rounded-full flex justify-center pt-2">
-            <div className="w-1 h-2 bg-primary-foreground/60 rounded-full" />
+          <div className="w-6 h-10 border-2 border-accent/40 rounded-full flex justify-center pt-2">
+            <div className="w-1 h-2 bg-accent/60 rounded-full" />
           </div>
         </motion.div>
       </div>
@@ -138,7 +142,7 @@ const StageIndicators = ({
   activeIndex: ReturnType<typeof useTransform>;
 }) => {
   return (
-    <motion.div className="flex items-center justify-center gap-3 mt-12">
+    <motion.div className="flex items-center justify-center gap-3 mt-8">
       {stages.map((stage, i) => (
         <StageIndicator key={stage.label} index={i} label={stage.label} caption={stage.caption} activeIndex={activeIndex} />
       ))}
@@ -157,16 +161,16 @@ const StageIndicator = ({
   caption: string;
   activeIndex: ReturnType<typeof useTransform>;
 }) => {
-  const opacity = useTransform(activeIndex, (v: number) => (Math.abs(v - index) < 0.5 ? 1 : 0.4));
+  const opacity = useTransform(activeIndex, (v: number) => (Math.abs(v - index) < 0.5 ? 1 : 0.3));
   const dotScale = useTransform(activeIndex, (v: number) => (Math.abs(v - index) < 0.5 ? 1.5 : 1));
 
   return (
     <motion.div style={{ opacity }} className="flex flex-col items-center gap-1">
       <motion.div
         style={{ scale: dotScale }}
-        className="w-2 h-2 rounded-full bg-primary-foreground"
+        className="w-2 h-2 rounded-full bg-accent"
       />
-      <span className="text-xs text-primary-foreground font-body hidden sm:block">{label}</span>
+      <span className="text-xs text-foreground/80 font-body hidden sm:block">{label}</span>
     </motion.div>
   );
 };

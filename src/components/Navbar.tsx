@@ -38,7 +38,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-6">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Birnihigo Poultry" className="h-10 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(68%) sepia(61%) saturate(520%) hue-rotate(354deg) brightness(97%) contrast(90%)' }} />
+          <img src={logo} alt="Birnihigo Poultry" className="h-10 w-auto" style={{ filter: 'brightness(0) saturate(100%) invert(85%) sepia(30%) saturate(400%) hue-rotate(5deg) brightness(90%) contrast(85%)' }} />
         </Link>
 
         {/* Desktop */}
@@ -54,8 +54,8 @@ const Navbar = () => {
                 to={link.to}
                 className={`px-4 py-2 text-sm font-body font-medium rounded-md transition-colors flex items-center gap-1 ${
                   location.pathname === link.to
-                    ? "text-primary bg-accent"
-                    : "text-foreground hover:text-primary hover:bg-accent"
+                    ? "text-accent"
+                    : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {link.label}
@@ -75,7 +75,7 @@ const Navbar = () => {
                       <Link
                         key={s.label}
                         to={s.to}
-                        className="block px-4 py-2 text-sm text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors"
+                        className="block px-4 py-2 text-sm text-foreground/70 hover:text-accent hover:bg-muted rounded-md transition-colors"
                       >
                         {s.label}
                       </Link>
@@ -85,11 +85,19 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ))}
+
+          {/* CTA */}
+          <Link
+            to="/contact"
+            className="ml-4 px-5 py-2 bg-accent text-accent-foreground text-sm font-body font-semibold rounded-lg hover:brightness-110 transition-all gold-glow"
+          >
+            Partner with Us
+          </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-accent transition-colors"
+          className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-muted transition-colors"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -128,7 +136,7 @@ const Navbar = () => {
                 <Link
                   to={link.to}
                   onClick={() => setOpen(false)}
-                  className="block px-4 py-3 text-foreground font-medium hover:text-primary transition-colors"
+                  className="block px-4 py-3 text-foreground font-medium hover:text-accent transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -137,13 +145,20 @@ const Navbar = () => {
                     key={s.label}
                     to={s.to}
                     onClick={() => setOpen(false)}
-                    className="block px-8 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                    className="block px-8 py-2 text-sm text-muted-foreground hover:text-accent transition-colors"
                   >
                     {s.label}
                   </Link>
                 ))}
               </div>
             ))}
+            <Link
+              to="/contact"
+              onClick={() => setOpen(false)}
+              className="block mt-6 px-4 py-3 bg-accent text-accent-foreground text-center font-semibold rounded-lg"
+            >
+              Partner with Us
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
