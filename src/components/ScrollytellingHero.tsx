@@ -22,6 +22,9 @@ const ScrollytellingHero = () => {
   });
 
   const activeIndex = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 1, 2, 3, 3]);
+  const cardOpacity = useTransform(scrollYProgress, [0, 0.15, 0.3], [1, 0.6, 0]);
+  const cardY = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [0.7, 0.3, 0.15]);
 
   return (
     <section ref={containerRef} className="relative h-[400vh]" aria-label="Our journey from egg to table">
@@ -31,11 +34,17 @@ const ScrollytellingHero = () => {
           <StageImage key={stage.label} stage={stage} index={i} activeIndex={activeIndex} />
         ))}
 
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/30 z-10" />
+        {/* Dynamic overlay - fades as you scroll to reveal images */}
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10"
+          style={{ opacity: overlayOpacity }}
+        />
 
-        {/* Glassmorphism Content Card */}
-        <div className="relative z-20 max-w-4xl mx-auto px-6">
+        {/* Glassmorphism Content Card - fades out on scroll */}
+        <motion.div
+          className="relative z-20 max-w-4xl mx-auto px-6"
+          style={{ opacity: cardOpacity, y: cardY }}
+        >
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -86,14 +95,17 @@ const ScrollytellingHero = () => {
               </Link>
             </motion.div>
           </motion.div>
+        </motion.div>
 
-          {/* Stage indicators */}
+        {/* Stage indicators - always visible */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-20">
           <StageIndicators activeIndex={activeIndex} />
         </div>
 
         {/* Scroll hint */}
         <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
+          style={{ opacity: cardOpacity }}
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
