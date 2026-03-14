@@ -8,10 +8,10 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const stages = [
-  { src: scrollEgg, alt: "Fresh egg on golden straw", label: "Hatchery", caption: "It starts with a single egg" },
-  { src: scrollChick, alt: "Baby chick in modern facility", label: "Brooding", caption: "Nurtured with precision care" },
-  { src: scrollChicken, alt: "Adult chicken in poultry house", label: "Growing", caption: "Raised to the highest standards" },
-  { src: scrollProduct, alt: "Premium packaged poultry products", label: "Market Ready", caption: "Delivered fresh to your table" },
+  { src: scrollEgg, alt: "Birnihigo farm construction site in Afar, Ethiopia", label: "Foundation", caption: "Building from the ground up" },
+  { src: scrollChick, alt: "Automated feeding equipment inside Birnihigo poultry house", label: "Infrastructure", caption: "Modern facilities, precision care" },
+  { src: scrollChicken, alt: "Chickens feeding inside Birnihigo bio-secure facility", label: "Growing", caption: "Raised to the highest standards" },
+  { src: scrollProduct, alt: "Birnihigo meat processing and cold storage facility", label: "Market Ready", caption: "Delivered fresh to your table" },
 ];
 
 const ScrollytellingHero = () => {
