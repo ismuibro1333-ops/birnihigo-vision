@@ -31,9 +31,9 @@ const Index = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { src: pic1, alt: "Close-up of Birnihigo poultry operations" },
-            { src: pic2, alt: "Community engagement and facility visit at Birnihigo" },
-            { src: pic3, alt: "Modern poultry house interior with equipment" },
+            { src: pic1, alt: "Birnihigo farm aerial view with poultry houses and landscape" },
+            { src: pic2, alt: "Chicks feeding at automated feeder inside Birnihigo facility" },
+            { src: pic3, alt: "Community empowerment training session at Birnihigo" },
           ].map((img, i) => (
             <AnimatedSection key={img.alt} delay={i * 0.15}>
               <div className="rounded-2xl overflow-hidden aspect-[4/3] border border-border">
