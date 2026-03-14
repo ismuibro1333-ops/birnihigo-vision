@@ -49,7 +49,7 @@ const ScrollytellingHero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="glass rounded-2xl p-8 md:p-12 text-center gold-glow"
+            className="rounded-2xl p-8 md:p-12 text-center gold-glow bg-background/10 backdrop-blur-md border border-border/15"
           >
             <motion.p
               initial={{ opacity: 0 }}
