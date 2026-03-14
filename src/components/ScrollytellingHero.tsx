@@ -24,7 +24,7 @@ const ScrollytellingHero = () => {
   const activeIndex = useTransform(scrollYProgress, [0, 0.25, 0.5, 0.75, 1], [0, 1, 2, 3, 3]);
   const cardOpacity = useTransform(scrollYProgress, [0, 0.15, 0.3], [1, 0.6, 0]);
   const cardY = useTransform(scrollYProgress, [0, 0.3], [0, -60]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [0.7, 0.3, 0.15]);
+  const overlayOpacity = useTransform(scrollYProgress, [0, 0.2, 0.5], [0.35, 0.15, 0.05]);
 
   return (
     <section ref={containerRef} className="relative h-[400vh]" aria-label="Our journey from egg to table">
