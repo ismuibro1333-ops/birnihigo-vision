@@ -49,10 +49,15 @@ const Footer = () => {
             <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-muted-foreground">Navigation</h4>
             {[
               { label: "About Us", to: "/about" },
+              { label: "Products", to: "/products" },
+              { label: "Services", to: "/services" },
               { label: "Sustainability", to: "/sustainability" },
               { label: "Investor Relations", to: "/investors" },
               { label: "Careers", to: "/careers" },
+              { label: "Blog", to: "/blog" },
+              { label: "Gallery", to: "/gallery" },
               { label: "Contact", to: "/contact" },
+              { label: "Privacy Policy", to: "/privacy" },
             ].map((l) => (
               <Link key={l.to} to={l.to} className="block text-sm text-foreground/60 hover:text-accent py-1 transition-colors font-body">
                 {l.label}
