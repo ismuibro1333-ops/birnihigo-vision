@@ -7,7 +7,7 @@ import logo from "@/assets/logo.webp";
 const navLinks = [
   { label: "Home", to: "/" },
   {
-    label: "About Us",
+    label: "About",
     to: "/about",
     sub: [
       { label: "Our Heritage", to: "/about#heritage" },
@@ -15,27 +15,25 @@ const navLinks = [
       { label: "Mission & Values", to: "/about#pillars" },
     ],
   },
-  { label: "Products", to: "/products" },
-  { label: "Services", to: "/services" },
   {
-    label: "Sustainability",
-    to: "/sustainability",
+    label: "What We Do",
+    to: "/products",
     sub: [
-      { label: "Land Stewardship", to: "/sustainability#land" },
-      { label: "Contract Farming", to: "/sustainability#empowerment" },
-      { label: "Circular Economy", to: "/sustainability#circular" },
+      { label: "Products", to: "/products" },
+      { label: "Services", to: "/services" },
+      { label: "Sustainability", to: "/sustainability" },
     ],
   },
   { label: "Investors", to: "/investors" },
   {
-    label: "News",
+    label: "Community",
     to: "/careers",
     sub: [
       { label: "Careers", to: "/careers" },
-      { label: "Blog", to: "/blog" },
+      { label: "Blog & News", to: "/blog" },
+      { label: "Gallery", to: "/gallery" },
     ],
   },
-  { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
 ];
 
