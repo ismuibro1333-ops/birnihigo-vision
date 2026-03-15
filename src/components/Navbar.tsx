@@ -15,6 +15,8 @@ const navLinks = [
       { label: "Mission & Values", to: "/about#pillars" },
     ],
   },
+  { label: "Products", to: "/products" },
+  { label: "Services", to: "/services" },
   {
     label: "Sustainability",
     to: "/sustainability",
@@ -25,7 +27,15 @@ const navLinks = [
     ],
   },
   { label: "Investors", to: "/investors" },
-  { label: "Careers & Blog", to: "/careers" },
+  {
+    label: "News",
+    to: "/careers",
+    sub: [
+      { label: "Careers", to: "/careers" },
+      { label: "Blog", to: "/blog" },
+    ],
+  },
+  { label: "Gallery", to: "/gallery" },
   { label: "Contact", to: "/contact" },
 ];
 
