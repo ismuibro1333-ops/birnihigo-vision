@@ -6,9 +6,9 @@ import { useState } from "react";
 type FormType = "general" | "partnership" | "media" | "investor";
 
 const contactTypes: { key: FormType; label: string; email: string }[] = [
-  { key: "general", label: "General Inquiry", email: "info@birnihigo.org" },
+  { key: "general", label: "General Inquiry", email: "info@birnihigofarms.com" },
   { key: "partnership", label: "Partnership", email: "media@birnihigo.com" },
-  { key: "investor", label: "Investor Relations", email: "invest@birnihigo.com" },
+  { key: "investor", label: "Investor Relations", email: "invest@birnihigofarms.com" },
   { key: "media", label: "Media", email: "media@birnihigo.com" },
 ];
 
@@ -16,22 +16,23 @@ const socialLinks = [
   { icon: Facebook, label: "Facebook", href: "https://facebook.com/birnihigo" },
   { icon: Instagram, label: "Instagram", href: "https://instagram.com/birnihigo" },
   { icon: Twitter, label: "Twitter/X", href: "https://twitter.com/birnihigo" },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com/@birnihigo" },
+  { icon: Youtube, label: "YouTube", href: "https://youtube.com/birnihigo" },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/birnihigo" },
 ];
 
 const departmentEmails = [
-  { dept: "General Inquiries", email: "info@birnihigo.org" },
-  { dept: "Investor Relations", email: "invest@birnihigo.com" },
-  { dept: "Careers & CBF Program", email: "careers@birnihigo.com" },
+  { dept: "General Inquiries", email: "info@birnihigofarms.com" },
+  { dept: "Investor Relations", email: "invest@birnihigofarms.com" },
+  { dept: "Careers & CBF Program", email: "careers@birnihigofarms.com" },
   { dept: "Media & Partnerships", email: "media@birnihigo.com" },
+  { dept: "Technical Support", email: "support@birnihigo.com" },
   { dept: "Schedule a Visit", email: "visit@birnihigo.com" },
 ];
 
 const Contact = () => {
   const [activeForm, setActiveForm] = useState<FormType>("general");
   const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", subject: "", message: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" });
 
   const activeType = contactTypes.find(ct => ct.key === activeForm)!;
 
@@ -39,7 +40,7 @@ const Contact = () => {
     e.preventDefault();
     const mailtoSubject = encodeURIComponent(`[${activeType.label}] ${form.subject}`);
     const mailtoBody = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\n${form.message}`
+      `Name: ${form.firstName} ${form.lastName}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\n${form.message}`
     );
     window.location.href = `mailto:${activeType.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
     setSubmitted(true);
@@ -52,9 +53,9 @@ const Contact = () => {
         <div className="max-w-4xl mx-auto text-center">
           <AnimatedSection>
             <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Contact Us</p>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">We'd Love to Hear from You</h1>
+            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">We'd love to hear from you.</h1>
             <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
-              Whether you're a partner, investor, farmer, job seeker, or supporter — we welcome your questions, collaboration, and feedback.
+              Whether you're a partner, investor, farmer, job seeker, or supporter, we welcome your questions, collaboration, and feedback.
             </p>
           </AnimatedSection>
         </div>
@@ -79,7 +80,7 @@ const Contact = () => {
                 <div className="flex items-start gap-3">
                   <MapPin size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">Headquarters</p>
+                    <p className="font-body text-sm font-medium text-foreground">📍 Headquarters</p>
                     <p className="text-sm text-muted-foreground font-body">
                       Birnihigo Integrated Farms PLC<br />
                       Awash Sebat, Afar, Ethiopia<br />
@@ -88,38 +89,44 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Phone size={18} className="text-primary mt-0.5 shrink-0" />
+                  <Mail size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">Phone</p>
-                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors">+251 222 241 521</a>
+                    <p className="font-body text-sm font-medium text-foreground">Email Address</p>
+                    <a href="mailto:info@birnihigofarms.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">info@birnihigofarms.com</a>
+                    <a href="mailto:invest@birnihigofarms.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">invest@birnihigofarms.com</a>
+                    <a href="mailto:careers@birnihigofarms.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">careers@birnihigofarms.com</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Mail size={18} className="text-primary mt-0.5 shrink-0" />
+                  <Phone size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">Email</p>
-                    <a href="mailto:info@birnihigo.org" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors">info@birnihigo.org</a>
+                    <p className="font-body text-sm font-medium text-foreground">📞 Phone</p>
+                    <a href="tel:+251911509505" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251-91-150-9505</a>
+                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251-22-224-1521</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <MessageCircle size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">WhatsApp</p>
-                    <p className="text-xs text-muted-foreground font-body">Available Mon–Sat, 8:00AM–6:00PM EAT</p>
+                    <p className="font-body text-sm font-medium text-foreground">📱 Instant Messaging</p>
+                    <a href="https://web.whatsapp.com/send?phone=251911509505&text=" target="_blank" rel="noopener noreferrer" className="text-sm text-accent font-body hover:underline">💬 WhatsApp Chat: Click to Chat</a>
+                    <p className="text-xs text-muted-foreground font-body mt-1">Connect directly with our support or CBF liaison team</p>
+                    <p className="text-xs text-muted-foreground font-body">📲 Available Monday–Saturday, 8:00AM–6:00PM EAT</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Calendar size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-body text-sm font-medium text-foreground">Schedule a Visit</p>
-                    <a href="mailto:visit@birnihigo.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors">visit@birnihigo.com</a>
+                    <p className="font-body text-sm font-medium text-foreground">🤝 Schedule a Visit</p>
+                    <p className="text-xs text-muted-foreground font-body">Interested in visiting our farm or processing facility?</p>
+                    <a href="mailto:visit@birnihigo.com" className="text-sm text-accent font-body hover:underline">📅 Email visit@birnihigo.com to book a guided tour</a>
                   </div>
                 </div>
               </div>
 
               {/* Department Emails */}
               <div className="mt-8">
-                <h4 className="font-display text-sm uppercase tracking-wider mb-3 text-muted-foreground">Department Emails</h4>
+                <h4 className="font-display text-sm uppercase tracking-wider mb-3 text-muted-foreground">📬 Department Emails</h4>
                 <div className="space-y-2">
                   {departmentEmails.map((d) => (
                     <div key={d.email} className="flex items-center justify-between text-sm">
@@ -132,7 +139,7 @@ const Contact = () => {
 
               {/* Social Media */}
               <div className="mt-8">
-                <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-muted-foreground">Follow Us</h4>
+                <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-muted-foreground">🌐 Connect with Us</h4>
                 <div className="flex flex-wrap gap-2">
                   {socialLinks.map((s) => (
                     <a
@@ -154,11 +161,13 @@ const Contact = () => {
           {/* Form Column */}
           <div className="lg:col-span-3">
             <AnimatedSection>
+              <h2 className="font-display text-2xl text-foreground mb-6">Have Questions? Get In Touch!</h2>
+
               <div className="flex gap-2 mb-8 flex-wrap">
                 {contactTypes.map((ct) => (
                   <button
                     key={ct.key}
-                    onClick={() => { setActiveForm(ct.key); setSubmitted(false); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); }}
+                    onClick={() => { setActiveForm(ct.key); setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" }); }}
                     className={`px-4 py-2 rounded-lg text-sm font-body font-medium transition-colors ${
                       activeForm === ct.key ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
                     }`}
@@ -177,7 +186,7 @@ const Contact = () => {
                   <h3 className="font-display text-xl text-foreground mb-2">Message Sent</h3>
                   <p className="text-sm text-muted-foreground font-body">Your email client should have opened with your message to <strong className="text-accent">{activeType.email}</strong>.</p>
                   <button
-                    onClick={() => { setSubmitted(false); setForm({ name: "", email: "", phone: "", subject: "", message: "" }); }}
+                    onClick={() => { setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" }); }}
                     className="mt-4 px-6 py-2 bg-accent text-accent-foreground text-sm font-body font-semibold rounded-lg hover:brightness-110 transition-all"
                   >
                     Send Another Message
@@ -186,18 +195,37 @@ const Contact = () => {
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" required placeholder="Full Name" value={form.name} onChange={e => setForm({...form, name: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    <div>
+                      <label className="text-xs font-body text-muted-foreground mb-1 block">First Name *</label>
+                      <input type="text" required placeholder="First Name" value={form.firstName} onChange={e => setForm({...form, firstName: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-body text-muted-foreground mb-1 block">Last Name *</label>
+                      <input type="text" required placeholder="Last Name" value={form.lastName} onChange={e => setForm({...form, lastName: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="text-xs font-body text-muted-foreground mb-1 block">Email *</label>
                     <input type="email" required placeholder="Email Address" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input type="text" required placeholder="Subject" value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    <input type="tel" placeholder="Phone (optional)" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    <div>
+                      <label className="text-xs font-body text-muted-foreground mb-1 block">Subject</label>
+                      <input type="text" placeholder="Subject" value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
+                    <div>
+                      <label className="text-xs font-body text-muted-foreground mb-1 block">Phone (optional)</label>
+                      <input type="tel" placeholder="Phone" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
+                    </div>
                   </div>
-                  <textarea required placeholder="Your message..." rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
+                  <div>
+                    <label className="text-xs font-body text-muted-foreground mb-1 block">Message *</label>
+                    <textarea required placeholder="Your message..." rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
+                  </div>
                   <button type="submit" className="w-full py-3 bg-accent text-accent-foreground font-body font-semibold rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 gold-glow">
-                    Send Message <ArrowRight size={16} />
+                    Submit <ArrowRight size={16} />
                   </button>
-                  <p className="text-xs text-muted-foreground font-body text-center">We respect your privacy. Your data will not be shared.</p>
+                  <p className="text-xs text-muted-foreground font-body text-center">🛡️ We respect your privacy. Your data will not be shared.</p>
                 </form>
               )}
             </AnimatedSection>
