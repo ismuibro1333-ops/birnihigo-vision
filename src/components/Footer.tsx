@@ -11,7 +11,7 @@ const socialLinks = [
 ];
 
 const departmentEmails = [
-  { dept: "General Inquiries", email: "info@birnihigo.org" },
+  { dept: "General Inquiries", email: "info@birnihigofarms.com" },
   { dept: "Investor Relations", email: "invest@birnihigo.com" },
   { dept: "Careers & CBF", email: "careers@birnihigo.com" },
   { dept: "Media & Partnerships", email: "media@birnihigo.com" },
@@ -71,15 +71,15 @@ const Footer = () => {
             <div className="space-y-3 text-sm text-foreground/60">
               <div className="flex items-start gap-2">
                 <MapPin size={14} className="mt-0.5 shrink-0 text-primary" />
-                <span>Birnihigo Integrated Farms PLC, Awash Sebat, Afar, Ethiopia<br /><span className="text-xs">(Off Route A1, near Melka Werer Research Station)</span></span>
+                <span>Africa Avenue, Bedesta Building, 6th Floor, Addis Ababa, Ethiopia<br /><span className="text-xs">Facility: Awash Sebat, Afar (Off Route A1)</span></span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={14} className="shrink-0 text-primary" />
-                <a href="tel:+251222241521" className="hover:text-accent transition-colors">+251 222 241 521</a>
+                <a href="tel:+251911209405" className="hover:text-accent transition-colors">+251 911 20 94 05</a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail size={14} className="shrink-0 text-primary" />
-                <a href="mailto:info@birnihigo.org" className="hover:text-accent transition-colors">info@birnihigo.org</a>
+                <a href="mailto:info@birnihigofarms.com" className="hover:text-accent transition-colors">info@birnihigofarms.com</a>
               </div>
             </div>
             <div className="mt-4 space-y-1">

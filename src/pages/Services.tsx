@@ -31,7 +31,7 @@ const services = [
 ];
 
 const partnerships = [
-  { icon: Handshake, title: "Contract Farming Partners", desc: "Join our network of 1,000+ contract broiler farmers. We provide day-old chicks, feed, veterinary support, and guaranteed buyback." },
+  { icon: Handshake, title: "Contract Farming Partners", desc: "Join our growing network of contract broiler farmers (targeting 1,500–2,000). We provide day-old chicks, feed, veterinary support, and guaranteed buyback." },
   { icon: UtensilsCrossed, title: "Export Partnerships", desc: "Halal-certified, export-ready operations targeting Djibouti, Somalia, and GCC markets. Strategic proximity and compliant processing." },
 ];
 

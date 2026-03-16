@@ -106,7 +106,7 @@ const Careers = () => {
                       </div>
                     </div>
                     <a
-                      href="mailto:hr@birnihigo.com"
+                      href="mailto:careers@birnihigofarms.com"
                       className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-foreground text-sm font-body font-semibold rounded-lg hover:brightness-110 transition-all shrink-0"
                     >
                       Apply Now <ArrowRight size={14} />
@@ -116,7 +116,7 @@ const Careers = () => {
               ))}
               <AnimatedSection>
                 <p className="text-center text-sm text-muted-foreground font-body mt-6">
-                  To apply, email your CV and cover letter to: <a href="mailto:hr@birnihigo.com" className="text-accent hover:underline">hr@birnihigo.com</a>
+                  To apply, email your CV and cover letter to: <a href="mailto:careers@birnihigofarms.com" className="text-accent hover:underline">careers@birnihigofarms.com</a>
                 </p>
               </AnimatedSection>
             </div>

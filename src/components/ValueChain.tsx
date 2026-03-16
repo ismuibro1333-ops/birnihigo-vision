@@ -72,7 +72,7 @@ const ValueChainCard = ({ step, index }: { step: typeof steps[0]; index: number 
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.15, duration: 0.6 }}
-      className="min-w-[280px] snap-center lg:min-w-0 group relative bg-card border border-border rounded-2xl p-8 hover:border-primary/40 transition-all duration-300 flex flex-col"
+      className="min-w-[280px] snap-center lg:min-w-0 group relative bg-card border border-border rounded-2xl p-6 sm:p-8 hover:border-primary/40 transition-all duration-300 flex flex-col"
     >
       <div className="flex items-center justify-between mb-6">
         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors">
