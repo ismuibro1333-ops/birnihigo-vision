@@ -83,6 +83,11 @@ const Contact = () => {
                     <p className="font-body text-sm font-medium text-foreground">📍 Headquarters</p>
                     <p className="text-sm text-muted-foreground font-body">
                       Birnihigo Integrated Farms PLC<br />
+                      Africa Avenue, Bedesta Building, 6th Floor<br />
+                      Addis Ababa, Ethiopia
+                    </p>
+                    <p className="font-body text-sm font-medium text-foreground mt-3">🏭 Production Facility</p>
+                    <p className="text-sm text-muted-foreground font-body">
                       Awash Sebat, Afar, Ethiopia<br />
                       <span className="text-xs">(Off Route A1, near Melka Werer Research Station)</span>
                     </p>
