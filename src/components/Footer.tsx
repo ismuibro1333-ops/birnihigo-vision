@@ -71,7 +71,7 @@ const Footer = () => {
             <div className="space-y-3 text-sm text-foreground/60">
               <div className="flex items-start gap-2">
                 <MapPin size={14} className="mt-0.5 shrink-0 text-primary" />
-                <span>Birnihigo Integrated Farms PLC, Awash Sebat, Afar, Ethiopia<br /><span className="text-xs">(Off Route A1, near Melka Werer Research Station)</span></span>
+                <span>Africa Avenue, Bedesta Building, 6th Floor, Addis Ababa, Ethiopia<br /><span className="text-xs">Facility: Awash Sebat, Afar (Off Route A1)</span></span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone size={14} className="shrink-0 text-primary" />
