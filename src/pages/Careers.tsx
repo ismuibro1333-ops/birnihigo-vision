@@ -116,7 +116,7 @@ const Careers = () => {
               ))}
               <AnimatedSection>
                 <p className="text-center text-sm text-muted-foreground font-body mt-6">
-                  To apply, email your CV and cover letter to: <a href="mailto:hr@birnihigo.com" className="text-accent hover:underline">hr@birnihigo.com</a>
+                  To apply, email your CV and cover letter to: <a href="mailto:careers@birnihigofarms.com" className="text-accent hover:underline">careers@birnihigofarms.com</a>
                 </p>
               </AnimatedSection>
             </div>

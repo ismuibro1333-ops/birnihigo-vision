@@ -106,8 +106,9 @@ const Contact = () => {
                   <Phone size={18} className="text-primary mt-0.5 shrink-0" />
                   <div>
                     <p className="font-body text-sm font-medium text-foreground">📞 Phone</p>
-                    <a href="tel:+251911509505" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251-91-150-9505</a>
-                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251-22-224-1521</a>
+                    <a href="tel:+251911209405" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251 911 20 94 05</a>
+                    <a href="tel:+251911509505" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251 911 50 95 05</a>
+                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251 22 224 1521</a>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
