@@ -11,7 +11,7 @@ const socialLinks = [
 ];
 
 const departmentEmails = [
-  { dept: "General Inquiries", email: "info@birnihigo.org" },
+  { dept: "General Inquiries", email: "info@birnihigofarms.com" },
   { dept: "Investor Relations", email: "invest@birnihigo.com" },
   { dept: "Careers & CBF", email: "careers@birnihigo.com" },
   { dept: "Media & Partnerships", email: "media@birnihigo.com" },
