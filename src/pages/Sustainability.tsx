@@ -165,7 +165,7 @@ const Sustainability = () => (
                 </div>
                 <h3 className="font-display text-lg text-foreground mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{item.desc}</p>
-              </article>
+               </MotionCard>
             </AnimatedSection>
           ))}
         </div>
