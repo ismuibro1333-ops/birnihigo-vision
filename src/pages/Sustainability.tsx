@@ -111,7 +111,7 @@ const Sustainability = () => (
                     </div>
                   ))}
                 </div>
-              </article>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>
