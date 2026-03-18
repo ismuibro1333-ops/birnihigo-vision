@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Truck, Building2, Plane, Hotel, UtensilsCrossed, Handshake, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
