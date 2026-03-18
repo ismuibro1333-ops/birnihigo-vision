@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Shield, Users, Recycle, Leaf, Sprout, Droplets, TreePine, Heart } from "lucide-react";
 
 const metrics = [
@@ -92,7 +93,7 @@ const Sustainability = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {esgCards.map((card, i) => (
             <AnimatedSection key={card.category} delay={i * 0.15}>
-              <article className="bg-card border border-border rounded-2xl overflow-hidden h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="overflow-hidden h-full">
                 <div className="bg-primary px-6 py-4 flex items-center gap-3">
                   <card.icon size={20} className="text-primary-foreground" aria-hidden="true" />
                   <h3 className="font-display text-lg text-primary-foreground">{card.category}</h3>
@@ -110,7 +111,7 @@ const Sustainability = () => (
                     </div>
                   ))}
                 </div>
-              </article>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>
@@ -158,13 +159,13 @@ const Sustainability = () => (
             { icon: Shield, title: "Training & Support", desc: "Day-old chicks, quality feed, veterinary extension support, ongoing training, and income-generating independence." },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
-              <article className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="p-8 h-full">
                 <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center mb-6" aria-hidden="true">
                   <item.icon size={24} className="text-primary-foreground" />
                 </div>
                 <h3 className="font-display text-lg text-foreground mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{item.desc}</p>
-              </article>
+               </MotionCard>
             </AnimatedSection>
           ))}
         </div>
@@ -207,7 +208,7 @@ const Sustainability = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {circularSteps.map((step, i) => (
             <AnimatedSection key={step.title} delay={i * 0.1}>
-              <article className="flex items-start gap-6 bg-card border border-border rounded-2xl p-6 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="flex items-start gap-6 p-6 h-full">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0" aria-hidden="true">
                   <step.icon size={24} className="text-primary" />
                 </div>
@@ -215,7 +216,7 @@ const Sustainability = () => (
                   <h3 className="font-display text-lg text-foreground mb-1">{step.title}</h3>
                   <p className="text-sm text-muted-foreground font-body">{step.desc}</p>
                 </div>
-              </article>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>

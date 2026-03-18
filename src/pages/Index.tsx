@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import ScrollytellingHero from "@/components/ScrollytellingHero";
 import ValueChain from "@/components/ValueChain";
 import OperationalDashboard from "@/components/OperationalDashboard";
@@ -123,13 +124,13 @@ const Index = () => (
             },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
-              <article className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="p-8 h-full">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6" aria-hidden="true">
                   <item.icon size={24} className="text-primary" />
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{item.desc}</p>
-              </article>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>

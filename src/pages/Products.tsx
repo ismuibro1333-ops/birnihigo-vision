@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Wheat, Egg, Drumstick, ShieldCheck, Thermometer, Truck, ArrowRight } from "lucide-react";
 import scrollChick from "@/assets/scroll-chick.jpg";
 import scrollChicken from "@/assets/scroll-chicken.jpg";
@@ -106,13 +107,13 @@ const Products = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {standards.map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
-              <article className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="p-8 h-full">
                 <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center mb-6">
                   <item.icon size={24} className="text-primary-foreground" />
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-3">{item.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{item.desc}</p>
-              </article>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>

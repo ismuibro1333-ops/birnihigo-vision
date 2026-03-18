@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Target, Eye, Heart, Users } from "lucide-react";
 
 const timeline = [
@@ -78,14 +79,14 @@ const About = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {leadership.map((person, i) => (
             <AnimatedSection key={person.name} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/30 transition-colors">
+              <MotionCard className="p-6 text-center">
                 <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
                   <Users size={28} className="text-primary" />
                 </div>
                 <h3 className="font-display text-base text-foreground mb-1">{person.name}</h3>
                 <p className="text-xs text-accent font-body font-medium mb-3">{person.role}</p>
                 <p className="text-xs text-muted-foreground font-body">{person.desc}</p>
-              </div>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>
@@ -98,13 +99,13 @@ const About = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((p, i) => (
             <AnimatedSection key={p.title} delay={i * 0.15}>
-              <div className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="p-8 h-full">
                 <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-6">
                   <p.icon size={26} className="text-primary-foreground" />
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-3">{p.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{p.desc}</p>
-              </div>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>

@@ -42,9 +42,10 @@ const OperationalDashboard = () => {
     <section className="section-padding bg-card/50" aria-labelledby="dashboard-heading">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <p className="text-accent text-sm uppercase tracking-[0.3em] mb-3 font-body font-semibold">Operational Scale</p>
@@ -57,11 +58,12 @@ const OperationalDashboard = () => {
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="text-center p-8 bg-card border border-border rounded-2xl hover:border-primary/30 transition-colors"
+              transition={{ delay: i * 0.15, duration: 0.8, ease: "easeOut" }}
+              whileHover={{ scale: 1.02, transition: { type: "spring", stiffness: 300, damping: 20 } }}
+              className="text-center p-8 bg-card border border-border rounded-2xl hover:border-primary/30 hover:card-hover-shadow transition-colors"
             >
               <AnimatedCounter value={stat.value} suffix={stat.suffix} />
               <p className="text-sm text-muted-foreground uppercase tracking-wider mt-3 font-body">{stat.label}</p>
