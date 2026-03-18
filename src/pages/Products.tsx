@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Wheat, Egg, Drumstick, ShieldCheck, Thermometer, Truck, ArrowRight } from "lucide-react";
 import scrollChick from "@/assets/scroll-chick.jpg";
 import scrollChicken from "@/assets/scroll-chicken.jpg";
