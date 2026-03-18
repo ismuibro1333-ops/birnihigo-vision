@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import ScrollytellingHero from "@/components/ScrollytellingHero";
 import ValueChain from "@/components/ValueChain";
 import OperationalDashboard from "@/components/OperationalDashboard";
