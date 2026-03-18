@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Shield, Users, Recycle, Leaf, Sprout, Droplets, TreePine, Heart } from "lucide-react";
 
 const metrics = [
