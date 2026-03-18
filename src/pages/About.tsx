@@ -99,13 +99,13 @@ const About = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pillars.map((p, i) => (
             <AnimatedSection key={p.title} delay={i * 0.15}>
-              <div className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="p-8 h-full">
                 <div className="w-14 h-14 rounded-xl bg-primary flex items-center justify-center mb-6">
                   <p.icon size={26} className="text-primary-foreground" />
                 </div>
                 <h3 className="font-display text-xl text-foreground mb-3">{p.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed font-body">{p.desc}</p>
-              </div>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>

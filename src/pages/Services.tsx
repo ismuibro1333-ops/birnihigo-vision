@@ -55,7 +55,7 @@ const Services = () => (
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
         {services.map((svc, i) => (
           <AnimatedSection key={svc.title} delay={i * 0.1}>
-            <article className="bg-card border border-border rounded-2xl p-8 h-full hover:border-primary/30 transition-colors">
+            <MotionCard className="p-8 h-full">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
                 <svc.icon size={24} className="text-primary" />
               </div>
@@ -69,7 +69,7 @@ const Services = () => (
                   </li>
                 ))}
               </ul>
-            </article>
+            </MotionCard>
           </AnimatedSection>
         ))}
       </div>
