@@ -1,5 +1,6 @@
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { Target, Eye, Heart, Users } from "lucide-react";
 
 const timeline = [
