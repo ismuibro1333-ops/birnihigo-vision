@@ -79,14 +79,14 @@ const About = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {leadership.map((person, i) => (
             <AnimatedSection key={person.name} delay={i * 0.1}>
-              <div className="bg-card border border-border rounded-2xl p-6 text-center hover:border-primary/30 transition-colors">
+              <MotionCard className="p-6 text-center">
                 <div className="w-20 h-20 rounded-full bg-primary/10 mx-auto mb-4 flex items-center justify-center">
                   <Users size={28} className="text-primary" />
                 </div>
                 <h3 className="font-display text-base text-foreground mb-1">{person.name}</h3>
                 <p className="text-xs text-accent font-body font-medium mb-3">{person.role}</p>
                 <p className="text-xs text-muted-foreground font-body">{person.desc}</p>
-              </div>
+              </MotionCard>
             </AnimatedSection>
           ))}
         </div>
