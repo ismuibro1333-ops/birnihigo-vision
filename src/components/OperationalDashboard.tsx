@@ -42,9 +42,10 @@ const OperationalDashboard = () => {
     <section className="section-padding bg-card/50" aria-labelledby="dashboard-heading">
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center mb-16"
         >
           <p className="text-accent text-sm uppercase tracking-[0.3em] mb-3 font-body font-semibold">Operational Scale</p>
