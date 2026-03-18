@@ -93,7 +93,7 @@ const Sustainability = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {esgCards.map((card, i) => (
             <AnimatedSection key={card.category} delay={i * 0.15}>
-              <article className="bg-card border border-border rounded-2xl overflow-hidden h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="overflow-hidden h-full">
                 <div className="bg-primary px-6 py-4 flex items-center gap-3">
                   <card.icon size={20} className="text-primary-foreground" aria-hidden="true" />
                   <h3 className="font-display text-lg text-primary-foreground">{card.category}</h3>
