@@ -208,7 +208,7 @@ const Sustainability = () => (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {circularSteps.map((step, i) => (
             <AnimatedSection key={step.title} delay={i * 0.1}>
-              <article className="flex items-start gap-6 bg-card border border-border rounded-2xl p-6 h-full hover:border-primary/30 transition-colors">
+              <MotionCard className="flex items-start gap-6 p-6 h-full">
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0" aria-hidden="true">
                   <step.icon size={24} className="text-primary" />
                 </div>
