@@ -125,7 +125,7 @@ const Footer = () => {
                 style={{ backgroundColor: brandYellow }}
                 className="w-full px-4 py-3 text-black text-sm font-bold rounded-lg hover:brightness-110 active:scale-[0.98] transition-all font-body shadow-lg"
               >
-                SUBSCRIBE NOW
+                JOIN US
               </button>
             </form>
           </div>
