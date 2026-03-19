@@ -18,56 +18,55 @@ export default {
         body: ["Inter", "sans-serif"],
       },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        // EDITED: Site background is now White, Text is Dark Navy
-        background: "#FFFFFF",
-        foreground: "#1A1A1A", 
+        border: "#E5E7EB", // Clean light gray border
+        input: "#F3F4F6",
+        ring: "#FBBF24",   // Yellow focus ring
+        background: "#FFFFFF", // Pure White Background
+        foreground: "#1A1A1A", // Deep Dark Text for readability
         primary: {
-          // EDITED: Primary color is now your Bright Yellow Logo color
+          // THIS IS YOUR BRIGHT YELLOW
           DEFAULT: "#FBBF24",
-          foreground: "#000000",
+          foreground: "#000000", // Black text on yellow buttons
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#F3F4F6",
+          foreground: "#1A1A1A",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#EF4444",
+          foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "#F3F4F6",
+          DEFAULT: "#F9FAFB",
           foreground: "#6B7280",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#FBBF24", // Yellow accents
+          foreground: "#000000",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#1A1A1A",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#1A1A1A",
         },
-        onyx: "hsl(var(--onyx))",
-        emerald: "hsl(var(--emerald))",
+        onyx: "#1F2937",
+        emerald: "#10B981",
         gold: {
-          DEFAULT: "#FBBF24",
+          DEFAULT: "#FBBF24", // Matched to logo1
           light: "#FDE68A",
         },
         sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#1A1A1A",
+          primary: "#FBBF24",
+          "primary-foreground": "#000000",
+          accent: "#F3F4F6",
+          "accent-foreground": "#1A1A1A",
+          border: "#E5E7EB",
+          ring: "#FBBF24",
         },
       },
       borderRadius: {
