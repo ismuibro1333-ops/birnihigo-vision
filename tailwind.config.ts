@@ -21,11 +21,13 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        // EDITED: Site background is now White, Text is Dark Navy
+        background: "#FFFFFF",
+        foreground: "#1A1A1A", 
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          // EDITED: Primary color is now your Bright Yellow Logo color
+          DEFAULT: "#FBBF24",
+          foreground: "#000000",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -36,8 +38,8 @@ export default {
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#F3F4F6",
+          foreground: "#6B7280",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
@@ -54,8 +56,8 @@ export default {
         onyx: "hsl(var(--onyx))",
         emerald: "hsl(var(--emerald))",
         gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
+          DEFAULT: "#FBBF24",
+          light: "#FDE68A",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
