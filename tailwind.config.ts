@@ -14,24 +14,22 @@ export default {
     },
     extend: {
       fontFamily: {
-        // As per Page 15 of the Brand Guidelines
+        // Updated to the official brand typeface: Parkinsans
         display: ["Parkinsans", "sans-serif"], 
         body: ["Inter", "sans-serif"],
       },
       colors: {
         border: "#E5E7EB", 
         input: "#F3F4F6",
-        ring: "#FEA42A",   // Deep Saffron for focus rings
+        ring: "#FEA42A",   // Official Deep Saffron
         background: "#FFFFFF", 
-        foreground: "#4F3C1C", // Café Noir for all primary text
+        foreground: "#4F3C1C", // Official Café Noir (Primary Text)
         primary: {
-          // Official Primary Color: Café Noir (Page 13)
-          DEFAULT: "#4F3C1C", 
-          foreground: "#EFE7DC", // White Chocolate text on brown for better contrast
+          DEFAULT: "#4F3C1C", // Official Café Noir
+          foreground: "#EFE7DC", // White Chocolate for contrast
         },
         secondary: {
-          // Official Secondary Color: Deep Saffron
-          DEFAULT: "#FEA42A", 
+          DEFAULT: "#FEA42A", // Official Deep Saffron
           foreground: "#4F3C1C",
         },
         destructive: {
@@ -39,13 +37,11 @@ export default {
           foreground: "#FFFFFF",
         },
         muted: {
-          // Using White Chocolate for muted backgrounds
-          DEFAULT: "#EFE7DC", 
+          DEFAULT: "#EFE7DC", // White Chocolate (Earthy Tone)
           foreground: "#4F3C1C",
         },
         accent: {
-          // Dandelion as the highlight accent
-          DEFAULT: "#FFD275", 
+          DEFAULT: "#FFD275", // Dandelion
           foreground: "#4F3C1C",
         },
         popover: {
@@ -56,7 +52,7 @@ export default {
           DEFAULT: "#FFFFFF",
           foreground: "#4F3C1C",
         },
-        // Direct mapping for easy utility use (e.g., bg-birni-saffron)
+        // Helper classes for you to use in your components
         birni: {
           cafe: "#4F3C1C",
           saffron: "#FEA42A",
@@ -67,49 +63,3 @@ export default {
         sidebar: {
           DEFAULT: "#FFFFFF",
           foreground: "#4F3C1C",
-          primary: "#4F3C1C",
-          "primary-foreground": "#FFFFFF",
-          accent: "#FEA42A",
-          "accent-foreground": "#4F3C1C",
-          border: "#E5E7EB",
-          ring: "#FEA42A",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "count-up": {
-          "0%": { opacity: "0", transform: "scale(0.8)" },
-          "100%": { opacity: "1", transform: "scale(1)" },
-        },
-        "slide-left": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
-        "count-up": "count-up 0.4s ease-out forwards",
-        "slide-left": "slide-left 20s linear infinite",
-      },
-    },
-  },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
