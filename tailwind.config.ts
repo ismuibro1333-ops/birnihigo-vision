@@ -14,22 +14,24 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Updated to the official brand typeface: Parkinsans
+        // As per Page 15 of the Brand Guidelines
         display: ["Parkinsans", "sans-serif"], 
         body: ["Inter", "sans-serif"],
       },
       colors: {
         border: "#E5E7EB", 
         input: "#F3F4F6",
-        ring: "#FEA42A",   // Deep Saffron
+        ring: "#FEA42A",   // Deep Saffron for focus rings
         background: "#FFFFFF", 
-        foreground: "#4F3C1C", // Café Noir (Main text color)
+        foreground: "#4F3C1C", // Café Noir for all primary text
         primary: {
-          DEFAULT: "#4F3C1C", // Official Primary: Café Noir
-          foreground: "#FFFFFF",
+          // Official Primary Color: Café Noir (Page 13)
+          DEFAULT: "#4F3C1C", 
+          foreground: "#EFE7DC", // White Chocolate text on brown for better contrast
         },
         secondary: {
-          DEFAULT: "#FEA42A", // Official Secondary: Deep Saffron
+          // Official Secondary Color: Deep Saffron
+          DEFAULT: "#FEA42A", 
           foreground: "#4F3C1C",
         },
         destructive: {
@@ -37,11 +39,13 @@ export default {
           foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "#EFE7DC", // White Chocolate (Accent)
+          // Using White Chocolate for muted backgrounds
+          DEFAULT: "#EFE7DC", 
           foreground: "#4F3C1C",
         },
         accent: {
-          DEFAULT: "#FFD275", // Dandelion (Accent)
+          // Dandelion as the highlight accent
+          DEFAULT: "#FFD275", 
           foreground: "#4F3C1C",
         },
         popover: {
@@ -52,7 +56,7 @@ export default {
           DEFAULT: "#FFFFFF",
           foreground: "#4F3C1C",
         },
-        // Brand-specific palette for easy utility usage
+        // Direct mapping for easy utility use (e.g., bg-birni-saffron)
         birni: {
           cafe: "#4F3C1C",
           saffron: "#FEA42A",
