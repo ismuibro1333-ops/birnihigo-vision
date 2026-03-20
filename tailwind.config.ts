@@ -14,59 +14,61 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "serif"],
+        // Updated to the official brand typeface: Parkinsans
+        display: ["Parkinsans", "sans-serif"], 
         body: ["Inter", "sans-serif"],
       },
       colors: {
-        // ONLY COLORS CHANGED BELOW
         border: "#E5E7EB", 
         input: "#F3F4F6",
-        ring: "#FBBF24",   
+        ring: "#FEA42A",   // Deep Saffron
         background: "#FFFFFF", 
-        foreground: "#1A1A1A", 
+        foreground: "#4F3C1C", // Café Noir (Main text color)
         primary: {
-          DEFAULT: "#FBBF24",
-          foreground: "#000000",
+          DEFAULT: "#4F3C1C", // Official Primary: Café Noir
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "#F3F4F6",
-          foreground: "#1A1A1A",
+          DEFAULT: "#FEA42A", // Official Secondary: Deep Saffron
+          foreground: "#4F3C1C",
         },
         destructive: {
           DEFAULT: "#EF4444",
           foreground: "#FFFFFF",
         },
         muted: {
-          DEFAULT: "#F9FAFB",
-          foreground: "#4B5563",
+          DEFAULT: "#EFE7DC", // White Chocolate (Accent)
+          foreground: "#4F3C1C",
         },
         accent: {
-          DEFAULT: "#FBBF24", 
-          foreground: "#000000",
+          DEFAULT: "#FFD275", // Dandelion (Accent)
+          foreground: "#4F3C1C",
         },
         popover: {
           DEFAULT: "#FFFFFF",
-          foreground: "#1A1A1A",
+          foreground: "#4F3C1C",
         },
         card: {
           DEFAULT: "#FFFFFF",
-          foreground: "#1A1A1A",
+          foreground: "#4F3C1C",
         },
-        onyx: "#1F2937",
-        emerald: "#10B981",
-        gold: {
-          DEFAULT: "#FBBF24",
-          light: "#FDE68A",
+        // Brand-specific palette for easy utility usage
+        birni: {
+          cafe: "#4F3C1C",
+          saffron: "#FEA42A",
+          dandelion: "#FFD275",
+          cream: "#EFE7DC",
+          bronze: "#CD8C24",
         },
         sidebar: {
           DEFAULT: "#FFFFFF",
-          foreground: "#1A1A1A",
-          primary: "#FBBF24",
-          "primary-foreground": "#000000",
-          accent: "#F3F4F6",
-          "accent-foreground": "#1A1A1A",
+          foreground: "#4F3C1C",
+          primary: "#4F3C1C",
+          "primary-foreground": "#FFFFFF",
+          accent: "#FEA42A",
+          "accent-foreground": "#4F3C1C",
           border: "#E5E7EB",
-          ring: "#FBBF24",
+          ring: "#FEA42A",
         },
       },
       borderRadius: {
