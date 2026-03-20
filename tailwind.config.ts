@@ -18,15 +18,15 @@ export default {
         body: ["Inter", "sans-serif"],
       },
       colors: {
-        border: "#E5E7EB", // Clean light gray border
+        // ONLY COLORS CHANGED BELOW
+        border: "#E5E7EB", 
         input: "#F3F4F6",
-        ring: "#FBBF24",   // Yellow focus ring
-        background: "#FFFFFF", // Pure White Background
-        foreground: "#1A1A1A", // Deep Dark Text for readability
+        ring: "#FBBF24",   
+        background: "#FFFFFF", 
+        foreground: "#1A1A1A", 
         primary: {
-          // THIS IS YOUR BRIGHT YELLOW
           DEFAULT: "#FBBF24",
-          foreground: "#000000", // Black text on yellow buttons
+          foreground: "#000000",
         },
         secondary: {
           DEFAULT: "#F3F4F6",
@@ -38,10 +38,10 @@ export default {
         },
         muted: {
           DEFAULT: "#F9FAFB",
-          foreground: "#6B7280",
+          foreground: "#4B5563",
         },
         accent: {
-          DEFAULT: "#FBBF24", // Yellow accents
+          DEFAULT: "#FBBF24", 
           foreground: "#000000",
         },
         popover: {
@@ -55,7 +55,7 @@ export default {
         onyx: "#1F2937",
         emerald: "#10B981",
         gold: {
-          DEFAULT: "#FBBF24", // Matched to logo1
+          DEFAULT: "#FBBF24",
           light: "#FDE68A",
         },
         sidebar: {
