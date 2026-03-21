@@ -16,7 +16,7 @@ const Index = () => (
     {/* Scrollytelling Hero */}
     <ScrollytellingHero />
 
-    {/* Value Chain */}
+    {/* Value Chain - IMPORTANT: Go to ValueChain.tsx to move Breeding to the first spot! */}
     <ValueChain />
 
     {/* Operational Dashboard */}
@@ -30,7 +30,8 @@ const Index = () => (
           <h2 id="gallery-heading" className="font-display text-3xl md:text-4xl text-foreground">Our Operations in Action</h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Added items-center for Milkias's alignment fix */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
           {[
             { src: pic1, alt: "Birnihigo farm aerial view with poultry houses and landscape" },
             { src: pic2, alt: "Chicks feeding at automated feeder inside Birnihigo facility" },
@@ -51,7 +52,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Sustainability Loop */}
+    {/* Sustainability Loop - Updated with Breeding Farm & Farm to Fork logic */}
     <section className="section-padding bg-card/50" aria-labelledby="sustainability-heading">
       <div className="max-w-6xl mx-auto">
         <AnimatedSection className="text-center mb-16">
@@ -61,11 +62,24 @@ const Index = () => (
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        {/* Added items-center for perfect vertical balance */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 items-center">
           {[
-            { icon: Sprout, title: "Cultivate", desc: "2,000 hectares of maize and soybean cultivated on company-owned and partner farms." },
-            { icon: Recycle, title: "Process & Produce", desc: "Feed production, hatchery, and HACCP-certified processing under one ecosystem." },
-            { icon: Leaf, title: "Regenerate", desc: "Poultry manure converted to organic fertilizer, enriching the soil for the next cycle." },
+            { 
+              icon: Sprout, 
+              title: "Breeding & Cultivate", 
+              desc: "The journey begins at our Breeding Farm, supported by 2,000 hectares of maize and soybean cultivation." 
+            },
+            { 
+              icon: Recycle, 
+              title: "Day-Old Chicks & Feed", 
+              desc: "Eco-feed production and bio-secure hatchery operations producing premium Day-Old Chicks (DOCs)." 
+            },
+            { 
+              icon: Leaf, 
+              title: "From Farm to Fork", 
+              desc: "HACCP-certified processing and Halal-certified distribution of premium poultry meat." 
+            },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <article className="text-center">
@@ -95,7 +109,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Investor & Export Portal */}
+    {/* Investor & Export Portal - Updated with 1,500+ associations stat */}
     <section className="section-padding" aria-labelledby="investor-portal-heading">
       <div className="max-w-6xl mx-auto">
         <AnimatedSection className="text-center mb-16">
@@ -105,22 +119,22 @@ const Index = () => (
           </h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {[
             {
               icon: TrendingUp,
               title: "Massive Market Gap",
-              desc: "Ethiopia imports over $50M in poultry annually. Per capita consumption is just 0.5 kg vs. 15 kg global average — enormous upside.",
+              desc: "Ethiopia imports over $50M in poultry annually. Birnihigo is closing this gap through vertical integration from breeding to retail.",
             },
             {
               icon: Globe,
               title: "Export-Ready",
-              desc: "Halal-certified production and proximity to Djibouti, Somalia, and GCC countries provide a strategic export advantage.",
+              desc: "Halal-certified production and strategic location provide a gateway to Djibouti, Somalia, and GCC countries.",
             },
             {
               icon: Shield,
               title: "ESG Aligned",
-              desc: "Our eco-centric farming aligns with global ESG priorities. 100% circular waste-to-fertilizer, 60% women & youth participation in contract farming.",
+              desc: "Empowering 1,500+ local associations. 100% circular waste-to-fertilizer and 60% women & youth participation.",
             },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
@@ -149,3 +163,4 @@ const Index = () => (
 );
 
 export default Index;
+
