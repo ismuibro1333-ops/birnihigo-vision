@@ -42,18 +42,19 @@ const Navbar = () => {
   const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const location = useLocation();
 
-  // Brand Colors
+  // Brand Colors from guidelines
   const brandOrange = "#FEA42A";
   const brandBrown = "#4F3C1C";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
+        {/* Logo Section */}
         <Link to="/" className="flex items-center">
           <img 
             src={logo} 
             alt="Birnihigo Integrated Farms" 
-            className="h-14 w-auto object-contain transition-transform hover:scale-105" 
+            className="h-14 w-auto object-contain transition-transform duration-300 hover:scale-105" 
           />
         </Link>
 
@@ -112,7 +113,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Mobile Toggle */}
+        {/* Mobile Toggle Button */}
         <button
           className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
           onClick={() => setOpen(!open)}
@@ -122,46 +123,56 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Sidebar Drawer */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-y-0 right-0 w-80 bg-white border-l border-gray-100 z-50 p-6 pt-24 lg:hidden overflow-y-auto"
-          >
-            {navLinks.map((link) => (
-              <div key={link.label} className="mb-4">
-                <Link
-                  to={link.to}
-                  onClick={() => setOpen(false)}
-                  className="block px-4 py-2 text-[#4F3C1C] font-bold text-lg hover:text-[#FEA42A] transition-colors"
-                >
-                  {link.label}
-                </Link>
-                {link.sub?.map((s) => (
-                  <Link
-                    key={s.label}
-                    to={s.to}
-                    onClick={() => setOpen(false)}
-                    className="block px-8 py-2 text-sm text-[#4F3C1C]/60 hover:text-[#FEA42A] transition-colors"
-                  >
-                    {s.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-            <Link
-              to="/contact"
+          <>
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setOpen(false)}
-              style={{ backgroundColor: brandOrange, color: brandBrown }}
-              className="block mt-8 px-4 py-4 text-center font-bold rounded-xl shadow-lg"
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed inset-y-0 right-0 w-80 bg-white z-50 p-6 pt-24 lg:hidden overflow-y-auto shadow-2xl"
             >
-              Partner with Us
-            </Link>
-          </motion.div>
+              {navLinks.map((link) => (
+                <div key={link.label} className="mb-4">
+                  <Link
+                    to={link.to}
+                    onClick={() => setOpen(false)}
+                    className="block px-4 py-2 text-[#4F3C1C] font-bold text-lg hover:text-[#FEA42A] transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                  {link.sub?.map((s) => (
+                    <Link
+                      key={s.label}
+                      to={s.to}
+                      onClick={() => setOpen(false)}
+                      className="block px-8 py-2 text-sm text-[#4F3C1C]/60 hover:text-[#FEA42A] transition-colors"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              ))}
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                style={{ backgroundColor: brandOrange, color: brandBrown }}
+                className="block mt-8 px-4 py-4 text-center font-bold rounded-xl shadow-lg"
+              >
+                Partner with Us
+              </Link>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>
