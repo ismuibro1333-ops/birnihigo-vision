@@ -27,7 +27,9 @@ export default {
         border: "#E5E7EB",
         input: "#F3F4F6",
         ring: "#FEA42A", // Deep Saffron for focus states
-        background: "#FFFFFF",
+        
+        // --- CHANGED: Swapped #FFFFFF for the Brand Cream ---
+        background: "#EFE7DC", // White Chocolate (This fixes the "too white" issue)
         foreground: "#4F3C1C", // Café Noir (Deep Earthy Brown)
 
         primary: {
@@ -48,18 +50,18 @@ export default {
         },
         // Direct mapping for Birni-specific utility classes
         birni: {
-          brown: "#4F3C1C",    // The rich earthy tone from your video
+          brown: "#4F3C1C",    // The rich earthy tone
           orange: "#FEA42A",   // The warm sunset orange
           yellow: "#FFD275",   // The soft highlight yellow
           cream: "#EFE7DC",    // The background/section color
           bronze: "#CD8C24",   // Deep accent color
         },
         popover: {
-          DEFAULT: "#FFFFFF",
+          DEFAULT: "#EFE7DC", // Changed to match brand background
           foreground: "#4F3C1C",
         },
         card: {
-          DEFAULT: "#FFFFFF",
+          DEFAULT: "#F9F5F0", // Using the slightly lighter off-white for cards to pop
           foreground: "#4F3C1C",
         },
       },
