@@ -1,31 +1,31 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Wheat, Shield, Cpu, Factory, ArrowRight } from "lucide-react";
+import { Bird, Shield, Leaf, Utensils, ArrowRight } from "lucide-react";
 
 const steps = [
   {
-    icon: Wheat,
+    icon: Bird,
     step: "01",
-    title: "Sustainable Agriculture",
-    desc: "2,000+ hectares of maize and soybean cultivated on company-owned and partner farms, ensuring feed self-sufficiency and responsible land stewardship.",
+    title: "Breeding Operations",
+    desc: "Our journey begins at our bio-secure Breeding Farms. We prioritize genetic excellence and strict bio-security to ensure a healthy foundation for the entire chain.",
   },
   {
     icon: Shield,
     step: "02",
-    title: "Bio-Secure Genetics",
-    desc: "Cobb 500 hatchery with 99.2% hatch rates, bio-secure facilities, and plans to establish grandparent stock within 5–7 years.",
+    title: "Bio-Secure Hatchery",
+    desc: "Cobb 500 hatchery producing premium Day-Old Chicks (DOCs) with 99.2% hatch rates. Plans are underway to establish grandparent stock within 5–7 years.",
   },
   {
-    icon: Cpu,
+    icon: Leaf,
     step: "03",
-    title: "Precision Growth",
-    desc: "IoT-monitored climate controls, automated feeding systems, and precision veterinary protocols ensure optimal bird health and growth rates.",
+    title: "Eco-Feed & Growth",
+    desc: "2,000+ hectares of maize/soybean cultivation integrated with our Moringa-based feed mill for climate-resilient, high-nutrient poultry nutrition.",
   },
   {
-    icon: Factory,
+    icon: Utensils,
     step: "04",
-    title: "Industrial Processing",
-    desc: "48-ton daily Halal-certified processing capacity with HACCP certification, cold-chain logistics, and export-ready packaging.",
+    title: "From Farm to Fork",
+    desc: "48-ton daily Halal-certified processing. We deliver premium, clean poultry meat through cold-chain logistics and export-ready packaging.",
   },
 ];
 
@@ -47,10 +47,10 @@ const ValueChain = () => {
           </h2>
         </motion.div>
 
-        {/* Horizontal scroll on mobile, grid on desktop */}
+        {/* Horizontal scroll on mobile, grid on desktop with items-center for Milkias's alignment fix */}
         <div
           ref={ref}
-          className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0 scrollbar-hide"
+          className="flex gap-6 overflow-x-auto pb-6 snap-x snap-mandatory lg:grid lg:grid-cols-4 lg:overflow-visible lg:pb-0 scrollbar-hide items-stretch"
           style={{ scrollbarWidth: 'none' }}
         >
           {steps.map((step, i) => (
