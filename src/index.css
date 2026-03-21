@@ -6,52 +6,11 @@
 
 @layer base {
   :root {
-    --background: 0 0% 10%;
-    --foreground: 0 0% 92%;
-
-    --card: 0 0% 13%;
-    --card-foreground: 0 0% 92%;
-
-    --popover: 0 0% 13%;
-    --popover-foreground: 0 0% 92%;
-
-    --primary: 168 100% 15%;
-    --primary-foreground: 0 0% 95%;
-
-    --secondary: 40 38% 55%;
-    --secondary-foreground: 0 0% 10%;
-
-    --muted: 0 0% 16%;
-    --muted-foreground: 0 0% 55%;
-
-    --accent: 40 38% 55%;
-    --accent-foreground: 0 0% 10%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 168 100% 15%;
-
+    --background: 40 32% 90%; /* This is #EFE7DC in HSL */
+    --foreground: 25 48% 21%; /* This is #4F3C1C in HSL */
+    --primary: 25 48% 21%;
+    --secondary: 34 98% 58%; /* This is #FEA42A in HSL */
     --radius: 0.75rem;
-
-    --onyx: 0 0% 10%;
-    --emerald: 168 100% 15%;
-    --gold: 40 38% 55%;
-    --gold-light: 40 50% 70%;
-
-    --font-display: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
-
-    --sidebar-background: 0 0% 12%;
-    --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 168 100% 15%;
-    --sidebar-primary-foreground: 0 0% 95%;
-    --sidebar-accent: 0 0% 16%;
-    --sidebar-accent-foreground: 0 0% 92%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 168 100% 15%;
   }
 }
 
