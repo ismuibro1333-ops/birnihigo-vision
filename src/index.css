@@ -6,10 +6,39 @@
 
 @layer base {
   :root {
-    --background: 40 32% 90%; /* This is #EFE7DC in HSL */
-    --foreground: 25 48% 21%; /* This is #4F3C1C in HSL */
-    --primary: 25 48% 21%;
-    --secondary: 34 98% 58%; /* This is #FEA42A in HSL */
+    /* Birnihigo Brand Colors from Brand Guidelines */
+    --background: 35 32% 90%; /* White Chocolate #EFE7DC */
+    --foreground: 38 48% 21%; /* Cafe Noir #4F3C1C */
+    
+    --primary: 38 48% 21%; /* Cafe Noir #4F3C1C */
+    --primary-foreground: 35 32% 90%; /* White Chocolate */
+    
+    --secondary: 35 99% 58%; /* Deep Saffron #FEA42A */
+    --secondary-foreground: 38 48% 21%; /* Cafe Noir */
+    
+    --accent: 41 100% 73%; /* Dandelion #FFD275 */
+    --accent-foreground: 38 48% 21%; /* Cafe Noir */
+    
+    --muted: 35 32% 90%; /* White Chocolate #EFE7DC */
+    --muted-foreground: 38 48% 21%; /* Cafe Noir */
+    
+    --card: 36 45% 96%; /* Slightly lighter off-white #F9F5F0 */
+    --card-foreground: 38 48% 21%; /* Cafe Noir */
+    
+    --popover: 35 32% 90%; /* White Chocolate */
+    --popover-foreground: 38 48% 21%; /* Cafe Noir */
+    
+    --border: 220 13% 91%; /* Light gray border */
+    --input: 220 14% 96%; /* Input background */
+    --ring: 35 99% 58%; /* Deep Saffron for focus */
+    
+    /* Custom brand tokens */
+    --birni-brown: 38 48% 21%; /* Cafe Noir #4F3C1C */
+    --birni-orange: 35 99% 58%; /* Deep Saffron #FEA42A */
+    --birni-yellow: 41 100% 73%; /* Dandelion #FFD275 */
+    --birni-cream: 35 32% 90%; /* White Chocolate #EFE7DC */
+    --birni-bronze: 38 68% 47%; /* Chinese Bronze #CD8C24 */
+    
     --radius: 0.75rem;
   }
 }
