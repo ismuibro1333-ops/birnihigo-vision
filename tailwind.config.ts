@@ -19,49 +19,49 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Official Brand Font (Page 15 of Guidelines)
         display: ["Parkinsans", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
       colors: {
+        cafeNoir: "#4F3C1C",
+        deepSaffron: "#FEA42A",
+        whiteChocolate: "#EFE7DC",
+        dandelion: "#FFD275",
+        bronze: "#CD8C24",
         border: "#E5E7EB",
         input: "#F3F4F6",
-        ring: "#FEA42A", // Deep Saffron for focus states
-        
-        // --- CHANGED: Swapped #FFFFFF for the Brand Cream ---
-        background: "#EFE7DC", // White Chocolate (This fixes the "too white" issue)
-        foreground: "#4F3C1C", // Café Noir (Deep Earthy Brown)
-
+        ring: "#FEA42A",
+        background: "#EFE7DC",
+        foreground: "#4F3C1C",
         primary: {
-          DEFAULT: "#4F3C1C", // Main Corporate Color: Café Noir
-          foreground: "#EFE7DC", // White Chocolate text on brown
+          DEFAULT: "#4F3C1C",
+          foreground: "#EFE7DC",
         },
         secondary: {
-          DEFAULT: "#FEA42A", // Brand Secondary: Deep Saffron
+          DEFAULT: "#FEA42A",
           foreground: "#4F3C1C",
         },
         accent: {
-          DEFAULT: "#FFD275", // Dandelion Highlight
+          DEFAULT: "#FFD275",
           foreground: "#4F3C1C",
         },
         muted: {
-          DEFAULT: "#EFE7DC", // White Chocolate (Creamy off-white)
+          DEFAULT: "#EFE7DC",
           foreground: "#4F3C1C",
         },
-        // Direct mapping for Birni-specific utility classes
         birni: {
-          brown: "#4F3C1C",    // The rich earthy tone
-          orange: "#FEA42A",   // The warm sunset orange
-          yellow: "#FFD275",   // The soft highlight yellow
-          cream: "#EFE7DC",    // The background/section color
-          bronze: "#CD8C24",   // Deep accent color
+          brown: "#4F3C1C",
+          orange: "#FEA42A",
+          yellow: "#FFD275",
+          cream: "#EFE7DC",
+          bronze: "#CD8C24",
         },
         popover: {
-          DEFAULT: "#EFE7DC", // Changed to match brand background
+          DEFAULT: "#EFE7DC",
           foreground: "#4F3C1C",
         },
         card: {
-          DEFAULT: "#F9F5F0", // Using the slightly lighter off-white for cards to pop
+          DEFAULT: "#F9F5F0",
           foreground: "#4F3C1C",
         },
       },
@@ -79,7 +79,6 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        // Added for the "Scrollytelling" feel Milkias wants
         "fade-in-up": {
           "0%": { opacity: "0", transform: "translateY(30px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
@@ -97,6 +96,5 @@ export default {
       },
     },
   },
-},
-plugins: [require("tailwindcss-animate")],
-}satisfies Config;
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config;
