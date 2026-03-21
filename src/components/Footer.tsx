@@ -36,7 +36,7 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-sm leading-relaxed mb-6 max-w-sm opacity-80 font-body">
-              Ethiopia's first fully integrated poultry ecosystem — from **Breeding Farms** to halal-certified processing. Pioneering food security and sustainable agriculture.
+              Ethiopia's first fully integrated poultry ecosystem — from Breeding Farms to halal-certified processing. Pioneering food security and sustainable agriculture.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((s) => (
