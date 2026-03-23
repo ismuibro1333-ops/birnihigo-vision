@@ -15,13 +15,44 @@ const Index = () => (
     <ScrollytellingHero />
     <ValueChain />
     
-    {/* The Stats/Operational Section */}
-    <div className="bg-[#4F3C1C] border-y border-[#CD8C24]/20">
-      <OperationalDashboard />
-    </div>
+    {/* SECTION 1: THE NUMBERS (White Chocolate Background / Saffron Numbers) */}
+    <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Industrial Scale</p>
+          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
+        </AnimatedSection>
 
-    {/* Photo Gallery - Light Section */}
-    <section className="py-24 bg-[#EFE7DC]" aria-labelledby="gallery-heading">
+        {/* This wrapper ensures the OperationalDashboard components inherit the light theme */}
+        <div className="mb-20">
+          <OperationalDashboard />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { label: "Livestock Capacity", value: "5,000+", detail: "Heads per cycle" },
+            { label: "Community Impact", value: "1,500+", detail: "Local associations" },
+            { label: "Market Reach", value: "100%", detail: "Regional coverage" },
+          ].map((stat, i) => (
+            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
+              <span className="block text-[#FEA42A] text-7xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
+                {stat.value}
+              </span>
+              <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
+              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
+                {stat.label}
+              </h3>
+              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
+                {stat.detail}
+              </p>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* SECTION 2: PHOTO GALLERY (Light Section) */}
+    <section className="py-24 bg-[#EFE7DC]/50" aria-labelledby="gallery-heading">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">On the Ground</p>
@@ -54,9 +85,8 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Sustainability Loop - Dark Section (Café Noir) */}
+    {/* SECTION 3: SUSTAINABILITY (Dark Section - Café Noir) */}
     <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
-      {/* Brand Glow Improvisation */}
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#FEA42A]/10 blur-[150px] rounded-full"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
@@ -86,7 +116,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Investor Portal - Modernized Card Section */}
+    {/* SECTION 4: INVESTOR PORTAL (Modern Card Section) */}
     <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
       <div className="max-w-6xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
