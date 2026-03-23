@@ -43,17 +43,21 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C] border-b border-[#CD8C24]/20 backdrop-blur-md">
+    // IMPROV: Added bg-opacity and a more defined brand border
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/30 backdrop-blur-md shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
-        <Link to="/" className="flex items-center">
+        
+        {/* LOGO: Added a slight glow on hover to match brand energy */}
+        <Link to="/" className="flex items-center group">
           <img 
             src={logo} 
             alt="Birnihigo Integrated Farms" 
-            className="h-14 w-auto object-contain transition-transform duration-300 hover:scale-105" 
+            className="h-14 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_8px_rgba(254,164,42,0.4)]" 
           />
         </Link>
 
-        <div className="hidden lg:flex items-center gap-1">
+        {/* DESKTOP NAV */}
+        <div className="hidden lg:flex items-center gap-2">
           {navLinks.map((link) => (
             <div
               key={link.label}
@@ -63,29 +67,30 @@ const Navbar = () => {
             >
               <Link
                 to={link.to}
-                className={`px-4 py-2 text-sm font-semibold transition-colors flex items-center gap-1 ${
+                className={`px-4 py-2 text-sm font-semibold transition-all flex items-center gap-1 rounded-lg ${
                   location.pathname === link.to
-                    ? "text-[#FEA42A]"
-                    : "text-[#EFE7DC] hover:text-[#FEA42A]"
+                    ? "text-[#FEA42A] bg-white/5" // Active state
+                    : "text-[#EFE7DC] hover:text-[#FFD275] hover:bg-white/5" // Use Dandelion for hover
                 }`}
               >
                 {link.label}
-                {link.sub && <ChevronDown size={14} className="opacity-50" />}
+                {link.sub && <ChevronDown size={14} className="opacity-40" />}
               </Link>
 
+              {/* DROPDOWN IMPROV: Added Chinese Bronze accents to the dropdown */}
               <AnimatePresence>
                 {link.sub && hoveredMenu === link.label && (
                   <motion.div
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    className="absolute top-full left-0 mt-1 w-64 bg-[#4F3C1C] border border-[#CD8C24]/20 shadow-xl rounded-xl p-2"
+                    exit={{ opacity: 0, y: 12 }}
+                    className="absolute top-full left-0 mt-2 w-64 bg-[#4F3C1C] border border-[#CD8C24]/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)] rounded-xl overflow-hidden p-1"
                   >
                     {link.sub.map((s) => (
                       <Link
                         key={s.label}
                         to={s.to}
-                        className="block px-4 py-2.5 text-sm text-[#EFE7DC]/80 hover:text-[#FEA42A] hover:bg-white/5 rounded-lg transition-all"
+                        className="block px-4 py-3 text-sm text-[#EFE7DC]/90 hover:text-[#4F3C1C] hover:bg-[#FEA42A] transition-all font-medium"
                       >
                         {s.label}
                       </Link>
@@ -96,14 +101,37 @@ const Navbar = () => {
             </div>
           ))}
 
+          {/* CTA BUTTON: High-end animation and brand colors */}
           <Link
             to="/contact"
-            className="ml-6 px-6 py-2.5 text-sm font-bold rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] transition-all shadow-md active:scale-95"
+            className="ml-6 px-7 py-2.5 text-sm font-extrabold rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:shadow-[0_0_20px_rgba(254,164,42,0.3)] transition-all active:scale-95 shadow-lg"
           >
             Partner with Us
           </Link>
         </div>
+
+        {/* MOBILE MENU ICON */}
+        <button 
+          className="lg:hidden text-[#EFE7DC]"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
       </div>
+
+      {/* MOBILE NAV OVERLAY */}
+      <AnimatePresence>
+        {open && (
+          <motion.div 
+            initial={{ x: "100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "100%" }}
+            className="fixed inset-0 top-20 bg-[#4F3C1C] z-40 lg:hidden p-6 flex flex-col gap-6"
+          >
+             {/* Mobile links would go here with text-[#EFE7DC] */}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
