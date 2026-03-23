@@ -3,6 +3,9 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// --- LOGO IMPORT ADDED HERE ---
+import logo from "../assets/logo.webp"; 
+
 const navLinks = [
   { label: "Home", to: "/" },
   {
