@@ -43,21 +43,20 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    // IMPROV: Added bg-opacity and a more defined brand border
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/30 backdrop-blur-md shadow-lg">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
         
-        {/* LOGO: Added a slight glow on hover to match brand energy */}
-        <Link to="/" className="flex items-center group">
+        {/* LOGO SECTION */}
+        <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
           <img 
             src={logo} 
             alt="Birnihigo Integrated Farms" 
-            className="h-14 w-auto object-contain transition-all duration-500 group-hover:drop-shadow-[0_0_8px_rgba(254,164,42,0.4)]" 
+            className="h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-110" 
           />
         </Link>
 
-        {/* DESKTOP NAV */}
-        <div className="hidden lg:flex items-center gap-2">
+        {/* DESKTOP NAVIGATION */}
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <div
               key={link.label}
@@ -67,30 +66,30 @@ const Navbar = () => {
             >
               <Link
                 to={link.to}
-                className={`px-4 py-2 text-sm font-semibold transition-all flex items-center gap-1 rounded-lg ${
+                className={`px-4 py-2 text-[13px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
                   location.pathname === link.to
-                    ? "text-[#FEA42A] bg-white/5" // Active state
-                    : "text-[#EFE7DC] hover:text-[#FFD275] hover:bg-white/5" // Use Dandelion for hover
+                    ? "text-[#FEA42A] bg-[#CD8C24]/10" 
+                    : "text-[#EFE7DC] hover:text-[#FEA42A] hover:bg-white/5" 
                 }`}
               >
                 {link.label}
-                {link.sub && <ChevronDown size={14} className="opacity-40" />}
+                {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
               </Link>
 
-              {/* DROPDOWN IMPROV: Added Chinese Bronze accents to the dropdown */}
+              {/* DROPDOWN MENU */}
               <AnimatePresence>
                 {link.sub && hoveredMenu === link.label && (
                   <motion.div
-                    initial={{ opacity: 0, y: 12 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 12 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-[#4F3C1C] border border-[#CD8C24]/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)] rounded-xl overflow-hidden p-1"
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-3 w-64 bg-[#4F3C1C] border border-[#CD8C24]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-2xl overflow-hidden p-2 backdrop-blur-2xl"
                   >
                     {link.sub.map((s) => (
                       <Link
                         key={s.label}
                         to={s.to}
-                        className="block px-4 py-3 text-sm text-[#EFE7DC]/90 hover:text-[#4F3C1C] hover:bg-[#FEA42A] transition-all font-medium"
+                        className="block px-5 py-3 text-sm text-[#EFE7DC] hover:text-[#4F3C1C] hover:bg-[#FEA42A] rounded-xl transition-all font-bold tracking-wide"
                       >
                         {s.label}
                       </Link>
@@ -101,34 +100,52 @@ const Navbar = () => {
             </div>
           ))}
 
-          {/* CTA BUTTON: High-end animation and brand colors */}
+          {/* CTA BUTTON */}
           <Link
             to="/contact"
-            className="ml-6 px-7 py-2.5 text-sm font-extrabold rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:shadow-[0_0_20px_rgba(254,164,42,0.3)] transition-all active:scale-95 shadow-lg"
+            className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:-translate-y-0.5 transition-all active:scale-95 shadow-[0_10px_20px_rgba(254,164,42,0.2)]"
           >
-            Partner with Us
+            Get In Touch
           </Link>
         </div>
 
-        {/* MOBILE MENU ICON */}
+        {/* MOBILE TOGGLE */}
         <button 
-          className="lg:hidden text-[#EFE7DC]"
+          className="lg:hidden p-2 text-[#FEA42A] bg-white/5 rounded-lg"
           onClick={() => setOpen(!open)}
         >
-          {open ? <X /> : <Menu />}
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* MOBILE NAV OVERLAY */}
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
         {open && (
           <motion.div 
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            className="fixed inset-0 top-20 bg-[#4F3C1C] z-40 lg:hidden p-6 flex flex-col gap-6"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20 overflow-hidden"
           >
-             {/* Mobile links would go here with text-[#EFE7DC] */}
+            <div className="p-8 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.label}
+                  to={link.to} 
+                  onClick={() => setOpen(false)}
+                  className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl"
+              >
+                Partner with Us
+              </Link>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
