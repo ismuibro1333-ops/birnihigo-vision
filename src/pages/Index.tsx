@@ -14,15 +14,19 @@ const Index = () => (
   <Layout>
     <ScrollytellingHero />
     <ValueChain />
-    <OperationalDashboard />
+    
+    {/* The Stats/Operational Section */}
+    <div className="bg-[#4F3C1C] border-y border-[#CD8C24]/20">
+      <OperationalDashboard />
+    </div>
 
     {/* Photo Gallery - Light Section */}
     <section className="py-24 bg-[#EFE7DC]" aria-labelledby="gallery-heading">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">On the Ground</p>
-          <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight">Our Operations in Action</h2>
-          <div className="w-24 h-1 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
+          <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
+          <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -32,15 +36,16 @@ const Index = () => (
             { src: pic3, alt: "Community training" },
           ].map((img, i) => (
             <AnimatedSection key={img.alt} delay={i * 0.15}>
-              <div className="group relative rounded-2xl overflow-hidden aspect-[4/3] border border-[#CD8C24]/30 shadow-2xl bg-[#4F3C1C]">
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] border-4 border-[#4F3C1C]/5 shadow-2xl bg-[#4F3C1C]">
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-70 transition-all duration-700 ease-out"
+                  className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-out"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/20 backdrop-blur-[2px]">
-                   <p className="text-[#EFE7DC] font-bold text-lg tracking-wide uppercase">View Project</p>
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/40 backdrop-blur-[4px]">
+                   <p className="text-[#FEA42A] font-black text-xl tracking-widest uppercase">Birnihigo</p>
+                   <p className="text-[#EFE7DC] text-xs font-bold uppercase mt-1">Industrial Excellence</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -49,30 +54,31 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Sustainability Loop - Dark Section */}
+    {/* Sustainability Loop - Dark Section (Café Noir) */}
     <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
-      {/* Subtle brand glow in the background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FEA42A]/5 blur-[120px] rounded-full"></div>
+      {/* Brand Glow Improvisation */}
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#FEA42A]/10 blur-[150px] rounded-full"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <AnimatedSection className="text-center mb-20">
-          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">Sustainability</p>
-          <h2 id="sustainability-heading" className="text-5xl text-[#EFE7DC] font-black tracking-tight">From Land to Table — And Back</h2>
+        <AnimatedSection className="text-center mb-24">
+          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">The Circular Model</p>
+          <h2 id="sustainability-heading" className="text-6xl text-[#EFE7DC] font-black tracking-tighter">Land to Table & Back</h2>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
           {[
-            { icon: Sprout, title: "Breeding & Cultivate", desc: "Starting at our Breeding Farm with 2,000 hectares of maize and soybean production." },
-            { icon: Recycle, title: "Day-Old Chicks & Feed", desc: "Bio-secure hatchery operations producing 200,000+ premium DOCs weekly." },
-            { icon: Leaf, title: "From Farm to Fork", desc: "HACCP-certified processing of premium poultry meat for global markets." },
+            { icon: Sprout, title: "Cultivate", desc: "Starting at our Breeding Farm with 2,000 hectares of maize and soybean production.", stat: "2,000ha" },
+            { icon: Recycle, title: "Hatchery", desc: "Bio-secure operations producing 200,000+ premium DOCs weekly.", stat: "200k+" },
+            { icon: Leaf, title: "Process", desc: "HACCP-certified processing of premium poultry meat for global markets.", stat: "Certified" },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <article className="text-center group">
-                <div className="w-20 h-20 rounded-2xl bg-[#CD8C24]/10 border border-[#CD8C24]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:bg-[#FEA42A] group-hover:rotate-6">
-                  <item.icon size={32} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
+                <div className="w-24 h-24 rounded-[2rem] bg-[#FEA42A]/5 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A] group-hover:border-[#FEA42A] shadow-inner">
+                  <item.icon size={40} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
                 </div>
-                <h3 className="text-2xl text-[#FEA42A] mb-4 font-extrabold">{item.title}</h3>
-                <p className="text-base text-[#EFE7DC]/70 leading-relaxed font-medium">{item.desc}</p>
+                <p className="text-[#FEA42A] font-black text-3xl mb-2 tracking-tight">{item.stat}</p>
+                <h3 className="text-xl text-[#EFE7DC] mb-4 font-bold uppercase tracking-widest">{item.title}</h3>
+                <p className="text-base text-[#EFE7DC]/60 leading-relaxed font-medium px-4">{item.desc}</p>
               </article>
             </AnimatedSection>
           ))}
@@ -80,32 +86,32 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Investor Portal - Modern Card Section */}
-    <section className="py-24 bg-white" aria-labelledby="investor-portal-heading">
+    {/* Investor Portal - Modernized Card Section */}
+    <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
       <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+        <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
           <div className="text-left">
-            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">Strategic Growth</p>
-            <h2 id="investor-portal-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight">Unlocking Global Value</h2>
+            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Investment Opportunity</p>
+            <h2 id="investor-portal-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Closing the Import Gap</h2>
           </div>
-          <Link to="/investors" className="flex items-center gap-2 text-[#4F3C1C] font-bold border-b-2 border-[#FEA42A] pb-1 hover:gap-4 transition-all">
-            Investor Relations <ArrowRight size={20} />
+          <Link to="/investors" className="group flex items-center gap-3 bg-[#4F3C1C] text-[#EFE7DC] px-8 py-4 rounded-full font-bold hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all duration-300 shadow-xl">
+            Investor Center <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
           </Link>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { icon: TrendingUp, title: "Massive Market Gap", desc: "Closing the $50M poultry import gap in Ethiopia through local industrialization." },
-            { icon: Globe, title: "Export-Ready", desc: "Strategically positioned for the Djibouti, Somalia, and GCC regional corridors." },
-            { icon: Shield, title: "ESG Aligned", desc: "Empowering 1,500+ local associations through a circular economic model." },
+            { icon: TrendingUp, title: "Market Gap", desc: "Closing the $50M poultry import gap in Ethiopia through local industrialization." },
+            { icon: Globe, title: "Export Power", desc: "Strategically positioned for the Djibouti, Somalia, and GCC regional corridors." },
+            { icon: Shield, title: "ESG Standards", desc: "Empowering 1,500+ local associations through a circular economic model." },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
-              <MotionCard className="p-10 h-full bg-[#EFE7DC]/40 border border-[#CD8C24]/20 hover:border-[#FEA42A] transition-colors rounded-3xl shadow-sm">
-                <div className="w-14 h-14 rounded-2xl bg-[#4F3C1C] flex items-center justify-center mb-8 shadow-xl">
-                  <item.icon size={26} className="text-[#FEA42A]" />
+              <MotionCard className="p-12 h-full bg-[#EFE7DC] border-b-8 border-[#CD8C24] hover:border-[#FEA42A] transition-all rounded-3xl shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-[#4F3C1C] flex items-center justify-center mb-10 transform -rotate-3 shadow-2xl">
+                  <item.icon size={30} className="text-[#FEA42A]" />
                 </div>
-                <h3 className="text-2xl text-[#4F3C1C] font-black mb-4">{item.title}</h3>
-                <p className="text-base text-[#4F3C1C]/80 leading-relaxed font-medium">{item.desc}</p>
+                <h3 className="text-2xl text-[#4F3C1C] font-black mb-4 tracking-tight">{item.title}</h3>
+                <p className="text-base text-[#4F3C1C]/70 leading-relaxed font-semibold">{item.desc}</p>
               </MotionCard>
             </AnimatedSection>
           ))}
