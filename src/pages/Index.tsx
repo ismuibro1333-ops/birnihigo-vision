@@ -1,154 +1,127 @@
-Import Layout from "@/components/Layout";
-import AnimatedSection from "@/components/AnimatedSection";
-import MotionCard from "@/components/MotionCard";
-import ScrollytellingHero from "@/components/ScrollytellingHero";
-import ValueChain from "@/components/ValueChain";
-import OperationalDashboard from "@/components/OperationalDashboard";
-import pic1 from "@/assets/pic1.jpg";
-import pic2 from "@/assets/pic2.jpg";
-import pic3 from "@/assets/pic3.jpg";
-import { Leaf, Recycle, Sprout, ArrowRight, Shield, TrendingUp, Globe } from "lucide-react";
-import { Link } from "react-router-dom";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { ArrowRight, Leaf, ShieldCheck, Users, Instagram, Facebook, Linkedin } from "lucide-react";
+import Navbar from "../components/Navbar";
 
-const Index = () => (
-  <Layout>
-    <ScrollytellingHero />
-    <ValueChain />
-    
-    {/* SECTION 1: THE NUMBERS (White Chocolate Background / Saffron Numbers) */}
-    <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
-      <div className="max-w-7xl mx-auto px-6">
-        <AnimatedSection className="text-center mb-16">
-          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Industrial Scale</p>
-          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
-        </AnimatedSection>
+const Index = () => {
+  const scrollRef = useRef(null);
+  
+  // Scrollytelling Progress
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start start", "end end"]
+  });
 
-        {/* This wrapper ensures the OperationalDashboard components inherit the light theme */}
-        <div className="mb-20">
-          <OperationalDashboard />
-        </div>
+  return (
+    <div ref={scrollRef} className="bg-[#4F3C1C] font-parkinsans selection:bg-[#FEA42A] selection:text-[#4F3C1C]">
+      <Navbar />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {[
-            { label: "Livestock Capacity", value: "5,000+", detail: "Heads per cycle" },
-            { label: "Community Impact", value: "1,500+", detail: "Local associations" },
-            { label: "Market Reach", value: "100%", detail: "Regional coverage" },
-          ].map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
-              <span className="block text-[#FEA42A] text-7xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
-                {stat.value}
-              </span>
-              <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
-              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
-                {stat.label}
-              </h3>
-              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
-                {stat.detail}
-              </p>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
+      {/* HERO SECTION - Dynamic Fade */}
+      <section className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-7xl mx-auto text-center z-10"
+        >
+          <h1 className="text-6xl md:text-8xl font-black text-[#FEA42A] leading-none tracking-tighter">
+            FARM TO <br />
+            <span className="text-[#EFE7DC]">FORK.</span>
+          </h1>
+          <p className="mt-8 text-[#EFE7DC]/70 text-lg md:text-xl max-w-xl mx-auto uppercase tracking-[0.2em]">
+            Feeding the Future, Naturally
+          </p>
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          >
+            <div className="w-[1px] h-20 bg-gradient-to-b from-[#FEA42A] to-transparent" />
+          </motion.div>
+        </motion.div>
+      </section>
 
-    {/* SECTION 2: PHOTO GALLERY (Light Section) */}
-    <section className="py-24 bg-[#EFE7DC]/50" aria-labelledby="gallery-heading">
-      <div className="max-w-7xl mx-auto px-6">
-        <AnimatedSection className="text-center mb-16">
-          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">On the Ground</p>
-          <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
-          <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
-        </AnimatedSection>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-          {[
-            { src: pic1, alt: "Birnihigo farm aerial view" },
-            { src: pic2, alt: "Chicks feeding" },
-            { src: pic3, alt: "Community training" },
-          ].map((img, i) => (
-            <AnimatedSection key={img.alt} delay={i * 0.15}>
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] border-4 border-[#4F3C1C]/5 shadow-2xl bg-[#4F3C1C]">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-out"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/40 backdrop-blur-[4px]">
-                   <p className="text-[#FEA42A] font-black text-xl tracking-widest uppercase">Birnihigo</p>
-                   <p className="text-[#EFE7DC] text-xs font-bold uppercase mt-1">Industrial Excellence</p>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* SECTION 3: SUSTAINABILITY (Dark Section - Café Noir) */}
-    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#FEA42A]/10 blur-[150px] rounded-full"></div>
-      
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
-        <AnimatedSection className="text-center mb-24">
-          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">The Circular Model</p>
-          <h2 id="sustainability-heading" className="text-6xl text-[#EFE7DC] font-black tracking-tighter">Land to Table & Back</h2>
-        </AnimatedSection>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
-          {[
-            { icon: Sprout, title: "Cultivate", desc: "Starting at our Breeding Farm with 2,000 hectares of maize and soybean production.", stat: "2,000ha" },
-            { icon: Recycle, title: "Hatchery", desc: "Bio-secure operations producing 200,000+ premium DOCs weekly.", stat: "200k+" },
-            { icon: Leaf, title: "Process", desc: "HACCP-certified processing of premium poultry meat for global markets.", stat: "Certified" },
-          ].map((item, i) => (
-            <AnimatedSection key={item.title} delay={i * 0.15}>
-              <article className="text-center group">
-                <div className="w-24 h-24 rounded-[2rem] bg-[#FEA42A]/5 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A] group-hover:border-[#FEA42A] shadow-inner">
-                  <item.icon size={40} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
-                </div>
-                <p className="text-[#FEA42A] font-black text-3xl mb-2 tracking-tight">{item.stat}</p>
-                <h3 className="text-xl text-[#EFE7DC] mb-4 font-bold uppercase tracking-widest">{item.title}</h3>
-                <p className="text-base text-[#EFE7DC]/60 leading-relaxed font-medium px-4">{item.desc}</p>
-              </article>
-            </AnimatedSection>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* SECTION 4: INVESTOR PORTAL (Modern Card Section) */}
-    <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
-      <div className="max-w-6xl mx-auto px-6">
-        <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
-          <div className="text-left">
-            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Investment Opportunity</p>
-            <h2 id="investor-portal-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Closing the Import Gap</h2>
+      {/* NUMBERS SECTION - Scrollytelling Interaction */}
+      <section className="py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { num: "85k+", label: "Poultry Processed" },
+              { num: "98%", label: "Customer Trust" },
+              { num: "10+", label: "Local Partners" },
+              { num: "5k+", label: "Daily Capacity" }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, margin: "-100px" }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className="group p-12 bg-white/5 border border-[#CD8C24]/20 rounded-[2.5rem] hover:bg-[#FEA42A] transition-all duration-500"
+              >
+                <span className="text-[#FEA42A] group-hover:text-[#4F3C1C] text-6xl font-black block transition-colors">
+                  {stat.num}
+                </span>
+                <p className="text-[#EFE7DC] group-hover:text-[#4F3C1C]/70 text-xs uppercase tracking-widest mt-4 font-bold transition-colors">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
           </div>
-          <Link to="/investors" className="group flex items-center gap-3 bg-[#4F3C1C] text-[#EFE7DC] px-8 py-4 rounded-full font-bold hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all duration-300 shadow-xl">
-            Investor Center <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-          </Link>
-        </AnimatedSection>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {[
-            { icon: TrendingUp, title: "Market Gap", desc: "Closing the $50M poultry import gap in Ethiopia through local industrialization." },
-            { icon: Globe, title: "Export Power", desc: "Strategically positioned for the Djibouti, Somalia, and GCC regional corridors." },
-            { icon: Shield, title: "ESG Standards", desc: "Empowering 1,500+ local associations through a circular economic model." },
-          ].map((item, i) => (
-            <AnimatedSection key={item.title} delay={i * 0.15}>
-              <MotionCard className="p-12 h-full bg-[#EFE7DC] border-b-8 border-[#CD8C24] hover:border-[#FEA42A] transition-all rounded-3xl shadow-lg">
-                <div className="w-16 h-16 rounded-2xl bg-[#4F3C1C] flex items-center justify-center mb-10 transform -rotate-3 shadow-2xl">
-                  <item.icon size={30} className="text-[#FEA42A]" />
-                </div>
-                <h3 className="text-2xl text-[#4F3C1C] font-black mb-4 tracking-tight">{item.title}</h3>
-                <p className="text-base text-[#4F3C1C]/70 leading-relaxed font-semibold">{item.desc}</p>
-              </MotionCard>
-            </AnimatedSection>
-          ))}
         </div>
-      </div>
-    </section>
-  </Layout>
-);
+      </section>
+
+      {/* RESTORED COMPLEX FOOTER */}
+      <footer className="bg-[#4F3C1C] border-t border-[#CD8C24]/20 pt-20 pb-10 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="col-span-1 md:col-span-2">
+              <h2 className="text-[#FEA42A] text-2xl font-black mb-6 uppercase">Birnihigo</h2>
+              <p className="text-[#EFE7DC]/60 max-w-sm mb-8">
+                Revolutionizing Ethiopia's poultry industry through sustainable, 
+                integrated operations and community-driven growth.
+              </p>
+              <div className="flex gap-4">
+                <a href="#" className="p-3 bg-white/5 rounded-full text-[#FEA42A] hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all"><Instagram size={20}/></a>
+                <a href="#" className="p-3 bg-white/5 rounded-full text-[#FEA42A] hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all"><Facebook size={20}/></a>
+                <a href="#" className="p-3 bg-white/5 rounded-full text-[#FEA42A] hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all"><Linkedin size={20}/></a>
+              </div>
+            </div>
+            
+            <div>
+              <h4 className="text-[#EFE7DC] font-bold uppercase tracking-widest text-sm mb-6">Quick Links</h4>
+              <ul className="space-y-4 text-[#EFE7DC]/50 text-sm">
+                <li><a href="#" className="hover:text-[#FEA42A] transition-colors">Our Heritage</a></li>
+                <li><a href="#" className="hover:text-[#FEA42A] transition-colors">Sustainability</a></li>
+                <li><a href="#" className="hover:text-[#FEA42A] transition-colors">Investors</a></li>
+                <li><a href="#" className="hover:text-[#FEA42A] transition-colors">Careers</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="text-[#EFE7DC] font-bold uppercase tracking-widest text-sm mb-6">Contact</h4>
+              <ul className="space-y-4 text-[#EFE7DC]/50 text-sm">
+                <li>Addis Ababa, Ethiopia</li>
+                <li>info@birnihigofarms.com</li>
+                <li>+251 911 000 000</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="pt-8 border-t border-white/5 flex flex-col md:row justify-between items-center gap-4">
+            <p className="text-[#EFE7DC]/30 text-xs tracking-widest uppercase">
+              © 2026 Birnihigo Integrated Farms PLC
+            </p>
+            <div className="flex gap-6 text-[#EFE7DC]/30 text-xs uppercase tracking-widest">
+              <a href="#" className="hover:text-[#EFE7DC] transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-[#EFE7DC] transition-colors">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
 
 export default Index;
