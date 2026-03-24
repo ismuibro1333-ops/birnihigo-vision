@@ -1,150 +1,154 @@
-import { motion } from "framer-motion";
-import { ArrowRight, Leaf, ShieldCheck, Users } from "lucide-react";
-import Navbar from "../components/Navbar";
+Import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import logo from "../assets/logo.webp"; 
 
-const Index = () => {
+const navLinks = [
+  { label: "Home", to: "/" },
+  {
+    label: "About",
+    to: "/about",
+    sub: [
+      { label: "Our Heritage", to: "/about#heritage" },
+      { label: "Leadership", to: "/about#leadership" },
+      { label: "Mission & Values", to: "/about#pillars" },
+    ],
+  },
+  {
+    label: "Our Journey",
+    to: "/products",
+    sub: [
+      { label: "From Farm to Fork", to: "/products" },
+      { label: "Integrated Operations", to: "/services" },
+      { label: "Sustainability", to: "/sustainability" },
+    ],
+  },
+  { label: "Investors", to: "/investors" },
+  {
+    label: "Community",
+    to: "/careers",
+    sub: [
+      { label: "Careers", to: "/careers" },
+      { label: "Blog & News", to: "/blog" },
+      { label: "Gallery", to: "/gallery" },
+    ],
+  },
+  { label: "Contact", to: "/contact" },
+];
+
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const location = useLocation();
+
   return (
-    <div className="min-h-screen bg-[#4F3C1C] font-parkinsans selection:bg-[#FEA42A] selection:text-[#4F3C1C]">
-      <Navbar />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
+        
+        {/* LOGO SECTION */}
+        <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
+          <img 
+            src={logo} 
+            alt="Birnihigo Integrated Farms" 
+            className="h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-110" 
+          />
+        </Link>
 
-      {/* HERO SECTION */}
-      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center relative z-10">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-7xl font-black text-[#FEA42A] leading-tight"
+        {/* DESKTOP NAVIGATION */}
+        <div className="hidden lg:flex items-center gap-1">
+          {navLinks.map((link) => (
+            <div
+              key={link.label}
+              className="relative"
+              onMouseEnter={() => link.sub && setHoveredMenu(link.label)}
+              onMouseLeave={() => setHoveredMenu(null)}
+            >
+              <Link
+                to={link.to}
+                className={`px-4 py-2 text-[13px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
+                  location.pathname === link.to
+                    ? "text-[#FEA42A] bg-[#CD8C24]/10" 
+                    : "text-[#EFE7DC] hover:text-[#FEA42A] hover:bg-white/5" 
+                }`}
+              >
+                {link.label}
+                {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
+              </Link>
+
+              {/* DROPDOWN MENU */}
+              <AnimatePresence>
+                {link.sub && hoveredMenu === link.label && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-3 w-64 bg-[#4F3C1C] border border-[#CD8C24]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-2xl overflow-hidden p-2 backdrop-blur-2xl"
+                  >
+                    {link.sub.map((s) => (
+                      <Link
+                        key={s.label}
+                        to={s.to}
+                        className="block px-5 py-3 text-sm text-[#EFE7DC] hover:text-[#4F3C1C] hover:bg-[#FEA42A] rounded-xl transition-all font-bold tracking-wide"
+                      >
+                        {s.label}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+
+          {/* CTA BUTTON */}
+          <Link
+            to="/contact"
+            className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:-translate-y-0.5 transition-all active:scale-95 shadow-[0_10px_20px_rgba(254,164,42,0.2)]"
           >
-            Feeding the Future, <br />
-            <span className="text-[#EFE7DC]">Naturally.</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-6 text-[#EFE7DC]/80 text-lg md:text-xl max-w-2xl mx-auto font-medium"
-          >
-            Empowering communities through high-quality, efficient, and eco-conscious poultry solutions in Ethiopia.
-          </motion.p>
+            Get In Touch
+          </Link>
+        </div>
+
+        {/* MOBILE TOGGLE */}
+        <button 
+          className="lg:hidden p-2 text-[#FEA42A] bg-white/5 rounded-lg"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* MOBILE MENU OVERLAY */}
+      <AnimatePresence>
+        {open && (
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20 overflow-hidden"
           >
-            <button className="px-8 py-4 bg-[#FEA42A] text-[#4F3C1C] rounded-full font-black uppercase tracking-widest hover:bg-[#FFD275] transition-all shadow-xl">
-              Explore Our Farms
-            </button>
-            <button className="px-8 py-4 border border-[#CD8C24] text-[#EFE7DC] rounded-full font-black uppercase tracking-widest hover:bg-[#CD8C24]/10 transition-all">
-              Our Journey
-            </button>
+            <div className="p-8 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.label}
+                  to={link.to} 
+                  onClick={() => setOpen(false)}
+                  className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter"
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl"
+              >
+                Partner with Us
+              </Link>
+            </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* THE NUMBERS THAT DEFINE US - HIGH CONTRAST FIX */}
-      <section className="py-24 bg-[#4F3C1C] relative border-y border-[#CD8C24]/10">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] font-black mb-4">
-              Our Impact
-            </h2>
-            <p className="text-[#EFE7DC] text-4xl md:text-5xl font-black">
-              The numbers that define us
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
-            {/* Stat 1 */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col items-center p-10 bg-white/5 rounded-[2rem] border border-[#CD8C24]/20 backdrop-blur-sm"
-            >
-              <span className="text-[#FEA42A] text-5xl md:text-7xl font-black mb-3">85k+</span>
-              <p className="text-[#EFE7DC] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-center opacity-80">
-                Poultry Processed
-              </p>
-            </motion.div>
-
-            {/* Stat 2 */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col items-center p-10 bg-white/5 rounded-[2rem] border border-[#CD8C24]/20 backdrop-blur-sm"
-            >
-              <span className="text-[#FEA42A] text-5xl md:text-7xl font-black mb-3">98%</span>
-              <p className="text-[#EFE7DC] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-center opacity-80">
-                Customer Trust
-              </p>
-            </motion.div>
-
-            {/* Stat 3 */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col items-center p-10 bg-white/5 rounded-[2rem] border border-[#CD8C24]/20 backdrop-blur-sm"
-            >
-              <span className="text-[#FEA42A] text-5xl md:text-7xl font-black mb-3">10+</span>
-              <p className="text-[#EFE7DC] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-center opacity-80">
-                Local Partners
-              </p>
-            </motion.div>
-
-            {/* Stat 4 */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col items-center p-10 bg-white/5 rounded-[2rem] border border-[#CD8C24]/20 backdrop-blur-sm"
-            >
-              <span className="text-[#FEA42A] text-5xl md:text-7xl font-black mb-3">5k+</span>
-              <p className="text-[#EFE7DC] text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-center opacity-80">
-                Daily Capacity
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* CORE VALUES SECTION */}
-      <section className="py-24 px-6 bg-[#EFE7DC]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-12">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-[#4F3C1C] rounded-xl flex items-center justify-center text-[#FEA42A]">
-                <Leaf size={24} />
-              </div>
-              <h3 className="text-2xl font-black text-[#4F3C1C]">Eco-Conscious</h3>
-              <p className="text-[#4F3C1C]/70">Leading the way in sustainable poultry farming with zero-waste initiatives.</p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-[#4F3C1C] rounded-xl flex items-center justify-center text-[#FEA42A]">
-                <ShieldCheck size={24} />
-              </div>
-              <h3 className="text-2xl font-black text-[#4F3C1C]">Verified Quality</h3>
-              <p className="text-[#4F3C1C]/70">Strict adherence to international food safety and hygiene standards.</p>
-            </div>
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-[#4F3C1C] rounded-xl flex items-center justify-center text-[#FEA42A]">
-                <Users size={24} />
-              </div>
-              <h3 className="text-2xl font-black text-[#4F3C1C]">Community First</h3>
-              <p className="text-[#4F3C1C]/70">Empowering local farmers through our integrated partnership model.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-12 bg-[#4F3C1C] border-t border-[#CD8C24]/20 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:row justify-between items-center gap-6">
-          <p className="text-[#EFE7DC]/60 text-sm">
-            © 2026 Birnihigo Integrated Farms PLC. All Rights Reserved.
-          </p>
-          <div className="flex gap-8 text-[#EFE7DC]/60 text-sm uppercase tracking-widest font-bold">
-            <a href="#" className="hover:text-[#FEA42A] transition-colors">Privacy</a>
-            <a href="#" className="hover:text-[#FEA42A] transition-colors">Terms</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
-
-export default Index;
