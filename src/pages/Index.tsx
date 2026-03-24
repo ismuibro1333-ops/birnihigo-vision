@@ -1,154 +1,154 @@
-Import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/logo.webp"; 
+Import Layout from "@/components/Layout";
+import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
+import ScrollytellingHero from "@/components/ScrollytellingHero";
+import ValueChain from "@/components/ValueChain";
+import OperationalDashboard from "@/components/OperationalDashboard";
+import pic1 from "@/assets/pic1.jpg";
+import pic2 from "@/assets/pic2.jpg";
+import pic3 from "@/assets/pic3.jpg";
+import { Leaf, Recycle, Sprout, ArrowRight, Shield, TrendingUp, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const navLinks = [
-  { label: "Home", to: "/" },
-  {
-    label: "About",
-    to: "/about",
-    sub: [
-      { label: "Our Heritage", to: "/about#heritage" },
-      { label: "Leadership", to: "/about#leadership" },
-      { label: "Mission & Values", to: "/about#pillars" },
-    ],
-  },
-  {
-    label: "Our Journey",
-    to: "/products",
-    sub: [
-      { label: "From Farm to Fork", to: "/products" },
-      { label: "Integrated Operations", to: "/services" },
-      { label: "Sustainability", to: "/sustainability" },
-    ],
-  },
-  { label: "Investors", to: "/investors" },
-  {
-    label: "Community",
-    to: "/careers",
-    sub: [
-      { label: "Careers", to: "/careers" },
-      { label: "Blog & News", to: "/blog" },
-      { label: "Gallery", to: "/gallery" },
-    ],
-  },
-  { label: "Contact", to: "/contact" },
-];
+const Index = () => (
+  <Layout>
+    <ScrollytellingHero />
+    <ValueChain />
+    
+    {/* SECTION 1: THE NUMBERS (White Chocolate Background / Saffron Numbers) */}
+    <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Industrial Scale</p>
+          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
+        </AnimatedSection>
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
-  const location = useLocation();
-
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
-        
-        {/* LOGO SECTION */}
-        <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
-          <img 
-            src={logo} 
-            alt="Birnihigo Integrated Farms" 
-            className="h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-110" 
-          />
-        </Link>
-
-        {/* DESKTOP NAVIGATION */}
-        <div className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <div
-              key={link.label}
-              className="relative"
-              onMouseEnter={() => link.sub && setHoveredMenu(link.label)}
-              onMouseLeave={() => setHoveredMenu(null)}
-            >
-              <Link
-                to={link.to}
-                className={`px-4 py-2 text-[13px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
-                  location.pathname === link.to
-                    ? "text-[#FEA42A] bg-[#CD8C24]/10" 
-                    : "text-[#EFE7DC] hover:text-[#FEA42A] hover:bg-white/5" 
-                }`}
-              >
-                {link.label}
-                {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
-              </Link>
-
-              {/* DROPDOWN MENU */}
-              <AnimatePresence>
-                {link.sub && hoveredMenu === link.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-3 w-64 bg-[#4F3C1C] border border-[#CD8C24]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-2xl overflow-hidden p-2 backdrop-blur-2xl"
-                  >
-                    {link.sub.map((s) => (
-                      <Link
-                        key={s.label}
-                        to={s.to}
-                        className="block px-5 py-3 text-sm text-[#EFE7DC] hover:text-[#4F3C1C] hover:bg-[#FEA42A] rounded-xl transition-all font-bold tracking-wide"
-                      >
-                        {s.label}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
-
-          {/* CTA BUTTON */}
-          <Link
-            to="/contact"
-            className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:-translate-y-0.5 transition-all active:scale-95 shadow-[0_10px_20px_rgba(254,164,42,0.2)]"
-          >
-            Get In Touch
-          </Link>
+        {/* This wrapper ensures the OperationalDashboard components inherit the light theme */}
+        <div className="mb-20">
+          <OperationalDashboard />
         </div>
 
-        {/* MOBILE TOGGLE */}
-        <button 
-          className="lg:hidden p-2 text-[#FEA42A] bg-white/5 rounded-lg"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {[
+            { label: "Livestock Capacity", value: "5,000+", detail: "Heads per cycle" },
+            { label: "Community Impact", value: "1,500+", detail: "Local associations" },
+            { label: "Market Reach", value: "100%", detail: "Regional coverage" },
+          ].map((stat, i) => (
+            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
+              <span className="block text-[#FEA42A] text-7xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
+                {stat.value}
+              </span>
+              <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
+              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
+                {stat.label}
+              </h3>
+              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
+                {stat.detail}
+              </p>
+            </AnimatedSection>
+          ))}
+        </div>
       </div>
+    </section>
 
-      {/* MOBILE MENU OVERLAY */}
-      <AnimatePresence>
-        {open && (
-          <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20 overflow-hidden"
-          >
-            <div className="p-8 flex flex-col gap-6">
-              {navLinks.map((link) => (
-                <Link 
-                  key={link.label}
-                  to={link.to} 
-                  onClick={() => setOpen(false)}
-                  className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                to="/contact"
-                onClick={() => setOpen(false)}
-                className="mt-4 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl"
-              >
-                Partner with Us
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
-};
+    {/* SECTION 2: PHOTO GALLERY (Light Section) */}
+    <section className="py-24 bg-[#EFE7DC]/50" aria-labelledby="gallery-heading">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">On the Ground</p>
+          <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
+          <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          {[
+            { src: pic1, alt: "Birnihigo farm aerial view" },
+            { src: pic2, alt: "Chicks feeding" },
+            { src: pic3, alt: "Community training" },
+          ].map((img, i) => (
+            <AnimatedSection key={img.alt} delay={i * 0.15}>
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] border-4 border-[#4F3C1C]/5 shadow-2xl bg-[#4F3C1C]">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-out"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/40 backdrop-blur-[4px]">
+                   <p className="text-[#FEA42A] font-black text-xl tracking-widest uppercase">Birnihigo</p>
+                   <p className="text-[#EFE7DC] text-xs font-bold uppercase mt-1">Industrial Excellence</p>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* SECTION 3: SUSTAINABILITY (Dark Section - Café Noir) */}
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
+      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#FEA42A]/10 blur-[150px] rounded-full"></div>
+      
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <AnimatedSection className="text-center mb-24">
+          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">The Circular Model</p>
+          <h2 id="sustainability-heading" className="text-6xl text-[#EFE7DC] font-black tracking-tighter">Land to Table & Back</h2>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
+          {[
+            { icon: Sprout, title: "Cultivate", desc: "Starting at our Breeding Farm with 2,000 hectares of maize and soybean production.", stat: "2,000ha" },
+            { icon: Recycle, title: "Hatchery", desc: "Bio-secure operations producing 200,000+ premium DOCs weekly.", stat: "200k+" },
+            { icon: Leaf, title: "Process", desc: "HACCP-certified processing of premium poultry meat for global markets.", stat: "Certified" },
+          ].map((item, i) => (
+            <AnimatedSection key={item.title} delay={i * 0.15}>
+              <article className="text-center group">
+                <div className="w-24 h-24 rounded-[2rem] bg-[#FEA42A]/5 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A] group-hover:border-[#FEA42A] shadow-inner">
+                  <item.icon size={40} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
+                </div>
+                <p className="text-[#FEA42A] font-black text-3xl mb-2 tracking-tight">{item.stat}</p>
+                <h3 className="text-xl text-[#EFE7DC] mb-4 font-bold uppercase tracking-widest">{item.title}</h3>
+                <p className="text-base text-[#EFE7DC]/60 leading-relaxed font-medium px-4">{item.desc}</p>
+              </article>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* SECTION 4: INVESTOR PORTAL (Modern Card Section) */}
+    <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
+      <div className="max-w-6xl mx-auto px-6">
+        <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
+          <div className="text-left">
+            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Investment Opportunity</p>
+            <h2 id="investor-portal-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Closing the Import Gap</h2>
+          </div>
+          <Link to="/investors" className="group flex items-center gap-3 bg-[#4F3C1C] text-[#EFE7DC] px-8 py-4 rounded-full font-bold hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all duration-300 shadow-xl">
+            Investor Center <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+          </Link>
+        </AnimatedSection>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {[
+            { icon: TrendingUp, title: "Market Gap", desc: "Closing the $50M poultry import gap in Ethiopia through local industrialization." },
+            { icon: Globe, title: "Export Power", desc: "Strategically positioned for the Djibouti, Somalia, and GCC regional corridors." },
+            { icon: Shield, title: "ESG Standards", desc: "Empowering 1,500+ local associations through a circular economic model." },
+          ].map((item, i) => (
+            <AnimatedSection key={item.title} delay={i * 0.15}>
+              <MotionCard className="p-12 h-full bg-[#EFE7DC] border-b-8 border-[#CD8C24] hover:border-[#FEA42A] transition-all rounded-3xl shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-[#4F3C1C] flex items-center justify-center mb-10 transform -rotate-3 shadow-2xl">
+                  <item.icon size={30} className="text-[#FEA42A]" />
+                </div>
+                <h3 className="text-2xl text-[#4F3C1C] font-black mb-4 tracking-tight">{item.title}</h3>
+                <p className="text-base text-[#4F3C1C]/70 leading-relaxed font-semibold">{item.desc}</p>
+              </MotionCard>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+  </Layout>
+);
+
+export default Index;
