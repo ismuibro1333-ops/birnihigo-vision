@@ -43,15 +43,15 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C] border-b border-[#CD8C24]/30 backdrop-blur-xl shadow-2xl font-parkinsans">
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6 lg:px-12">
         
-        {/* LOGO SECTION */}
-        <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
+        {/* LOGO SECTION - Ensuring Requirement #1 (Clear Space & Min Size) */}
+        <Link to="/" className="flex items-center py-4 transition-transform duration-300 active:scale-95">
           <img 
             src={logo} 
             alt="Birnihigo Integrated Farms" 
-            className="h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-110" 
+            className="h-10 md:h-14 w-auto object-contain min-h-[32px]" 
           />
         </Link>
 
@@ -66,30 +66,30 @@ const Navbar = () => {
             >
               <Link
                 to={link.to}
-                className={`px-4 py-2 text-[13px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
+                className={`px-4 py-2 text-[13px] uppercase tracking-widest font-bold transition-all flex items-center gap-1.5 rounded-full ${
                   location.pathname === link.to
-                    ? "text-[#FEA42A] bg-[#CD8C24]/10" 
-                    : "text-[#EFE7DC] hover:text-[#FEA42A] hover:bg-white/5" 
+                    ? "text-[#FEA42A]" // Deep Saffron for Active
+                    : "text-[#EFE7DC] hover:text-[#FEA42A]" // White Chocolate to Saffron
                 }`}
               >
                 {link.label}
                 {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
               </Link>
 
-              {/* DROPDOWN MENU */}
+              {/* DROPDOWN MENU - Using Chinese Bronze Accents */}
               <AnimatePresence>
                 {link.sub && hoveredMenu === link.label && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-3 w-64 bg-[#4F3C1C] border border-[#CD8C24]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-2xl overflow-hidden p-2 backdrop-blur-2xl"
+                    className="absolute top-full left-0 mt-3 w-64 bg-[#4F3C1C] border border-[#CD8C24]/40 shadow-2xl rounded-xl overflow-hidden p-2 backdrop-blur-2xl"
                   >
                     {link.sub.map((s) => (
                       <Link
                         key={s.label}
                         to={s.to}
-                        className="block px-5 py-3 text-sm text-[#EFE7DC] hover:text-[#4F3C1C] hover:bg-[#FEA42A] rounded-xl transition-all font-bold tracking-wide"
+                        className="block px-5 py-3 text-sm text-[#EFE7DC] hover:text-[#4F3C1C] hover:bg-[#FEA42A] rounded-lg transition-all font-bold tracking-wide"
                       >
                         {s.label}
                       </Link>
@@ -100,10 +100,10 @@ const Navbar = () => {
             </div>
           ))}
 
-          {/* CTA BUTTON */}
+          {/* CTA BUTTON - Deep Saffron Background */}
           <Link
             to="/contact"
-            className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:-translate-y-0.5 transition-all active:scale-95 shadow-[0_10px_20px_rgba(254,164,42,0.2)]"
+            className="ml-6 px-8 py-3 text-xs uppercase tracking-widest font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:scale-105 transition-all shadow-[0_10px_20px_rgba(254,164,42,0.3)]"
           >
             Get In Touch
           </Link>
@@ -111,7 +111,7 @@ const Navbar = () => {
 
         {/* MOBILE TOGGLE */}
         <button 
-          className="lg:hidden p-2 text-[#FEA42A] bg-white/5 rounded-lg"
+          className="lg:hidden p-2 text-[#FEA42A]"
           onClick={() => setOpen(!open)}
         >
           {open ? <X size={28} /> : <Menu size={28} />}
@@ -125,7 +125,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20 overflow-hidden"
+            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20"
           >
             <div className="p-8 flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -133,7 +133,7 @@ const Navbar = () => {
                   key={link.label}
                   to={link.to} 
                   onClick={() => setOpen(false)}
-                  className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter"
+                  className="text-xl font-bold text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-wider"
                 >
                   {link.label}
                 </Link>
@@ -141,9 +141,9 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="mt-4 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl"
+                className="mt-4 w-full py-4 text-center bg-[#FEA42A] text-[#4F3C1C] font-bold uppercase tracking-widest rounded-xl"
               >
-                Partner with Us
+                Contact Us
               </Link>
             </div>
           </motion.div>
@@ -154,3 +154,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
