@@ -15,7 +15,7 @@ const Index = () => (
     <ScrollytellingHero />
     <ValueChain />
     
-    {/* SECTION 1: THE NUMBERS (White Chocolate Background / Saffron Numbers) */}
+    {/* SECTION 1: THE NUMBERS (Updated with your custom stats) */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
@@ -23,28 +23,27 @@ const Index = () => (
           <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
         </AnimatedSection>
 
-        {/* This wrapper ensures the OperationalDashboard components inherit the light theme */}
+        {/* OperationalDashboard is kept for any global logic it contains */}
         <div className="mb-20">
           <OperationalDashboard />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {/* Updated Grid to 4 columns to match your 4 data points */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
           {[
-            { label: "Livestock Capacity", value: "5,000+", detail: "Heads per cycle" },
-            { label: "Community Impact", value: "1,500+", detail: "Local associations" },
-            { label: "Market Reach", value: "100%", detail: "Regional coverage" },
+            { label: "Daily Throughput", value: "48,000 KG" },
+            { label: "Contract Farmer Partnerships", value: "1,500+" },
+            { label: "Circular Waste-to-Fertilizer", value: "100%" },
+            { label: "Hectares Under Cultivation", value: "2,000+" },
           ].map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
-              <span className="block text-[#FEA42A] text-7xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
+              <span className="block text-[#FEA42A] text-5xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
                 {stat.value}
               </span>
               <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
-              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
+              <h3 className="text-[#4F3C1C] text-[11px] uppercase tracking-[0.3em] font-black leading-relaxed px-4">
                 {stat.label}
               </h3>
-              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
-                {stat.detail}
-              </p>
             </AnimatedSection>
           ))}
         </div>
