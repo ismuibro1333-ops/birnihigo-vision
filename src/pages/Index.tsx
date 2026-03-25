@@ -20,8 +20,13 @@ const Index = () => (
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Industrial Scale</p>
-          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter italic">The Numbers That Define Us</h2>
+          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
         </AnimatedSection>
+
+        {/* This wrapper ensures the OperationalDashboard components inherit the light theme */}
+        <div className="mb-20">
+          <OperationalDashboard />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[
@@ -47,11 +52,11 @@ const Index = () => (
     </section>
 
     {/* SECTION 2: PHOTO GALLERY (Light Section) */}
-    <section className="py-24 bg-[#EFE7DC]/50">
+    <section className="py-24 bg-[#EFE7DC]/50" aria-labelledby="gallery-heading">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">On the Ground</p>
-          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
+          <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
           <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
         </AnimatedSection>
 
@@ -81,13 +86,13 @@ const Index = () => (
     </section>
 
     {/* SECTION 3: SUSTAINABILITY (Dark Section - Café Noir) */}
-    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden">
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
       <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#FEA42A]/10 blur-[150px] rounded-full"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <AnimatedSection className="text-center mb-24">
           <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">The Circular Model</p>
-          <h2 className="text-6xl text-[#EFE7DC] font-black tracking-tighter">Land to Table & Back</h2>
+          <h2 id="sustainability-heading" className="text-6xl text-[#EFE7DC] font-black tracking-tighter">Land to Table & Back</h2>
         </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-start">
@@ -112,12 +117,12 @@ const Index = () => (
     </section>
 
     {/* SECTION 4: INVESTOR PORTAL (Modern Card Section) */}
-    <section className="py-24 bg-[#EFE7DC]/30">
+    <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
       <div className="max-w-6xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
           <div className="text-left">
             <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Investment Opportunity</p>
-            <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Closing the Import Gap</h2>
+            <h2 id="investor-portal-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Closing the Import Gap</h2>
           </div>
           <Link to="/investors" className="group flex items-center gap-3 bg-[#4F3C1C] text-[#EFE7DC] px-8 py-4 rounded-full font-bold hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all duration-300 shadow-xl">
             Investor Center <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
