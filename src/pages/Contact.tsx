@@ -1,162 +1,96 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { MapPin, Phone, Mail, ArrowRight, Facebook, Instagram, Twitter, Youtube, Linkedin, MessageCircle, Calendar } from "lucide-react";
-import { useState } from "react";
-
-type FormType = "general" | "partnership" | "media" | "investor";
-
-const contactTypes: { key: FormType; label: string; email: string }[] = [
-  { key: "general", label: "General Inquiry", email: "info@birnihigofarms.com" },
-  { key: "partnership", label: "Partnership", email: "media@birnihigo.com" },
-  { key: "investor", label: "Investor Relations", email: "invest@birnihigofarms.com" },
-  { key: "media", label: "Media", email: "media@birnihigo.com" },
-];
-
-const socialLinks = [
-  { icon: Facebook, label: "Facebook", href: "https://facebook.com/birnihigo" },
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com/birnihigo" },
-  { icon: Twitter, label: "Twitter/X", href: "https://twitter.com/birnihigo" },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com/birnihigo" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/birnihigo" },
-];
+import { 
+  MapPin, Phone, Mail, ArrowRight, MessageCircle, 
+  Calendar, Clock, Globe, ChevronRight 
+} from "lucide-react";
 
 const departmentEmails = [
-  { dept: "General Inquiries", email: "info@birnihigofarms.com" },
-  { dept: "Investor Relations", email: "invest@birnihigofarms.com" },
-  { dept: "Careers & CBF Program", email: "careers@birnihigofarms.com" },
-  { dept: "Media & Partnerships", email: "media@birnihigo.com" },
-  { dept: "Technical Support", email: "support@birnihigo.com" },
-  { dept: "Schedule a Visit", email: "visit@birnihigo.com" },
+  { dept: "General", email: "info@birnihigofarms.com" },
+  { dept: "Investors", email: "invest@birnihigofarms.com" },
+  { dept: "Careers", email: "careers@birnihigofarms.com" },
+  { dept: "Visits", email: "visit@birnihigo.com" },
 ];
 
 const Contact = () => {
-  const [activeForm, setActiveForm] = useState<FormType>("general");
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" });
-
-  const activeType = contactTypes.find(ct => ct.key === activeForm)!;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const mailtoSubject = encodeURIComponent(`[${activeType.label}] ${form.subject}`);
-    const mailtoBody = encodeURIComponent(
-      `Name: ${form.firstName} ${form.lastName}\nEmail: ${form.email}\nPhone: ${form.phone || 'N/A'}\n\n${form.message}`
-    );
-    window.location.href = `mailto:${activeType.email}?subject=${mailtoSubject}&body=${mailtoBody}`;
-    setSubmitted(true);
-  };
+  const [activeForm, setActiveForm] = useState("general");
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", subject: "", message: "" });
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="section-padding bg-card border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* 1. MINIMAL HERO */}
+      <section className="pt-32 pb-20 bg-[#EFE7DC] border-b border-[#CD8C24]/10">
+        <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection>
-            <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Contact Us</p>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">We'd love to hear from you.</h1>
-            <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
-              Whether you're a partner, investor, farmer, job seeker, or supporter, we welcome your questions, collaboration, and feedback.
-            </p>
+            <p className="text-[#CD8C24] text-xs uppercase tracking-[0.5em] mb-6 font-black">Get in Touch</p>
+            <h1 className="font-display text-6xl md:text-8xl text-[#4F3C1C] font-black tracking-tighter italic leading-none">
+              Let's <span className="text-[#FEA42A]">Connect.</span>
+            </h1>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Info Column */}
-          <div className="lg:col-span-2">
+      {/* 2. THE SPLIT CONCIERGE LAYOUT */}
+      <section className="bg-[#EFE7DC] pb-32">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+          
+          {/* LEFT: THE INFO HUB (Sticky) */}
+          <div className="lg:col-span-5 space-y-8">
             <AnimatedSection>
-              <div className="bg-card border border-border rounded-2xl overflow-hidden mb-6">
-                <iframe
-                  title="Birnihigo Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.0!2d39.96!3d9.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMDknMDAuMCJOIDM5wrA1Nyc0NS42IkU!5e0!3m2!1sen!2set!4v1700000000000"
-                  className="w-full h-48"
-                  loading="lazy"
-                  style={{ border: 0 }}
-                />
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <MapPin size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-body text-sm font-medium text-foreground">📍 Headquarters</p>
-                    <p className="text-sm text-muted-foreground font-body">
-                      Birnihigo Integrated Farms PLC<br />
-                      Africa Avenue, Bedesta Building, 6th Floor<br />
-                      Addis Ababa, Ethiopia
-                    </p>
-                    <p className="font-body text-sm font-medium text-foreground mt-3">🏭 Production Facility</p>
-                    <p className="text-sm text-muted-foreground font-body">
-                      Awash Sebat, Afar, Ethiopia<br />
-                      <span className="text-xs">(Off Route A1, near Melka Werer Research Station)</span>
-                    </p>
-                  </div>
+              <div className="bg-[#4F3C1C] rounded-[3rem] p-10 text-[#EFE7DC] shadow-2xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-8 opacity-10">
+                  <Globe size={120} />
                 </div>
-                <div className="flex items-start gap-3">
-                  <Mail size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-body text-sm font-medium text-foreground">Email Address</p>
-                    <a href="mailto:info@birnihigofarms.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">info@birnihigofarms.com</a>
-                    <a href="mailto:invest@birnihigofarms.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">invest@birnihigofarms.com</a>
-                    <a href="mailto:careers@birnihigofarms.com" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">careers@birnihigofarms.com</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Phone size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-body text-sm font-medium text-foreground">📞 Phone</p>
-                    <a href="tel:+251911209405" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251 911 20 94 05</a>
-                    <a href="tel:+251911509505" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251 911 50 95 05</a>
-                    <a href="tel:+251222241521" className="text-sm text-muted-foreground font-body hover:text-accent transition-colors block">+251 22 224 1521</a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <MessageCircle size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-body text-sm font-medium text-foreground">📱 Instant Messaging</p>
-                    <a href="https://web.whatsapp.com/send?phone=251911509505&text=" target="_blank" rel="noopener noreferrer" className="text-sm text-accent font-body hover:underline">💬 WhatsApp Chat: Click to Chat</a>
-                    <p className="text-xs text-muted-foreground font-body mt-1">Connect directly with our support or CBF liaison team</p>
-                    <p className="text-xs text-muted-foreground font-body">📲 Available Monday–Saturday, 8:00AM–6:00PM EAT</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Calendar size={18} className="text-primary mt-0.5 shrink-0" />
-                  <div>
-                    <p className="font-body text-sm font-medium text-foreground">🤝 Schedule a Visit</p>
-                    <p className="text-xs text-muted-foreground font-body">Interested in visiting our farm or processing facility?</p>
-                    <a href="mailto:visit@birnihigo.com" className="text-sm text-accent font-body hover:underline">📅 Email visit@birnihigo.com to book a guided tour</a>
-                  </div>
-                </div>
-              </div>
-
-              {/* Department Emails */}
-              <div className="mt-8">
-                <h4 className="font-display text-sm uppercase tracking-wider mb-3 text-muted-foreground">📬 Department Emails</h4>
-                <div className="space-y-2">
-                  {departmentEmails.map((d) => (
-                    <div key={d.email} className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground font-body">{d.dept}</span>
-                      <a href={`mailto:${d.email}`} className="text-accent font-body text-xs hover:underline">{d.email}</a>
+                
+                <h3 className="text-2xl font-black mb-10 italic border-b border-white/10 pb-6 uppercase tracking-widest">Headquarters</h3>
+                
+                <div className="space-y-10 relative z-10">
+                  <div className="flex gap-6">
+                    <MapPin className="text-[#FEA42A] shrink-0" size={24} />
+                    <div>
+                      <p className="font-black text-sm uppercase tracking-widest text-[#FEA42A] mb-2">Addis Ababa</p>
+                      <p className="text-lg opacity-80 leading-relaxed font-medium">
+                        Africa Avenue, Bedesta Building<br />6th Floor, Ethiopia
+                      </p>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="flex gap-6">
+                    <Clock className="text-[#FEA42A] shrink-0" size={24} />
+                    <div>
+                      <p className="font-black text-sm uppercase tracking-widest text-[#FEA42A] mb-2">Availability</p>
+                      <p className="text-lg opacity-80 font-medium">Mon — Sat: 8:00AM – 6:00PM EAT</p>
+                    </div>
+                  </div>
+
+                  <div className="pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
+                    <a href="tel:+251911509505" className="flex items-center gap-3 group">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#FEA42A] group-hover:text-[#4F3C1C] transition-all">
+                        <Phone size={18} />
+                      </div>
+                      <span className="text-xs font-bold tracking-widest uppercase">Call Us</span>
+                    </a>
+                    <a href="https://wa.me/251911509505" className="flex items-center gap-3 group">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#25D366] transition-all">
+                        <MessageCircle size={18} />
+                      </div>
+                      <span className="text-xs font-bold tracking-widest uppercase">WhatsApp</span>
+                    </a>
+                  </div>
                 </div>
               </div>
+            </AnimatedSection>
 
-              {/* Social Media */}
-              <div className="mt-8">
-                <h4 className="font-display text-sm uppercase tracking-wider mb-4 text-muted-foreground">🌐 Connect with Us</h4>
-                <div className="flex flex-wrap gap-2">
-                  {socialLinks.map((s) => (
-                    <a
-                      key={s.label}
-                      href={s.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors text-muted-foreground"
-                    >
-                      <s.icon size={18} />
+            {/* Quick Department Links */}
+            <AnimatedSection delay={0.2}>
+              <div className="p-8 bg-white/50 backdrop-blur-md rounded-[2.5rem] border border-[#CD8C24]/10">
+                <h4 className="text-[#4F3C1C] font-black uppercase tracking-[0.2em] text-xs mb-6">Direct Channels</h4>
+                <div className="space-y-4">
+                  {departmentEmails.map((d) => (
+                    <a key={d.dept} href={`mailto:${d.email}`} className="flex justify-between items-center p-4 rounded-2xl hover:bg-[#4F3C1C] hover:text-[#EFE7DC] transition-all group font-bold">
+                      <span className="text-sm">{d.dept}</span>
+                      <ChevronRight size={16} className="text-[#CD8C24] group-hover:translate-x-1 transition-transform" />
                     </a>
                   ))}
                 </div>
@@ -164,76 +98,69 @@ const Contact = () => {
             </AnimatedSection>
           </div>
 
-          {/* Form Column */}
-          <div className="lg:col-span-3">
-            <AnimatedSection>
-              <h2 className="font-display text-2xl text-foreground mb-6">Have Questions? Get In Touch!</h2>
+          {/* RIGHT: THE FORM (Industrial Clean) */}
+          <div className="lg:col-span-7">
+            <AnimatedSection delay={0.3}>
+              <div className="bg-white rounded-[3.5rem] p-12 shadow-sm border border-[#CD8C24]/10">
+                <div className="flex gap-4 mb-12 flex-wrap">
+                  {["general", "partnership", "investor"].map((type) => (
+                    <button
+                      key={type}
+                      onClick={() => setActiveForm(type)}
+                      className={`px-8 py-3 rounded-full text-xs font-black uppercase tracking-widest transition-all ${
+                        activeForm === type 
+                        ? "bg-[#4F3C1C] text-[#FEA42A] shadow-xl" 
+                        : "bg-[#EFE7DC] text-[#4F3C1C] hover:bg-[#CD8C24]/10"
+                      }`}
+                    >
+                      {type}
+                    </button>
+                  ))}
+                </div>
 
-              <div className="flex gap-2 mb-8 flex-wrap">
-                {contactTypes.map((ct) => (
-                  <button
-                    key={ct.key}
-                    onClick={() => { setActiveForm(ct.key); setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" }); }}
-                    className={`px-4 py-2 rounded-lg text-sm font-body font-medium transition-colors ${
-                      activeForm === ct.key ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    {ct.label}
+                <form className="space-y-8">
+                  <div className="grid grid-cols-2 gap-8">
+                    <div className="relative">
+                      <input type="text" className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent" id="fname" placeholder="First Name" />
+                      <label htmlFor="fname" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">First Name</label>
+                    </div>
+                    <div className="relative">
+                      <input type="text" className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent" id="lname" placeholder="Last Name" />
+                      <label htmlFor="lname" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">Last Name</label>
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    <input type="email" className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent" id="email" placeholder="Email" />
+                    <label htmlFor="email" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">Email Address</label>
+                  </div>
+
+                  <div className="relative">
+                    <textarea rows={4} className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent resize-none" id="msg" placeholder="Message" />
+                    <label htmlFor="msg" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">Your Message</label>
+                  </div>
+
+                  <button className="group w-full py-6 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-[0.3em] text-xs hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all flex items-center justify-center gap-4">
+                    Send Inquiry <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
                   </button>
-                ))}
+                </form>
               </div>
 
-              <p className="text-sm text-muted-foreground font-body mb-6">
-                Sending to: <span className="text-accent">{activeType.email}</span>
-              </p>
-
-              {submitted ? (
-                <div className="bg-primary/10 border border-primary/20 rounded-2xl p-10 text-center">
-                  <h3 className="font-display text-xl text-foreground mb-2">Message Sent</h3>
-                  <p className="text-sm text-muted-foreground font-body">Your email client should have opened with your message to <strong className="text-accent">{activeType.email}</strong>.</p>
-                  <button
-                    onClick={() => { setSubmitted(false); setForm({ firstName: "", lastName: "", email: "", phone: "", subject: "", message: "" }); }}
-                    className="mt-4 px-6 py-2 bg-accent text-accent-foreground text-sm font-body font-semibold rounded-lg hover:brightness-110 transition-all"
-                  >
-                    Send Another Message
-                  </button>
+              {/* Visit CTA */}
+              <div className="mt-8 p-10 bg-[#FEA42A] rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 rounded-full bg-[#4F3C1C] flex items-center justify-center text-white">
+                    <Calendar size={28} />
+                  </div>
+                  <div>
+                    <h4 className="text-[#4F3C1C] text-xl font-black italic">Schedule a Visit</h4>
+                    <p className="text-[#4F3C1C]/70 font-bold text-sm">Experience our bio-secure facility in person.</p>
+                  </div>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-body text-muted-foreground mb-1 block">First Name *</label>
-                      <input type="text" required placeholder="First Name" value={form.firstName} onChange={e => setForm({...form, firstName: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    </div>
-                    <div>
-                      <label className="text-xs font-body text-muted-foreground mb-1 block">Last Name *</label>
-                      <input type="text" required placeholder="Last Name" value={form.lastName} onChange={e => setForm({...form, lastName: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-xs font-body text-muted-foreground mb-1 block">Email *</label>
-                    <input type="email" required placeholder="Email Address" value={form.email} onChange={e => setForm({...form, email: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-xs font-body text-muted-foreground mb-1 block">Subject</label>
-                      <input type="text" placeholder="Subject" value={form.subject} onChange={e => setForm({...form, subject: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    </div>
-                    <div>
-                      <label className="text-xs font-body text-muted-foreground mb-1 block">Phone (optional)</label>
-                      <input type="tel" placeholder="Phone" value={form.phone} onChange={e => setForm({...form, phone: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="text-xs font-body text-muted-foreground mb-1 block">Message *</label>
-                    <textarea required placeholder="Your message..." rows={5} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full px-4 py-3 bg-card border border-border rounded-lg text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
-                  </div>
-                  <button type="submit" className="w-full py-3 bg-accent text-accent-foreground font-body font-semibold rounded-lg hover:brightness-110 transition-all flex items-center justify-center gap-2 gold-glow">
-                    Submit <ArrowRight size={16} />
-                  </button>
-                  <p className="text-xs text-muted-foreground font-body text-center">🛡️ We respect your privacy. Your data will not be shared.</p>
-                </form>
-              )}
+                <a href="mailto:visit@birnihigo.com" className="px-8 py-4 bg-[#4F3C1C] text-white rounded-full font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform">
+                  Book Guided Tour
+                </a>
+              </div>
             </AnimatedSection>
           </div>
         </div>
