@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Menu, X, Plus, Minus } from "lucide-react"; // Added Plus/Minus for mobile
+import { motion, AnimatePresence } from " f_motion";
 import logo from "../assets/logo.webp"; 
 
 const navLinks = [
@@ -39,15 +39,20 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+  const [mobileSubOpen, setMobileSubOpen] = useState(null); // Track which mobile menu is open
   const location = useLocation();
+
+  const toggleMobileSub = (label) => {
+    setMobileSubOpen(mobileSubOpen === label ? null : label);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
         
         {/* LOGO SECTION */}
-        <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
+        <Link to="/" onClick={() => setOpen(false)} className="flex items-center group transition-transform duration-300 active:scale-95">
           <img 
             src={logo} 
             alt="Birnihigo Integrated Farms" 
@@ -55,7 +60,7 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
+        {/* DESKTOP NAVIGATION (Stays the same) */}
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <div
@@ -76,7 +81,6 @@ const Navbar = () => {
                 {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
               </Link>
 
-              {/* DROPDOWN MENU */}
               <AnimatePresence>
                 {link.sub && hoveredMenu === link.label && (
                   <motion.div
@@ -100,7 +104,6 @@ const Navbar = () => {
             </div>
           ))}
 
-          {/* CTA BUTTON */}
           <Link
             to="/contact"
             className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:-translate-y-0.5 transition-all active:scale-95 shadow-[0_10px_20px_rgba(254,164,42,0.2)]"
@@ -118,30 +121,67 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* MOBILE MENU OVERLAY */}
+      {/* MOBILE MENU OVERLAY - THE FIX IS HERE */}
       <AnimatePresence>
         {open && (
           <motion.div 
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20 overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="lg:hidden fixed inset-0 top-24 bg-[#4F3C1C] z-40 overflow-y-auto"
           >
-            <div className="p-8 flex flex-col gap-6">
+            <div className="p-8 flex flex-col gap-4">
               {navLinks.map((link) => (
-                <Link 
-                  key={link.label}
-                  to={link.to} 
-                  onClick={() => setOpen(false)}
-                  className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter"
-                >
-                  {link.label}
-                </Link>
+                <div key={link.label} className="border-b border-[#CD8C24]/10 pb-4">
+                  <div className="flex items-center justify-between">
+                    <Link 
+                      to={link.to} 
+                      onClick={() => !link.sub && setOpen(false)}
+                      className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter italic"
+                    >
+                      {link.label}
+                    </Link>
+                    
+                    {/* If it has a sub-menu, show a toggle button */}
+                    {link.sub && (
+                      <button 
+                        onClick={() => toggleMobileSub(link.label)}
+                        className="p-2 text-[#FEA42A] bg-white/5 rounded-full"
+                      >
+                        {mobileSubOpen === link.label ? <Minus size={20} /> : <Plus size={20} />}
+                      </button>
+                    )}
+                  </div>
+
+                  {/* MOBILE SUB-MENU (Shows Blog, News, etc.) */}
+                  <AnimatePresence>
+                    {link.sub && mobileSubOpen === link.label && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden flex flex-col gap-3 mt-4 ml-4 border-l-2 border-[#FEA42A]/20 pl-6"
+                      >
+                        {link.sub.map((s) => (
+                          <Link 
+                            key={s.label}
+                            to={s.to}
+                            onClick={() => setOpen(false)}
+                            className="text-lg font-bold text-[#EFE7DC]/70 hover:text-[#FEA42A] py-1"
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ))}
+              
               <Link
                 to="/contact"
                 onClick={() => setOpen(false)}
-                className="mt-4 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl"
+                className="mt-6 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl shadow-xl"
               >
                 Partner with Us
               </Link>
