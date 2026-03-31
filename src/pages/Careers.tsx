@@ -1,69 +1,54 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import { MapPin, Clock, ArrowRight, Calendar, User, Briefcase, GraduationCap, Heart, Globe, Lightbulb } from "lucide-react";
-import { useState } from "react";
+import { 
+  MapPin, Clock, ArrowRight, Calendar, User, 
+  Briefcase, GraduationCap, Heart, Globe, Lightbulb, ChevronRight 
+} from "lucide-react";
 
 const jobs = [
-  { title: "Farm Supervisor", location: "Awash Sebat", type: "Full-time", dept: "Operations", deadline: "Open" },
-  { title: "Poultry Veterinarian", location: "Awash Sebat", type: "Full-time", dept: "Veterinary", deadline: "Open" },
-  { title: "Feed Mill Technician", location: "Awash Sebat", type: "Full-time", dept: "Feed Production", deadline: "Open" },
-  { title: "Finance & Admin Officer", location: "Addis Ababa", type: "Full-time", dept: "Administration", deadline: "Open" },
-  { title: "Community Liaison (CBF Lead)", location: "Regional Zones", type: "Full-time", dept: "Community Development", deadline: "Rolling" },
-  { title: "Sustainability Analyst", location: "Awash Sebat", type: "Full-time", dept: "ESG", deadline: "Open" },
-];
-
-const whyWork = [
-  { icon: Globe, text: "Make a social and environmental impact" },
-  { icon: Heart, text: "Values-driven and transparent culture" },
-  { icon: GraduationCap, text: "Career growth and mentorship" },
-  { icon: Briefcase, text: "Field-based roles with direct farmer engagement" },
-  { icon: Lightbulb, text: "Innovation-friendly and mission-aligned team" },
-];
-
-const newsItems = [
-  { title: "CBF Program Expands to 1,000 Farmers", date: "May 2025", excerpt: "Our Broiler Contract Farming initiative has reached 1,000 active farmers, 60% of whom are women and youth. A major step in creating jobs and reducing rural-to-urban migration." },
-  { title: "2,000 Hectares Secured for Maize & Soya", date: "April 2025", excerpt: "To boost feed self-sufficiency, we've secured farmland in Afar and Amhara for maize and soybean production, supporting our responsible feeding strategy." },
-  { title: "Halal Certification Renewed", date: "March 2025", excerpt: "Birnihigo's poultry processing facility has been re-certified for Halal compliance, opening doors for expanded regional export to Djibouti and Somalia." },
-];
-
-const articles = [
-  { title: "Raising Poultry with Purpose: What Makes Birnihigo Different", author: "Birnihigo Team", date: "Feb 2026" },
-  { title: "Meet the Farmers: How CBF is Changing Lives in Rural Ethiopia", author: "Sara Mengistu", date: "Jan 2026" },
-  { title: "Sustainability in Action: Birnihigo's Circular Farming System", author: "Daniel Kebede", date: "Dec 2025" },
-  { title: "The Future of Poultry in East Africa: Trends & Opportunities", author: "Birnihigo Team", date: "Nov 2025" },
-  { title: "Women in Agribusiness: Voices from the Field", author: "Sara Mengistu", date: "Oct 2025" },
+  { title: "Farm Supervisor", location: "Awash Sebat", type: "Full-time", dept: "Operations" },
+  { title: "Poultry Veterinarian", location: "Awash Sebat", type: "Full-time", dept: "Veterinary" },
+  { title: "Feed Mill Technician", location: "Awash Sebat", type: "Full-time", dept: "Feed Production" },
+  { title: "Community Liaison (CBF Lead)", location: "Regional Zones", type: "Full-time", dept: "Development" },
 ];
 
 const Careers = () => {
-  const [tab, setTab] = useState<"jobs" | "news" | "articles">("jobs");
+  const [tab, setTab] = useState("jobs");
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="section-padding bg-card border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* 1. EDITORIAL HERO */}
+      <section className="relative pt-32 pb-20 bg-[#4F3C1C] overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/team-working.jpg')] bg-cover bg-center opacity-10" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <AnimatedSection>
-            <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Careers & Insights</p>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">Join Our Mission</h1>
-            <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
-              At Birnihigo, work is more than a job. It's a purpose. We are on a mission to nourish communities, protect the planet, and empower a new generation of agricultural leaders.
+            <p className="text-[#FEA42A] text-xs uppercase tracking-[0.5em] mb-8 font-black">Careers & Insights</p>
+            <h1 className="font-display text-6xl md:text-8xl text-[#EFE7DC] font-black tracking-tighter italic leading-none mb-8">
+              Cultivating <br/> <span className="text-[#FEA42A]">Future Leaders.</span>
+            </h1>
+            <p className="text-[#EFE7DC]/60 text-xl max-w-2xl font-medium leading-relaxed border-l-2 border-[#FEA42A] pl-8">
+              Building Industry Talent through Poultry Research & Academic Partnerships. Join a mission-driven team redefining food sovereignty.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Why Work With Us */}
-      <section className="section-padding bg-card/50">
-        <div className="max-w-5xl mx-auto">
-          <AnimatedSection className="text-center mb-12">
-            <h2 className="font-display text-2xl md:text-3xl text-foreground">Why Work with Us</h2>
-          </AnimatedSection>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {whyWork.map((item, i) => (
+      {/* 2. CORE VALUES - Glassmorphism Bar */}
+      <section className="py-12 bg-[#EFE7DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              { icon: Globe, label: "Social Impact" },
+              { icon: Heart, label: "Values Driven" },
+              { icon: GraduationCap, label: "Mentorship" },
+              { icon: Briefcase, label: "Field Growth" },
+              { icon: Lightbulb, label: "Innovation" },
+            ].map((item, i) => (
               <AnimatedSection key={i} delay={i * 0.1}>
-                <div className="bg-card border border-border rounded-xl p-4 text-center hover:border-primary/30 transition-colors">
-                  <item.icon size={24} className="text-primary mx-auto mb-3" />
-                  <p className="text-xs text-muted-foreground font-body">{item.text}</p>
+                <div className="flex flex-col items-center p-6 bg-white/40 backdrop-blur-md rounded-3xl border border-[#CD8C24]/10 hover:bg-[#4F3C1C] hover:text-[#FEA42A] transition-all group">
+                  <item.icon size={24} className="mb-3 text-[#CD8C24] group-hover:text-[#FEA42A]" />
+                  <span className="text-[10px] font-black uppercase tracking-widest text-center">{item.label}</span>
                 </div>
               </AnimatedSection>
             ))}
@@ -71,86 +56,84 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Tabs */}
-      <section className="section-padding">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex gap-2 mb-12 justify-center flex-wrap">
-            {([
-              { key: "jobs" as const, label: "Open Positions" },
-              { key: "news" as const, label: "Latest News" },
-              { key: "articles" as const, label: "Featured Articles" },
-            ]).map((t) => (
+      {/* 3. THE INTERACTIVE HUB */}
+      <section className="py-32 bg-[#EFE7DC]">
+        <div className="max-w-5xl mx-auto px-6">
+          {/* Navigation Tabs */}
+          <div className="flex justify-center gap-4 mb-20">
+            {["jobs", "news", "articles"].map((t) => (
               <button
-                key={t.key}
-                onClick={() => setTab(t.key)}
-                className={`px-6 py-2.5 rounded-lg text-sm font-body font-medium transition-colors ${
-                  tab === t.key ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground hover:text-foreground"
+                key={t}
+                onClick={() => setTab(t)}
+                className={`px-10 py-4 rounded-full text-xs font-black uppercase tracking-widest transition-all ${
+                  tab === t ? "bg-[#4F3C1C] text-[#FEA42A] shadow-2xl" : "bg-white/50 text-[#4F3C1C] hover:bg-[#4F3C1C]/5"
                 }`}
               >
-                {t.label}
+                {t}
               </button>
             ))}
           </div>
 
+          {/* TAB: JOBS - Industrial List Style */}
           {tab === "jobs" && (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {jobs.map((job, i) => (
-                <AnimatedSection key={job.title} delay={i * 0.05}>
-                  <div className="bg-card border border-border rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-primary/30 transition-colors">
+                <AnimatedSection key={i} delay={i * 0.1}>
+                  <div className="group bg-white rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center justify-between gap-8 border border-[#CD8C24]/10 hover:border-[#FEA42A] transition-all">
                     <div>
-                      <h3 className="font-display text-lg text-foreground mb-1">{job.title}</h3>
-                      <div className="flex flex-wrap gap-3 text-xs text-muted-foreground font-body">
-                        <span className="flex items-center gap-1"><MapPin size={12} />{job.location}</span>
-                        <span className="flex items-center gap-1"><Clock size={12} />{job.type}</span>
-                        <span className="px-2 py-0.5 bg-primary/10 text-primary rounded-full">{job.dept}</span>
+                      <span className="text-[#FEA42A] text-[10px] font-black uppercase tracking-[0.2em]">{job.dept}</span>
+                      <h3 className="text-2xl font-black text-[#4F3C1C] mt-2 mb-4">{job.title}</h3>
+                      <div className="flex gap-6 text-[#4F3C1C]/50 font-bold text-xs uppercase tracking-widest">
+                        <span className="flex items-center gap-2"><MapPin size={14} /> {job.location}</span>
+                        <span className="flex items-center gap-2"><Clock size={14} /> {job.type}</span>
                       </div>
                     </div>
-                    <a
-                      href="mailto:careers@birnihigofarms.com"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent text-accent-foreground text-sm font-body font-semibold rounded-lg hover:brightness-110 transition-all shrink-0"
-                    >
-                      Apply Now <ArrowRight size={14} />
+                    <a href="mailto:careers@birnihigofarms.com" className="w-full md:w-auto px-10 py-5 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all flex items-center justify-center gap-3">
+                      Apply Now <ChevronRight size={16} />
                     </a>
                   </div>
                 </AnimatedSection>
               ))}
-              <AnimatedSection>
-                <p className="text-center text-sm text-muted-foreground font-body mt-6">
-                  To apply, email your CV and cover letter to: <a href="mailto:careers@birnihigofarms.com" className="text-accent hover:underline">careers@birnihigofarms.com</a>
-                </p>
-              </AnimatedSection>
             </div>
           )}
 
+          {/* TAB: NEWS - Magazine Grid */}
           {tab === "news" && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {newsItems.map((item, i) => (
-                <AnimatedSection key={item.title} delay={i * 0.1}>
-                  <div className="bg-card border border-border rounded-2xl p-6 h-full flex flex-col hover:border-primary/30 transition-colors">
-                    <span className="text-xs text-accent font-body font-semibold mb-3">{item.date}</span>
-                    <h3 className="font-display text-lg text-foreground mb-3 flex-1">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground font-body">{item.excerpt}</p>
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                { title: "CBF Program Expands to 1,000 Farmers", date: "MAY 2025", desc: "Our Broiler Contract Farming initiative has reached 1,000 active farmers, prioritizing women and youth." },
+                { title: "Halal Certification Renewed", date: "MAR 2025", desc: "Birnihigo’s facility re-certified for Halal compliance, securing regional export paths." }
+              ].map((item, i) => (
+                <AnimatedSection key={i}>
+                  <div className="p-10 bg-[#4F3C1C] rounded-[3rem] text-[#EFE7DC] h-full flex flex-col justify-between">
+                    <div>
+                      <span className="text-[#FEA42A] font-black text-[10px] tracking-widest mb-6 block">{item.date}</span>
+                      <h3 className="text-3xl font-black italic tracking-tighter mb-6">{item.title}</h3>
+                      <p className="opacity-60 leading-relaxed font-medium">{item.desc}</p>
+                    </div>
+                    <button className="mt-10 text-[#FEA42A] font-black text-xs uppercase tracking-widest flex items-center gap-2">
+                      Read Report <ArrowRight size={16} />
+                    </button>
                   </div>
                 </AnimatedSection>
               ))}
             </div>
           )}
 
+          {/* TAB: ARTICLES - Clean Editorial List */}
           {tab === "articles" && (
             <div className="space-y-4">
-              {articles.map((post, i) => (
-                <AnimatedSection key={post.title} delay={i * 0.05}>
-                  <div className="bg-card border border-border rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:border-primary/30 transition-colors">
-                    <div>
-                      <h3 className="font-display text-lg text-foreground mb-1">{post.title}</h3>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground font-body">
-                        <span className="flex items-center gap-1"><Calendar size={12} />{post.date}</span>
-                        <span className="flex items-center gap-1"><User size={12} />{post.author}</span>
-                      </div>
+              {[
+                "Raising Poultry with Purpose",
+                "Meet the Farmers: CBF Impact",
+                "Sustainability: Our Circular System"
+              ].map((title, i) => (
+                <AnimatedSection key={i}>
+                  <div className="py-8 border-b border-[#4F3C1C]/10 flex items-center justify-between group cursor-pointer">
+                    <h3 className="text-xl font-black text-[#4F3C1C] group-hover:text-[#CD8C24] transition-colors uppercase italic">{title}</h3>
+                    <div className="w-12 h-12 rounded-full border border-[#4F3C1C]/10 flex items-center justify-center group-hover:bg-[#4F3C1C] group-hover:text-[#FEA42A] transition-all">
+                      <ArrowRight size={20} />
                     </div>
-                    <button className="text-sm text-accent font-body font-medium inline-flex items-center gap-1 hover:underline shrink-0">
-                      Read More <ArrowRight size={14} />
-                    </button>
                   </div>
                 </AnimatedSection>
               ))}
@@ -159,22 +142,33 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* CBF Section */}
-      <section className="section-padding bg-card/50">
-        <div className="max-w-4xl mx-auto text-center">
-          <AnimatedSection>
-            <p className="text-accent text-sm uppercase tracking-[0.3em] mb-3 font-body font-semibold">Contract Farming</p>
-            <h2 className="font-display text-3xl text-foreground mb-4">Become a Contract Broiler Farmer</h2>
-            <p className="text-muted-foreground font-body mb-6 max-w-2xl mx-auto">
-              Our CBF program provides day-old chicks, quality feed, offtake guarantee with fair pricing, vet support, and ongoing training. Priority given to applicants in Afar, Amhara, Oromia, and surrounding zones.
-            </p>
-            <a
-              href="mailto:cbf@birnihigo.com"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground font-body font-semibold rounded-lg hover:brightness-110 transition-all gold-glow"
-            >
-              Apply for CBF Program <ArrowRight size={16} />
-            </a>
-          </AnimatedSection>
+      {/* 4. CBF ACTION - High Impact Gold Card */}
+      <section className="py-32 bg-[#EFE7DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#FEA42A] rounded-[4rem] p-12 md:p-24 text-[#4F3C1C] relative overflow-hidden shadow-2xl">
+            {/* Background Pattern */}
+            <div className="absolute top-0 right-0 p-12 opacity-10 rotate-12">
+               <Briefcase size={300} />
+            </div>
+            
+            <div className="max-w-3xl relative z-10">
+              <p className="font-black uppercase tracking-[0.4em] text-xs mb-8">Outgrower Opportunity</p>
+              <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter mb-10 leading-none">
+                Become a Contract <br/> Broiler Farmer.
+              </h2>
+              <p className="text-xl font-bold mb-12 opacity-80 leading-relaxed">
+                We provide the chicks, the feed, and the veterinary science. You provide the growth. Join Ethiopia's most structured poultry network.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6">
+                <a href="mailto:cbf@birnihigo.com" className="px-12 py-6 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-105 transition-transform shadow-xl text-center">
+                  Apply for CBF Program
+                </a>
+                <div className="flex items-center gap-4 text-xs font-black uppercase tracking-widest border-l-2 border-[#4F3C1C]/20 pl-6">
+                  Priority: Afar, Amhara, Oromia
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </Layout>
