@@ -1,7 +1,9 @@
+Here is the navbar code edit it:
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X, Plus, Minus } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion"; // Fixed import name
+import { ChevronDown, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.webp"; 
 
 const navLinks = [
@@ -39,27 +41,24 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [hoveredMenu, setHoveredMenu] = useState(null);
-  const [mobileSubOpen, setMobileSubOpen] = useState(null);
+  const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
   const location = useLocation();
 
-  // Helper to close everything
-  const closeMenu = () => {
-    setOpen(false);
-    setMobileSubOpen(null);
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] bg-[#4F3C1C] border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
         
-        {/* LOGO */}
-        <Link to="/" onClick={closeMenu} className="flex items-center active:scale-95 transition-transform">
-          <img src={logo} alt="Birnihigo" className="h-12 md:h-14 w-auto object-contain" />
+        {/* LOGO SECTION */}
+        <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
+          <img 
+            src={logo} 
+            alt="Birnihigo Integrated Farms" 
+            className="h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-110" 
+          />
         </Link>
 
-        {/* DESKTOP NAV */}
-        <div className="hidden lg:flex items-center gap-2">
+        {/* DESKTOP NAVIGATION */}
+        <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <div
               key={link.label}
@@ -69,24 +68,30 @@ const Navbar = () => {
             >
               <Link
                 to={link.to}
-                className={`px-4 py-2 text-[12px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
-                  location.pathname === link.to ? "text-[#FEA42A] bg-white/5" : "text-[#EFE7DC]"
+                className={`px-4 py-2 text-[13px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
+                  location.pathname === link.to
+                    ? "text-[#FEA42A] bg-[#CD8C24]/10" 
+                    : "text-[#EFE7DC] hover:text-[#FEA42A] hover:bg-white/5" 
                 }`}
               >
                 {link.label}
-                {link.sub && <ChevronDown size={12} className={`transition-transform ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
+                {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
               </Link>
 
+              {/* DROPDOWN MENU */}
               <AnimatePresence>
                 {link.sub && hoveredMenu === link.label && (
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-60 bg-[#4F3C1C] border border-[#CD8C24]/30 shadow-2xl rounded-2xl p-2 overflow-hidden"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    className="absolute top-full left-0 mt-3 w-64 bg-[#4F3C1C] border border-[#CD8C24]/30 shadow-[0_20px_50px_rgba(0,0,0,0.6)] rounded-2xl overflow-hidden p-2 backdrop-blur-2xl"
                   >
                     {link.sub.map((s) => (
                       <Link
-                        key={s.label} to={s.to}
-                        className="block px-5 py-3 text-xs text-[#EFE7DC] hover:bg-[#FEA42A] hover:text-[#4F3C1C] rounded-xl font-bold transition-all"
+                        key={s.label}
+                        to={s.to}
+                        className="block px-5 py-3 text-sm text-[#EFE7DC] hover:text-[#4F3C1C] hover:bg-[#FEA42A] rounded-xl transition-all font-bold tracking-wide"
                       >
                         {s.label}
                       </Link>
@@ -96,75 +101,51 @@ const Navbar = () => {
               </AnimatePresence>
             </div>
           ))}
+
+          {/* CTA BUTTON */}
+          <Link
+            to="/contact"
+            className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#FEA42A] text-[#4F3C1C] hover:bg-[#FFD275] hover:-translate-y-0.5 transition-all active:scale-95 shadow-[0_10px_20px_rgba(254,164,42,0.2)]"
+          >
+            Get In Touch
+          </Link>
         </div>
 
         {/* MOBILE TOGGLE */}
         <button 
-          className="lg:hidden p-3 text-[#FEA42A] bg-white/5 rounded-xl border border-white/10"
+          className="lg:hidden p-2 text-[#FEA42A] bg-white/5 rounded-lg"
           onClick={() => setOpen(!open)}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
 
-      {/* MOBILE MENU - FULL SCREEN OVERLAY */}
+      {/* MOBILE MENU OVERLAY */}
       <AnimatePresence>
         {open && (
           <motion.div 
-            initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-24 bg-[#4F3C1C] z-[90] lg:hidden overflow-y-auto"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden bg-[#4F3C1C] border-t border-[#CD8C24]/20 overflow-hidden"
           >
-            <div className="p-6 pb-24 flex flex-col space-y-2">
+            <div className="p-8 flex flex-col gap-6">
               {navLinks.map((link) => (
-                <div key={link.label} className="border-b border-white/5 last:border-none py-2">
-                  <div className="flex items-center justify-between">
-                    <Link 
-                      to={link.to} 
-                      onClick={closeMenu}
-                      className="flex-1 py-3 text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter italic"
-                    >
-                      {link.label}
-                    </Link>
-                    
-                    {link.sub && (
-                      <button 
-                        onClick={() => setMobileSubOpen(mobileSubOpen === link.label ? null : link.label)}
-                        className="w-12 h-12 flex items-center justify-center bg-white/5 rounded-xl text-[#FEA42A]"
-                      >
-                        {mobileSubOpen === link.label ? <Minus size={20} /> : <Plus size={20} />}
-                      </button>
-                    )}
-                  </div>
-
-                  {/* THIS IS THE SECTION SHOWING BLOG/NEWS/ETC */}
-                  <AnimatePresence>
-                    {link.sub && mobileSubOpen === link.label && (
-                      <motion.div 
-                        initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-                        className="overflow-hidden bg-black/20 rounded-2xl mt-2 mb-4"
-                      >
-                        <div className="p-4 flex flex-col gap-4">
-                          {link.sub.map((s) => (
-                            <Link 
-                              key={s.label} to={s.to} onClick={closeMenu}
-                              className="text-lg font-bold text-[#FEA42A] flex items-center justify-between"
-                            >
-                              {s.label} <ChevronDown size={14} className="-rotate-90 opacity-50" />
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
+                <Link 
+                  key={link.label}
+                  to={link.to} 
+                  onClick={() => setOpen(false)}
+                  className="text-2xl font-black text-[#EFE7DC] hover:text-[#FEA42A] uppercase tracking-tighter"
+                >
+                  {link.label}
+                </Link>
               ))}
-              
               <Link
-                to="/contact" onClick={closeMenu}
-                className="mt-6 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl shadow-xl active:scale-[0.98] transition-transform"
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-4 w-full py-5 text-center bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl"
               >
-                Get In Touch
+                Partner with Us
               </Link>
             </div>
           </motion.div>
