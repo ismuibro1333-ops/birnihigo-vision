@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+
+// Existing Imports
 import scrollEgg from "@/assets/scroll-egg.jpg";
 import scrollChick from "@/assets/scroll-chick.jpg";
 import scrollChicken from "@/assets/scroll-chicken.jpg";
@@ -12,19 +14,44 @@ import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
+// Your New Imports (Using your filenames from the video)
+import oneImage from "@/assets/1image.jpg";
+import twoImage from "@/assets/2image.jpg";
+import threeImage from "@/assets/3image.jpg";
+import fourImage from "@/assets/4image.jpg";
+import fiveImage from "@/assets/5image.jpg";
+import sixImage from "@/assets/6image.jpg";
+import sevenImage from "@/assets/7image.jpg";
+import eightImage from "@/assets/8image.jpg";
+import nineImage from "@/assets/9image.jpg";
+import tenImage from "@/assets/10image.jpg";
+
 type Category = "all" | "facilities" | "operations" | "community";
 
 const images: { src: string; alt: string; category: Exclude<Category, "all">; aspect: string }[] = [
-  { src: scrollEgg, alt: "42-hectare facility construction site in Afar, Ethiopia", category: "facilities", aspect: "aspect-[4/3]" },
-  { src: scrollChick, alt: "Automated feeding systems inside bio-secure poultry house", category: "facilities", aspect: "aspect-[4/3]" },
-  { src: heroBg, alt: "Full-scale broiler production house with thousands of birds", category: "operations", aspect: "aspect-[16/9]" },
-  { src: scrollChicken, alt: "Chickens feeding at automated stations inside facility", category: "operations", aspect: "aspect-[4/3]" },
-  { src: chickensCloseup, alt: "Close-up of healthy broiler chickens in bio-secure environment", category: "operations", aspect: "aspect-[3/4]" },
-  { src: pic1, alt: "Birnihigo veterinary staff inside production facility", category: "community", aspect: "aspect-[16/9]" },
-  { src: pic2, alt: "Young chicks under heat lamps in brooding house", category: "operations", aspect: "aspect-[4/3]" },
-  { src: pic3, alt: "Chicks feeding at automated feeders in nursery", category: "operations", aspect: "aspect-[4/3]" },
-  { src: scrollProduct, alt: "Poultry transport crates at logistics facility", category: "operations", aspect: "aspect-[4/3]" },
-  { src: logisticsCrates, alt: "Stacked transport crates ready for distribution", category: "operations", aspect: "aspect-[4/3]" },
+  // Operations Category
+  { src: oneImage, alt: "Climate-controlled automated broiler production ecosystem", category: "operations", aspect: "aspect-[16/9]" },
+  { src: twoImage, alt: "Nursery phase with circular automated feeding system", category: "operations", aspect: "aspect-[4/3]" },
+  { src: threeImage, alt: "High-density broiler house with specialized feeding lines", category: "operations", aspect: "aspect-[16/9]" },
+  { src: fourImage, alt: "Industrial-scale precision in poultry management", category: "operations", aspect: "aspect-[16/9]" },
+  
+  // Facilities Category
+  { src: fiveImage, alt: "Main industrial processing and storage facility", category: "facilities", aspect: "aspect-[16/9]" },
+  
+  // Community Category
+  { src: sixImage, alt: "Birnihigo 'Integrated Outgrower Farming' training workshop group", category: "community", aspect: "aspect-[16/9]" },
+  { src: sevenImage, alt: "Technical training seminar for local farming partners", category: "community", aspect: "aspect-[16/9]" },
+  { src: eightImage, alt: "Empowering small-scale farmers through expert-led sessions", category: "community", aspect: "aspect-[16/9]" },
+  { src: nineImage, alt: "Distribution of day-old chicks to outgrower partners", category: "community", aspect: "aspect-[16/9]" },
+  { src: tenImage, alt: "Community outreach and logistics support", category: "community", aspect: "aspect-[16/9]" },
+
+  // Pre-existing Images
+  { src: scrollEgg, alt: "42-hectare facility construction site", category: "facilities", aspect: "aspect-[4/3]" },
+  { src: scrollChick, alt: "Automated feeding systems", category: "facilities", aspect: "aspect-[4/3]" },
+  { src: heroBg, alt: "Full-scale broiler production house", category: "operations", aspect: "aspect-[16/9]" },
+  { src: scrollChicken, alt: "Chickens feeding at automated stations", category: "operations", aspect: "aspect-[4/3]" },
+  { src: chickensCloseup, alt: "Healthy broiler chickens in bio-secure environment", category: "operations", aspect: "aspect-[3/4]" },
+  { src: pic1, alt: "Veterinary staff inside production facility", category: "community", aspect: "aspect-[16/9]" },
 ];
 
 const categories: { value: Category; label: string }[] = [
@@ -46,7 +73,7 @@ const Gallery = () => {
             <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Gallery</p>
             <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">Operations in Focus</h1>
             <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
-              A visual journey through our 42-hectare integrated poultry facility — from construction to full-scale production.
+               A visual journey through Birnihigo’s industrial poultry infrastructure and community partnerships.
             </p>
           </AnimatedSection>
         </div>
@@ -54,7 +81,6 @@ const Gallery = () => {
 
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
-          {/* Filter tabs */}
           <AnimatedSection className="flex flex-wrap justify-center gap-3 mb-12">
             {categories.map((cat) => (
               <button
@@ -71,11 +97,10 @@ const Gallery = () => {
             ))}
           </AnimatedSection>
 
-          {/* Masonry grid */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
             {filtered.map((img, i) => (
               <AnimatedSection key={img.alt} delay={(i % 3) * 0.1}>
-                <div className="rounded-2xl overflow-hidden border border-border break-inside-avoid">
+                <div className="rounded-2xl overflow-hidden border border-border break-inside-avoid shadow-sm hover:shadow-lg transition-shadow duration-300">
                   <img
                     src={img.src}
                     alt={img.alt}
