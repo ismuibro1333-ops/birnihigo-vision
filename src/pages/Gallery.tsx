@@ -19,7 +19,7 @@ import newFacility2 from "@/assets/new-facility-2.jpg";   // 3image: farm buildi
 import newDistribution from "@/assets/new-distribution.jpg"; // 4image: chicken distribution to women community
 import newTraining1 from "@/assets/new-training-1.jpg";   // 5image: indoor training session
 import newBroilers1 from "@/assets/new-broilers-1.jpg";   // 6image: broiler house interior wide shot
-import newChicks1 from "@/assets/new-chicks-1.jpg";       // 7image: chicks around red feeder close-up
+import newChicks1 from "@/assets/new-distribution-2.jpg";       // 7image: chicks around red feeder close-up
 import newBroilers2 from "@/assets/new-broilers-2.jpg";   // 8image: broiler house with red feeders & yellow drinkers
 import newTraining2 from "@/assets/new-training-2.jpg";   // 9image: Birnihigo training group photo
 // ────────────────────────────────────────────────────────────
