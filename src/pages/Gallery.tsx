@@ -13,15 +13,15 @@ import pic3 from "@/assets/pic3.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
 // ── NEW IMAGES ──────────────────────────────────────────────
-import newFacility1 from "@/assets/new-facility-1.jpg";   // 1image: large industrial facility exterior
-import newChickens1 from "@/assets/new-chickens-1.jpg";   // 2image: broilers with orange drinkers (blurry overhead)
-import newFacility2 from "@/assets/new-facility-2.jpg";   // 3image: farm buildings with feed silos
-import newDistribution from "@/assets/new-distribution.jpg"; // 4image: chicken distribution to women community
-import newTraining1 from "@/assets/new-training-1.jpg";   // 5image: indoor training session
-import newBroilers1 from "@/assets/new-broilers-1.jpg";   // 6image: broiler house interior wide shot
-import newChicks1 from "@/assets/new-distribution-2.jpg";       // 7image: chicks around red feeder close-up
-import newBroilers2 from "@/assets/new-broilers-2.jpg";   // 8image: broiler house with red feeders & yellow drinkers
-import newTraining2 from "@/assets/new-training-2.jpg";   // 9image: Birnihigo training group photo
+import newFacility1 from "@/assets/new-facility-1.jpg.JPG";   // 1image: large industrial facility exterior
+import newChickens1 from "@/assets/new-chickens-1.jpg.JPG";   // 2image: broilers with orange drinkers (blurry overhead)
+import newFacility2 from "@/assets/new-facility-2.jpg.JPG";   // 3image: farm buildings with feed silos
+import newDistribution from "@/assets/new-distribution.jpg.JPG"; // 4image: chicken distribution to women community
+import newTraining1 from "@/assets/new-training-1.jpg.JPG";   // 5image: indoor training session
+import newBroilers1 from "@/assets/new-broilers-1.jpg.JPG";   // 6image: broiler house interior wide shot
+import newChicks1 from "@/assets/new-distribution-2.jpg.JPG";       // 7image: chicks around red feeder close-up
+import newBroilers2 from "@/assets/new-broilers-2.jpg.JPG";   // 8image: broiler house with red feeders & yellow drinkers
+import newTraining2 from "@/assets/new-training-2.jpg.JPG";   // 9image: Birnihigo training group photo
 // ────────────────────────────────────────────────────────────
 
 type Category = "all" | "facilities" | "operations" | "community";
