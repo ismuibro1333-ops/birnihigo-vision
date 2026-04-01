@@ -2,7 +2,7 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 
-// 1. PROJECT ASSETS (Verify these exist in src/assets)
+// Existing Assets
 import scrollEgg from "@/assets/scroll-egg.jpg";
 import scrollChick from "@/assets/scroll-chick.jpg";
 import scrollChicken from "@/assets/scroll-chicken.jpg";
@@ -14,17 +14,17 @@ import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
-// 2. NEW ASSETS (Check extensions! Change .jpg to .png if needed)
-import img1 from "@/assets/1image.jpg";
-import img2 from "@/assets/2image.jpg";
-import img3 from "@/assets/3image.jpg";
-import img4 from "@/assets/4image.jpg";
-import img5 from "@/assets/5image.jpg";
-import img6 from "@/assets/6image.jpg";
-import img7 from "@/assets/7image.jpg";
-import img8 from "@/assets/8image.jpg";
-import img9 from "@/assets/9image.jpg";
-import img10 from "@/assets/10image.jpg";
+// New Assets - UPDATED TO .PNG based on your folder screenshot
+import img1 from "@/assets/1image.png";
+import img2 from "@/assets/2image.png";
+import img3 from "@/assets/3image.png";
+import img4 from "@/assets/4image.png";
+import img5 from "@/assets/5image.png";
+import img6 from "@/assets/6image.png";
+import img7 from "@/assets/7image.png";
+import img8 from "@/assets/8image.png";
+import img9 from "@/assets/9image.png";
+import img10 from "@/assets/10image.png";
 
 type Category = "all" | "facilities" | "operations" | "community";
 
@@ -60,14 +60,14 @@ const Gallery = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="text-center mb-16">
-            <h1 className="text-5xl font-black text-[#4F3C1C] mb-4">Gallery</h1>
+            <h1 className="text-5xl font-black text-[#4F3C1C] mb-4 italic">Operations in Focus</h1>
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               {categories.map((cat) => (
                 <button
                   key={cat.value}
                   onClick={() => setActive(cat.value)}
                   className={`px-8 py-2 rounded-full font-bold transition-all ${
-                    active === cat.value ? "bg-[#FEA42A] text-white" : "bg-gray-100 text-gray-500"
+                    active === cat.value ? "bg-[#FEA42A] text-[#4F3C1C]" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   }`}
                 >
                   {cat.label}
@@ -79,11 +79,11 @@ const Gallery = () => {
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {filtered.map((img, i) => (
               <AnimatedSection key={i}>
-                <div className="overflow-hidden rounded-3xl border border-gray-100 shadow-sm">
+                <div className="overflow-hidden rounded-3xl border border-gray-100 shadow-sm group">
                   <img 
                     src={img.src} 
                     alt={img.alt} 
-                    className="w-full hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
               </AnimatedSection>
