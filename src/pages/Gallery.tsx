@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+
+// Existing Assets
 import scrollEgg from "@/assets/scroll-egg.jpg";
 import scrollChick from "@/assets/scroll-chick.jpg";
 import scrollChicken from "@/assets/scroll-chicken.jpg";
@@ -12,26 +14,41 @@ import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
+// New Assets - Mapped exactly to your file extensions
+import img1 from "@/assets/1image.JPG"; // Uppercase
+import img2 from "@/assets/2image.jpg"; // Lowercase
+import img3 from "@/assets/3image.JPG"; // Uppercase
+import img4 from "@/assets/4image.JPG"; // Uppercase
+import img5 from "@/assets/5image.jpg"; // Lowercase
+import img6 from "@/assets/6image.JPG"; // Uppercase
+import img7 from "@/assets/7image.JPG"; // Uppercase
+import img8 from "@/assets/8image.jpg"; // Lowercase
+import img9 from "@/assets/9image.JPG"; // Uppercase
+import img10 from "@/assets/10image.JPG"; // Uppercase
+
 type Category = "all" | "facilities" | "operations" | "community";
 
-const images: { src: string; alt: string; category: Exclude<Category, "all">; aspect: string }[] = [
-  { src: scrollEgg, alt: "42-hectare facility construction site in Afar, Ethiopia", category: "facilities", aspect: "aspect-[4/3]" },
-  { src: scrollChick, alt: "Automated feeding systems inside bio-secure poultry house", category: "facilities", aspect: "aspect-[4/3]" },
-  { src: heroBg, alt: "Full-scale broiler production house with thousands of birds", category: "operations", aspect: "aspect-[16/9]" },
-  { src: scrollChicken, alt: "Chickens feeding at automated stations inside facility", category: "operations", aspect: "aspect-[4/3]" },
-  { src: chickensCloseup, alt: "Close-up of healthy broiler chickens in bio-secure environment", category: "operations", aspect: "aspect-[3/4]" },
-  { src: pic1, alt: "Birnihigo veterinary staff inside production facility", category: "community", aspect: "aspect-[16/9]" },
-  { src: pic2, alt: "Young chicks under heat lamps in brooding house", category: "operations", aspect: "aspect-[4/3]" },
-  { src: pic3, alt: "Chicks feeding at automated feeders in nursery", category: "operations", aspect: "aspect-[4/3]" },
-  { src: scrollProduct, alt: "Poultry transport crates at logistics facility", category: "operations", aspect: "aspect-[4/3]" },
-  { src: logisticsCrates, alt: "Stacked transport crates ready for distribution", category: "operations", aspect: "aspect-[4/3]" },
+const images = [
+  { src: img1, alt: "Automated production line", category: "operations" },
+  { src: img2, alt: "Nursery phase management", category: "operations" },
+  { src: img3, alt: "Large scale broiler house", category: "operations" },
+  { src: img4, alt: "Precision feeding systems", category: "operations" },
+  { src: img5, alt: "Industrial processing plant", category: "facilities" },
+  { src: img6, alt: "Farmer training workshop", category: "community" },
+  { src: img7, alt: "Technical seminar session", category: "community" },
+  { src: img8, alt: "Outreach program group", category: "community" },
+  { src: img9, alt: "Day-old chick distribution", category: "community" },
+  { src: img10, alt: "Logistics and partnership", category: "community" },
+  { src: scrollEgg, alt: "Facility site", category: "facilities" },
+  { src: scrollChick, alt: "Bio-secure housing", category: "facilities" },
+  { src: pic1, alt: "Veterinary staff", category: "community" },
 ];
 
 const categories: { value: Category; label: string }[] = [
   { value: "all", label: "All" },
-  { value: "facilities", label: "Bio-Secure Facilities" },
-  { value: "operations", label: "Operational Excellence" },
-  { value: "community", label: "Community Engagement" },
+  { value: "facilities", label: "Facilities" },
+  { value: "operations", label: "Operations" },
+  { value: "community", label: "Community" },
 ];
 
 const Gallery = () => {
@@ -40,47 +57,37 @@ const Gallery = () => {
 
   return (
     <Layout>
-      <section className="section-padding bg-card border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <AnimatedSection>
-            <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Gallery</p>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">Operations in Focus</h1>
-            <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
-              A visual journey through our 42-hectare integrated poultry facility — from construction to full-scale production.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
-          {/* Filter tabs */}
-          <AnimatedSection className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setActive(cat.value)}
-                className={`px-5 py-2 text-sm font-body font-medium rounded-full border transition-all ${
-                  active === cat.value
-                    ? "bg-accent text-accent-foreground border-accent"
-                    : "border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
+      <section className="py-20 bg-white min-h-screen">
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimatedSection className="text-center mb-16">
+            <h1 className="text-5xl font-black text-[#4F3C1C] mb-4 italic tracking-tighter">
+              OPERATIONS <span className="text-[#FEA42A]">IN FOCUS</span>
+            </h1>
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
+              {categories.map((cat) => (
+                <button
+                  key={cat.value}
+                  onClick={() => setActive(cat.value)}
+                  className={`px-8 py-2 rounded-full font-bold transition-all uppercase text-xs tracking-widest ${
+                    active === cat.value 
+                      ? "bg-[#FEA42A] text-[#4F3C1C] shadow-lg scale-105" 
+                      : "bg-gray-100 text-gray-400 hover:bg-gray-200"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              ))}
+            </div>
           </AnimatedSection>
 
-          {/* Masonry grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {filtered.map((img, i) => (
-              <AnimatedSection key={img.alt} delay={(i % 3) * 0.1}>
-                <div className="rounded-2xl overflow-hidden border border-border break-inside-avoid">
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
+              <AnimatedSection key={i}>
+                <div className="overflow-hidden rounded-[2rem] border border-gray-100 shadow-sm group bg-gray-50">
+                  <img 
+                    src={img.src} 
+                    alt={img.alt} 
+                    className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                 </div>
               </AnimatedSection>
