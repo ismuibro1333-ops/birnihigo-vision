@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 
 const timeline = [
-  { year: "2013", title: "Foundation", desc: "Birnihigo established as a day-old chick supplier. Contract farming introduced as a core pillar from inception." },
-  { year: "2014", title: "Transformation", desc: "Transitioned to a vertically integrated system to meet rapid market demand for quality poultry." },
-  { year: "2019-22", title: "Infrastructure", desc: "Secured 42+ hectares in Awash. Established 9ha breeding farm and science-based biosecurity." },
-  { year: "2023-24", title: "Processing", desc: "Developed 24ha processing facility. Focused on HACCP-aligned systems and Halal standards." },
-  { year: "2025", title: "Sovereignty", desc: "Acquisition of 2,000+ hectares for Maize and Soya plantation to secure 100% internal feed supply." },
+  { year: "2013", title: "Inception", desc: "Established as a specialized day-old chick supplier, laying the groundwork for integrated contract farming." },
+  { year: "2014-18", title: "Integration", desc: "Transitioned into a vertically integrated system to bridge the gap between quality supply and market demand." },
+  { year: "2019-22", title: "Industrial Infrastructure", desc: "Secured 42+ hectares in Awash and established a 9ha breeding farm with science-based biosecurity protocols." },
+  { year: "2023-24", title: "Processing & Standards", desc: "Operationalized a 24ha processing facility focused on HACCP-aligned safety and global Halal standards." },
+  { year: "2025", title: "Feed Sovereignty", desc: "Acquired 2,000+ hectares for Maize and Soya plantations to secure 100% internal feed supply chain." },
 ];
 
 const About = () => {
@@ -27,7 +27,6 @@ const About = () => {
     <Layout>
       {/* 1. HIGH-IMPACT HERO - Dark Industrial Theme */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-[#1A1A1A]">
-        {/* Subtle background movement */}
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.2 }}
@@ -45,10 +44,10 @@ const About = () => {
             Corporate Identity
           </motion.p>
           <h1 className="font-display text-5xl md:text-8xl text-[#EFE7DC] font-black tracking-tighter mb-8 italic leading-none">
-            Innovation. <span className="text-[#FEA42A]">Integration.</span>
+            Industrial <span className="text-[#FEA42A]">Precision.</span>
           </h1>
           <p className="text-[#EFE7DC]/80 text-lg md:text-xl font-medium max-w-3xl mx-auto leading-relaxed border-l-2 border-[#FEA42A] pl-6 py-2 italic">
-            "Driving national food sovereignty through integrated, science-based poultry systems."
+            "Eliminating food insecurity through science-led, large-scale integrated poultry ecosystems."
           </p>
           <motion.div 
             animate={{ y: [0, 10, 0] }} 
@@ -65,9 +64,9 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: ShieldCheck, title: "Biosecurity", desc: "Recognized as a strategic pillar ensuring long-term sustainability and trust." },
-              { icon: Recycle, title: "Circular Model", desc: "Transforming 100% of organic waste into fertilizer and renewable energy." },
-              { icon: GraduationCap, title: "Human Capital", desc: "Building industry talent through research and academic partnerships." },
+              { icon: ShieldCheck, title: "Biosecurity", desc: "Rigorous laboratory monitoring and strict environmental controls ensuring zero-risk production." },
+              { icon: Recycle, title: "Waste Synergy", desc: "Closing the loop by converting 100% of organic by-products into high-grade organic fertilizer." },
+              { icon: GraduationCap, title: "Tech Adoption", desc: "Scaling through automated climate-controlled housing and advanced data-driven feeding systems." },
             ].map((p, i) => (
               <AnimatedSection key={p.title} delay={i * 0.2}>
                 <div className="group relative p-10 h-full bg-white/40 backdrop-blur-md border border-[#CD8C24]/10 rounded-[2.5rem] hover:bg-[#4F3C1C] transition-all duration-500 shadow-xl">
@@ -83,7 +82,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3. THE JOURNEY - Sticky Scroll (The "Sexy" Part) */}
+      {/* 3. THE JOURNEY - Sticky Scroll */}
       <section ref={containerRef} className="relative bg-[#4F3C1C] py-20">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
           
@@ -112,8 +111,8 @@ const About = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#4F3C1C] via-transparent to-transparent opacity-60" />
               <div className="absolute bottom-12 left-12 right-12">
-                <p className="text-[#FEA42A] font-black uppercase tracking-widest text-xs mb-2">Strategic Expansion</p>
-                <p className="text-[#EFE7DC] text-2xl font-bold leading-tight">Securing National Food Sovereignty through Industrial Scale.</p>
+                <p className="text-[#FEA42A] font-black uppercase tracking-widest text-xs mb-2">Industrial Scale</p>
+                <p className="text-[#EFE7DC] text-2xl font-bold leading-tight">Securing National Sovereignty through 2,000+ Hectares of Feed Self-Sufficiency.</p>
               </div>
             </div>
           </div>
@@ -127,13 +126,13 @@ const About = () => {
             <div className="inline-flex p-4 bg-[#FEA42A]/10 rounded-full mb-8">
               <Award className="text-[#FEA42A]" size={40} />
             </div>
-            <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter mb-12">Our Commitment</h2>
+            <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter mb-12">Strategic Mandate</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               {[
-                "Affordable high-quality protein",
-                "Structured contract farming",
-                "Halal-certified export readiness",
-                "Vertically integrated excellence"
+                "Science-based food sovereignty",
+                "Industrial-scale biosecurity",
+                "Export-grade Halal processing",
+                "Internalized feed supply chain"
               ].map((text, i) => (
                 <div key={i} className="flex items-center gap-4 p-6 bg-white/60 rounded-3xl border border-[#CD8C24]/10 shadow-sm">
                   <div className="w-3 h-3 bg-[#FEA42A] rounded-full shrink-0" />
