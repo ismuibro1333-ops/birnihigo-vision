@@ -33,7 +33,7 @@ const Index = () => (
 
     <ValueChain />
     
-    {/* SECTION 1: THE NUMBERS (Updated for Industrial Scale) */}
+    {/* SECTION 1: THE NUMBERS (Industrial Scale) */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
@@ -122,7 +122,7 @@ const Index = () => (
             { icon: Droplets, title: "Clean Water", desc: "Advanced treatment systems returning purified water to the production cycle.", stat: "Zero Liquid Waste" },
             { icon: Zap, title: "Renewable Energy", desc: "Converting organic liquid waste into biogas energy for on-site operations.", stat: "Clean Power" },
           ].map((item, i) => (
-            <AnimatedSection key={item.title} delay={item.title === "Clean Water" ? 0.3 : (i * 0.15)}>
+            <AnimatedSection key={item.title} delay={i * 0.15}>
               <article className="text-center group bg-white/5 p-10 rounded-[3rem] border border-white/10 hover:bg-[#FEA42A]/10 transition-all duration-500">
                 <div className="w-20 h-20 rounded-[1.5rem] bg-[#FEA42A]/10 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A] shadow-inner">
                   <item.icon size={32} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
