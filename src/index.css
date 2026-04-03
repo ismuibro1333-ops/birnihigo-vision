@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Parkinsans:wght@400;700;800;900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +6,7 @@
   :root {
     /* BRAND COLORS (Converted to HSL for the Design System) */
     /* White Chocolate: #EFE7DC -> 35 34% 90% */
-    --background: 35 34% 90%; 
+    --background: 35 34% 90%;
     /* Café Noir: #4F3C1C -> 38 48% 21% */
     --foreground: 38 48% 21%;
 
@@ -52,7 +50,7 @@
 
     --primary: 35 98% 58%;
     --primary-foreground: 38 48% 21%;
-    
+
     --border: 35 34% 90% / 0.1;
   }
 }
@@ -61,12 +59,12 @@
   * {
     @apply border-border selection:bg-[#FEA42A]/30;
   }
-
+  
   html {
     @apply antialiased scroll-smooth;
     font-family: 'Parkinsans', sans-serif;
   }
-
+  
   body {
     @apply bg-background text-foreground min-h-screen font-medium;
   }
@@ -75,17 +73,74 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-black tracking-tighter text-foreground;
   }
-
-  h1 { @apply text-6xl lg:text-8xl leading-[0.9]; }
   
+  h1 { @apply text-6xl lg:text-8xl leading-[0.9]; }
   h2 { @apply text-5xl lg:text-7xl italic leading-tight; }
-
   h3 { @apply text-xl lg:text-2xl uppercase tracking-[0.3em] font-black; }
-
   p { @apply leading-relaxed opacity-90; }
 
   /* NAVIGATION & BUTTONS */
   nav a, button {
     @apply font-black uppercase tracking-[0.2em] transition-all duration-300;
+  }
+
+  /* INPUTS & FORMS */
+  input, textarea {
+    @apply bg-transparent border-b-2 border-foreground/10 py-4 focus:border-primary outline-none transition-colors placeholder:text-foreground/30;
+  }
+}
+
+@layer components {
+  /* THE INDUSTRIAL GLASS CARD */
+  .glass-card {
+    @apply bg-white/40 backdrop-blur-md border border-secondary/10 shadow-sm rounded-[2.5rem];
+  }
+
+  /* BUTTON SYSTEM */
+  .btn-primary {
+    @apply bg-[#4F3C1C] text-[#FEA42A] px-8 py-4 rounded-full hover:bg-[#FEA42A] hover:text-[#4F3C1C] active:scale-95 transition-all shadow-xl;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#4F3C1C] text-[#4F3C1C] px-8 py-4 rounded-full hover:bg-[#4F3C1C] hover:text-[#EFE7DC] active:scale-95 transition-all;
+  }
+}
+
+@layer utilities {
+  /* GRAIN TEXTURE OVERLAY */
+  .bg-grain {
+    position: relative;
+  }
+  
+  .bg-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+    filter: brightness(100%) contrast(150%);
+    z-index: 50;
+  }
+
+  /* CUSTOM SCROLLBAR (Industrial Style) */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary/30 rounded-full hover:bg-secondary/60 transition-colors;
+  }
+
+  /* TEXT REVEAL ANIMATION HELPERS */
+  .text-edge-outline {
+    -webkit-text-stroke: 1px rgba(79, 60, 28, 0.2);
+    color: transparent;
   }
 }
