@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { 
   MapPin, Phone, Mail, ArrowRight, MessageCircle, 
-  Calendar, Clock, Globe, ChevronRight, Factory 
+  Calendar, Clock, Globe, ChevronRight, Factory, Building
 } from "lucide-react";
 
 const departmentEmails = [
@@ -45,38 +45,38 @@ const Contact = () => {
                 <h3 className="text-2xl font-black mb-10 italic border-b border-white/10 pb-6 uppercase tracking-widest">Our Locations</h3>
                 
                 <div className="space-y-12 relative z-10">
-                  {/* CORPORATE HQ */}
+                  {/* CORPORATE HQ / LIAISON */}
                   <div className="flex gap-6">
                     <div className="w-12 h-12 rounded-2xl bg-[#FEA42A]/10 flex items-center justify-center shrink-0">
-                      <MapPin className="text-[#FEA42A]" size={24} />
+                      <Building className="text-[#FEA42A]" size={24} />
                     </div>
                     <div>
-                      <p className="font-black text-sm uppercase tracking-widest text-[#FEA42A] mb-2">Corporate Headquarters</p>
+                      <p className="font-black text-sm uppercase tracking-widest text-[#FEA42A] mb-2">Liaison Office</p>
                       <p className="text-lg opacity-90 leading-relaxed font-bold">
-                        Africa Avenue, Bedesta Building<br />6th Floor — Addis Ababa, Ethiopia
+                        Garad Building, 10th Floor<br />Addis Ababa, Ethiopia
                       </p>
                     </div>
                   </div>
 
-                  {/* INDUSTRIAL COMPLEX */}
+                  {/* INDUSTRIAL HUB */}
                   <div className="flex gap-6">
                     <div className="w-12 h-12 rounded-2xl bg-[#FEA42A]/10 flex items-center justify-center shrink-0">
                       <Factory className="text-[#FEA42A]" size={24} />
                     </div>
                     <div>
-                      <p className="font-black text-sm uppercase tracking-widest text-[#FEA42A] mb-2">Industrial Complex</p>
+                      <p className="font-black text-sm uppercase tracking-widest text-[#FEA42A] mb-2">Production Hub</p>
                       <p className="text-lg opacity-90 leading-relaxed font-bold">
-                        Birnihigo Integrated Farm Site<br />42ha Bio-Secure Zone — Ethiopia
+                        Awash Sebat, Afar Region<br />2,042 Ha Integrated Site — Ethiopia
                       </p>
                     </div>
                   </div>
 
                   <div className="pt-6 border-t border-white/10 grid grid-cols-2 gap-4">
-                    <a href="tel:+251911509505" className="flex items-center gap-3 group">
+                    <a href="tel:+251222413101" className="flex items-center gap-3 group">
                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#FEA42A] group-hover:text-[#4F3C1C] transition-all">
                         <Phone size={18} />
                       </div>
-                      <span className="text-xs font-black tracking-widest uppercase">Direct Line</span>
+                      <span className="text-xs font-black tracking-widest uppercase">Office Line</span>
                     </a>
                     <a href="https://wa.me/251911509505" className="flex items-center gap-3 group">
                       <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-[#25D366] transition-all">
@@ -105,8 +105,8 @@ const Contact = () => {
             </AnimatedSection>
           </div>
 
-          {/* RIGHT: THE FORM */}
-          <div className="lg:col-span-7">
+          {/* RIGHT: THE FORM & MAP */}
+          <div className="lg:col-span-7 space-y-8">
             <AnimatedSection delay={0.3}>
               <div className="bg-white rounded-[3.5rem] p-12 shadow-sm border border-[#CD8C24]/10">
                 <div className="flex gap-4 mb-12 flex-wrap">
@@ -152,23 +152,38 @@ const Contact = () => {
                   </button>
                 </form>
               </div>
+            </AnimatedSection>
 
-              {/* Visit CTA */}
-              <div className="mt-8 p-10 bg-[#FEA42A] rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-2xl bg-[#4F3C1C] flex items-center justify-center text-[#FEA42A]">
-                    <Calendar size={28} />
-                  </div>
-                  <div>
-                    <h4 className="text-[#4F3C1C] text-xl font-black italic">Site Inspections</h4>
-                    <p className="text-[#4F3C1C]/70 font-bold text-sm">Review our bio-secure systems and scale first-hand.</p>
-                  </div>
-                </div>
-                <a href="mailto:visit@birnihigo.com" className="px-8 py-4 bg-[#4F3C1C] text-[#FEA42A] rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-xl">
-                  Book Technical Tour
-                </a>
+            {/* INTEGRATED MAP SECTION */}
+            <AnimatedSection delay={0.4}>
+              <div className="rounded-[3.5rem] overflow-hidden h-80 border-8 border-[#FEA42A]/10 shadow-lg grayscale hover:grayscale-0 transition-all duration-700">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15762.637375269558!2d40.031389!3d11.362222!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTHCsDIxJzQ0LjAiTiA0MMKwMDEnNTMuMCJF!5e0!3m2!1sen!2set!4v1711980000000!5m2!1sen!2set" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </AnimatedSection>
+
+            {/* Visit CTA */}
+            <div className="p-10 bg-[#FEA42A] rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-[#4F3C1C] flex items-center justify-center text-[#FEA42A]">
+                  <Calendar size={28} />
+                </div>
+                <div>
+                  <h4 className="text-[#4F3C1C] text-xl font-black italic">Site Inspections</h4>
+                  <p className="text-[#4F3C1C]/70 font-bold text-sm">Tour our Afar production hub and bio-secure facilities.</p>
+                </div>
+              </div>
+              <a href="mailto:visit@birnihigo.com" className="px-8 py-4 bg-[#4F3C1C] text-[#FEA42A] rounded-full font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-xl">
+                Book Technical Tour
+              </a>
+            </div>
           </div>
         </div>
       </section>
