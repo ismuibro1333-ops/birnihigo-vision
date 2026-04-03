@@ -49,7 +49,8 @@ const steps = [
 
 const ValueChain = () => {
   return (
-    <section className="py-24 bg-background overflow-hidden" aria-labelledby="value-chain-heading">
+    /* Forced Café Noir Background (#4F3C1C) */
+    <section className="py-24 bg-[#4F3C1C] overflow-hidden" aria-labelledby="value-chain-heading">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -57,25 +58,27 @@ const ValueChain = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <p className="text-primary text-sm uppercase tracking-[0.4em] mb-4 font-black">Our Ecosystem</p>
-          <h2 id="value-chain-heading" className="text-5xl lg:text-7xl text-foreground font-black tracking-tighter italic">
-            Vertically Integrated Excellence
+          {/* Saffron Primary for the Subtitle */}
+          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-black italic">
+            Our Ecosystem
+          </p>
+          {/* White Chocolate for the Heading */}
+          <h2 id="value-chain-heading" className="text-5xl lg:text-7xl text-[#EFE7DC] font-black tracking-tighter italic uppercase leading-none">
+            Vertically Integrated <span className="text-[#FEA42A]">Excellence</span>
           </h2>
         </motion.div>
 
-        {/* 7-Step Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
           {steps.map((step, i) => (
             <ValueChainCard key={step.step} step={step} index={i} />
           ))}
           
-          {/* Final "Circular Loop" Visual Card to fill the 8th slot in the grid */}
           <motion.div 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            className="hidden lg:flex items-center justify-center p-8 rounded-[2rem] border-2 border-dashed border-primary/20"
+            className="hidden lg:flex items-center justify-center p-8 rounded-[2rem] border-2 border-dashed border-[#FEA42A]/20"
           >
-             <p className="text-primary font-black uppercase tracking-widest text-[10px] text-center">
+             <p className="text-[#FEA42A] font-black uppercase tracking-widest text-[10px] text-center opacity-50">
                Birnihigo Circular<br/>Economic Model
              </p>
           </motion.div>
@@ -85,8 +88,8 @@ const ValueChain = () => {
   );
 };
 
-const ValueChainCard = ({ step, index }: { step: typeof steps[0]; index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
+const ValueChainCard = ({ step, index }) => {
+  const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
@@ -95,22 +98,25 @@ const ValueChainCard = ({ step, index }: { step: typeof steps[0]; index: number 
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.6 }}
-      className="group relative bg-card border border-border/40 rounded-[2rem] p-8 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 flex flex-col"
+      /* Darker Tint for the card to separate from background */
+      className="group relative bg-white/5 border border-white/10 rounded-[2.5rem] p-10 hover:border-[#FEA42A]/50 hover:bg-white/10 transition-all duration-500 flex flex-col shadow-2xl"
     >
       <div className="flex items-start justify-between mb-8">
-        <div className="w-14 h-14 rounded-2xl bg-primary flex items-center justify-center text-primary-foreground shadow-lg group-hover:scale-110 transition-transform duration-500">
+        <div className="w-14 h-14 rounded-2xl bg-[#FEA42A] flex items-center justify-center text-[#4F3C1C] shadow-lg group-hover:scale-110 transition-transform duration-500">
           <step.icon size={28} strokeWidth={2.5} />
         </div>
-        <span className="font-black text-4xl text-foreground/10 group-hover:text-primary/20 transition-colors tracking-tighter">
+        <span className="font-black text-4xl text-white/5 group-hover:text-[#FEA42A]/10 transition-colors tracking-tighter">
           {step.step}
         </span>
       </div>
       
-      <h3 className="text-xl text-foreground font-black mb-3 tracking-tight group-hover:text-primary transition-colors">
+      {/* Title in White Chocolate */}
+      <h3 className="text-xl text-[#EFE7DC] font-black mb-3 tracking-tight group-hover:text-[#FEA42A] transition-colors uppercase">
         {step.title}
       </h3>
       
-      <p className="text-sm text-foreground/60 leading-relaxed font-medium">
+      {/* Description with high-readability White Chocolate at 70% opacity */}
+      <p className="text-sm text-[#EFE7DC]/70 leading-relaxed font-medium">
         {step.desc}
       </p>
     </motion.article>
