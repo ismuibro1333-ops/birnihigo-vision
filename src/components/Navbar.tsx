@@ -46,12 +46,19 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#4F3C1C]/95 border-b border-[#CD8C24]/20 backdrop-blur-xl shadow-2xl">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
         
-        {/* LOGO SECTION */}
+        {/* LOGO SECTION - FIXED FOR VISIBILITY */}
         <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
           <img 
             src={logo} 
             alt="Birnihigo Integrated Farms" 
-            className="h-14 w-auto object-contain transition-all duration-500 group-hover:brightness-110" 
+            /* The filter below converts the dark logo to #EFE7DC (White Chocolate).
+               brightness(0) turns it black, invert(1) turns it white, 
+               sepia/saturate/hue adds the warm 'White Chocolate' tint.
+            */
+            className="h-14 w-auto object-contain transition-all duration-500 group-hover:scale-105" 
+            style={{ 
+              filter: "brightness(0) invert(0.95) sepia(0.1) saturate(0.5) hue-rotate(30deg)" 
+            }}
           />
         </Link>
 
