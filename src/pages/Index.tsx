@@ -14,7 +14,7 @@ const Index = () => (
   <Layout>
     <ScrollytellingHero />
     
-    {/* NEW VISION STRIPE: National Impact */}
+    {/* VISION STRIPE: National Impact */}
     <section className="py-12 bg-[#4F3C1C] text-[#EFE7DC] overflow-hidden border-y border-[#FEA42A]/20">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -33,7 +33,7 @@ const Index = () => (
 
     <ValueChain />
     
-    {/* SECTION 1: THE NUMBERS (Updated with 32 Ton Throughput) */}
+    {/* SECTION 1: THE NUMBERS (Updated for Industrial Scale) */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
@@ -47,10 +47,10 @@ const Index = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { label: "Daily Throughput", value: "32 Ton", detail: "Finished chicken meat" },
-            { label: "Livestock Capacity", value: "5,000+", detail: "Heads per cycle" },
-            { label: "Feed Mill", value: "6 T/Hr", detail: "High-nutrient capacity" },
-            { label: "Land Area", value: "42+ Ha", icon: Globe, detail: "Bio-secured site" },
+            { label: "Daily Throughput", value: "32 Ton", detail: "Finished poultry meat" },
+            { label: "Annual Capacity", value: "500k+", detail: "Heads per annum" },
+            { label: "Feed Production", value: "6 T/Hr", detail: "Automated milling" },
+            { label: "Total Footprint", value: "2,042 Ha", icon: Globe, detail: "Integrated Production + Feed" },
           ].map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
               <span className="block text-[#FEA42A] text-6xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
@@ -103,7 +103,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* SECTION 3: RE-DESIGNED SUSTAINABILITY (100% Circular Waste-to-Resource) */}
+    {/* SECTION 3: SUSTAINABILITY (100% Circular Waste-to-Resource) */}
     <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FEA42A]/5 blur-[150px] rounded-full"></div>
       
@@ -122,7 +122,7 @@ const Index = () => (
             { icon: Droplets, title: "Clean Water", desc: "Advanced treatment systems returning purified water to the production cycle.", stat: "Zero Liquid Waste" },
             { icon: Zap, title: "Renewable Energy", desc: "Converting organic liquid waste into biogas energy for on-site operations.", stat: "Clean Power" },
           ].map((item, i) => (
-            <AnimatedSection key={item.title} delay={i * 0.15}>
+            <AnimatedSection key={item.title} delay={item.title === "Clean Water" ? 0.3 : (i * 0.15)}>
               <article className="text-center group bg-white/5 p-10 rounded-[3rem] border border-white/10 hover:bg-[#FEA42A]/10 transition-all duration-500">
                 <div className="w-20 h-20 rounded-[1.5rem] bg-[#FEA42A]/10 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A] shadow-inner">
                   <item.icon size={32} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
@@ -137,7 +137,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* SECTION 4: INVESTOR PORTAL */}
+    {/* SECTION 4: INVESTOR & BIOSECURITY PORTAL */}
     <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
       <div className="max-w-6xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
@@ -152,9 +152,9 @@ const Index = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { icon: Shield, title: "Strategic Pillar", desc: "Biosecurity is recognized as a core strategic pillar, ensuring long-term sustainability and trust." },
-            { icon: Globe, title: "Export Ready", desc: "Advancing toward Halal-certified, export-ready production for regional corridors." },
-            { icon: TrendingUp, title: "Feed Sovereignty", desc: "Internalizing nutrition control with 6 T/Hr feed mill capacity and 2,000+ Ha cultivation." },
+            { icon: Shield, title: "Risk Mitigation", desc: "Science-based biosecurity protocols ensure a zero-risk production environment and export-ready standards." },
+            { icon: Globe, title: "Market Leadership", desc: "Advancing toward Halal-certified production for regional trade corridors and national supply." },
+            { icon: TrendingUp, title: "Vertical Integration", desc: "100% internal supply chain control via 6 T/Hr feed milling and 2,000+ Ha dedicated cultivation." },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <MotionCard className="p-12 h-full bg-[#EFE7DC] border-b-8 border-[#CD8C24] hover:border-[#FEA42A] transition-all rounded-3xl shadow-lg">
