@@ -96,7 +96,7 @@ const Footer = () => {
                 <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center shrink-0 group-hover:bg-[#FEA42A]/10 transition-colors">
                    <Phone size={18} style={{ color: brandOrange }} />
                 </div>
-                <a href="tel:+251911209405" className="opacity-60 hover:opacity-100 hover:text-white font-bold tracking-widest">+251 911 20 94 05</a>
+                <a href="tel:+251 22 241 3101"className="opacity-60 hover:opacity-100 hover:text-white font-bold tracking-widest">+251 22 241 3101</a>
               </div>
             </div>
           </div>
