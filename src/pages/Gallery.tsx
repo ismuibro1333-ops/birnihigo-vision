@@ -12,49 +12,26 @@ import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
 
-// ── NEW IMAGES ──────────────────────────────────────────────
-import newFacility1 from "@/assets/new-facility-1.jpg.JPG";   // 1image: large industrial facility exterior
-import newChickens1 from "@/assets/new-chickens-1.jpg.JPG";   // 2image: broilers with orange drinkers (blurry overhead)
-import newFacility2 from "@/assets/new-facility-2.jpg.JPG";   // 3image: farm buildings with feed silos
-import newDistribution from "@/assets/new-distribution.jpg.JPG"; // 4image: chicken distribution to women community
-import newTraining1 from "@/assets/new-training-1.jpg.JPG";   // 5image: indoor training session
-import newBroilers1 from "@/assets/new-broilers-1.jpg.JPG";   // 6image: broiler house interior wide shot
-import newChicks1 from "@/assets/new-distribution-2.jpg.JPG";       // 7image: chicks around red feeder close-up
-import newBroilers2 from "@/assets/new-broilers-2.jpg.JPG";   // 8image: broiler house with red feeders & yellow drinkers
-import newTraining2 from "@/assets/new-training-2.jpg.JPG";   // 9image: Birnihigo training group photo
-// ────────────────────────────────────────────────────────────
-
 type Category = "all" | "facilities" | "operations" | "community";
 
 const images: { src: string; alt: string; category: Exclude<Category, "all">; aspect: string }[] = [
-  // ── EXISTING ──
-  { src: scrollEgg,        alt: "42-hectare facility construction site in Afar, Ethiopia",         category: "facilities",  aspect: "aspect-[4/3]"  },
-  { src: scrollChick,      alt: "Automated feeding systems inside bio-secure poultry house",        category: "facilities",  aspect: "aspect-[4/3]"  },
-  { src: heroBg,           alt: "Full-scale broiler production house with thousands of birds",      category: "operations",  aspect: "aspect-[16/9]" },
-  { src: scrollChicken,    alt: "Chickens feeding at automated stations inside facility",            category: "operations",  aspect: "aspect-[4/3]"  },
-  { src: chickensCloseup,  alt: "Close-up of healthy broiler chickens in bio-secure environment",   category: "operations",  aspect: "aspect-[3/4]"  },
-  { src: pic1,             alt: "Birnihigo veterinary staff inside production facility",             category: "community",   aspect: "aspect-[16/9]" },
-  { src: pic2,             alt: "Young chicks under heat lamps in brooding house",                  category: "operations",  aspect: "aspect-[4/3]"  },
-  { src: pic3,             alt: "Chicks feeding at automated feeders in nursery",                   category: "operations",  aspect: "aspect-[4/3]"  },
-  { src: scrollProduct,    alt: "Poultry transport crates at logistics facility",                   category: "operations",  aspect: "aspect-[4/3]"  },
-  { src: logisticsCrates,  alt: "Stacked transport crates ready for distribution",                  category: "operations",  aspect: "aspect-[4/3]"  },
-
-  // ── NEW ──
-  { src: newFacility1,     alt: "Large-scale integrated poultry facility exterior with power infrastructure", category: "facilities",  aspect: "aspect-[16/9]" },
-  { src: newFacility2,     alt: "Poultry farm buildings with galvanized feed silos and green surroundings",  category: "facilities",  aspect: "aspect-[16/9]" },
-  { src: newChickens1,     alt: "Overhead view of broiler flock with automated drinker lines",               category: "operations",  aspect: "aspect-[4/3]"  },
-  { src: newBroilers1,     alt: "Wide-angle interior of broiler house showing full flock and feeder rows",   category: "operations",  aspect: "aspect-[16/9]" },{ src: newChicks1,       alt: "Day-old chicks crowding around a red bell feeder in brooding house",        category: "operations",  aspect: "aspect-[3/4]"  },
-  { src: newBroilers2,     alt: "Broiler house interior with red cone feeders and yellow drinkers",          category: "operations",  aspect: "aspect-[4/3]"  },
-  { src: newDistribution,  alt: "Community chicken distribution — farm worker handing birds to local women", category: "community",   aspect: "aspect-[4/3]"  },
-  { src: newTraining1,     alt: "Birnihigo outgrower training session with participants taking notes",        category: "community",   aspect: "aspect-[16/9]" },
-  { src: newTraining2,     alt: "Birnihigo team and trainees group photo at empowerment program launch",     category: "community",   aspect: "aspect-[4/3]"  },
+  { src: scrollEgg, alt: "42-hectare facility construction site in Afar, Ethiopia", category: "facilities", aspect: "aspect-[4/3]" },
+  { src: scrollChick, alt: "Automated feeding systems inside bio-secure poultry house", category: "facilities", aspect: "aspect-[4/3]" },
+  { src: heroBg, alt: "Full-scale broiler production house with thousands of birds", category: "operations", aspect: "aspect-[16/9]" },
+  { src: scrollChicken, alt: "Chickens feeding at automated stations inside facility", category: "operations", aspect: "aspect-[4/3]" },
+  { src: chickensCloseup, alt: "Close-up of healthy broiler chickens in bio-secure environment", category: "operations", aspect: "aspect-[3/4]" },
+  { src: pic1, alt: "Birnihigo veterinary staff inside production facility", category: "community", aspect: "aspect-[16/9]" },
+  { src: pic2, alt: "Young chicks under heat lamps in brooding house", category: "operations", aspect: "aspect-[4/3]" },
+  { src: pic3, alt: "Chicks feeding at automated feeders in nursery", category: "operations", aspect: "aspect-[4/3]" },
+  { src: scrollProduct, alt: "Poultry transport crates at logistics facility", category: "operations", aspect: "aspect-[4/3]" },
+  { src: logisticsCrates, alt: "Stacked transport crates ready for distribution", category: "operations", aspect: "aspect-[4/3]" },
 ];
 
 const categories: { value: Category; label: string }[] = [
-  { value: "all",        label: "All" },
+  { value: "all", label: "All" },
   { value: "facilities", label: "Bio-Secure Facilities" },
   { value: "operations", label: "Operational Excellence" },
-  { value: "community",  label: "Community Engagement" },
+  { value: "community", label: "Community Engagement" },
 ];
 
 const Gallery = () => {
