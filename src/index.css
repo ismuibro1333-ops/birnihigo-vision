@@ -4,54 +4,40 @@
 
 @layer base {
   :root {
-    /* BRAND COLORS (Converted to HSL for the Design System) */
-    /* White Chocolate: #EFE7DC -> 35 34% 90% */
-    --background: 35 34% 90%;
-    /* Café Noir: #4F3C1C -> 38 48% 21% */
-    --foreground: 38 48% 21%;
+    /* 1. PRIMARY PALETTE (From Guidelines) */
+    /* Café Noir: Primary Brand Color */
+    --background: 38 48% 21%; /* #4F3C1C */
+    --foreground: 35 34% 90%; /* #EFE7DC */
 
-    --card: 35 34% 90%;
-    --card-foreground: 38 48% 21%;
+    /* White Chocolate: Accent/Balance */
+    --card: 35 34% 90%; /* #EFE7DC */
+    --card-foreground: 38 48% 21%; /* #4F3C1C */
 
-    --popover: 35 34% 90%;
-    --popover-foreground: 38 48% 21%;
-
-    /* Deep Saffron Primary: #FEA42A -> 35 98% 58% */
-    --primary: 35 98% 58%;
+    /* Deep Saffron: Energetic Accent */
+    --primary: 35 98% 58%; /* #FEA42A */
     --primary-foreground: 38 48% 21%;
 
-    /* Golden Accent: #CD8C24 -> 37 70% 47% */
-    --secondary: 37 70% 47%;
+    /* Chinese Bronze: Secondary Accent */
+    --secondary: 37 70% 47%; /* #CD8C24 */
     --secondary-foreground: 35 34% 90%;
 
-    --muted: 35 20% 85%;
-    --muted-foreground: 38 48% 40%;
-
-    --accent: 35 98% 58%;
+    /* Dandelion: Soft Accent */
+    --accent: 40 100% 73%; /* #FFD275 */
     --accent-foreground: 38 48% 21%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
+    /* 2. SYSTEM SPECIFICS */
+    --muted: 38 20% 30%;
+    --muted-foreground: 35 10% 70%;
     --border: 37 70% 47% / 0.2;
     --input: 37 70% 47% / 0.2;
     --ring: 35 98% 58%;
-
     --radius: 1rem;
   }
 
-  /* DARK MODE: Swaps the focus to Café Noir as the background */
+  /* Maintaining Café Noir as the dominant theme */
   .dark {
     --background: 38 48% 21%;
     --foreground: 35 34% 90%;
-
-    --card: 38 48% 21%;
-    --card-foreground: 35 34% 90%;
-
-    --primary: 35 98% 58%;
-    --primary-foreground: 38 48% 21%;
-
-    --border: 35 34% 90% / 0.1;
   }
 }
 
@@ -62,85 +48,78 @@
   
   html {
     @apply antialiased scroll-smooth;
+    /* TYPOGRAPHY RULE: Parkinsans is the mandatory display typeface */
     font-family: 'Parkinsans', sans-serif;
   }
   
   body {
-    @apply bg-background text-foreground min-h-screen font-medium;
+    /* Applying the 70% Café Noir Rule to the body background */
+    @apply bg-[#4F3C1C] text-[#EFE7DC] min-h-screen;
   }
 
-  /* GLOBAL TYPOGRAPHY SYSTEM */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-black tracking-tighter text-foreground;
+  /* BRAND TYPOGRAPHY SYSTEM */
+  h1, h2, h3, h4 {
+    /* Guidelines specify Bold for headers */
+    @apply font-black tracking-tighter text-foreground uppercase;
   }
   
-  h1 { @apply text-6xl lg:text-8xl leading-[0.9]; }
-  h2 { @apply text-5xl lg:text-7xl italic leading-tight; }
-  h3 { @apply text-xl lg:text-2xl uppercase tracking-[0.3em] font-black; }
-  p { @apply leading-relaxed opacity-90; }
+  h1 { @apply text-6xl lg:text-8xl leading-[0.85] mb-6; }
+  h2 { @apply text-4xl lg:text-6xl italic leading-tight mb-4; }
+  h3 { @apply text-lg lg:text-xl tracking-[0.4em] text-[#FEA42A] mb-2; }
+  
+  /* Body text uses Parkinsans Regular at 90% opacity for accessibility */
+  p { @apply leading-relaxed opacity-90 font-medium; }
 
-  /* NAVIGATION & BUTTONS */
-  nav a, button {
-    @apply font-black uppercase tracking-[0.2em] transition-all duration-300;
-  }
-
-  /* INPUTS & FORMS */
-  input, textarea {
-    @apply bg-transparent border-b-2 border-foreground/10 py-4 focus:border-primary outline-none transition-colors placeholder:text-foreground/30;
+  /* LOGO PROTECTION: Minimum size 32px digital */
+  .brand-logo {
+    @apply min-h-[32px] w-auto transition-transform duration-300;
   }
 }
 
 @layer components {
-  /* THE INDUSTRIAL GLASS CARD */
+  /* THE 70/20/10 LAYOUT RULES */
+  
+  /* 70% - Primary Backgrounds (Café Noir) */
+  .bg-brand-primary {
+    @apply bg-[#4F3C1C] text-[#EFE7DC];
+  }
+
+  /* 20% - Secondary Elements (Deep Saffron) */
+  .btn-brand {
+    @apply bg-[#FEA42A] text-[#4F3C1C] px-10 py-5 rounded-full font-black 
+           hover:scale-105 hover:bg-[#FFD275] transition-all shadow-2xl uppercase tracking-widest;
+  }
+
+  /* 10% - High Impact Accents (Chinese Bronze / Dandelion) */
+  .accent-border {
+    @apply border-2 border-[#CD8C24];
+  }
+
+  /* INDUSTRIAL GLASS: Blends Café Noir with White Chocolate */
   .glass-card {
-    @apply bg-white/40 backdrop-blur-md border border-secondary/10 shadow-sm rounded-[2.5rem];
-  }
-
-  /* BUTTON SYSTEM */
-  .btn-primary {
-    @apply bg-[#4F3C1C] text-[#FEA42A] px-8 py-4 rounded-full hover:bg-[#FEA42A] hover:text-[#4F3C1C] active:scale-95 transition-all shadow-xl;
-  }
-
-  .btn-outline {
-    @apply border-2 border-[#4F3C1C] text-[#4F3C1C] px-8 py-4 rounded-full hover:bg-[#4F3C1C] hover:text-[#EFE7DC] active:scale-95 transition-all;
+    @apply bg-[#EFE7DC]/10 backdrop-blur-xl border border-white/10 rounded-[3rem] p-8;
   }
 }
 
 @layer utilities {
-  /* GRAIN TEXTURE OVERLAY */
-  .bg-grain {
-    position: relative;
-  }
-  
-  .bg-grain::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.03;
-    pointer-events: none;
-    background-image: url("https://grainy-gradients.vercel.app/noise.svg");
-    filter: brightness(100%) contrast(150%);
-    z-index: 50;
+  /* CLEAR SPACE RULE: Based on 1/2 "B" width logic */
+  .logo-clear-space {
+    @apply p-8; /* Safe padding for logo containers */
   }
 
-  /* CUSTOM SCROLLBAR (Industrial Style) */
+  /* TEXT REVEAL: Using Deep Saffron for high-impact emphasis */
+  .text-highlight {
+    @apply text-[#FEA42A] italic;
+  }
+
+  /* CUSTOM SCROLLBAR: Café Noir track with Saffron thumb */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
-
   ::-webkit-scrollbar-track {
-    @apply bg-background;
+    @apply bg-[#4F3C1C];
   }
-
   ::-webkit-scrollbar-thumb {
-    @apply bg-secondary/30 rounded-full hover:bg-secondary/60 transition-colors;
-  }
-
-  /* TEXT REVEAL ANIMATION HELPERS */
-  .text-edge-outline {
-    -webkit-text-stroke: 1px rgba(79, 60, 28, 0.2);
-    color: transparent;
+    @apply bg-[#FEA42A] rounded-full;
   }
 }
