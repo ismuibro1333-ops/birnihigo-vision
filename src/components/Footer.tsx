@@ -34,7 +34,6 @@ const Footer = () => {
                   alt="Birnihigo Logo" 
                   className="w-14 h-14 object-contain brightness-0 invert transition-all duration-700 group-hover:rotate-[15deg] group-hover:scale-110" 
                 />
-                <div className="absolute -inset-2 bg-[#FEA42A]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
               <div className="flex flex-col">
                 <span className="font-display text-3xl font-black tracking-tighter italic leading-none" style={{ color: brandOrange }}>
@@ -44,8 +43,9 @@ const Footer = () => {
               </div>
             </Link>
             
+            {/* THE REFINED TWO-PHRASE MISSION */}
             <p className="text-lg leading-relaxed mb-10 opacity-70 font-medium max-w-sm italic border-l-2 border-[#FEA42A] pl-6 py-1">
-              Ethiopia's first fully integrated poultry ecosystem. Eliminating food insecurity through science-led, integrated poultry ecosystems. A 42-hectare industrial loop securing 100% internal feed and Halal-certified sovereignty.
+              Ethiopia's first fully integrated poultry ecosystem. Eliminating food insecurity through a 42-hectare industrial loop, 100% internal feed, and science-led Halal sovereignty.
             </p>
 
             <div className="flex gap-3">
@@ -62,7 +62,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 2. Navigation - The Ecosystem */}
+          {/* 2. Navigation */}
           <div className="lg:col-span-2 lg:ml-8">
             <h4 className="text-[11px] uppercase tracking-[0.4em] mb-10 font-black text-[#FEA42A] italic">The Ecosystem</h4>
             <nav className="flex flex-col gap-4">
@@ -86,16 +86,18 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* 3. Headquarters & Contact */}
+          {/* 3. UPDATED LOCATION: Corporate Liaison Office */}
           <div className="lg:col-span-3">
-            <h4 className="text-[11px] uppercase tracking-[0.4em] mb-10 font-black text-[#FEA42A] italic">Headquarters</h4>
+            <h4 className="text-[11px] uppercase tracking-[0.4em] mb-10 font-black text-[#FEA42A] italic">Corporate Liaison</h4>
             <div className="space-y-8">
               <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FEA42A]/10 transition-colors">
                    <MapPin size={18} style={{ color: brandOrange }} />
                 </div>
                 <span className="text-sm opacity-60 font-bold leading-relaxed pt-1">
-                  Africa Avenue, Bedesta Building,<br/> 6th Floor, Addis Ababa, Ethiopia
+                  Kazanchis, In front of ECA,<br/> 
+                  Garad Building, 10th Floor, <br/>
+                  Room 10/02, Addis Ababa, Ethiopia
                 </span>
               </div>
               <div className="flex items-center gap-4 group">
@@ -109,11 +111,11 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* 4. Journal Subscription */}
+          {/* 4. Newsletter */}
           <div className="lg:col-span-3">
             <h4 className="text-[11px] uppercase tracking-[0.4em] mb-10 font-black text-[#FEA42A] italic">Journal Subscription</h4>
             <p className="text-sm mb-8 opacity-60 font-medium italic leading-relaxed">
-              Join our exclusive mailing list for industry-leading poultry insights and national project updates.
+              Join our exclusive mailing list for industrial-scale insights and national project updates.
             </p>
             
             <form onSubmit={(e) => e.preventDefault()} className="relative group">
@@ -134,25 +136,22 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom - Accreditation & Legal */}
+        {/* Footer Bottom */}
         <div className="mt-24 pt-10 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="flex flex-wrap justify-center gap-4">
-            <div className="flex items-center gap-3 px-6 py-2.5 bg-white/5 rounded-full border border-white/10 hover:bg-[#FEA42A]/5 transition-colors group">
+            <div className="flex items-center gap-3 px-6 py-2.5 bg-white/5 rounded-full border border-white/10 group">
                <div className="w-2 h-2 rounded-full bg-[#FEA42A] animate-pulse" />
-               <span className="text-[10px] font-black tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">Halal Certified</span>
+               <span className="text-[10px] font-black tracking-[0.2em] uppercase opacity-60">Halal Certified</span>
             </div>
-            <div className="flex items-center gap-3 px-6 py-2.5 bg-white/5 rounded-full border border-white/10 hover:bg-[#FEA42A]/5 transition-colors group">
+            <div className="flex items-center gap-3 px-6 py-2.5 bg-white/5 rounded-full border border-white/10 group">
                <div className="w-2 h-2 rounded-full bg-[#FEA42A]" />
-               <span className="text-[10px] font-black tracking-[0.2em] uppercase opacity-60 group-hover:opacity-100 transition-opacity">ISO 22000 compliant</span>
+               <span className="text-[10px] font-black tracking-[0.2em] uppercase opacity-60">ISO 22000 compliant</span>
             </div>
           </div>
           
           <div className="flex flex-col items-center md:items-end gap-2">
             <p className="text-[10px] font-black opacity-20 tracking-[0.4em] uppercase text-center md:text-right leading-none">
               © 2026 BIRNIHIGO INTEGRATED FARMS PLC.
-            </p>
-            <p className="text-[8px] font-black opacity-10 tracking-[0.2em] uppercase">
-              All Strategic Assets Secured.
             </p>
           </div>
         </div>
