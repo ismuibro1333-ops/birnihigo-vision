@@ -23,8 +23,7 @@ const Investors = () => {
     offset: ["start end", "end start"]
   });
 
-  // Parallax for the Hero text
-  const yHero = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
+  const yHero = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,25 +32,30 @@ const Investors = () => {
 
   return (
     <Layout>
-      {/* 1. INVESTOR HERO - MASSIVE IMPACT */}
+      {/* 1. INVESTOR HERO - MOBILE RESPONSIVE FIX */}
       <section className="relative min-h-screen flex items-center bg-[#4F3C1C] overflow-hidden">
-        {/* Animated Background Grain/Grid */}
         <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20">
           <motion.div style={{ y: yHero }}>
-            <p className="text-[#FEA42A] text-xs uppercase tracking-[0.8em] mb-8 font-black italic">
+            <p className="text-[#FEA42A] text-xs uppercase tracking-[0.6em] mb-6 md:mb-8 font-black italic">
               Institutional Growth & Yield
             </p>
-            <h1 className="font-display text-7xl md:text-[10rem] text-[#EFE7DC] font-black tracking-tighter italic leading-[0.8] uppercase mb-12">
-              Capitalizing <br /> <span className="text-[#FEA42A]">Scale.</span>
+            
+            {/* THE FIX: text-5xl for phones, md:text-8xl for tablets, lg:text-[10rem] for desktops */}
+            <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] md:leading-[0.8] uppercase mb-12 break-words">
+              Capitalizing <br /> 
+              <span className="text-[#FEA42A] drop-shadow-[0_10px_30px_rgba(254,164,42,0.3)]">
+                Scale.
+              </span>
             </h1>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-                <p className="text-[#EFE7DC]/60 text-xl md:text-2xl font-medium leading-relaxed border-l-4 border-[#FEA42A] pl-10 max-w-xl">
+                <p className="text-[#EFE7DC]/80 text-lg md:text-2xl font-medium leading-relaxed border-l-4 border-[#FEA42A] pl-6 md:pl-10 max-w-xl">
                     Building Ethiopia's premier vertically integrated poultry ecosystem to bridge the 120M+ protein deficit.
                 </p>
                 <div className="flex flex-col items-end gap-2 text-right hidden md:flex">
-                   <span className="text-[#FEA42A] text-8xl font-black italic leading-none">29%</span>
+                   <span className="text-[#FEA42A] text-7xl lg:text-8xl font-black italic leading-none">29%</span>
                    <span className="text-[#EFE7DC]/40 uppercase tracking-widest text-[10px] font-black">Projected Market Share</span>
                 </div>
             </div>
@@ -59,26 +63,26 @@ const Investors = () => {
         </div>
       </section>
 
-      {/* 2. THE TICKER - HIGH VELOCITY */}
-      <div className="bg-[#FEA42A] py-8 overflow-hidden flex whitespace-nowrap border-y-4 border-[#4F3C1C]">
+      {/* 2. THE TICKER */}
+      <div className="bg-[#FEA42A] py-6 md:py-8 overflow-hidden flex whitespace-nowrap border-y-4 border-[#4F3C1C]">
         <motion.div 
           animate={{ x: [0, -1000] }} 
           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="flex gap-24 items-center"
+          className="flex gap-16 md:gap-24 items-center"
         >
           {[...keyFigures, ...keyFigures].map((fig, i) => (
-            <div key={i} className="flex items-center gap-6">
+            <div key={i} className="flex items-center gap-4 md:gap-6">
               <span className="text-[#4F3C1C]/40 font-black uppercase text-[10px] tracking-[0.3em]">{fig.label}</span>
-              <span className="text-[#4F3C1C] text-5xl font-black italic tracking-tighter">{fig.value}</span>
+              <span className="text-[#4F3C1C] text-3xl md:text-5xl font-black italic tracking-tighter">{fig.value}</span>
             </div>
           ))}
         </motion.div>
       </div>
 
-      {/* 3. STRATEGIC ADVANTAGE - BENTO GRID DESIGN */}
-      <section className="py-40 bg-[#EFE7DC]">
+      {/* 3. STRATEGIC ADVANTAGE */}
+      <section className="py-24 md:py-40 bg-[#EFE7DC]">
         <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection className="mb-24">
+          <AnimatedSection className="mb-16 md:mb-24">
              <h2 className="text-5xl md:text-8xl font-black text-[#4F3C1C] uppercase tracking-tighter italic leading-none mb-6">
                The Strategic <br /> <span className="text-[#CD8C24]">Moat.</span>
              </h2>
@@ -92,12 +96,12 @@ const Investors = () => {
               { icon: BarChart3, title: "Yield Optimization", desc: "Internal feed control lowers COGS by 30%.", span: "md:col-span-8" },
             ].map((a, i) => (
               <AnimatedSection key={i} className={a.span}>
-                <div className="group p-12 h-full bg-white rounded-[3.5rem] border border-[#CD8C24]/10 hover:bg-[#4F3C1C] transition-all duration-700 shadow-xl">
-                  <div className="w-16 h-16 rounded-2xl bg-[#FEA42A] flex items-center justify-center mb-10 group-hover:rotate-12 transition-transform">
+                <div className="group p-8 md:p-12 h-full bg-white rounded-[2.5rem] md:rounded-[3.5rem] border border-[#CD8C24]/10 hover:bg-[#4F3C1C] transition-all duration-700 shadow-xl">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#FEA42A] flex items-center justify-center mb-8 md:mb-10 group-hover:rotate-12 transition-transform">
                     <a.icon size={28} className="text-[#4F3C1C]" />
                   </div>
-                  <h3 className="text-3xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase italic tracking-tighter">{a.title}</h3>
-                  <p className="text-[#4F3C1C]/60 group-hover:text-[#EFE7DC]/60 text-lg font-medium transition-colors">{a.desc}</p>
+                  <h3 className="text-2xl md:text-3xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase italic tracking-tighter">{a.title}</h3>
+                  <p className="text-[#4F3C1C]/60 group-hover:text-[#EFE7DC]/60 text-base md:text-lg font-medium transition-colors">{a.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -105,29 +109,29 @@ const Investors = () => {
         </div>
       </section>
 
-      {/* 4. CAPACITY REVEAL - PROGRESSIVE INTERACTION */}
-      <section ref={scrollRef} className="py-40 bg-[#4F3C1C] relative overflow-hidden">
+      {/* 4. CAPACITY REVEAL */}
+      <section ref={scrollRef} className="py-24 md:py-40 bg-[#4F3C1C] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
             <AnimatedSection>
-                <div className="w-40 h-1 bg-[#FEA42A] mx-auto mb-12" />
-                <h2 className="text-[#EFE7DC] text-6xl md:text-9xl font-black italic tracking-tighter uppercase leading-none mb-12">
+                <div className="w-24 md:w-40 h-1 bg-[#FEA42A] mx-auto mb-10 md:mb-12" />
+                <h2 className="text-[#EFE7DC] text-5xl md:text-9xl font-black italic tracking-tighter uppercase leading-none mb-10 md:mb-12">
                    Industrial <br /> <span className="text-[#FEA42A]">Dominance.</span>
                 </h2>
             </AnimatedSection>
             
-            <div className="w-full max-w-4xl space-y-16">
+            <div className="w-full max-w-4xl space-y-12 md:space-y-16">
                <div className="relative pt-1">
-                  <div className="flex mb-6 items-end justify-between">
-                    <span className="text-xs font-black uppercase tracking-[0.5em] text-[#FEA42A]">National Capacity Target</span>
-                    <span className="text-7xl font-black text-[#EFE7DC] italic leading-none">29%</span>
+                  <div className="flex mb-4 md:mb-6 items-end justify-between">
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-[#FEA42A]">National Capacity Target</span>
+                    <span className="text-5xl md:text-7xl font-black text-[#EFE7DC] italic leading-none">29%</span>
                   </div>
-                  <div className="overflow-hidden h-6 mb-8 rounded-full bg-white/5 border border-white/10 p-1">
+                  <div className="overflow-hidden h-4 md:h-6 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10 p-1">
                     <motion.div 
-                      style={{ width: useTransform(scrollYProgress, [0, 0.8], ["0%", "29%"]) }}
+                      style={{ width: useTransform(scrollYProgress, [0.8, 1], ["0%", "29%"]) }}
                       className="h-full rounded-full bg-[#FEA42A] shadow-[0_0_30px_rgba(254,164,42,0.4)]" 
                     />
                   </div>
-                  <p className="text-[#EFE7DC]/30 text-xl italic font-medium">
+                  <p className="text-[#EFE7DC]/30 text-lg md:text-xl italic font-medium">
                     Scaling to ~17,500 MT/yr of premium, bio-secured poultry production.
                   </p>
                </div>
@@ -135,55 +139,51 @@ const Investors = () => {
         </div>
       </section>
 
-      {/* 5. PROSPECTUS FORM - THE INVESTOR LOUNGE */}
-      <section className="py-40 bg-[#EFE7DC]">
+      {/* 5. PROSPECTUS FORM */}
+      <section className="py-24 md:py-40 bg-[#EFE7DC]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-[#4F3C1C] rounded-[5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.4)] grid lg:grid-cols-2">
-            
-            {/* Form Left - Context */}
-            <div className="p-16 md:p-24 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] border-r border-white/5">
-                <FileText className="text-[#FEA42A] mb-10" size={60} />
-                <h3 className="text-[#EFE7DC] text-5xl md:text-6xl font-black italic mb-8 uppercase tracking-tighter leading-none">
+          <div className="bg-[#4F3C1C] rounded-[3rem] md:rounded-[5rem] overflow-hidden shadow-2xl grid lg:grid-cols-2">
+            <div className="p-10 md:p-24 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] border-b lg:border-b-0 lg:border-r border-white/5">
+                <FileText className="text-[#FEA42A] mb-8 md:mb-10" size={60} />
+                <h3 className="text-[#EFE7DC] text-4xl md:text-6xl font-black italic mb-6 md:mb-8 uppercase tracking-tighter leading-none">
                     Access <br /> <span className="text-[#FEA42A]">Prospectus.</span>
                 </h3>
-                <p className="text-[#EFE7DC]/60 text-lg font-medium leading-relaxed mb-12">
-                    Request detailed unit economics, CAPEX allocations, and 5-year ROI projections. Available for institutional partners.
+                <p className="text-[#EFE7DC]/60 text-base md:text-lg font-medium leading-relaxed mb-10 md:mb-12">
+                    Request detailed unit economics and 5-year ROI projections.
                 </p>
-                <div className="flex items-center gap-4 text-[#FEA42A] font-black uppercase tracking-widest text-xs">
-                   <div className="w-12 h-[2px] bg-[#FEA42A]" />
+                <div className="flex items-center gap-4 text-[#FEA42A] font-black uppercase tracking-widest text-[10px]">
+                   <div className="w-10 h-[2px] bg-[#FEA42A]" />
                    <span>Direct: invest@birnihigo.com</span>
                 </div>
             </div>
 
-            {/* Form Right - Input */}
-            <div className="p-16 md:p-24 bg-[#EFE7DC]/5 backdrop-blur-3xl">
+            <div className="p-10 md:p-24 bg-white/5 backdrop-blur-3xl">
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="h-full flex flex-col items-center justify-center text-center"
+                    className="h-full flex flex-col items-center justify-center text-center py-10"
                   >
-                    <CheckCircle2 size={80} className="text-[#FEA42A] mb-8" />
-                    <h3 className="text-3xl font-black text-[#EFE7DC] uppercase italic mb-4">Request Logged</h3>
-                    <p className="text-[#EFE7DC]/50 font-medium">Investor Relations will contact you shortly.</p>
+                    <CheckCircle2 size={64} className="text-[#FEA42A] mb-6" />
+                    <h3 className="text-2xl font-black text-[#EFE7DC] uppercase italic mb-2">Request Logged</h3>
+                    <p className="text-[#EFE7DC]/50 font-medium text-sm">Investor Relations will contact you shortly.</p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-4">
                         <label className="text-[#EFE7DC]/40 uppercase text-[10px] font-black tracking-widest ml-4">Credentials</label>
-                        <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
-                        <input type="email" placeholder="Institutional Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
-                        <textarea rows={4} placeholder="Investment Mandate / Scope" className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" />
+                        <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
+                        <input type="email" placeholder="Institutional Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
+                        <textarea rows={4} placeholder="Investment Mandate / Scope" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" />
                     </div>
-                    <button type="submit" className="group w-full py-6 bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl hover:bg-[#FFD275] transition-all shadow-2xl flex items-center justify-center gap-4">
+                    <button type="submit" className="group w-full py-5 md:py-6 bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl hover:bg-[#FFD275] transition-all shadow-2xl flex items-center justify-center gap-4">
                       Request Access <ArrowRight className="group-hover:translate-x-2 transition-transform" />
                     </button>
                   </form>
                 )}
               </AnimatePresence>
             </div>
-
           </div>
         </div>
       </section>
