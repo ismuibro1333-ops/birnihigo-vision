@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { 
   TrendingUp, Shield, Layers, BarChart3, ArrowRight, 
-  Globe, Users, Briefcase, ChevronRight, FileText 
+  Globe, Users, Briefcase, ChevronRight, FileText, CheckCircle2 
 } from "lucide-react";
 
 const keyFigures = [
@@ -15,7 +15,6 @@ const keyFigures = [
 ];
 
 const Investors = () => {
-  const [form, setForm] = useState({ name: "", email: "", org: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const scrollRef = useRef(null);
   
@@ -24,6 +23,9 @@ const Investors = () => {
     offset: ["start end", "end start"]
   });
 
+  // Parallax for the Hero text
+  const yHero = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -31,70 +33,71 @@ const Investors = () => {
 
   return (
     <Layout>
-      {/* 1. INVESTOR HERO - Dark & Authoritative */}
-      <section className="relative h-[80vh] flex items-center justify-center bg-[#4F3C1C] overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/charts-bg.jpg')] bg-cover bg-center opacity-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#EFE7DC]/10" />
+      {/* 1. INVESTOR HERO - MASSIVE IMPACT */}
+      <section className="relative min-h-screen flex items-center bg-[#4F3C1C] overflow-hidden">
+        {/* Animated Background Grain/Grid */}
+        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         
-        <AnimatedSection className="relative z-10 text-center px-6">
-          <motion.p 
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-[#FEA42A] text-xs uppercase tracking-[0.5em] mb-6 font-black"
-          >
-            Institutional Growth
-          </motion.p>
-          <h1 className="font-display text-5xl md:text-8xl text-[#EFE7DC] font-black tracking-tighter italic mb-8">
-            Capitalizing <span className="text-[#FEA42A]">Scale.</span>
-          </h1>
-          <p className="text-[#EFE7DC]/70 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed border-l border-[#FEA42A]/50 pl-8">
-            Building Ethiopia's first fully vertically integrated poultry ecosystem to bridge the 120M+ protein deficit.
-          </p>
-        </AnimatedSection>
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20">
+          <motion.div style={{ y: yHero }}>
+            <p className="text-[#FEA42A] text-xs uppercase tracking-[0.8em] mb-8 font-black italic">
+              Institutional Growth & Yield
+            </p>
+            <h1 className="font-display text-7xl md:text-[12rem] text-[#EFE7DC] font-black tracking-tighter italic leading-[0.8] uppercase mb-12">
+              Capitalizing <br /> <span className="text-[#FEA42A]">Scale.</span>
+            </h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
+                <p className="text-[#EFE7DC]/60 text-xl md:text-2xl font-medium leading-relaxed border-l-4 border-[#FEA42A] pl-10 max-w-xl">
+                    Building Ethiopia's premier vertically integrated poultry ecosystem to bridge the 120M+ protein deficit.
+                </p>
+                <div className="flex flex-col items-end gap-2 text-right hidden md:flex">
+                   <span className="text-[#FEA42A] text-8xl font-black italic leading-none">29%</span>
+                   <span className="text-[#EFE7DC]/40 uppercase tracking-widest text-[10px] font-black">Projected Market Share</span>
+                </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* 2. THE TICKER - Real-time Market Logic */}
-      <div className="bg-[#FEA42A] py-6 overflow-hidden flex whitespace-nowrap border-y border-[#4F3C1C]/10">
+      {/* 2. THE TICKER - HIGH VELOCITY */}
+      <div className="bg-[#FEA42A] py-8 overflow-hidden flex whitespace-nowrap border-y-4 border-[#4F3C1C]">
         <motion.div 
           animate={{ x: [0, -1000] }} 
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="flex gap-20 items-center px-10"
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="flex gap-24 items-center"
         >
-          {keyFigures.map((fig, i) => (
-            <div key={i} className="flex items-center gap-4">
-              <span className="text-[#4F3C1C] font-black uppercase text-xs tracking-widest">{fig.label}</span>
-              <span className="text-[#4F3C1C] text-2xl font-black italic">{fig.value}</span>
-            </div>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {keyFigures.map((fig, i) => (
-            <div key={i+"copy"} className="flex items-center gap-4">
-              <span className="text-[#4F3C1C] font-black uppercase text-xs tracking-widest">{fig.label}</span>
-              <span className="text-[#4F3C1C] text-2xl font-black italic">{fig.value}</span>
+          {[...keyFigures, ...keyFigures].map((fig, i) => (
+            <div key={i} className="flex items-center gap-6">
+              <span className="text-[#4F3C1C]/40 font-black uppercase text-[10px] tracking-[0.3em]">{fig.label}</span>
+              <span className="text-[#4F3C1C] text-5xl font-black italic tracking-tighter">{fig.value}</span>
             </div>
           ))}
         </motion.div>
       </div>
 
-      {/* 3. STRATEGIC ADVANTAGE - Interactive Grid */}
-      <section className="py-32 bg-[#EFE7DC]">
+      {/* 3. STRATEGIC ADVANTAGE - BENTO GRID DESIGN */}
+      <section className="py-40 bg-[#EFE7DC]">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatedSection className="mb-24">
+             <h2 className="text-5xl md:text-8xl font-black text-[#4F3C1C] uppercase tracking-tighter italic leading-none mb-6">
+               The Strategic <br /> <span className="text-[#CD8C24]">Moat.</span>
+             </h2>
+          </AnimatedSection>
+          
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {[
-              { icon: Layers, title: "Vertical Integration", desc: "Full control from hatchery and internal feed to processing." },
-              { icon: Shield, title: "Bio-Security", desc: "HACCP-certified 42ha site ensures export-level integrity." },
-              { icon: Globe, title: "Export Proximity", desc: "Strategic access to Djibouti, Somalia, and the GCC markets." },
-              { icon: Users, title: "Social Model", desc: "Inclusive growth involving 2,000+ local contract farmers." },
-              { icon: BarChart3, title: "Proven Economics", desc: "48-ton daily throughput with controlled, internal input costs." },
-              { icon: TrendingUp, title: "Grandparent Unit", desc: "Active expansion into GP units to secure the primary genetics chain." }
+              { icon: Layers, title: "Vertical Integration", desc: "Full genetic control to final processing.", span: "md:col-span-8" },
+              { icon: Shield, title: "Bio-Security", desc: "HACCP-certified 42ha industrial site.", span: "md:col-span-4" },
+              { icon: Globe, title: "Export Ready", desc: "Access to GCC and regional corridors.", span: "md:col-span-4" },
+              { icon: BarChart3, title: "Yield Optimization", desc: "Internal feed control lowers COGS by 30%.", span: "md:col-span-8" },
             ].map((a, i) => (
-              <AnimatedSection key={i} delay={i * 0.15}>
-                <div className="group p-10 h-full bg-white/40 backdrop-blur-md border border-[#4F3C1C]/5 rounded-[2.5rem] hover:bg-[#4F3C1C] transition-all duration-500">
-                  <div className="w-14 h-14 rounded-2xl bg-[#FEA42A] flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
-                    <a.icon size={26} className="text-[#4F3C1C]" />
+              <AnimatedSection key={i} className={a.span}>
+                <div className="group p-12 h-full bg-white rounded-[3.5rem] border border-[#CD8C24]/10 hover:bg-[#4F3C1C] transition-all duration-700 shadow-xl">
+                  <div className="w-16 h-16 rounded-2xl bg-[#FEA42A] flex items-center justify-center mb-10 group-hover:rotate-12 transition-transform">
+                    <a.icon size={28} className="text-[#4F3C1C]" />
                   </div>
-                  <h3 className="text-xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase">{a.title}</h3>
-                  <p className="text-[#4F3C1C]/60 group-hover:text-[#EFE7DC]/60 leading-relaxed font-medium">{a.desc}</p>
+                  <h3 className="text-3xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase italic tracking-tighter">{a.title}</h3>
+                  <p className="text-[#4F3C1C]/60 group-hover:text-[#EFE7DC]/60 text-lg font-medium transition-colors">{a.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -102,79 +105,86 @@ const Investors = () => {
         </div>
       </section>
 
-      {/* 4. CAPACITY REVEAL - Progressive Scroll */}
-      <section ref={scrollRef} className="py-32 bg-[#4F3C1C] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
-          <AnimatedSection>
-            <h2 className="text-[#FEA42A] text-5xl font-black italic tracking-tighter mb-8 leading-none">
-              Dominating the <br/> National Capacity.
-            </h2>
-            <div className="space-y-8">
+      {/* 4. CAPACITY REVEAL - PROGRESSIVE INTERACTION */}
+      <section ref={scrollRef} className="py-40 bg-[#4F3C1C] relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
+            <AnimatedSection>
+                <div className="w-40 h-1 bg-[#FEA42A] mx-auto mb-12" />
+                <h2 className="text-[#EFE7DC] text-6xl md:text-9xl font-black italic tracking-tighter uppercase leading-none mb-12">
+                   Industrial <br /> <span className="text-[#FEA42A]">Dominance.</span>
+                </h2>
+            </AnimatedSection>
+            
+            <div className="w-full max-w-4xl space-y-16">
                <div className="relative pt-1">
-                  <div className="flex mb-2 items-center justify-between">
-                    <span className="text-xs font-black uppercase tracking-widest text-[#FEA42A]">National Market Share</span>
-                    <span className="text-2xl font-black text-[#EFE7DC]">29%</span>
+                  <div className="flex mb-6 items-end justify-between">
+                    <span className="text-xs font-black uppercase tracking-[0.5em] text-[#FEA42A]">National Capacity Target</span>
+                    <span className="text-7xl font-black text-[#EFE7DC] italic leading-none">29%</span>
                   </div>
-                  <div className="overflow-hidden h-4 mb-4 text-xs flex rounded-full bg-white/5">
+                  <div className="overflow-hidden h-6 mb-8 rounded-full bg-white/5 border border-white/10 p-1">
                     <motion.div 
-                      style={{ width: useTransform(scrollYProgress, [0, 0.5], ["0%", "29%"]) }}
-                      className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-[#FEA42A]" 
+                      style={{ width: useTransform(scrollYProgress, [0, 0.8], ["0%", "29%"]) }}
+                      className="h-full rounded-full bg-[#FEA42A] shadow-[0_0_30px_rgba(254,164,42,0.4)]" 
                     />
                   </div>
-                  <p className="text-[#EFE7DC]/40 text-sm italic leading-relaxed">
-                    Birnihigo is on track to produce ~17,500 MT/yr, securing nearly a third of total national production.
+                  <p className="text-[#EFE7DC]/30 text-xl italic font-medium">
+                    Scaling to ~17,500 MT/yr of premium, bio-secured poultry production.
                   </p>
                </div>
             </div>
-          </AnimatedSection>
-          
-          <div className="relative flex justify-center">
-             <div className="w-80 h-80 border-[20px] border-white/5 rounded-full flex items-center justify-center p-10">
-                <div className="text-center">
-                   <p className="text-[#FEA42A] text-6xl font-black">48T</p>
-                   <p className="text-[#EFE7DC] font-bold uppercase tracking-widest text-[10px]">Daily Throughput</p>
-                </div>
-             </div>
-          </div>
         </div>
       </section>
 
-      {/* 5. PROSPECTUS FORM - Exclusive Lounge Feel */}
-      <section className="py-32 bg-[#EFE7DC]">
-        <div className="max-w-5xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
-          <AnimatedSection>
-            <div className="bg-[#4F3C1C] p-12 rounded-[3.5rem] shadow-2xl">
-              <FileText className="text-[#FEA42A] mb-6" size={40} />
-              <h3 className="text-[#EFE7DC] text-4xl font-black italic mb-6">Request Prospectus</h3>
-              <p className="text-[#EFE7DC]/60 mb-8 font-medium leading-relaxed">
-                Access detailed unit economics, 5-year growth projections, and infrastructure expansion plans. Confidential information for qualified institutional partners.
-              </p>
-              <div className="text-[#FEA42A] font-black uppercase tracking-widest text-xs border-t border-white/10 pt-6">
-                Direct Inquiry: invest@birnihigo.com
-              </div>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            {submitted ? (
-              <div className="bg-white p-12 rounded-[3rem] text-center shadow-xl border border-[#FEA42A]/20">
-                <h3 className="text-2xl font-black text-[#4F3C1C] mb-4 uppercase">Inquiry Received</h3>
-                <p className="text-[#4F3C1C]/60 font-medium">Our investor relations lead will reach out to you within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <input type="text" placeholder="Full Name" className="bg-white border-none rounded-2xl p-4 text-[#4F3C1C] focus:ring-2 focus:ring-[#FEA42A] shadow-sm" required />
-                  <input type="text" placeholder="Organization" className="bg-white border-none rounded-2xl p-4 text-[#4F3C1C] focus:ring-2 focus:ring-[#FEA42A] shadow-sm" />
+      {/* 5. PROSPECTUS FORM - THE INVESTOR LOUNGE */}
+      <section className="py-40 bg-[#EFE7DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#4F3C1C] rounded-[5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.4)] grid lg:grid-cols-2">
+            
+            {/* Form Left - Context */}
+            <div className="p-16 md:p-24 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] border-r border-white/5">
+                <FileText className="text-[#FEA42A] mb-10" size={60} />
+                <h3 className="text-[#EFE7DC] text-5xl md:text-6xl font-black italic mb-8 uppercase tracking-tighter leading-none">
+                    Access <br /> <span className="text-[#FEA42A]">Prospectus.</span>
+                </h3>
+                <p className="text-[#EFE7DC]/60 text-lg font-medium leading-relaxed mb-12">
+                    Request detailed unit economics, CAPEX allocations, and 5-year ROI projections. Available for institutional partners.
+                </p>
+                <div className="flex items-center gap-4 text-[#FEA42A] font-black uppercase tracking-widest text-xs">
+                   <div className="w-12 h-[2px] bg-[#FEA42A]" />
+                   <span>Direct: invest@birnihigo.com</span>
                 </div>
-                <input type="email" placeholder="Institutional Email" className="w-full bg-white border-none rounded-2xl p-4 text-[#4F3C1C] focus:ring-2 focus:ring-[#FEA42A] shadow-sm" required />
-                <textarea rows={4} placeholder="Investment Scope" className="w-full bg-white border-none rounded-2xl p-4 text-[#4F3C1C] focus:ring-2 focus:ring-[#FEA42A] shadow-sm" />
-                <button type="submit" className="w-full py-5 bg-[#4F3C1C] text-[#FEA42A] font-black uppercase tracking-widest rounded-2xl hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all shadow-lg flex items-center justify-center gap-3">
-                  Send Request <ChevronRight size={20} />
-                </button>
-              </form>
-            )}
-          </AnimatedSection>
+            </div>
+
+            {/* Form Right - Input */}
+            <div className="p-16 md:p-24 bg-[#EFE7DC]/5 backdrop-blur-3xl">
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="h-full flex flex-col items-center justify-center text-center"
+                  >
+                    <CheckCircle2 size={80} className="text-[#FEA42A] mb-8" />
+                    <h3 className="text-3xl font-black text-[#EFE7DC] uppercase italic mb-4">Request Logged</h3>
+                    <p className="text-[#EFE7DC]/50 font-medium">Investor Relations will contact you shortly.</p>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-4">
+                        <label className="text-[#EFE7DC]/40 uppercase text-[10px] font-black tracking-widest ml-4">Credentials</label>
+                        <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
+                        <input type="email" placeholder="Institutional Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
+                        <textarea rows={4} placeholder="Investment Mandate / Scope" className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" />
+                    </div>
+                    <button type="submit" className="group w-full py-6 bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl hover:bg-[#FFD275] transition-all shadow-2xl flex items-center justify-center gap-4">
+                      Request Access <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+                    </button>
+                  </form>
+                )}
+              </AnimatePresence>
+            </div>
+
+          </div>
         </div>
       </section>
     </Layout>
