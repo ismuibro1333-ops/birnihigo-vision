@@ -45,7 +45,7 @@ const Footer = () => {
             </Link>
             
             <p className="text-lg leading-relaxed mb-10 opacity-70 font-medium max-w-sm italic border-l-2 border-[#FEA42A] pl-6 py-1">
-              Ethiopia's first fully integrated poultry ecosystem. Pioneering food security through Cobb 500 genetics and Halal-certified precision.
+              Ethiopia's first fully integrated poultry ecosystem. Eliminating food insecurity through science-led, integrated poultry ecosystems. A 42-hectare industrial loop securing 100% internal feed and Halal-certified sovereignty.
             </p>
 
             <div className="flex gap-3">
