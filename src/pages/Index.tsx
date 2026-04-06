@@ -7,7 +7,7 @@ import OperationalDashboard from "@/components/OperationalDashboard";
 import pic1 from "@/assets/pic1.jpg";
 import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
-import { Leaf, Recycle, Sprout, ArrowRight, Shield, TrendingUp, Globe, Factory, Droplets, Zap } from "lucide-react";
+import { Leaf, Recycle, Sprout, ArrowRight, Shield, TrendingUp, Globe, Factory, Droplets, Zap, Users, Package, FlameKindling } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => (
@@ -31,7 +31,58 @@ const Index = () => (
       </div>
     </section>
 
+    {/* STRATEGIC STATEMENT */}
+    <section className="py-24 bg-[#EFE7DC]">
+      <div className="max-w-4xl mx-auto px-6">
+        <AnimatedSection className="text-center">
+          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-8 font-black">Strategic Statement</p>
+          <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8 tracking-tight">
+            Ethiopia's poultry challenge is not primarily a production issue—it is a{" "}
+            <span className="text-[#FEA42A]">systems integration challenge.</span>
+          </p>
+          <div className="w-16 h-1 bg-[#CD8C24]/30 mx-auto my-8 rounded-full" />
+          <p className="text-lg text-[#4F3C1C]/70 leading-relaxed font-medium mb-6">
+            A significant market opportunity exists, yet fragmentation across the value chain continues to constrain scale, efficiency, and affordability.
+          </p>
+          <p className="text-lg text-[#4F3C1C] font-black uppercase tracking-widest">
+            Birnihigo is designed as an integrated, execution-driven model to close this gap.
+          </p>
+        </AnimatedSection>
+      </div>
+    </section>
+
     <ValueChain />
+
+    {/* NATIONAL IMPACT */}
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="national-impact-heading">
+      <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#FEA42A]/5 blur-[120px] rounded-full" />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">National Impact</p>
+          <h2 id="national-impact-heading" className="text-5xl text-[#EFE7DC] font-black tracking-tighter">
+            Transforming Ethiopia's Protein Economy
+          </h2>
+        </AnimatedSection>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { icon: Package, label: "Expanding access to affordable protein" },
+            { icon: Globe, label: "Reducing import dependency" },
+            { icon: Users, label: "Creating jobs for youth and women" },
+            { icon: TrendingUp, label: "Enabling export-ready poultry production" },
+            { icon: Shield, label: "Strengthening national food security" },
+          ].map((item, i) => (
+            <AnimatedSection key={item.label} delay={i * 0.1}>
+              <div className="flex items-start gap-5 bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-[#FEA42A]/10 transition-all duration-300">
+                <div className="w-12 h-12 rounded-xl bg-[#FEA42A]/10 border border-[#FEA42A]/20 flex items-center justify-center shrink-0">
+                  <item.icon size={22} className="text-[#FEA42A]" />
+                </div>
+                <p className="text-[#EFE7DC] font-semibold text-base leading-snug mt-1">{item.label}</p>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
     
     {/* SECTION 1: THE NUMBERS (Industrial Scale) */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
@@ -103,6 +154,40 @@ const Index = () => (
       </div>
     </section>
 
+    {/* RESILIENCE */}
+    <section className="py-24 bg-[#EFE7DC]" aria-labelledby="resilience-heading">
+      <div className="max-w-5xl mx-auto px-6">
+        <AnimatedSection className="flex flex-col md:flex-row items-center gap-16">
+          <div className="flex-1 text-left">
+            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Resilience</p>
+            <h2 id="resilience-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tighter mb-6 leading-tight">
+              Built Under<br />Real Conditions
+            </h2>
+            <p className="text-[#4F3C1C]/70 text-lg leading-relaxed font-medium">
+              Developed in Afar under extreme climate and infrastructure constraints, Birnihigo has demonstrated resilience through continuous investment, infrastructure development, and operational scaling.
+            </p>
+          </div>
+          <div className="flex-1 grid grid-cols-1 gap-5">
+            {[
+              { label: "Extreme Climate", detail: "Operational in one of Ethiopia's harshest environments" },
+              { label: "Infrastructure Built from Scratch", detail: "Power, water, and logistics developed on-site" },
+              { label: "Continuous Scaling", detail: "Uninterrupted investment and growth trajectory" },
+            ].map((item, i) => (
+              <AnimatedSection key={item.label} delay={i * 0.1}>
+                <div className="flex items-start gap-4 bg-[#4F3C1C]/5 border border-[#4F3C1C]/10 rounded-2xl p-6">
+                  <div className="w-2 h-2 rounded-full bg-[#FEA42A] mt-2 shrink-0" />
+                  <div>
+                    <p className="text-[#4F3C1C] font-black text-sm uppercase tracking-widest mb-1">{item.label}</p>
+                    <p className="text-[#4F3C1C]/60 text-sm font-medium">{item.detail}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+
     {/* SECTION 3: SUSTAINABILITY (100% Circular Waste-to-Resource) */}
     <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
       <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FEA42A]/5 blur-[150px] rounded-full"></div>
@@ -116,11 +201,12 @@ const Index = () => (
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-start">
           {[
             { icon: Sprout, title: "Fertilizer", desc: "Organic solid waste transformed into high-grade fertilizer for our crop cultivation.", stat: "Soil Health" },
             { icon: Droplets, title: "Clean Water", desc: "Advanced treatment systems returning purified water to the production cycle.", stat: "Zero Liquid Waste" },
             { icon: Zap, title: "Renewable Energy", desc: "Converting organic liquid waste into biogas energy for on-site operations.", stat: "Clean Power" },
+            { icon: Leaf, title: "Moringa Innovation", desc: "Moringa-based feed integration enhancing nutrition and reducing external input dependency.", stat: "Feed Innovation" },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <article className="text-center group bg-white/5 p-10 rounded-[3rem] border border-white/10 hover:bg-[#FEA42A]/10 transition-all duration-500">
@@ -167,6 +253,19 @@ const Index = () => (
             </AnimatedSection>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* PURPOSE */}
+    <section className="py-20 bg-[#4F3C1C]" aria-labelledby="purpose-heading">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <AnimatedSection>
+          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-6 font-bold">Purpose</p>
+          <h2 id="purpose-heading" className="text-4xl md:text-5xl text-[#EFE7DC] font-black tracking-tighter leading-tight italic">
+            "Nourishing lives through safe, affordable, and scalable protein production."
+          </h2>
+          <div className="w-16 h-1 bg-[#FEA42A]/40 mx-auto mt-10 rounded-full" />
+        </AnimatedSection>
       </div>
     </section>
   </Layout>
