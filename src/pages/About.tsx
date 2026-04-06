@@ -5,15 +5,13 @@ import AnimatedSection from "@/components/AnimatedSection";
 import MotionCard from "@/components/MotionCard";
 import { 
   ShieldCheck, Recycle, GraduationCap, Award, 
-  ChevronRight, ArrowDown 
+  ChevronRight, ArrowDown, CheckCircle2
 } from "lucide-react";
 
 const timeline = [
-  { year: "2013", title: "Inception", desc: "Established as a specialized day-old chick supplier, laying the groundwork for integrated contract farming." },
-  { year: "2014-18", title: "Integration", desc: "Transitioned into a vertically integrated system to bridge the gap between quality supply and market demand." },
-  { year: "2019-22", title: "Industrial Infrastructure", desc: "Secured 42+ hectares in Awash and established a 9ha breeding farm with science-based biosecurity protocols." },
-  { year: "2023-24", title: "Processing & Standards", desc: "Operationalized a 24ha processing facility focused on HACCP-aligned safety and global Halal standards." },
-  { year: "2025", title: "Feed Sovereignty", desc: "Acquired 2,000+ hectares for Maize and Soya plantations to secure 100% internal feed supply chain." },
+  { year: "2013", title: "Establishment", desc: "Fertile egg import & DOC supply — laying the groundwork for an integrated poultry system." },
+  { year: "2014–18", title: "Integration Phase", desc: "Hatchery, feed mill, and broiler operations established to bridge quality supply and market demand." },
+  { year: "2019–Present", title: "Industrial Scale Development", desc: "Processing plant, biosecure farms, and contract farming expansion at industrial scale." },
 ];
 
 const About = () => {
@@ -25,7 +23,7 @@ const About = () => {
 
   return (
     <Layout>
-      {/* 1. HIGH-IMPACT HERO - Dark Industrial Theme */}
+      {/* 1. HIGH-IMPACT HERO */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-[#1A1A1A]">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
@@ -59,7 +57,25 @@ const About = () => {
         </AnimatedSection>
       </section>
 
-      {/* 2. STRATEGIC PILLARS - Glassmorphism cards */}
+      {/* WHO WE ARE */}
+      <section className="py-24 bg-[#EFE7DC]">
+        <div className="max-w-4xl mx-auto px-6">
+          <AnimatedSection className="text-center">
+            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Who We Are</p>
+            <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter mb-8 leading-tight">
+              Built to Solve a<br />Systems Problem
+            </h2>
+            <p className="text-[#4F3C1C]/70 text-lg leading-relaxed font-medium mb-6">
+              Birnihigo Integrated Farms is a vertically integrated poultry company established in 2013 with a clear mission: to make high-quality, affordable protein accessible while building a resilient, export-ready poultry system.
+            </p>
+            <p className="text-[#4F3C1C] text-lg font-semibold leading-relaxed">
+              What began as a day-old chick supply operation has evolved into a fully integrated value chain — from breeding and hatchery to processing and market delivery.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* 2. STRATEGIC PILLARS */}
       <section className="py-32 bg-[#EFE7DC]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -82,13 +98,12 @@ const About = () => {
         </div>
       </section>
 
-      {/* 3. THE JOURNEY - Sticky Scroll */}
+      {/* 3. THE JOURNEY */}
       <section ref={containerRef} className="relative bg-[#4F3C1C] py-20">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
           
-          {/* Left Side: Scrolling Content */}
           <div className="py-20">
-            <h2 className="text-[#FEA42A] text-5xl font-black italic mb-32 tracking-tighter sticky top-20">The Evolution</h2>
+            <h2 className="text-[#FEA42A] text-5xl font-black italic mb-32 tracking-tighter sticky top-20">Our Journey</h2>
             {timeline.map((item, i) => (
               <div key={i} className="mb-40 last:mb-0">
                 <span className="text-[#FEA42A] text-8xl font-black opacity-10 block mb-4">{item.year}</span>
@@ -102,7 +117,6 @@ const About = () => {
             ))}
           </div>
 
-          {/* Right Side: Sticky Visuals */}
           <div className="hidden lg:block sticky top-0 h-screen flex items-center">
             <div className="relative w-full aspect-[4/5] rounded-[3.5rem] overflow-hidden border-8 border-white/5 shadow-2xl">
               <motion.div 
@@ -115,6 +129,50 @@ const About = () => {
                 <p className="text-[#EFE7DC] text-2xl font-bold leading-tight">Securing National Sovereignty through 2,000+ Hectares of Feed Self-Sufficiency.</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR PHILOSOPHY */}
+      <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <AnimatedSection>
+            <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Our Philosophy</p>
+            <h2 className="text-5xl md:text-6xl text-[#4F3C1C] font-black tracking-tighter mb-8 leading-tight">
+              Integration.<br />
+              <span className="text-[#FEA42A]">Execution.</span><br />
+              Impact.
+            </h2>
+            <div className="w-16 h-1 bg-[#CD8C24]/30 mx-auto my-8 rounded-full" />
+            <p className="text-[#4F3C1C]/70 text-lg leading-relaxed font-medium max-w-2xl mx-auto">
+              We believe transformation in agriculture requires systems — not isolated interventions.
+            </p>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* WHY BIRNIHIGO */}
+      <section className="py-24 bg-[#4F3C1C]" aria-labelledby="why-birnihigo-heading">
+        <div className="max-w-4xl mx-auto px-6">
+          <AnimatedSection className="text-center mb-14">
+            <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">Why Birnihigo</p>
+            <h2 id="why-birnihigo-heading" className="text-5xl text-[#EFE7DC] font-black tracking-tighter">
+              What Sets Us Apart
+            </h2>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              "First fully integrated poultry model in Ethiopia",
+              "Built under real operational conditions",
+              "Designed for scalability and replication",
+            ].map((item, i) => (
+              <AnimatedSection key={item} delay={i * 0.1}>
+                <div className="flex flex-col items-center text-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-[#FEA42A]/10 transition-all duration-300">
+                  <CheckCircle2 size={28} className="text-[#FEA42A] shrink-0" />
+                  <p className="text-[#EFE7DC] font-semibold text-base leading-snug">{item}</p>
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
