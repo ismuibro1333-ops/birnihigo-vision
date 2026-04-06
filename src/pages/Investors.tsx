@@ -4,14 +4,15 @@ import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { 
   TrendingUp, Shield, Layers, BarChart3, ArrowRight, 
-  Globe, Users, Briefcase, ChevronRight, FileText, CheckCircle2 
+  Globe, Users, Briefcase, FileText, CheckCircle2, 
+  Target, Zap, Scale, PieChart
 } from "lucide-react";
 
-const keyFigures = [
-  { label: "Market Size", value: "120M+", note: "Second largest in Africa" },
-  { label: "Consumption Gap", value: "0.5kg", note: "vs 15kg global average" },
-  { label: "National Supply", value: "29%", note: "Birnihigo Total Capacity" },
-  { label: "Import Growth", value: "12%", note: "Year-over-Year increase" },
+const investorMetrics = [
+  { label: "Market Deficit", value: "High", note: "Fragmented Production" },
+  { label: "Target Scale", value: "1,500+", note: "Contract Farmers" },
+  { label: "Feed Mill", value: "6 T/H", note: "Cost Control Moat" },
+  { label: "Processing", value: "48 T/D", note: "Industrial Output" },
 ];
 
 const Investors = () => {
@@ -23,8 +24,6 @@ const Investors = () => {
     offset: ["start end", "end start"]
   });
 
-  const yHero = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
@@ -32,163 +31,180 @@ const Investors = () => {
 
   return (
     <Layout>
-      {/* 1. INVESTOR HERO - MOBILE RESPONSIVE FIX */}
-      <section className="relative min-h-screen flex items-center bg-[#4F3C1C] overflow-hidden">
-        <div className="absolute inset-0 opacity-20 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+      {/* 1. INVESTOR HERO: THE SYSTEM TRANSFORMATION */}
+      <section className="relative min-h-[90vh] flex items-center bg-[#4F3C1C] overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
         
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-20">
-          <motion.div style={{ y: yHero }}>
-            <p className="text-[#FEA42A] text-xs uppercase tracking-[0.6em] mb-6 md:mb-8 font-black italic">
-              Institutional Growth & Yield
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-32">
+          <AnimatedSection>
+            <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-8 font-black italic">
+              Institutional Investment Opportunity
             </p>
             
-            {/* THE FIX: text-5xl for phones, md:text-8xl for tablets, lg:text-[10rem] for desktops */}
-            <h1 className="font-display text-5xl sm:text-6xl md:text-8xl lg:text-[10rem] text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] md:leading-[0.8] uppercase mb-12 break-words">
-              Capitalizing <br /> 
-              <span className="text-[#FEA42A] drop-shadow-[0_10px_30px_rgba(254,164,42,0.3)]">
-                Scale.
-              </span>
+            <h1 className="font-display text-4xl sm:text-6xl md:text-[7rem] text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] uppercase mb-12">
+              An Investment in <br /> 
+              <span className="text-[#FEA42A]">System Transformation.</span>
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
-                <p className="text-[#EFE7DC]/80 text-lg md:text-2xl font-medium leading-relaxed border-l-4 border-[#FEA42A] pl-6 md:pl-10 max-w-xl">
-                    Building Ethiopia's premier vertically integrated poultry ecosystem to bridge the 120M+ protein deficit.
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
+                <p className="text-[#EFE7DC]/80 text-xl md:text-2xl font-bold leading-relaxed border-l-4 border-[#FEA42A] pl-10 max-w-2xl italic">
+                    Beyond production volumes, Birnihigo is designed to deliver real impact—improving affordability, strengthening efficiency, and ensuring consistent market supply.
                 </p>
-                <div className="flex flex-col items-end gap-2 text-right hidden md:flex">
-                   <span className="text-[#FEA42A] text-7xl lg:text-8xl font-black italic leading-none">29%</span>
-                   <span className="text-[#EFE7DC]/40 uppercase tracking-widest text-[10px] font-black">Projected Market Share</span>
+                <div className="hidden md:flex flex-col items-end text-right">
+                   <div className="p-8 bg-white/5 border border-white/10 rounded-[2.5rem] backdrop-blur-xl">
+                      <p className="text-[#FEA42A] text-[10px] font-black uppercase tracking-widest mb-4">Strategic Mandate</p>
+                      <p className="text-[#EFE7DC] text-lg font-black italic">National Food System Platform</p>
+                   </div>
                 </div>
             </div>
-          </motion.div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* 2. THE TICKER */}
-      <div className="bg-[#FEA42A] py-6 md:py-8 overflow-hidden flex whitespace-nowrap border-y-4 border-[#4F3C1C]">
-        <motion.div 
-          animate={{ x: [0, -1000] }} 
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="flex gap-16 md:gap-24 items-center"
-        >
-          {[...keyFigures, ...keyFigures].map((fig, i) => (
-            <div key={i} className="flex items-center gap-4 md:gap-6">
-              <span className="text-[#4F3C1C]/40 font-black uppercase text-[10px] tracking-[0.3em]">{fig.label}</span>
-              <span className="text-[#4F3C1C] text-3xl md:text-5xl font-black italic tracking-tighter">{fig.value}</span>
-            </div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* 3. STRATEGIC ADVANTAGE */}
-      <section className="py-24 md:py-40 bg-[#EFE7DC]">
+      {/* 2. THE INVESTMENT CASE (Bento Grid) */}
+      <section className="py-32 bg-[#EFE7DC]">
         <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection className="mb-16 md:mb-24">
-             <h2 className="text-5xl md:text-8xl font-black text-[#4F3C1C] uppercase tracking-tighter italic leading-none mb-6">
-               The Strategic <br /> <span className="text-[#CD8C24]">Moat.</span>
+          <AnimatedSection className="mb-20">
+             <h2 className="text-5xl md:text-7xl font-black text-[#4F3C1C] uppercase tracking-tighter italic leading-none mb-6">
+               The Investment <span className="text-[#CD8C24]">Case.</span>
              </h2>
           </AnimatedSection>
           
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            {[
-              { icon: Layers, title: "Vertical Integration", desc: "Full genetic control to final processing.", span: "md:col-span-8" },
-              { icon: Shield, title: "Bio-Security", desc: "HACCP-certified 42ha industrial site.", span: "md:col-span-4" },
-              { icon: Globe, title: "Export Ready", desc: "Access to GCC and regional corridors.", span: "md:col-span-4" },
-              { icon: BarChart3, title: "Yield Optimization", desc: "Internal feed control lowers COGS by 30%.", span: "md:col-span-8" },
-            ].map((a, i) => (
-              <AnimatedSection key={i} className={a.span}>
-                <div className="group p-8 md:p-12 h-full bg-white rounded-[2.5rem] md:rounded-[3.5rem] border border-[#CD8C24]/10 hover:bg-[#4F3C1C] transition-all duration-700 shadow-xl">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#FEA42A] flex items-center justify-center mb-8 md:mb-10 group-hover:rotate-12 transition-transform">
-                    <a.icon size={28} className="text-[#4F3C1C]" />
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase italic tracking-tighter">{a.title}</h3>
-                  <p className="text-[#4F3C1C]/60 group-hover:text-[#EFE7DC]/60 text-base md:text-lg font-medium transition-colors">{a.desc}</p>
-                </div>
-              </AnimatedSection>
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <InvestmentCard 
+              icon={Target} 
+              title="Structural Market Gap" 
+              points={["Low protein consumption", "Fragmented production system"]} 
+            />
+            <InvestmentCard 
+              icon={Layers} 
+              title="Integrated Advantage" 
+              points={["Lower cost structure", "Full value chain control", "Improved efficiency"]} 
+            />
+            <InvestmentCard 
+              icon={Scale} 
+              title="Scalable Platform" 
+              points={["1,500+ Contract farmers", "Replicable industrial model"]} 
+            />
           </div>
         </div>
       </section>
 
-      {/* 4. CAPACITY REVEAL */}
-      <section ref={scrollRef} className="py-24 md:py-40 bg-[#4F3C1C] relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-            <AnimatedSection>
-                <div className="w-24 md:w-40 h-1 bg-[#FEA42A] mx-auto mb-10 md:mb-12" />
-                <h2 className="text-[#EFE7DC] text-5xl md:text-9xl font-black italic tracking-tighter uppercase leading-none mb-10 md:mb-12">
-                   Industrial <br /> <span className="text-[#FEA42A]">Dominance.</span>
-                </h2>
-            </AnimatedSection>
-            
-            <div className="w-full max-w-4xl space-y-12 md:space-y-16">
-               <div className="relative pt-1">
-                  <div className="flex mb-4 md:mb-6 items-end justify-between">
-                    <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.5em] text-[#FEA42A]">National Capacity Target</span>
-                    <span className="text-5xl md:text-7xl font-black text-[#EFE7DC] italic leading-none">29%</span>
-                  </div>
-                  <div className="overflow-hidden h-4 md:h-6 mb-6 md:mb-8 rounded-full bg-white/5 border border-white/10 p-1">
-                    <motion.div 
-                      style={{ width: useTransform(scrollYProgress, [0.8, 1], ["0%", "29%"]) }}
-                      className="h-full rounded-full bg-[#FEA42A] shadow-[0_0_30px_rgba(254,164,42,0.4)]" 
-                    />
-                  </div>
-                  <p className="text-[#EFE7DC]/30 text-lg md:text-xl italic font-medium">
-                    Scaling to ~17,500 MT/yr of premium, bio-secured poultry production.
-                  </p>
-               </div>
-            </div>
+      {/* 3. REVENUE STREAMS (Visual List) */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+           <AnimatedSection>
+              <h2 className="text-5xl font-black text-[#4F3C1C] italic tracking-tighter uppercase mb-10">Diversified <br/><span className="text-[#FEA42A]">Revenue Streams.</span></h2>
+              <div className="space-y-6">
+                 {[
+                   { t: "DOC Sales", d: "High-quality Day-Old Chicks for regional markets." },
+                   { t: "Meat Production", d: "HACCP-certified whole birds and premium cuts." },
+                   { t: "Feed Production", d: "6 T/H internal supply and commercial sales." },
+                   { t: "Organic Fertilizer", d: "Value-added byproduct for sustainable agriculture." }
+                 ].map((item, i) => (
+                   <div key={i} className="flex gap-6 items-center p-6 bg-[#EFE7DC]/50 rounded-[2rem] border border-[#4F3C1C]/5">
+                      <div className="w-12 h-12 bg-[#4F3C1C] rounded-xl flex items-center justify-center text-[#FEA42A] shrink-0 font-black italic">{i+1}</div>
+                      <div>
+                         <h4 className="font-black italic text-[#4F3C1C] uppercase text-sm tracking-tight">{item.t}</h4>
+                         <p className="text-[#4F3C1C]/60 text-xs font-bold italic">{item.d}</p>
+                      </div>
+                   </div>
+                 ))}
+              </div>
+           </AnimatedSection>
+           <AnimatedSection delay={0.3}>
+              <div className="relative aspect-square rounded-[4rem] overflow-hidden border-[16px] border-[#EFE7DC] shadow-2xl">
+                 <img src="/investor-stats-visual.jpg" alt="Growth" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-[#4F3C1C]/60 to-transparent" />
+              </div>
+           </AnimatedSection>
         </div>
       </section>
 
-      {/* 5. PROSPECTUS FORM */}
-      <section className="py-24 md:py-40 bg-[#EFE7DC]">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-[#4F3C1C] rounded-[3rem] md:rounded-[5rem] overflow-hidden shadow-2xl grid lg:grid-cols-2">
-            <div className="p-10 md:p-24 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] border-b lg:border-b-0 lg:border-r border-white/5">
-                <FileText className="text-[#FEA42A] mb-8 md:mb-10" size={60} />
-                <h3 className="text-[#EFE7DC] text-4xl md:text-6xl font-black italic mb-6 md:mb-8 uppercase tracking-tighter leading-none">
-                    Access <br /> <span className="text-[#FEA42A]">Prospectus.</span>
-                </h3>
-                <p className="text-[#EFE7DC]/60 text-base md:text-lg font-medium leading-relaxed mb-10 md:mb-12">
-                    Request detailed unit economics and 5-year ROI projections.
-                </p>
-                <div className="flex items-center gap-4 text-[#FEA42A] font-black uppercase tracking-widest text-[10px]">
-                   <div className="w-10 h-[2px] bg-[#FEA42A]" />
-                   <span>Direct: invest@birnihigo.com</span>
+      {/* 4. STRATEGIC ALIGNMENT (Ticker Style) */}
+      <section className="py-24 bg-[#4F3C1C] overflow-hidden border-y-4 border-[#FEA42A]">
+        <div className="flex whitespace-nowrap">
+           <motion.div 
+            animate={{ x: [0, -1000] }} 
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="flex gap-20 items-center"
+           >
+              {["Food Security", "Import Substitution", "Export Development", "Job Creation", "Economic Resilience"].map((text, i) => (
+                <div key={i} className="flex items-center gap-8">
+                   <div className="w-3 h-3 bg-[#FEA42A] rotate-45" />
+                   <span className="text-[#EFE7DC] text-4xl md:text-6xl font-black italic tracking-tighter uppercase">{text}</span>
                 </div>
-            </div>
+              ))}
+           </motion.div>
+        </div>
+      </section>
 
-            <div className="p-10 md:p-24 bg-white/5 backdrop-blur-3xl">
-              <AnimatePresence mode="wait">
-                {submitted ? (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="h-full flex flex-col items-center justify-center text-center py-10"
-                  >
-                    <CheckCircle2 size={64} className="text-[#FEA42A] mb-6" />
-                    <h3 className="text-2xl font-black text-[#EFE7DC] uppercase italic mb-2">Request Logged</h3>
-                    <p className="text-[#EFE7DC]/50 font-medium text-sm">Investor Relations will contact you shortly.</p>
-                  </motion.div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="space-y-4">
-                        <label className="text-[#EFE7DC]/40 uppercase text-[10px] font-black tracking-widest ml-4">Credentials</label>
-                        <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
-                        <input type="email" placeholder="Institutional Email" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" required />
-                        <textarea rows={4} placeholder="Investment Mandate / Scope" className="w-full bg-white/5 border border-white/10 rounded-2xl p-5 md:p-6 text-[#EFE7DC] focus:border-[#FEA42A] transition-all outline-none" />
-                    </div>
-                    <button type="submit" className="group w-full py-5 md:py-6 bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl hover:bg-[#FFD275] transition-all shadow-2xl flex items-center justify-center gap-4">
-                      Request Access <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                    </button>
-                  </form>
-                )}
-              </AnimatePresence>
-            </div>
+      {/* 5. INVESTOR RELATIONS FORM */}
+      <section className="py-32 bg-[#EFE7DC]">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="bg-[#4F3C1C] rounded-[4rem] p-12 md:p-24 shadow-2xl relative overflow-hidden">
+             <div className="relative z-10 grid lg:grid-cols-2 gap-16">
+                <div>
+                   <h3 className="text-4xl md:text-6xl font-black text-[#EFE7DC] italic uppercase tracking-tighter leading-none mb-8">
+                     Request <br/><span className="text-[#FEA42A]">Prospectus.</span>
+                   </h3>
+                   <p className="text-[#EFE7DC]/50 text-lg font-bold italic mb-12">
+                     Access our detailed investment deck, unit economics, and 5-year scalability roadmap.
+                   </p>
+                   <div className="space-y-4">
+                      <div className="flex items-center gap-4 text-[#FEA42A]">
+                         <CheckCircle2 size={20} />
+                         <span className="text-[10px] uppercase font-black tracking-[0.2em]">HACCP & Halal Certified</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-[#FEA42A]">
+                         <CheckCircle2 size={20} />
+                         <span className="text-[10px] uppercase font-black tracking-[0.2em]">2,000Ha Integrated Feed</span>
+                      </div>
+                   </div>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-md p-10 rounded-[3rem] border border-white/10">
+                   <AnimatePresence mode="wait">
+                     {submitted ? (
+                       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-10">
+                          <CheckCircle2 size={60} className="text-[#FEA42A] mx-auto mb-6" />
+                          <p className="text-[#EFE7DC] font-black uppercase italic">Request Transmitted</p>
+                       </motion.div>
+                     ) : (
+                       <form onSubmit={handleSubmit} className="space-y-4">
+                          <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-[#EFE7DC] focus:border-[#FEA42A] outline-none" required />
+                          <input type="email" placeholder="Institutional Email" className="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-[#EFE7DC] focus:border-[#FEA42A] outline-none" required />
+                          <textarea placeholder="Investment Mandate" rows={3} className="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-[#EFE7DC] focus:border-[#FEA42A] outline-none" />
+                          <button className="w-full py-5 bg-[#FEA42A] text-[#4F3C1C] font-black uppercase tracking-widest rounded-2xl hover:scale-[1.02] transition-all">Download Investment Deck</button>
+                       </form>
+                     )}
+                   </AnimatePresence>
+                </div>
+             </div>
           </div>
         </div>
       </section>
     </Layout>
   );
 };
+
+const InvestmentCard = ({ icon: Icon, title, points }) => (
+  <AnimatedSection>
+    <div className="p-12 bg-white rounded-[3rem] border border-[#CD8C24]/10 shadow-xl h-full flex flex-col group hover:bg-[#4F3C1C] transition-all duration-500">
+      <div className="w-16 h-16 bg-[#FEA42A] rounded-2xl flex items-center justify-center mb-8 text-[#4F3C1C] group-hover:rotate-6 transition-transform">
+        <Icon size={32} />
+      </div>
+      <h3 className="text-2xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] uppercase italic tracking-tighter mb-6 transition-colors">{title}</h3>
+      <div className="space-y-3 mt-auto">
+        {points.map((p, i) => (
+          <div key={i} className="flex items-center gap-3">
+             <div className="w-1.5 h-1.5 bg-[#FEA42A] rounded-full" />
+             <span className="text-[#4F3C1C]/60 group-hover:text-[#EFE7DC]/60 text-sm font-bold italic transition-colors">{p}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </AnimatedSection>
+);
 
 export default Investors;
