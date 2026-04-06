@@ -2,197 +2,192 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { 
-  MapPin, Phone, Mail, ArrowRight, MessageCircle, 
-  Calendar, Clock, Globe, ChevronRight, Factory, Building, ShieldCheck
+  MapPin, Phone, Mail, ArrowRight, Building, 
+  Factory, ChevronRight, ShieldCheck, Globe2, 
+  Users2, Landmark, Briefcase
 } from "lucide-react";
 
-const departmentEmails = [
-  { dept: "Corporate Liaison", email: "info@birnihigofarms.com" },
-  { dept: "Investor Relations", email: "invest@birnihigofarms.com" },
-  { dept: "Export & Logistics", email: "logistics@birnihigofarms.com" },
-  { dept: "Technical Visits", email: "visit@birnihigo.com" },
-];
-
 const Contact = () => {
-  const [activeForm, setActiveForm] = useState("general");
+  const [activeTrack, setActiveTrack] = useState("Investor inquiries");
+
+  const contactTracks = [
+    { id: "Investor inquiries", icon: Landmark, desc: "Capital allocation & ROI projections." },
+    { id: "Partnership requests", icon: Globe2, desc: "Institutional & supply chain collaboration." },
+    { id: "Contract farming", icon: Briefcase, desc: "Outgrower inclusion & training programs." },
+  ];
 
   return (
     <Layout>
-      {/* 1. HERO SECTION */}
-      <section className="pt-32 pb-20 bg-[#EFE7DC] border-b border-[#CD8C24]/10">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* 1. STRATEGIC HERO */}
+      <section className="pt-40 pb-20 bg-[#4F3C1C] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/ethiopia-map-pattern.png')] bg-fixed opacity-5" />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <AnimatedSection>
-            <p className="text-[#CD8C24] text-xs uppercase tracking-[0.5em] mb-6 font-black italic">Diplomatic & Corporate Hub</p>
-            <h1 className="font-display text-6xl md:text-8xl text-[#4F3C1C] font-black tracking-tighter italic leading-none">
-              Strategic <span className="text-[#FEA42A]">Access.</span>
+            <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-8 font-black italic">Partnership & Liaison</p>
+            <h1 className="font-display text-5xl md:text-[7rem] text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] uppercase mb-12">
+              Building a <br /> Sustainable <br /> <span className="text-[#FEA42A]">Protein Future.</span>
             </h1>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* 2. THE SPLIT CONCIERGE LAYOUT */}
-      <section className="bg-[#EFE7DC] pb-32">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      {/* 2. DUAL-NODE INFRASTRUCTURE */}
+      <section className="py-24 bg-[#EFE7DC]">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
           
-          {/* LEFT: THE INFO HUB */}
-          <div className="lg:col-span-5 space-y-8">
-            <AnimatedSection>
-              <div className="bg-[#4F3C1C] rounded-[3rem] p-10 text-[#EFE7DC] shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:scale-110 transition-transform duration-1000">
-                  <Globe size={160} />
-                </div>
-                
-                <h3 className="text-xl font-black mb-10 italic border-b border-white/10 pb-6 uppercase tracking-[0.3em] text-[#FEA42A]">Operational Nodes</h3>
-                
-                <div className="space-y-12 relative z-10">
-                  {/* CORPORATE LIAISON OFFICE */}
-                  <div className="flex gap-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                      <Building className="text-[#FEA42A]" size={28} />
-                    </div>
-                    <div>
-                      <p className="font-black text-[10px] uppercase tracking-[0.3em] text-[#FEA42A] mb-2">Corporate Liaison Office</p>
-                      <p className="text-lg opacity-90 leading-relaxed font-bold italic">
-                        Kazanchis, In front of ECA<br />
-                        Garad Building, 10th Floor<br />
-                        Room 10/02, Addis Ababa
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* INDUSTRIAL HUB */}
-                  <div className="flex gap-6">
-                    <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                      <Factory className="text-[#FEA42A]" size={28} />
-                    </div>
-                    <div>
-                      <p className="font-black text-[10px] uppercase tracking-[0.3em] text-[#FEA42A] mb-2">Industrial Hub</p>
-                      <p className="text-lg opacity-90 leading-relaxed font-bold italic">
-                        Awash Sebat, Afar Region<br />
-                        42ha Bio-Secure Complex
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-8 border-t border-white/10 grid grid-cols-2 gap-6">
-                    <a href="tel:+251222413101" className="flex flex-col gap-2 group">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-[#FEA42A] group-hover:text-[#4F3C1C] transition-all">
-                        <Phone size={18} />
-                      </div>
-                      <span className="text-[10px] font-black tracking-widest uppercase opacity-40">Direct Line</span>
-                    </a>
-                    <a href="https://wa.me/251911509505" className="flex flex-col gap-2 group">
-                      <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-[#25D366] group-hover:text-white transition-all">
-                        <MessageCircle size={18} />
-                      </div>
-                      <span className="text-[10px] font-black tracking-widest uppercase opacity-40">WhatsApp Business</span>
-                    </a>
-                  </div>
-                </div>
+          {/* ADDIS CORPORATE OFFICE */}
+          <AnimatedSection>
+            <div className="bg-white rounded-[3rem] p-10 md:p-16 shadow-xl border border-[#CD8C24]/10 h-full flex flex-col group">
+              <div className="w-16 h-16 bg-[#4F3C1C] rounded-2xl flex items-center justify-center text-[#FEA42A] mb-10 group-hover:rotate-6 transition-transform">
+                <Building size={32} />
               </div>
-            </AnimatedSection>
-
-            {/* Department Links Card */}
-            <AnimatedSection delay={0.2}>
-              <div className="p-8 bg-white/40 backdrop-blur-md rounded-[2.5rem] border border-[#CD8C24]/10 shadow-sm">
-                <h4 className="text-[#4F3C1C] font-black uppercase tracking-[0.4em] text-[10px] mb-8 italic">Strategic Mandates</h4>
-                <div className="space-y-2">
-                  {departmentEmails.map((d) => (
-                    <a key={d.dept} href={`mailto:${d.email}`} className="flex justify-between items-center p-4 rounded-2xl hover:bg-[#4F3C1C] hover:text-[#EFE7DC] transition-all group">
-                      <span className="text-xs uppercase font-black tracking-tighter">{d.dept}</span>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[9px] opacity-0 group-hover:opacity-40 transition-opacity uppercase font-black">Direct Email</span>
-                        <ChevronRight size={14} className="text-[#FEA42A] group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </a>
-                  ))}
+              <h3 className="text-3xl font-black text-[#4F3C1C] uppercase italic tracking-tighter mb-4">Corporate Liaison Office</h3>
+              <p className="text-[#4F3C1C]/40 text-xs font-black uppercase tracking-widest mb-8 italic">Addis Ababa, Ethiopia</p>
+              
+              <div className="space-y-6 flex-grow">
+                <div className="border-l-2 border-[#FEA42A] pl-6 py-2">
+                   <p className="text-[#4F3C1C] text-lg font-bold leading-relaxed italic">
+                    Kazanchis Garad Building<br />
+                    In front of ECA, 10th Floor<br />
+                    Room no 10/02
+                   </p>
                 </div>
+                <p className="text-[#4F3C1C]/60 text-sm font-medium italic">
+                  (Administrative Coordination, Stakeholder Engagement & Strategic Partnerships)
+                </p>
               </div>
-            </AnimatedSection>
-          </div>
 
-          {/* RIGHT: THE FORM & MAP */}
-          <div className="lg:col-span-7 space-y-8">
-            <AnimatedSection delay={0.3}>
-              <div className="bg-white rounded-[3.5rem] p-10 md:p-14 shadow-sm border border-[#CD8C24]/10 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#FEA42A]/5 rounded-full -mr-16 -mt-16" />
-                
-                <div className="flex gap-3 mb-14 flex-wrap">
-                  {["general", "partnership", "investor"].map((type) => (
+              <div className="mt-12 pt-8 border-t border-[#4F3C1C]/10 flex flex-col gap-4">
+                 <a href="mailto:liaison@birnihigo.com" className="flex items-center gap-4 text-[#4F3C1C] font-black uppercase text-[10px] hover:text-[#FEA42A] transition-colors">
+                    <Mail size={16} /> liaison@birnihigo.com
+                 </a>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* AWASH OPERATIONS SITE */}
+          <AnimatedSection delay={0.2}>
+            <div className="bg-[#4F3C1C] rounded-[3rem] p-10 md:p-16 shadow-2xl text-[#EFE7DC] h-full flex flex-col group relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none">
+                 <Factory size={200} />
+              </div>
+              <div className="w-16 h-16 bg-[#FEA42A] rounded-2xl flex items-center justify-center text-[#4F3C1C] mb-10 group-hover:-rotate-6 transition-transform">
+                <Factory size={32} />
+              </div>
+              <h3 className="text-3xl font-black uppercase italic tracking-tighter mb-4">Operations Site</h3>
+              <p className="text-[#FEA42A] text-[10px] font-black uppercase tracking-widest mb-8 italic">Afar Region, Ethiopia</p>
+              
+              <div className="space-y-6 flex-grow">
+                <div className="border-l-2 border-[#FEA42A] pl-6 py-2">
+                   <p className="text-[#EFE7DC] text-lg font-bold leading-relaxed italic">
+                    Awash Sebat Hub<br />
+                    42-Hectare Bio-Secured<br />
+                    Industrial Complex
+                   </p>
+                </div>
+                <p className="text-[#EFE7DC]/40 text-sm font-medium italic">
+                  (Hatchery, Feed Mill, Broiler Farms & Processing Plant)
+                </p>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-white/10">
+                 <button className="flex items-center gap-4 text-[#FEA42A] font-black uppercase text-[10px] hover:text-white transition-colors">
+                    <MapPin size={16} /> View Coordinates
+                 </button>
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* 3. PARTNERSHIP TRACK SELECTION */}
+      <section className="py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-5">
+              <AnimatedSection>
+                <h2 className="text-5xl font-black text-[#4F3C1C] uppercase tracking-tighter italic leading-none mb-8">
+                  Initiate <br/><span className="text-[#FEA42A]">Dialogue.</span>
+                </h2>
+                <div className="space-y-4">
+                  {contactTracks.map((track) => (
                     <button
-                      key={type}
-                      onClick={() => setActiveForm(type)}
-                      className={`px-8 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${
-                        activeForm === type 
-                        ? "bg-[#4F3C1C] text-[#FEA42A] shadow-xl scale-105" 
-                        : "bg-[#EFE7DC] text-[#4F3C1C]/60 hover:bg-[#CD8C24]/10"
+                      key={track.id}
+                      onClick={() => setActiveTrack(track.id)}
+                      className={`w-full p-8 rounded-[2rem] flex items-center gap-6 transition-all border ${
+                        activeTrack === track.id 
+                        ? "bg-[#4F3C1C] text-[#FEA42A] border-[#4F3C1C] shadow-2xl scale-[1.02]" 
+                        : "bg-[#EFE7DC]/30 text-[#4F3C1C]/50 border-transparent hover:border-[#4F3C1C]/20"
                       }`}
                     >
-                      {type}
+                      <track.icon size={24} />
+                      <div className="text-left">
+                        <p className="text-sm font-black uppercase tracking-tighter">{track.id}</p>
+                        <p className={`text-[10px] italic font-bold ${activeTrack === track.id ? "text-[#FEA42A]/60" : "text-[#4F3C1C]/40"}`}>
+                          {track.desc}
+                        </p>
+                      </div>
                     </button>
                   ))}
                 </div>
+              </AnimatedSection>
+            </div>
 
-                <form className="space-y-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="relative">
-                      <input type="text" className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent" id="fname" required />
-                      <label htmlFor="fname" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-xs peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">First Name</label>
-                    </div>
-                    <div className="relative">
-                      <input type="text" className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent" id="lname" required />
-                      <label htmlFor="lname" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-xs peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">Last Name</label>
-                    </div>
+            <div className="lg:col-span-7">
+               <AnimatedSection delay={0.3}>
+                  <div className="bg-[#EFE7DC] rounded-[3.5rem] p-10 md:p-16 border border-[#4F3C1C]/5">
+                    <form className="space-y-8">
+                      <div className="grid grid-cols-2 gap-8">
+                         <div className="space-y-2">
+                           <label className="text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 ml-2">Full Name</label>
+                           <input type="text" className="w-full bg-white rounded-2xl p-5 outline-none border border-transparent focus:border-[#FEA42A] transition-all" />
+                         </div>
+                         <div className="space-y-2">
+                           <label className="text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 ml-2">Organization</label>
+                           <input type="text" className="w-full bg-white rounded-2xl p-5 outline-none border border-transparent focus:border-[#FEA42A] transition-all" />
+                         </div>
+                      </div>
+                      <div className="space-y-2">
+                         <label className="text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 ml-2">Official Email</label>
+                         <input type="email" className="w-full bg-white rounded-2xl p-5 outline-none border border-transparent focus:border-[#FEA42A] transition-all" />
+                      </div>
+                      <div className="space-y-2">
+                         <label className="text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 ml-2">{activeTrack} Details</label>
+                         <textarea rows={4} className="w-full bg-white rounded-2xl p-5 outline-none border border-transparent focus:border-[#FEA42A] transition-all resize-none" />
+                      </div>
+                      <button className="w-full py-6 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-4">
+                        Submit Official Request <ArrowRight size={18} />
+                      </button>
+                    </form>
                   </div>
+               </AnimatedSection>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                  <div className="relative">
-                    <input type="email" className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent" id="email" required />
-                    <label htmlFor="email" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-xs peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">Corporate Email</label>
-                  </div>
-
-                  <div className="relative">
-                    <textarea rows={4} className="w-full bg-transparent border-b-2 border-[#4F3C1C]/10 py-4 focus:border-[#FEA42A] outline-none transition-colors peer placeholder-transparent resize-none" id="msg" required />
-                    <label htmlFor="msg" className="absolute left-0 top-0 text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 transition-all peer-placeholder-shown:text-xs peer-placeholder-shown:top-4 peer-focus:top-0 peer-focus:text-[10px] peer-focus:text-[#FEA42A]">Project Mandate / Inquiry Details</label>
-                  </div>
-
-                  <button className="group w-full py-6 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-[0.4em] text-[11px] italic hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all flex items-center justify-center gap-4 shadow-2xl">
-                    Submit Credentials <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
-                  </button>
-                </form>
-              </div>
-            </AnimatedSection>
-
-            {/* MAP SECTION */}
-            <AnimatedSection delay={0.4}>
-              <div className="rounded-[3.5rem] overflow-hidden h-96 border-8 border-white shadow-xl grayscale hover:grayscale-0 transition-all duration-1000 group">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.547141541334!2d38.7618!3d9.0234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b859669555555%3A0x5555555555555555!2sKazanchis%2C%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1710000000000!5m2!1sen!2set" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen="" 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="group-hover:scale-105 transition-transform duration-[2000ms]"
-                ></iframe>
-              </div>
-            </AnimatedSection>
-
-            {/* Visit CTA */}
-            <div className="p-10 bg-[#4F3C1C] rounded-[3.5rem] flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl relative overflow-hidden group">
-              <div className="absolute inset-0 bg-[#FEA42A]/5 translate-x-full group-hover:translate-x-0 transition-transform duration-700" />
-              <div className="flex items-center gap-8 relative z-10">
-                <div className="w-16 h-16 rounded-2xl bg-[#FEA42A] flex items-center justify-center text-[#4F3C1C] shadow-lg">
-                  <ShieldCheck size={32} />
-                </div>
-                <div>
-                  <h4 className="text-[#FEA42A] text-2xl font-black italic uppercase tracking-tighter">Site Inspection</h4>
-                  <p className="text-[#EFE7DC]/50 font-bold text-sm">Schedule a technical tour of our 42ha industrial hub.</p>
-                </div>
-              </div>
-              <a href="mailto:visit@birnihigo.com" className="relative z-10 px-10 py-5 bg-[#FEA42A] text-[#4F3C1C] rounded-2xl font-black uppercase tracking-widest text-[10px] hover:scale-105 transition-all shadow-xl active:scale-95">
-                Book Technical Tour
-              </a>
+      {/* 4. BIO-SECURITY WARNING / SITE VISIT */}
+      <section className="py-24 bg-[#EFE7DC]">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-[#FEA42A] rounded-[3rem] p-12 md:p-20 flex flex-col md:flex-row items-center gap-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-8 opacity-10">
+               <ShieldCheck size={200} />
+            </div>
+            <div className="shrink-0">
+               <div className="w-24 h-24 bg-[#4F3C1C] rounded-3xl flex items-center justify-center text-[#FEA42A] shadow-xl">
+                  <ShieldCheck size={48} />
+               </div>
+            </div>
+            <div>
+               <h3 className="text-3xl font-black text-[#4F3C1C] uppercase italic tracking-tighter mb-4">Technical Inspection</h3>
+               <p className="text-[#4F3C1C]/70 text-lg font-bold italic leading-relaxed max-w-2xl">
+                 Site visits to our Awash Operations are strictly regulated due to international bio-security protocols. Technical inspections for partners and investors must be scheduled 14 days in advance.
+               </p>
+               <div className="mt-8">
+                  <a href="mailto:visit@birnihigo.com" className="inline-flex items-center gap-3 font-black uppercase text-[10px] text-[#4F3C1C] border-b-2 border-[#4F3C1C] pb-1 hover:opacity-60 transition-opacity">
+                    Schedule Technical Tour <ChevronRight size={14} />
+                  </a>
+               </div>
             </div>
           </div>
         </div>
