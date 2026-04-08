@@ -1,8 +1,8 @@
-import { useRef } from "react";
-import Head from "next/head";
+Import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
 import { 
   ShieldCheck, Recycle, GraduationCap, Award, 
   ChevronRight, ArrowDown, CheckCircle2
@@ -23,12 +23,6 @@ const About = () => {
 
   return (
     <Layout>
-      <Head>
-        <title>About Birnihigo Farms | Ethiopia's National Food Security Partner</title>
-        <meta name="description" content="Supporting the Ethiopian population of 135M+ through sustainable, vertically integrated poultry production and industrial-scale agriculture." />
-        <meta name="keywords" content="Ethiopia Population, Food Security Ethiopia, Poultry Industry, ESG, Birnihigo Farms, Sustainable Agriculture" />
-      </Head>
-
       {/* 1. HIGH-IMPACT HERO */}
       <section className="relative h-[90vh] flex items-center justify-center overflow-hidden bg-[#1A1A1A]">
         <motion.div 
@@ -72,10 +66,10 @@ const About = () => {
               Built to Solve a<br />Systems Problem
             </h2>
             <p className="text-[#4F3C1C]/70 text-lg leading-relaxed font-medium mb-6">
-              Birnihigo Integrated Farms is a vertically integrated poultry system established in 2013. We operate with a strategic mandate to address the fundamental food security needs of the <span className="text-[#CD8C24] font-bold text-xl">135M+ Ethiopian population</span> through climate-resilient, industrial-scale production.
+              Birnihigo Integrated Farms is a vertically integrated poultry company established in 2013 with a clear mission: to make high-quality, affordable protein accessible while building a resilient, export-ready poultry system.
             </p>
             <p className="text-[#4F3C1C] text-lg font-semibold leading-relaxed">
-              What began as a specialized supply operation has evolved into a comprehensive value chain—bridging the gap between agricultural potential and national demand.
+              What began as a day-old chick supply operation has evolved into a fully integrated value chain — from breeding and hatchery to processing and market delivery.
             </p>
           </AnimatedSection>
         </div>
@@ -86,8 +80,8 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: ShieldCheck, title: "Biosecurity", desc: "Rigorous laboratory monitoring and strict environmental controls ensuring zero-risk production for the national market." },
-              { icon: Recycle, title: "ESG & Sustainability", desc: "Leading the circular economy by converting 100% of organic by-products into high-grade fertilizer to support soil health." },
+              { icon: ShieldCheck, title: "Biosecurity", desc: "Rigorous laboratory monitoring and strict environmental controls ensuring zero-risk production." },
+              { icon: Recycle, title: "Waste Synergy", desc: "Closing the loop by converting 100% of organic by-products into high-grade organic fertilizer." },
               { icon: GraduationCap, title: "Tech Adoption", desc: "Scaling through automated climate-controlled housing and advanced data-driven feeding systems." },
             ].map((p, i) => (
               <AnimatedSection key={p.title} delay={i * 0.2}>
@@ -132,7 +126,7 @@ const About = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-[#4F3C1C] via-transparent to-transparent opacity-60" />
               <div className="absolute bottom-12 left-12 right-12">
                 <p className="text-[#FEA42A] font-black uppercase tracking-widest text-xs mb-2">Industrial Scale</p>
-                <p className="text-[#EFE7DC] text-2xl font-bold leading-tight">Securing National Sovereignty through Integrated Food Supply Chains.</p>
+                <p className="text-[#EFE7DC] text-2xl font-bold leading-tight">Securing National Sovereignty through 2,000+ Hectares of Feed Self-Sufficiency.</p>
               </div>
             </div>
           </div>
@@ -151,7 +145,7 @@ const About = () => {
             </h2>
             <div className="w-16 h-1 bg-[#CD8C24]/30 mx-auto my-8 rounded-full" />
             <p className="text-[#4F3C1C]/70 text-lg leading-relaxed font-medium max-w-2xl mx-auto">
-              We believe transformation in agriculture requires holistic systems to feed a growing nation.
+              We believe transformation in agriculture requires systems — not isolated interventions.
             </p>
           </AnimatedSection>
         </div>
@@ -169,8 +163,8 @@ const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               "First fully integrated poultry model in Ethiopia",
-              "Direct impact on 135M+ food security goals",
-              "Designed for industrial scalability and replication",
+              "Built under real operational conditions",
+              "Designed for scalability and replication",
             ].map((item, i) => (
               <AnimatedSection key={item} delay={i * 0.1}>
                 <div className="flex flex-col items-center text-center gap-4 bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-[#FEA42A]/10 transition-all duration-300">
@@ -193,7 +187,7 @@ const About = () => {
             <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter mb-12">Strategic Mandate</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
               {[
-                "National food sovereignty",
+                "Science-based food sovereignty",
                 "Industrial-scale biosecurity",
                 "Export-grade Halal processing",
                 "Internalized feed supply chain"
