@@ -1,11 +1,12 @@
-Import { useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import MotionCard from "@/components/MotionCard";
 import { 
   ShieldCheck, Recycle, GraduationCap, Award, 
-  ChevronRight, ArrowDown, CheckCircle2
+  ChevronRight, ArrowDown, CheckCircle2,
+  Sprout, Wind, Leaf
 } from "lucide-react";
 
 const timeline = [
@@ -45,7 +46,8 @@ const About = () => {
             Industrial <span className="text-[#FEA42A]">Precision.</span>
           </h1>
           <p className="text-[#EFE7DC]/80 text-lg md:text-xl font-medium max-w-3xl mx-auto leading-relaxed border-l-2 border-[#FEA42A] pl-6 py-2 italic">
-            "Eliminating food insecurity through science-led, large-scale integrated poultry ecosystems."
+            {/* ✅ CHANGE 1: Updated to 135+ million */}
+            "Eliminating food insecurity through science-led, large-scale integrated poultry ecosystems — feeding 135+ million people."
           </p>
           <motion.div 
             animate={{ y: [0, 10, 0] }} 
@@ -91,6 +93,47 @@ const About = () => {
                   </div>
                   <h3 className="text-2xl font-black text-[#4F3C1C] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase tracking-widest">{p.title}</h3>
                   <p className="text-[#4F3C1C]/70 group-hover:text-[#EFE7DC]/70 leading-relaxed font-medium transition-colors">{p.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ CHANGE 2: NEW ESG SECTION */}
+      <section className="py-32 bg-[#1A1A1A]">
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimatedSection className="text-center mb-16">
+            <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-black">ESG & Sustainable Development</p>
+            <h2 className="text-5xl text-[#EFE7DC] font-black tracking-tighter leading-tight">
+              Built for the <span className="text-[#FEA42A]">Long Game.</span>
+            </h2>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Sprout,
+                title: "Food Security",
+                desc: "Contributing directly to Ethiopia's national self-sufficiency goals by closing the protein gap for 135+ million people."
+              },
+              {
+                icon: Leaf,
+                title: "Circular Economy",
+                desc: "100% of poultry waste is converted into high-grade organic fertilizer — zero waste, maximum output."
+              },
+              {
+                icon: Wind,
+                title: "Climate Resilience",
+                desc: "Bio-secure, climate-controlled environments protect livestock from environmental volatility and disease vectors."
+              },
+            ].map((p, i) => (
+              <AnimatedSection key={p.title} delay={i * 0.2}>
+                <div className="group relative p-10 h-full bg-white/5 border border-[#FEA42A]/20 rounded-[2.5rem] hover:bg-[#FEA42A]/10 transition-all duration-500 shadow-xl">
+                  <div className="w-16 h-16 rounded-2xl bg-[#FEA42A]/10 border border-[#FEA42A]/30 flex items-center justify-center mb-8 group-hover:bg-[#FEA42A] transition-all shadow-lg">
+                    <p.icon size={30} className="text-[#FEA42A] group-hover:text-[#1A1A1A] transition-colors" />
+                  </div>
+                  <h3 className="text-2xl font-black text-[#EFE7DC] group-hover:text-[#FEA42A] mb-4 transition-colors uppercase tracking-widest">{p.title}</h3>
+                  <p className="text-[#EFE7DC]/50 group-hover:text-[#EFE7DC]/80 leading-relaxed font-medium transition-colors">{p.desc}</p>
                 </div>
               </AnimatedSection>
             ))}
