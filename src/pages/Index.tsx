@@ -256,7 +256,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* PURPOSE */}
+    {/* PURPOS */}
     <section className="py-20 bg-[#4F3C1C]" aria-labelledby="purpose-heading">
       <div className="max-w-3xl mx-auto px-6 text-center">
         <AnimatedSection>
