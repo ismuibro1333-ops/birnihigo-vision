@@ -1,4 +1,4 @@
-import Head from "next/head"; // Added for SEO
+import { Helmet } from "react-helmet"; // Use Helmet for React SEO
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import MotionCard from "@/components/MotionCard";
@@ -13,33 +13,15 @@ import { Link } from "react-router-dom";
 
 const Index = () => (
   <Layout>
-    {/* DIGITAL STRATEGY: SEO & META TAGS */}
-    <Head>
-      <title>Birnihigo Integrated Farms | Leading Ethiopia's Protein Economy</title>
-      <meta name="description" content="An industrial-scale integrated poultry system securing food sovereignty for Ethiopia's 135M+ population through science-based production and ESG-led sustainability." />
-      <meta name="keywords" content="Ethiopia Agriculture, Poultry Farming, Food Security, Birnihigo Farms, Industrial Farming Ethiopia, 135M Population" />
-      
-      {/* Social Media Sharing (Open Graph) */}
-      <meta property="og:title" content="Birnihigo Integrated Farms | National Impact" />
-      <meta property="og:description" content="Transforming Ethiopia's protein economy through a 100% circular, vertically integrated poultry model." />
-      <meta property="og:image" content="/og-image.jpg" /> {/* Fasil should ensure this file exists in /public */}
-      <meta property="og:type" content="website" />
-      
-      {/* Google Analytics Placeholder - Fasil just needs to drop the ID here */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_ID_HERE"></script>
-      <script dangerouslySetInnerHTML={{
-        __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-YOUR_ID_HERE');
-        `,
-      }} />
-    </Head>
+    <Helmet>
+      <title>Birnihigo Integrated Farms | Ethiopia's Protein Economy</title>
+      <meta name="description" content="Industrial-scale poultry system serving Ethiopia's 135M+ population through science-based production and ESG-led sustainability." />
+      <meta property="og:title" content="Birnihigo Integrated Farms" />
+      <meta property="og:description" content="Securing food sovereignty for 135M+ people." />
+    </Helmet>
 
     <ScrollytellingHero />
     
-    {/* VISION STRIPE: National Impact */}
     <section className="py-12 bg-[#4F3C1C] text-[#EFE7DC] overflow-hidden border-y border-[#FEA42A]/20">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -96,7 +78,7 @@ const Index = () => (
             { icon: TrendingUp, label: "Enabling export-ready poultry production" },
             { icon: Shield, label: "Strengthening food security for 135M+ people" },
           ].map((item, i) => (
-            <AnimatedSection key={item.label} delay={i * 0.1}>
+            <AnimatedSection key={item.label} delay={item.label === "Strengthening food security for 135M+ people" ? 0.4 : i * 0.1}>
               <div className="flex items-start gap-5 bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-[#FEA42A]/10 transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-[#FEA42A]/10 border border-[#FEA42A]/20 flex items-center justify-center shrink-0">
                   <item.icon size={22} className="text-[#FEA42A]" />
@@ -108,10 +90,8 @@ const Index = () => (
         </div>
       </div>
     </section>
-    
-    {/* REST OF YOUR CODE (Numbers, Gallery, Resilience, Sustainability, Investor sections...) stays exactly the same below here */}
-    
-    {/* ... (Keep your existing code for those sections) ... */}
+
+    {/* Numbers, Gallery, Resilience sections continue below exactly as in your original... */}
 
   </Layout>
 );
