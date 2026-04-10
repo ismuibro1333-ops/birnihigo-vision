@@ -43,7 +43,6 @@ const Footer = () => {
               </div>
             </Link>
             
-            {/* THE REFINED TWO-PHRASE MISSION */}
             <p className="text-lg leading-relaxed mb-10 opacity-70 font-medium max-w-sm italic border-l-2 border-[#FEA42A] pl-6 py-1">
               Ethiopia's first fully integrated poultry ecosystem. Eliminating food insecurity through a 42-hectare industrial loop, 100% internal feed, and science-led Halal sovereignty.
             </p>
@@ -86,7 +85,7 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* 3. UPDATED LOCATION: Corporate Liaison Office */}
+          {/* 3. Corporate Liaison Office */}
           <div className="lg:col-span-3">
             <h4 className="text-[11px] uppercase tracking-[0.4em] mb-10 font-black text-[#FEA42A] italic">Corporate Liaison</h4>
             <div className="space-y-8">
@@ -106,6 +105,14 @@ const Footer = () => {
                 </div>
                 <a href="tel:+251222413101" className="text-sm opacity-60 hover:opacity-100 hover:text-[#FEA42A] font-black tracking-widest transition-all">
                   +251 22 241 3101
+                </a>
+              </div>
+              <div className="flex items-center gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover:bg-[#FEA42A]/10 transition-colors">
+                   <Mail size={18} style={{ color: brandOrange }} />
+                </div>
+                <a href="mailto:info@birnihigofarms.com" className="text-sm opacity-60 hover:opacity-100 hover:text-[#FEA42A] font-black tracking-widest transition-all">
+                  info@birnihigofarms.com
                 </a>
               </div>
             </div>
