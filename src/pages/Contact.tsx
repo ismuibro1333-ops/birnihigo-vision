@@ -58,8 +58,8 @@ const Contact = () => {
               </div>
 
               <div className="mt-12 pt-8 border-t border-[#4F3C1C]/10 flex flex-col gap-4">
-                 <a href="mailto:liaison@birnihigo.com" className="flex items-center gap-4 text-[#4F3C1C] font-black uppercase text-[10px] hover:text-[#FEA42A] transition-colors">
-                    <Mail size={16} /> liaison@birnihigo.com
+                 <a href="mailto:info@birnihigofarms.com" className="flex items-center gap-4 text-[#4F3C1C] font-black uppercase text-[10px] hover:text-[#FEA42A] transition-colors">
+                    <Mail size={16} /> info@birnihigofarms.com
                  </a>
               </div>
             </div>
@@ -184,7 +184,7 @@ const Contact = () => {
                  Site visits to our Awash Operations are strictly regulated due to international bio-security protocols. Technical inspections for partners and investors must be scheduled 14 days in advance.
                </p>
                <div className="mt-8">
-                  <a href="mailto:visit@birnihigo.com" className="inline-flex items-center gap-3 font-black uppercase text-[10px] text-[#4F3C1C] border-b-2 border-[#4F3C1C] pb-1 hover:opacity-60 transition-opacity">
+                  <a href="mailto:info@birnihigofarms.com" className="inline-flex items-center gap-3 font-black uppercase text-[10px] text-[#4F3C1C] border-b-2 border-[#4F3C1C] pb-1 hover:opacity-60 transition-opacity">
                     Schedule Technical Tour <ChevronRight size={14} />
                   </a>
                </div>
