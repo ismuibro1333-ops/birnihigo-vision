@@ -19,17 +19,19 @@ import {
   Users, 
   Package 
 } from "lucide-react";
-import Link from "next/link"; // Changed from react-router-dom to next/link for Next.js consistency
+import Link from "next/link";
+import Head from "next/head";
 
 const Index = () => (
   <Layout>
-    {/* SEO Meta Tags */}
-    <title>Birnihigo Integrated Farms | Ethiopia's Protein Leader</title>
-    <meta name="description" content="Industrial poultry systems serving Ethiopia's 135M+ population through integrated production." />
+    <Head>
+      <title>Birnihigo Integrated Farms | Ethiopia's Protein Leader</title>
+      <meta name="description" content="Industrial poultry systems serving Ethiopia's 135M+ population through integrated production." />
+    </Head>
 
     <ScrollytellingHero />
 
-    {/* VISION STRIPE: National Impact */}
+    {/* VISION STRIPE */}
     <section className="py-12 bg-[#4F3C1C] text-[#EFE7DC] overflow-hidden border-y border-[#FEA42A]/20">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -106,9 +108,11 @@ const Index = () => (
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Industrial Scale</p>
           <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
         </AnimatedSection>
+
         <div className="mb-20">
           <OperationalDashboard />
         </div>
+
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
             { label: "Daily Throughput", value: "32 Ton", detail: "Finished poultry meat" },
@@ -121,8 +125,12 @@ const Index = () => (
                 {stat.value}
               </span>
               <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
-              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">{stat.label}</h3>
-              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">{stat.detail}</p>
+              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
+                {stat.label}
+              </h3>
+              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
+                {stat.detail}
+              </p>
             </AnimatedSection>
           ))}
         </div>
@@ -137,6 +145,7 @@ const Index = () => (
           <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
           <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
         </AnimatedSection>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
           {[
             { src: pic1, alt: "Birnihigo farm aerial view" },
@@ -146,9 +155,10 @@ const Index = () => (
             <AnimatedSection key={img.alt} delay={i * 0.15}>
               <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] border-4 border-[#4F3C1C]/5 shadow-2xl bg-[#4F3C1C]">
                 <img
-                  src={img.src}
+                  src={img.src.src || img.src}
                   alt={img.alt}
                   className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-out"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/40 backdrop-blur-[4px]">
                   <p className="text-[#FEA42A] font-black text-xl tracking-widest uppercase">Science-Driven</p>
@@ -171,9 +181,10 @@ const Index = () => (
               Built Under<br />Real Conditions
             </h2>
             <p className="text-[#4F3C1C]/70 text-lg leading-relaxed font-medium">
-              Developed in Afar under extreme climate and infrastructure constraints, Birnihigo has demonstrated resilience through continuous investment.
+              Developed in Afar under extreme climate and infrastructure constraints, Birnihigo has demonstrated resilience through continuous investment and infrastructure development.
             </p>
           </div>
+
           <div className="flex-1 grid grid-cols-1 gap-5">
             {[
               { label: "Extreme Climate", detail: "Operational in one of Ethiopia's harshest environments" },
@@ -197,29 +208,32 @@ const Index = () => (
 
     {/* SUSTAINABILITY */}
     <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FEA42A]/5 blur-[150px] rounded-full"></div>
+      
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <AnimatedSection className="text-center mb-24">
           <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">Sustainability</p>
           <h2 id="sustainability-heading" className="text-6xl text-[#EFE7DC] font-black tracking-tighter mb-6">100% Circular Waste-to-Resource</h2>
           <p className="text-[#EFE7DC]/60 max-w-2xl mx-auto font-medium">
-            At Birnihigo Farms, no resource is wasted. We transform organic waste into high-grade outputs.
+            At Birnihigo Farms, no resource is wasted. We transform organic waste into high-grade outputs, fueling our entire ecosystem.
           </p>
         </AnimatedSection>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 items-start">
           {[
-            { icon: Sprout, title: "Fertilizer", desc: "Organic solid waste transformed into high-grade fertilizer.", stat: "Soil Health" },
-            { icon: Droplets, title: "Clean Water", desc: "Advanced treatment systems returning purified water.", stat: "Zero Liquid Waste" },
-            { icon: Zap, title: "Renewable Energy", desc: "Converting organic liquid waste into biogas energy.", stat: "Clean Power" },
-            { icon: Leaf, title: "Moringa Innovation", desc: "Moringa-based feed integration enhancing nutrition.", stat: "Feed Innovation" },
+            { icon: Sprout, title: "Fertilizer", desc: "Organic solid waste transformed into high-grade fertilizer for our crop cultivation.", stat: "Soil Health" },
+            { icon: Droplets, title: "Clean Water", desc: "Advanced treatment systems returning purified water to the production cycle.", stat: "Zero Liquid Waste" },
+            { icon: Zap, title: "Renewable Energy", desc: "Converting organic liquid waste into biogas energy for on-site operations.", stat: "Clean Power" },
+            { icon: Leaf, title: "Moringa Innovation", desc: "Moringa-based feed integration enhancing nutrition and reducing dependency.", stat: "Feed Innovation" },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <article className="text-center group bg-white/5 p-10 rounded-[3rem] border border-white/10 hover:bg-[#FEA42A]/10 transition-all duration-500">
-                <div className="w-20 h-20 rounded-[1.5rem] bg-[#FEA42A]/10 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center group-hover:bg-[#FEA42A] transition-all">
-                  <item.icon size={32} className="text-[#FEA42A] group-hover:text-[#4F3C1C]" />
+                <div className="w-20 h-20 rounded-[1.5rem] bg-[#FEA42A]/10 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A] shadow-inner">
+                  <item.icon size={32} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
                 </div>
-                <p className="text-[#FEA42A] font-black text-xs uppercase mb-2">{item.stat}</p>
-                <h3 className="text-xl text-[#EFE7DC] mb-4 font-bold uppercase">{item.title}</h3>
-                <p className="text-sm text-[#EFE7DC]/60 font-medium">{item.desc}</p>
+                <p className="text-[#FEA42A] font-black text-xs uppercase tracking-widest mb-2">{item.stat}</p>
+                <h3 className="text-xl text-[#EFE7DC] mb-4 font-bold uppercase tracking-widest">{item.title}</h3>
+                <p className="text-sm text-[#EFE7DC]/60 leading-relaxed font-medium">{item.desc}</p>
               </article>
             </AnimatedSection>
           ))}
@@ -228,12 +242,12 @@ const Index = () => (
     </section>
 
     {/* INVESTOR & BIOSECURITY */}
-    <section className="py-24 bg-[#EFE7DC]/30">
+    <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
       <div className="max-w-6xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6 border-b border-[#CD8C24]/20 pb-12">
           <div className="text-left">
             <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Strategic Growth</p>
-            <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Biosecurity Excellence</h2>
+            <h2 id="investor-portal-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tighter">Biosecurity Excellence</h2>
           </div>
           <Link href="/investors">
             <div className="group flex items-center gap-3 bg-[#4F3C1C] text-[#EFE7DC] px-8 py-4 rounded-full font-bold hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all duration-300 shadow-xl cursor-pointer">
@@ -241,11 +255,12 @@ const Index = () => (
             </div>
           </Link>
         </AnimatedSection>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {[
-            { icon: Shield, title: "Risk Mitigation", desc: "Science-based biosecurity protocols ensure zero-risk production." },
-            { icon: Globe, title: "Market Leadership", desc: "Advancing toward Halal-certified production." },
-            { icon: TrendingUp, title: "Vertical Integration", desc: "100% internal supply chain control." },
+            { icon: Shield, title: "Risk Mitigation", desc: "Science-based biosecurity protocols ensure a zero-risk production environment." },
+            { icon: Globe, title: "Market Leadership", desc: "Advancing toward Halal-certified production for regional trade and national supply." },
+            { icon: TrendingUp, title: "Vertical Integration", desc: "100% internal supply chain control via automated feed milling and 2,000+ Ha cultivation." },
           ].map((item, i) => (
             <AnimatedSection key={item.title} delay={i * 0.15}>
               <MotionCard className="p-12 h-full bg-[#EFE7DC] border-b-8 border-[#CD8C24] hover:border-[#FEA42A] transition-all rounded-3xl shadow-lg">
