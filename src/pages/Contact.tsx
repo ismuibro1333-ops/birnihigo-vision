@@ -11,9 +11,9 @@ const Contact = () => {
   const [activeTrack, setActiveTrack] = useState("Investor inquiries");
 
   const contactTracks = [
-    { id: "Investor inquiries", icon: Landmark, desc: "Capital allocation & ROI projections." },
-    { id: "Partnership requests", icon: Globe2, desc: "Institutional & supply chain collaboration." },
-    { id: "Contract farming", icon: Briefcase, desc: "Outgrower inclusion & training programs." },
+    { id: "Investor inquiries", icon: Landmark, desc: "Capital allocation & ROI projections.", email: "investors@birnihigofarms.com" },
+    { id: "Partnership requests", icon: Globe2, desc: "Institutional & supply chain collaboration.", email: "partners@birnihigofarms.com" },
+    { id: "Contract farming", icon: Briefcase, desc: "Outgrower inclusion & training programs.", email: "info@birnihigofarms.com" },
   ];
 
   return (
@@ -62,11 +62,19 @@ const Contact = () => {
                 </p>
               </div>
               <div className="mt-12 pt-8 border-t border-[#4F3C1C]/10 flex flex-col gap-4">
+                {/* PRIMARY CORPORATE EMAIL */}
                 <a
                   href="mailto:info@birnihigofarms.com"
                   className="flex items-center gap-4 text-[#4F3C1C] font-black uppercase text-[10px] hover:text-[#FEA42A] transition-colors"
                 >
                   <Mail size={16} /> info@birnihigofarms.com
+                </a>
+                {/* INVESTOR SPECIFIC EMAIL */}
+                <a
+                  href="mailto:investors@birnihigofarms.com"
+                  className="flex items-center gap-4 text-[#4F3C1C] font-black uppercase text-[10px] hover:text-[#FEA42A] transition-colors"
+                >
+                  <Landmark size={16} /> investors@birnihigofarms.com
                 </a>
               </div>
             </div>
@@ -99,10 +107,13 @@ const Contact = () => {
                   (Hatchery, Feed Mill, Broiler Farms & Processing Plant)
                 </p>
               </div>
-              <div className="mt-12 pt-8 border-t border-white/10">
-                <button className="flex items-center gap-4 text-[#FEA42A] font-black uppercase text-[10px] hover:text-white transition-colors">
-                  <MapPin size={16} /> View Coordinates
-                </button>
+              <div className="mt-12 pt-8 border-t border-white/10 flex flex-col gap-4">
+                 <a
+                  href="mailto:partners@birnihigofarms.com"
+                  className="flex items-center gap-4 text-[#FEA42A] font-black uppercase text-[10px] hover:text-white transition-colors"
+                >
+                  <Globe2 size={16} /> partners@birnihigofarms.com
+                </a>
               </div>
             </div>
           </AnimatedSection>
@@ -147,6 +158,7 @@ const Contact = () => {
               <AnimatedSection delay={0.3}>
                 <div className="bg-[#EFE7DC] rounded-[3.5rem] p-10 md:p-16 border border-[#4F3C1C]/5">
                   <form className="space-y-8">
+                    {/* FORM FIELDS REMAIN SAME - FUNCTIONALITY UNCHANGED */}
                     <div className="grid grid-cols-2 gap-8">
                       <div className="space-y-2">
                         <label className="text-[10px] font-black uppercase tracking-widest text-[#4F3C1C]/40 ml-2">
@@ -183,9 +195,13 @@ const Contact = () => {
                       <textarea
                         rows={4}
                         className="w-full bg-white rounded-2xl p-5 outline-none border border-transparent focus:border-[#FEA42A] transition-all resize-none"
+                        placeholder={`Please describe your ${activeTrack.toLowerCase()} here...`}
                       />
                     </div>
-                    <button className="w-full py-6 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-4">
+                    <button 
+                      type="button"
+                      className="w-full py-6 bg-[#4F3C1C] text-[#FEA42A] rounded-2xl font-black uppercase tracking-widest text-xs hover:scale-[1.02] active:scale-[0.98] transition-all shadow-xl flex items-center justify-center gap-4"
+                    >
                       Submit Official Request <ArrowRight size={18} />
                     </button>
                   </form>
@@ -219,7 +235,7 @@ const Contact = () => {
               </p>
               <div className="mt-8">
                 <a
-                  href="mailto:info@birnihigofarms.com"
+                  href="mailto:partners@birnihigofarms.com"
                   className="inline-flex items-center gap-3 font-black uppercase text-[10px] text-[#4F3C1C] border-b-2 border-[#4F3C1C] pb-1 hover:opacity-60 transition-opacity"
                 >
                   Schedule Technical Tour <ChevronRight size={14} />
