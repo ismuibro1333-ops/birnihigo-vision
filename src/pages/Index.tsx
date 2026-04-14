@@ -1,5 +1,3 @@
-"use client"; // This tells Next.js: "I have animations, don't put SEO here"
-
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import MotionCard from "@/components/MotionCard";
@@ -19,77 +17,89 @@ import {
   Droplets, 
   Zap, 
   Users, 
-  Package 
+  Package,
+  Award,
+  BarChart3
 } from "lucide-react";
 import Link from "next/link";
 
 const Index = () => (
   <Layout>
+    {/* UPDATED HERO COMPONENT (Ensure your ScrollytellingHero uses the new 'Powerful Hero' text) */}
     <ScrollytellingHero />
 
-    {/* VISION STRIPE */}
+    {/* VISION STRIPE - INDUSTRIAL AUTHORITY */}
     <section className="py-12 bg-[#4F3C1C] text-[#EFE7DC] overflow-hidden border-y border-[#FEA42A]/20">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl">
-            <h2 className="text-2xl md:text-3xl font-black tracking-tighter leading-tight italic">
-              "Driving national food sovereignty through integrated, science-based poultry systems."
+            <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-[0.9] italic uppercase">
+              Building Ethiopia’s First <span className="text-[#FEA42A]">Fully Integrated</span> Poultry System at Scale.
             </h2>
           </div>
           <div className="h-px w-24 bg-[#FEA42A] hidden md:block" />
-          <p className="text-[#FEA42A] font-bold uppercase tracking-[0.2em] text-sm text-center md:text-right">
-            Transforming production into a reliable source of <br /> safe, affordable protein for 135M+ citizens.
+          <p className="text-[#FEA42A] font-bold uppercase tracking-[0.2em] text-[10px] text-center md:text-right leading-relaxed">
+            Science-Driven Infrastructure <br /> for a 135M+ Citizen Protein Market.
           </p>
         </AnimatedSection>
       </div>
     </section>
 
-    {/* STRATEGIC STATEMENT */}
+    {/* STRATEGIC STATEMENT - REFINED FOR PARTNERS */}
     <section className="py-24 bg-[#EFE7DC]">
       <div className="max-w-4xl mx-auto px-6">
         <AnimatedSection className="text-center">
-          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-8 font-black">Strategic Statement</p>
-          <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8 tracking-tight">
-            Ethiopia's poultry challenge is not primarily a production issue—it is a{" "}
-            <span className="text-[#FEA42A]">systems integration challenge.</span>
+          <p className="text-[#CD8C24] text-[10px] uppercase tracking-[0.6em] mb-8 font-black italic">The Strategic Gap</p>
+          <p className="text-3xl md:text-4xl text-[#4F3C1C] font-black leading-[1.1] mb-8 tracking-tighter italic uppercase">
+            Ethiopia's protein challenge is not a production issue—it is a{" "}
+            <span className="text-[#FEA42A]">Systems Integration Challenge.</span>
           </p>
           <div className="w-16 h-1 bg-[#CD8C24]/30 mx-auto my-8 rounded-full" />
-          <p className="text-lg text-[#4F3C1C]/70 leading-relaxed font-medium mb-6">
-            A significant market opportunity exists across the 135M+ national market, yet fragmentation continues to constrain scale and affordability.
+          <p className="text-xl text-[#4F3C1C]/70 leading-relaxed font-bold italic mb-6">
+            Birnihigo closes this gap through a 42-hectare bio-secured industrial complex, 
+            transforming fragmented production into a reliable, scalable value chain.
           </p>
-          <p className="text-lg text-[#4F3C1C] font-black uppercase tracking-widest">
-            Birnihigo is designed as an integrated, execution-driven model to close this gap.
-          </p>
+          <Link 
+            href="/about" 
+            className="text-[#4F3C1C] font-black uppercase tracking-widest text-xs border-b-2 border-[#FEA42A] pb-1 hover:opacity-60 transition-opacity"
+          >
+            Explore Our Methodology
+          </Link>
         </AnimatedSection>
       </div>
     </section>
 
+    {/* VALUE CHAIN VISUALIZATION - INDUSTRIAL FLOW */}
     <ValueChain />
 
-    {/* NATIONAL IMPACT */}
-    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="national-impact-heading">
+    {/* NATIONAL IMPACT - DATA DRIVEN */}
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden">
       <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#FEA42A]/5 blur-[120px] rounded-full" />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <AnimatedSection className="text-center mb-16">
-          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-4 font-bold">National Impact</p>
-          <h2 id="national-impact-heading" className="text-5xl text-[#EFE7DC] font-black tracking-tighter">
-            Transforming Ethiopia's Protein Economy
+          <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-4 font-black italic">Economic Influence</p>
+          <h2 className="text-5xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter uppercase italic leading-none">
+            Transforming the <br /> <span className="text-[#FEA42A]">Protein Economy</span>
           </h2>
         </AnimatedSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {[
-            { icon: Package, label: "Expanding access to affordable protein for 135M+" },
-            { icon: Globe, label: "Reducing national import dependency" },
-            { icon: Users, label: "Creating sustainable jobs for youth and women" },
-            { icon: TrendingUp, label: "Enabling export-ready poultry production" },
-            { icon: Shield, label: "Strengthening national food sovereignty" },
+            { icon: Shield, label: "Hardening National Food Sovereignty", desc: "Building local resilience against global supply shocks." },
+            { icon: Globe, label: "Import Substitution Strategy", desc: "Reducing foreign currency dependency for poultry products." },
+            { icon: Users, label: "Youth & Women Inclusion", desc: "Direct industrial employment and outgrower training." },
+            { icon: TrendingUp, label: "Export-Ready Operations", desc: "Meeting international Halal and safety standards for the GCC." },
+            { icon: Award, label: "Biosecurity Leadership", desc: "Setting the benchmark for disease control in East Africa." },
+            { icon: BarChart3, label: "Price Stability", desc: "Optimizing feed-to-meat ratios to ensure market affordability." },
           ].map((item, i) => (
             <AnimatedSection key={item.label} delay={i * 0.1}>
-              <div className="flex items-start gap-5 bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-[#FEA42A]/10 transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-[#FEA42A]/10 border border-[#FEA42A]/20 flex items-center justify-center shrink-0">
+              <div className="group flex flex-col gap-5 bg-white/5 border border-white/10 rounded-[2rem] p-8 hover:bg-[#FEA42A] transition-all duration-500">
+                <div className="w-12 h-12 rounded-xl bg-[#FEA42A]/10 border border-[#FEA42A]/20 flex items-center justify-center group-hover:bg-[#4F3C1C]">
                   <item.icon size={22} className="text-[#FEA42A]" />
                 </div>
-                <p className="text-[#EFE7DC] font-semibold text-base leading-snug mt-1">{item.label}</p>
+                <div>
+                  <p className="text-[#EFE7DC] font-black text-lg leading-tight uppercase tracking-tighter mb-2 group-hover:text-[#4F3C1C]">{item.label}</p>
+                  <p className="text-[#EFE7DC]/40 text-xs font-bold italic group-hover:text-[#4F3C1C]/70">{item.desc}</p>
+                </div>
               </div>
             </AnimatedSection>
           ))}
@@ -97,12 +107,12 @@ const Index = () => (
       </div>
     </section>
 
-    {/* THE NUMBERS */}
+    {/* INDUSTRIAL CAPACITY DASHBOARD */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
-          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-black">Industrial Scale</p>
-          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">The Numbers That Define Us</h2>
+          <p className="text-[#CD8C24] text-[10px] uppercase tracking-[0.6em] mb-4 font-black italic">Infrastructure Metrics</p>
+          <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter uppercase italic">Institutional Scale</h2>
         </AnimatedSection>
 
         <div className="mb-20">
@@ -111,20 +121,20 @@ const Index = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { label: "Daily Throughput", value: "32 Ton", detail: "Finished poultry meat" },
-            { label: "Annual Capacity", value: "500k+", detail: "Heads per annum" },
-            { label: "Feed Production", value: "6 T/Hr", detail: "Automated milling" },
-            { label: "Market Reach", value: "135M+", detail: "Total Population served" },
+            { label: "Throughput", value: "32 Ton", detail: "Daily Meat Capacity" },
+            { label: "Incubation", value: "500k+", detail: "Annual Heads" },
+            { label: "Milling", value: "6 T/Hr", detail: "Automated Production" },
+            { label: "Market Base", value: "135M", detail: "Serving Ethiopia" },
           ].map((stat, i) => (
             <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
-              <span className="block text-[#FEA42A] text-6xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
+              <span className="block text-[#4F3C1C] text-7xl font-black mb-2 tracking-tighter group-hover:text-[#FEA42A] transition-colors">
                 {stat.value}
               </span>
-              <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
-              <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
+              <div className="w-8 h-1 bg-[#FEA42A] mx-auto mb-6 rounded-full"></div>
+              <h3 className="text-[#4F3C1C] text-[10px] uppercase tracking-[0.4em] font-black mb-2">
                 {stat.label}
               </h3>
-              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
+              <p className="text-[#4F3C1C]/40 text-[10px] font-bold uppercase tracking-widest italic">
                 {stat.detail}
               </p>
             </AnimatedSection>
@@ -133,32 +143,25 @@ const Index = () => (
       </div>
     </section>
 
-    {/* PHOTO GALLERY */}
-    <section className="py-24 bg-[#EFE7DC]/50" aria-labelledby="gallery-heading">
+    {/* ACTION-READY GALLERY */}
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <AnimatedSection className="text-center mb-16">
-          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-4 font-bold">On the Ground</p>
-          <h2 id="gallery-heading" className="text-5xl text-[#4F3C1C] font-black tracking-tight italic">Our Operations in Action</h2>
-          <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full"></div>
-        </AnimatedSection>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
-            { src: pic1, alt: "Aerial view of Birnihigo poultry farm in Afar, Ethiopia" },
-            { src: pic2, alt: "Industrial Feed Mill for automated poultry nutrition" },
-            { src: pic3, alt: "Bio-secure chicken processing facility" },
+            { src: pic1, label: "Awash Operations", sub: "Strategic Industrial Hub" },
+            { src: pic2, label: "Nutrition Science", sub: "Automated Feed Milling" },
+            { src: pic3, label: "Bio-Security", sub: "Halal Processing Plant" },
           ].map((img, i) => (
-            <AnimatedSection key={img.alt} delay={i * 0.15}>
-              <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] border-4 border-[#4F3C1C]/5 shadow-2xl bg-[#4F3C1C]">
+            <AnimatedSection key={i} delay={i * 0.15}>
+              <div className="group relative rounded-[2.5rem] overflow-hidden aspect-[4/5] bg-[#4F3C1C]">
                 <img
                   src={img.src.src || img.src}
-                  alt={img.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-out"
-                  loading="lazy"
+                  alt={img.label}
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-40 transition-all duration-700 ease-out"
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/40 backdrop-blur-[4px]">
-                  <p className="text-[#FEA42A] font-black text-xl tracking-widest uppercase">Science-Driven</p>
-                  <p className="text-[#EFE7DC] text-xs font-bold uppercase mt-1 tracking-[0.3em]">Industrial Excellence</p>
+                <div className="absolute bottom-0 left-0 p-10 translate-y-4 group-hover:translate-y-0 transition-transform">
+                  <p className="text-[#FEA42A] font-black text-2xl tracking-tighter uppercase italic">{img.label}</p>
+                  <p className="text-[#EFE7DC] text-[10px] font-black uppercase tracking-[0.3em] mt-2">{img.sub}</p>
                 </div>
               </div>
             </AnimatedSection>
@@ -167,15 +170,22 @@ const Index = () => (
       </div>
     </section>
 
-    {/* PURPOSE */}
-    <section className="py-20 bg-[#4F3C1C]" aria-labelledby="purpose-heading">
-      <div className="max-w-3xl mx-auto px-6 text-center">
+    {/* CORPORATE PURPOSE */}
+    <section className="py-32 bg-[#4F3C1C]">
+      <div className="max-w-4xl mx-auto px-6 text-center">
         <AnimatedSection>
-          <p className="text-[#FEA42A] text-sm uppercase tracking-[0.4em] mb-6 font-bold">Purpose</p>
-          <h2 id="purpose-heading" className="text-4xl md:text-5xl text-[#EFE7DC] font-black tracking-tighter leading-tight italic">
-            "Nourishing lives through safe, affordable, and scalable protein production for Ethiopia."
+          <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-10 font-black italic">The Birnihigo Mission</p>
+          <h2 className="text-4xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] uppercase">
+            "Nourishing lives through <span className="text-[#FEA42A]">safe, affordable,</span> and scalable protein production for Ethiopia."
           </h2>
-          <div className="w-16 h-1 bg-[#FEA42A]/40 mx-auto mt-10 rounded-full" />
+          <div className="mt-16">
+            <Link 
+              href="/contact" 
+              className="px-12 py-5 bg-[#FEA42A] text-[#4F3C1C] rounded-full font-black uppercase tracking-widest text-xs hover:bg-[#EFE7DC] transition-all shadow-2xl"
+            >
+              Partner With Us
+            </Link>
+          </div>
         </AnimatedSection>
       </div>
     </section>
