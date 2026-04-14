@@ -4,36 +4,21 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "../assets/logo.webp"; 
 
+// Updated for "Nike-style" site architecture
 const navLinks = [
   { label: "Home", to: "/" },
   {
-    label: "About",
-    to: "/about",
+    label: "Operations", // Renamed for professional clarity
+    to: "/services",
     sub: [
-      { label: "Our Heritage", to: "/about#heritage" },
-      { label: "Leadership", to: "/about#leadership" },
-      { label: "Mission & Values", to: "/about#pillars" },
-    ],
-  },
-  {
-    label: "Our Journey",
-    to: "/products",
-    sub: [
-      { label: "From Farm to Fork", to: "/products" },
       { label: "Integrated Operations", to: "/services" },
-      { label: "Sustainability", to: "/sustainability" },
+      { label: "Value Chain", to: "/products" },
+      { label: "Our Heritage", to: "/about" },
     ],
   },
-  { label: "Investors", to: "/investors" },
-  {
-    label: "Community",
-    to: "/careers",
-    sub: [
-      { label: "Careers", to: "/careers" },
-      { label: "Blog & News", to: "/blog" },
-      { label: "Gallery", to: "/gallery" },
-    ],
-  },
+  { label: "Products", to: "/products" }, // Primary page
+  { label: "Investors", to: "/investors" }, // Primary page
+  { label: "Sustainability", to: "/sustainability" }, // Primary page
   { label: "Contact", to: "/contact" },
 ];
 
@@ -43,11 +28,9 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    /* BACKGROUND CHANGED TO WHITE CHOCOLATE (#EFE7DC) */
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#EFE7DC]/95 border-b border-[#4F3C1C]/10 backdrop-blur-xl shadow-lg">
       <div className="max-w-7xl mx-auto flex items-center justify-between h-24 px-6">
         
-        {/* LOGO SECTION - Now visible on light background */}
         <Link to="/" className="flex items-center group transition-transform duration-300 active:scale-95">
           <img 
             src={logo} 
@@ -56,7 +39,6 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* DESKTOP NAVIGATION */}
         <div className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <div
@@ -67,7 +49,6 @@ const Navbar = () => {
             >
               <Link
                 to={link.to}
-                /* TEXT COLOR CHANGED TO CAFÉ NOIR (#4F3C1C) FOR CONTRAST */
                 className={`px-4 py-2 text-[13px] uppercase tracking-widest font-black transition-all flex items-center gap-1.5 rounded-full ${
                   location.pathname === link.to
                     ? "text-[#CD8C24] bg-[#4F3C1C]/5" 
@@ -78,7 +59,6 @@ const Navbar = () => {
                 {link.sub && <ChevronDown size={12} className={`transition-transform duration-300 ${hoveredMenu === link.label ? 'rotate-180' : ''}`} />}
               </Link>
 
-              {/* DROPDOWN MENU - UPDATED TO LIGHT THEME */}
               <AnimatePresence>
                 {link.sub && hoveredMenu === link.label && (
                   <motion.div
@@ -102,7 +82,6 @@ const Navbar = () => {
             </div>
           ))}
 
-          {/* CTA BUTTON */}
           <Link
             to="/contact"
             className="ml-6 px-8 py-3 text-xs uppercase tracking-[0.2em] font-black rounded-full bg-[#4F3C1C] text-[#FEA42A] hover:bg-[#CD8C24] hover:text-[#EFE7DC] transition-all active:scale-95 shadow-xl"
@@ -111,7 +90,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* MOBILE TOGGLE - Darker for visibility */}
         <button 
           className="lg:hidden p-2 text-[#4F3C1C] bg-[#4F3C1C]/5 rounded-lg"
           onClick={() => setOpen(!open)}
@@ -120,7 +98,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* MOBILE MENU OVERLAY - UPDATED TO LIGHT THEME */}
       <AnimatePresence>
         {open && (
           <motion.div 
@@ -140,13 +117,6 @@ const Navbar = () => {
                   {link.label}
                 </Link>
               ))}
-              <Link
-                to="/contact"
-                onClick={() => setOpen(false)}
-                className="mt-4 w-full py-5 text-center bg-[#4F3C1C] text-[#FEA42A] font-black uppercase tracking-widest rounded-2xl"
-              >
-                Partner with Us
-              </Link>
             </div>
           </motion.div>
         )}
