@@ -1,3 +1,5 @@
+"use client"; // Preserved as requested
+
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import MotionCard from "@/components/MotionCard";
@@ -8,14 +10,9 @@ import pic1 from "@/assets/pic1.jpg";
 import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
 import { 
-  Leaf, 
-  Sprout, 
-  ArrowRight, 
   Shield, 
   TrendingUp, 
   Globe, 
-  Droplets, 
-  Zap, 
   Users, 
   Package,
   Award,
@@ -25,14 +22,14 @@ import Link from "next/link";
 
 const Index = () => (
   <Layout>
-    {/* UPDATED HERO COMPONENT (Ensure your ScrollytellingHero uses the new 'Powerful Hero' text) */}
     <ScrollytellingHero />
 
-    {/* VISION STRIPE - INDUSTRIAL AUTHORITY */}
+    {/* VISION STRIPE - UPDATED FOR INDUSTRIAL AUTHORITY */}
     <section className="py-12 bg-[#4F3C1C] text-[#EFE7DC] overflow-hidden border-y border-[#FEA42A]/20">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-2xl">
+            {/* Powerful Hero Line from Screenshot */}
             <h2 className="text-2xl md:text-4xl font-black tracking-tighter leading-[0.9] italic uppercase">
               Building Ethiopia’s First <span className="text-[#FEA42A]">Fully Integrated</span> Poultry System at Scale.
             </h2>
@@ -69,16 +66,15 @@ const Index = () => (
       </div>
     </section>
 
-    {/* VALUE CHAIN VISUALIZATION - INDUSTRIAL FLOW */}
     <ValueChain />
 
-    {/* NATIONAL IMPACT - DATA DRIVEN */}
-    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden">
+    {/* NATIONAL IMPACT - DATA DRIVEN UPDATES */}
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="national-impact-heading">
       <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#FEA42A]/5 blur-[120px] rounded-full" />
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <AnimatedSection className="text-center mb-16">
           <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-4 font-black italic">Economic Influence</p>
-          <h2 className="text-5xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter uppercase italic leading-none">
+          <h2 id="national-impact-heading" className="text-5xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter uppercase italic leading-none">
             Transforming the <br /> <span className="text-[#FEA42A]">Protein Economy</span>
           </h2>
         </AnimatedSection>
@@ -107,7 +103,7 @@ const Index = () => (
       </div>
     </section>
 
-    {/* INDUSTRIAL CAPACITY DASHBOARD */}
+    {/* THE NUMBERS - UPDATED VISUALS */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
@@ -143,8 +139,8 @@ const Index = () => (
       </div>
     </section>
 
-    {/* ACTION-READY GALLERY */}
-    <section className="py-24 bg-white">
+    {/* PHOTO GALLERY - REFINED STYLING */}
+    <section className="py-24 bg-white" aria-labelledby="gallery-heading">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {[
@@ -158,6 +154,7 @@ const Index = () => (
                   src={img.src.src || img.src}
                   alt={img.label}
                   className="w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-40 transition-all duration-700 ease-out"
+                  loading="lazy"
                 />
                 <div className="absolute bottom-0 left-0 p-10 translate-y-4 group-hover:translate-y-0 transition-transform">
                   <p className="text-[#FEA42A] font-black text-2xl tracking-tighter uppercase italic">{img.label}</p>
@@ -170,12 +167,12 @@ const Index = () => (
       </div>
     </section>
 
-    {/* CORPORATE PURPOSE */}
-    <section className="py-32 bg-[#4F3C1C]">
+    {/* CORPORATE PURPOSE - REFINED FOR CONVERSION */}
+    <section className="py-32 bg-[#4F3C1C]" aria-labelledby="purpose-heading">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <AnimatedSection>
           <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-10 font-black italic">The Birnihigo Mission</p>
-          <h2 className="text-4xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] uppercase">
+          <h2 id="purpose-heading" className="text-4xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter italic leading-[0.9] uppercase">
             "Nourishing lives through <span className="text-[#FEA42A]">safe, affordable,</span> and scalable protein production for Ethiopia."
           </h2>
           <div className="mt-16">
