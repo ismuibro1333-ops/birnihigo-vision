@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import MotionCard from "@/components/MotionCard";
@@ -26,12 +27,35 @@ import Link from "next/link";
 const Index = () => (
   <Layout>
 
-    {/* 🔥 NEW STRATEGIC HERO OVERLAY (keeps your ScrollytellingHero) */}
+    {/* ✅ SEO START */}
+    <Head>
+      <title>Integrated Poultry Farming in Ethiopia | Birnihigo Farms</title>
+
+      <meta
+        name="description"
+        content="Birnihigo Farms is building Ethiopia’s first fully integrated poultry system, delivering halal-certified chicken production at industrial scale."
+      />
+
+      <meta
+        name="keywords"
+        content="poultry farming Ethiopia, halal chicken Africa, integrated poultry system Ethiopia, sustainable poultry farming Ethiopia"
+      />
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      {/* Open Graph */}
+      <meta property="og:title" content="Birnihigo Farms" />
+      <meta property="og:description" content="Integrated poultry farming in Ethiopia at industrial scale." />
+      <meta property="og:type" content="website" />
+    </Head>
+    {/* ✅ SEO END */}
+
+    {/* 🔥 HERO OVERLAY */}
     <section className="absolute top-0 left-0 w-full z-20 pointer-events-none">
       <div className="max-w-7xl mx-auto px-6 pt-32 text-center">
         <AnimatedSection>
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
-            Building Ethiopia’s First Fully Integrated Poultry System at Scale.
+            Integrated Poultry Farming in Ethiopia at Industrial Scale
           </h1>
         </AnimatedSection>
 
@@ -45,7 +69,7 @@ const Index = () => (
 
     <ScrollytellingHero />
 
-    {/* ✅ EDITED VISION STRIPE */}
+    {/* VISION STRIPE */}
     <section className="py-8 bg-black text-white overflow-hidden border-y border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-6">
@@ -64,11 +88,13 @@ const Index = () => (
       </div>
     </section>
 
-    {/* STRATEGIC STATEMENT (minor tightening only) */}
+    {/* STRATEGIC POSITIONING */}
     <section className="py-24 bg-[#EFE7DC]">
       <div className="max-w-4xl mx-auto px-6">
         <AnimatedSection className="text-center">
-          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-8 font-black">Strategic Positioning</p>
+          <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-8 font-black">
+            Strategic Positioning
+          </p>
 
           <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8 tracking-tight">
             Ethiopia's poultry challenge is not primarily a production issue—it is a{" "}
@@ -90,9 +116,7 @@ const Index = () => (
 
     <ValueChain />
 
-    {/* NATIONAL IMPACT unchanged */}
-
-    {/* 🔥 EDITED NUMBERS SECTION */}
+    {/* METRICS */}
     <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="text-center mb-16">
@@ -131,8 +155,6 @@ const Index = () => (
         </div>
       </div>
     </section>
-
-    {/* everything else unchanged */}
 
   </Layout>
 );
