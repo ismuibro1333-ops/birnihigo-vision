@@ -1,5 +1,6 @@
 "use client";
 
+import Head from "next/head"; // ✅ ADD THIS
 import { useRef } from "react";
 import { motion } from "framer-motion";
 import Layout from "@/components/Layout";
@@ -9,7 +10,7 @@ import {
   Thermometer, Truck, ArrowRight, Sprout, Factory
 } from "lucide-react";
 
-// Asset imports 
+// Assets 
 import scrollChick from "@/assets/scroll-chick.jpg";
 import scrollChicken from "@/assets/scroll-chicken.jpg";
 import chickensCloseup from "@/assets/chickens-closeup.jpg";
@@ -55,7 +56,30 @@ const Products = () => {
   return (
     <Layout>
 
-      {/* 1. STRATEGIC HERO */}
+      {/* ✅ SEO START */}
+      <Head>
+        <title>Poultry Processing & Production in Ethiopia | Birnihigo Farms</title>
+
+        <meta
+          name="description"
+          content="Explore Birnihigo Farms' poultry production system including feed, hatchery, processing, and distribution across Ethiopia."
+        />
+
+        <meta
+          name="keywords"
+          content="poultry processing Ethiopia, poultry production Ethiopia, halal poultry Ethiopia, chicken supply Ethiopia, feed mill Ethiopia"
+        />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="Poultry Production | Birnihigo Farms" />
+        <meta property="og:description" content="Integrated poultry processing and production in Ethiopia." />
+        <meta property="og:type" content="website" />
+      </Head>
+      {/* ✅ SEO END */}
+
+      {/* HERO */}
       <section className="relative h-[60vh] flex items-center justify-center bg-[#4F3C1C] overflow-hidden">
         <div className="absolute inset-0 bg-[url('/industrial-poultry-dark.jpg')] bg-cover bg-center opacity-20" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#EFE7DC]" />
@@ -69,8 +93,9 @@ const Products = () => {
             National Infrastructure. Industrial Execution.
           </motion.p>
 
+          {/* ✅ SEO-optimized H1 */}
           <h1 className="font-display text-5xl md:text-8xl text-[#4F3C1C] font-black tracking-tighter mb-8 italic">
-            Import Substitution. <span className="text-[#FEA42A]">Food Sovereignty.</span>
+            Poultry Production & Processing in Ethiopia
           </h1>
 
           <p className="text-[#4F3C1C]/70 text-lg max-w-2xl mx-auto leading-relaxed font-bold italic border-l-2 border-[#FEA42A] pl-6">
@@ -79,7 +104,7 @@ const Products = () => {
         </AnimatedSection>
       </section>
 
-      {/* 🔥 VERTICAL INTEGRATION FLOW */}
+      {/* VALUE CHAIN */}
       <section className="py-24 bg-black text-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
 
@@ -125,20 +150,10 @@ const Products = () => {
 
           </div>
 
-          <AnimatedSection delay={0.6} className="mt-20 text-center max-w-4xl mx-auto">
-            <div className="w-16 h-1 bg-[#FEA42A]/40 mx-auto mb-8 rounded-full" />
-            <h3 className="text-2xl md:text-3xl font-black mb-6">
-              Not a Product. A National System.
-            </h3>
-            <p className="text-white/70 text-lg leading-relaxed">
-              This integrated structure enables large-scale import substitution, reduces systemic inefficiencies, and builds the foundation for Ethiopia’s long-term food sovereignty.
-            </p>
-          </AnimatedSection>
-
         </div>
       </section>
 
-      {/* 2. PRODUCT GRID (unchanged layout, upgraded text already applied) */}
+      {/* PRODUCT GRID */}
       <section className="bg-[#EFE7DC] py-24">
         <div className="max-w-7xl mx-auto px-6 space-y-32">
           {productCategories.map((product, i) => (
@@ -152,7 +167,7 @@ const Products = () => {
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 1.2 }}
                         src={product.image} 
-                        alt={product.title} 
+                        alt={`Poultry product: ${product.title} in Ethiopia`} // ✅ SEO alt fix
                         className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all" 
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#4F3C1C]/80 via-transparent to-transparent" />
@@ -182,10 +197,6 @@ const Products = () => {
                         </div>
                       ))}
                     </div>
-                    
-                    <button className="mt-12 group flex items-center gap-4 text-[#4F3C1C] font-black uppercase tracking-widest text-[10px] hover:text-[#FEA42A] transition-colors">
-                      Request Technical Specifications <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
-                    </button>
                   </AnimatedSection>
                 </div>
 
@@ -194,8 +205,6 @@ const Products = () => {
           ))}
         </div>
       </section>
-
-      {/* rest unchanged (cold chain section stays same) */}
 
     </Layout>
   );
