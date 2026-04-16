@@ -1,4 +1,13 @@
-"use client";
+export const metadata = {
+  title: "Integrated Poultry Farming in Ethiopia | Birnihigo Farms",
+  description:
+    "Birnihigo Farms is building Ethiopia’s first fully integrated poultry system, delivering halal-certified chicken production at industrial scale.",
+  keywords: [
+    "poultry farming Ethiopia",
+    "halal chicken Africa",
+    "integrated poultry system Ethiopia",
+  ],
+};
 
 import Head from "next/head";
 import Layout from "@/components/Layout";
