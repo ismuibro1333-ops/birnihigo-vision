@@ -1,14 +1,3 @@
-export const metadata = {
-  title: "Integrated Poultry Farming in Ethiopia | Birnihigo Farms",
-  description:
-    "Birnihigo Farms is building Ethiopia’s first fully integrated poultry system, delivering halal-certified chicken production at industrial scale.",
-  keywords: [
-    "poultry farming Ethiopia",
-    "halal chicken Africa",
-    "integrated poultry system Ethiopia",
-  ],
-};
-
 import Head from "next/head";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
@@ -16,61 +5,31 @@ import MotionCard from "@/components/MotionCard";
 import ScrollytellingHero from "@/components/ScrollytellingHero";
 import ValueChain from "@/components/ValueChain";
 import OperationalDashboard from "@/components/OperationalDashboard";
-import pic1 from "@/assets/pic1.jpg";
-import pic2 from "@/assets/pic2.jpg";
-import pic3 from "@/assets/pic3.jpg";
 import { 
-  Leaf, 
-  Sprout, 
   ArrowRight, 
   Shield, 
   TrendingUp, 
   Globe, 
-  Droplets, 
-  Zap, 
-  Users, 
-  Package 
+  Users 
 } from "lucide-react";
 import Link from "next/link";
 
 const Index = () => (
   <Layout>
+    {/* Removed the <Head> SEO block from here to allow the Layout or SEO specialist to manage it */}
 
-    {/* ✅ SEO START */}
-    <Head>
-      <title>Integrated Poultry Farming in Ethiopia | Birnihigo Farms</title>
-
-      <meta
-        name="description"
-        content="Birnihigo Farms is building Ethiopia’s first fully integrated poultry system, delivering halal-certified chicken production at industrial scale."
-      />
-
-      <meta
-        name="keywords"
-        content="poultry farming Ethiopia, halal chicken Africa, integrated poultry system Ethiopia, sustainable poultry farming Ethiopia"
-      />
-
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-      {/* Open Graph */}
-      <meta property="og:title" content="Birnihigo Farms" />
-      <meta property="og:description" content="Integrated poultry farming in Ethiopia at industrial scale." />
-      <meta property="og:type" content="website" />
-    </Head>
-    {/* ✅ SEO END */}
-
-    {/* 🔥 HERO OVERLAY */}
+    {/* 🔥 HERO OVERLAY - Simplified for a clean start */}
     <section className="absolute top-0 left-0 w-full z-20 pointer-events-none">
       <div className="max-w-7xl mx-auto px-6 pt-32 text-center">
         <AnimatedSection>
           <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
-            Integrated Poultry Farming in Ethiopia at Industrial Scale
+            Birnihigo Integrated Farms
           </h1>
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
           <p className="mt-6 text-lg md:text-xl text-white/80 max-w-3xl mx-auto font-medium">
-            Ethiopia's protein challenge is not a production issue—it is a systems integration challenge.
+            Building Ethiopia’s fully integrated poultry system at industrial scale.
           </p>
         </AnimatedSection>
       </div>
@@ -82,17 +41,13 @@ const Index = () => (
     <section className="py-8 bg-black text-white overflow-hidden border-y border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-6">
-          
           <h2 className="text-lg md:text-xl font-black tracking-[0.3em] uppercase text-center md:text-left">
             Science-Driven Infrastructure
           </h2>
-
           <div className="h-px w-24 bg-[#FEA42A] hidden md:block" />
-
           <p className="text-white/60 text-xs md:text-sm uppercase tracking-[0.25em] text-center md:text-right font-bold">
-            Industrializing poultry production for national scale impact
+            National Scale Impact
           </p>
-
         </AnimatedSection>
       </div>
     </section>
@@ -104,20 +59,13 @@ const Index = () => (
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-8 font-black">
             Strategic Positioning
           </p>
-
           <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8 tracking-tight">
-            Ethiopia's poultry challenge is not primarily a production issue—it is a{" "}
-            <span className="text-[#FEA42A]">systems integration challenge.</span>
+            Our mission is to solve Ethiopia's protein challenge through 
+            <span className="text-[#FEA42A]"> integrated systems.</span>
           </p>
-
           <div className="w-16 h-1 bg-[#CD8C24]/30 mx-auto my-8 rounded-full" />
-
           <p className="text-lg text-[#4F3C1C]/70 leading-relaxed font-medium mb-6">
-            The constraint is not supply potential, but the absence of coordinated, industrial-scale infrastructure.
-          </p>
-
-          <p className="text-lg text-[#4F3C1C] font-black uppercase tracking-widest">
-            Birnihigo is engineered as a fully integrated poultry system to solve this at scale.
+            Providing coordinated, industrial-scale infrastructure to meet national demand.
           </p>
         </AnimatedSection>
       </div>
@@ -133,7 +81,7 @@ const Index = () => (
             Institutional Scale
           </p>
           <h2 className="text-5xl text-[#4F3C1C] font-black tracking-tighter">
-            Infrastructure-Level Output Metrics
+            Operational Metrics
           </h2>
         </AnimatedSection>
 
@@ -143,22 +91,18 @@ const Index = () => (
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {[
-            { label: "Processing Throughput", value: "32+ Tons", detail: "Daily industrial poultry output" },
-            { label: "Annualized Capacity", value: "500k+", detail: "Integrated production volume" },
-            { label: "Feed Infrastructure", value: "6 T/Hr", detail: "Automated feed systems" },
-            { label: "National Coverage", value: "135M+", detail: "Addressable population scale" },
+            { label: "Processing", value: "32+ Tons" },
+            { label: "Annual Capacity", value: "500k+" },
+            { label: "Feed Production", value: "6 T/Hr" },
+            { label: "National Reach", value: "135M+" },
           ].map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center group">
-              <span className="block text-[#FEA42A] text-6xl font-black mb-2 tracking-tighter transition-transform duration-500 group-hover:scale-110">
+            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center">
+              <span className="block text-[#FEA42A] text-6xl font-black mb-2 tracking-tighter">
                 {stat.value}
               </span>
-              <div className="w-12 h-1.5 bg-[#4F3C1C] mx-auto mb-6 rounded-full opacity-20"></div>
               <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
                 {stat.label}
               </h3>
-              <p className="text-[#4F3C1C]/50 text-xs font-bold uppercase tracking-widest">
-                {stat.detail}
-              </p>
             </AnimatedSection>
           ))}
         </div>
