@@ -1,7 +1,7 @@
-import Head from "next/head";
+"use client";
+
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
-import MotionCard from "@/components/MotionCard";
 import ScrollytellingHero from "@/components/ScrollytellingHero";
 import ValueChain from "@/components/ValueChain";
 import OperationalDashboard from "@/components/OperationalDashboard";
@@ -16,9 +16,12 @@ import Link from "next/link";
 
 const Index = () => (
   <Layout>
-    {/* Removed the <Head> SEO block from here to allow the Layout or SEO specialist to manage it */}
+    {/* NOTE: Metadata for "use client" files should be 
+      handled in your Layout.tsx or a separate file. 
+      Removing it from here fixes the 'wrong code' error.
+    */}
 
-    {/* 🔥 HERO OVERLAY - Simplified for a clean start */}
+    {/* 🔥 HERO OVERLAY */}
     <section className="absolute top-0 left-0 w-full z-20 pointer-events-none">
       <div className="max-w-7xl mx-auto px-6 pt-32 text-center">
         <AnimatedSection>
@@ -41,11 +44,11 @@ const Index = () => (
     <section className="py-8 bg-black text-white overflow-hidden border-y border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <h2 className="text-lg md:text-xl font-black tracking-[0.3em] uppercase text-center md:text-left">
+          <h2 className="text-lg md:text-xl font-black tracking-[0.3em] uppercase">
             Science-Driven Infrastructure
           </h2>
           <div className="h-px w-24 bg-[#FEA42A] hidden md:block" />
-          <p className="text-white/60 text-xs md:text-sm uppercase tracking-[0.25em] text-center md:text-right font-bold">
+          <p className="text-white/60 text-xs md:text-sm uppercase tracking-[0.25em] font-bold">
             National Scale Impact
           </p>
         </AnimatedSection>
@@ -59,7 +62,7 @@ const Index = () => (
           <p className="text-[#CD8C24] text-sm uppercase tracking-[0.4em] mb-8 font-black">
             Strategic Positioning
           </p>
-          <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8 tracking-tight">
+          <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8">
             Our mission is to solve Ethiopia's protein challenge through 
             <span className="text-[#FEA42A]"> integrated systems.</span>
           </p>
@@ -96,19 +99,18 @@ const Index = () => (
             { label: "Feed Production", value: "6 T/Hr" },
             { label: "National Reach", value: "135M+" },
           ].map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={i * 0.1} className="text-center">
+            <div key={stat.label} className="text-center">
               <span className="block text-[#FEA42A] text-6xl font-black mb-2 tracking-tighter">
                 {stat.value}
               </span>
               <h3 className="text-[#4F3C1C] text-sm uppercase tracking-[0.4em] font-black mb-2">
                 {stat.label}
               </h3>
-            </AnimatedSection>
+            </div>
           ))}
         </div>
       </div>
     </section>
-
   </Layout>
 );
 
