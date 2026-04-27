@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import scrollEgg from "@/assets/scroll-egg.jpg";
@@ -11,20 +10,21 @@ import pic1 from "@/assets/pic1.jpg";
 import pic2 from "@/assets/pic2.jpg";
 import pic3 from "@/assets/pic3.jpg";
 import heroBg from "@/assets/hero-bg.jpg";
+import { useState } from "react";
 
 type Category = "all" | "facilities" | "operations" | "community";
 
-const images: { src: string; alt: string; category: Exclude<Category, "all">; aspect: string }[] = [
-  { src: scrollEgg, alt: "42-hectare facility construction site in Afar, Ethiopia", category: "facilities", aspect: "aspect-[4/3]" },
-  { src: scrollChick, alt: "Automated feeding systems inside bio-secure poultry house", category: "facilities", aspect: "aspect-[4/3]" },
-  { src: heroBg, alt: "Full-scale broiler production house with thousands of birds", category: "operations", aspect: "aspect-[16/9]" },
-  { src: scrollChicken, alt: "Chickens feeding at automated stations inside facility", category: "operations", aspect: "aspect-[4/3]" },
-  { src: chickensCloseup, alt: "Close-up of healthy broiler chickens in bio-secure environment", category: "operations", aspect: "aspect-[3/4]" },
-  { src: pic1, alt: "Birnihigo veterinary staff inside production facility", category: "community", aspect: "aspect-[16/9]" },
-  { src: pic2, alt: "Young chicks under heat lamps in brooding house", category: "operations", aspect: "aspect-[4/3]" },
-  { src: pic3, alt: "Chicks feeding at automated feeders in nursery", category: "operations", aspect: "aspect-[4/3]" },
-  { src: scrollProduct, alt: "Poultry transport crates at logistics facility", category: "operations", aspect: "aspect-[4/3]" },
-  { src: logisticsCrates, alt: "Stacked transport crates ready for distribution", category: "operations", aspect: "aspect-[4/3]" },
+const images: { src: string; alt: string; category: Exclude<Category, "all"> }[] = [
+  { src: scrollEgg, alt: "42-hectare facility construction site in Afar", category: "facilities" },
+  { src: scrollChick, alt: "Automated feeding systems inside bio-secure poultry house", category: "facilities" },
+  { src: heroBg, alt: "Full-scale broiler production house", category: "operations" },
+  { src: scrollChicken, alt: "Chickens feeding at automated stations", category: "operations" },
+  { src: chickensCloseup, alt: "Close-up of healthy broiler chickens", category: "operations" },
+  { src: pic1, alt: "Birnihigo veterinary staff inside production facility", category: "community" },
+  { src: pic2, alt: "Young chicks under heat lamps in brooding house", category: "operations" },
+  { src: pic3, alt: "Chicks feeding at automated feeders in nursery", category: "operations" },
+  { src: scrollProduct, alt: "Poultry transport crates at logistics facility", category: "operations" },
+  { src: logisticsCrates, alt: "Stacked transport crates ready for distribution", category: "operations" },
 ];
 
 const categories: { value: Category; label: string }[] = [
@@ -40,30 +40,37 @@ const Gallery = () => {
 
   return (
     <Layout>
-      <section className="section-padding bg-card border-b border-border">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Hero */}
+      <section className="pt-40 pb-20 bg-[#4F3C1C]">
+        <div className="max-w-7xl mx-auto px-6 text-center">
           <AnimatedSection>
-            <p className="text-accent text-sm uppercase tracking-[0.3em] mb-4 font-body font-semibold">Gallery</p>
-            <h1 className="font-display text-4xl md:text-5xl text-foreground mb-6">Operations in Focus</h1>
-            <p className="text-muted-foreground text-lg font-body leading-relaxed max-w-2xl mx-auto">
+            <p className="text-[#FEA42A] text-xs uppercase tracking-[0.6em] mb-6 font-black italic">
+              Visual Archive
+            </p>
+            <h1 className="text-5xl md:text-8xl text-[#EFE7DC] font-black tracking-tighter italic uppercase leading-[0.85] mb-8">
+              Operations <br />
+              <span className="text-[#FEA42A]">in Focus.</span>
+            </h1>
+            <p className="text-[#EFE7DC]/60 text-lg font-medium max-w-2xl mx-auto leading-relaxed">
               A visual journey through our 42-hectare integrated poultry facility — from construction to full-scale production.
             </p>
           </AnimatedSection>
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="max-w-7xl mx-auto">
+      {/* Gallery */}
+      <section className="py-24 bg-[#EFE7DC]">
+        <div className="max-w-7xl mx-auto px-6">
           {/* Filter tabs */}
-          <AnimatedSection className="flex flex-wrap justify-center gap-3 mb-12">
+          <AnimatedSection className="flex flex-wrap justify-center gap-3 mb-16">
             {categories.map((cat) => (
               <button
                 key={cat.value}
                 onClick={() => setActive(cat.value)}
-                className={`px-5 py-2 text-sm font-body font-medium rounded-full border transition-all ${
+                className={`px-6 py-3 text-[10px] font-black uppercase tracking-widest rounded-full transition-all ${
                   active === cat.value
-                    ? "bg-accent text-accent-foreground border-accent"
-                    : "border-border text-muted-foreground hover:text-foreground hover:border-primary/30"
+                    ? "bg-[#4F3C1C] text-[#FEA42A] shadow-xl"
+                    : "bg-white text-[#4F3C1C]/60 hover:text-[#4F3C1C] hover:bg-white/80"
                 }`}
               >
                 {cat.label}
@@ -72,14 +79,14 @@ const Gallery = () => {
           </AnimatedSection>
 
           {/* Masonry grid */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
             {filtered.map((img, i) => (
-              <AnimatedSection key={img.alt} delay={(i % 3) * 0.1}>
-                <div className="rounded-2xl overflow-hidden border border-border break-inside-avoid">
+              <AnimatedSection key={img.alt} delay={(i % 3) * 0.1} className="mb-6 break-inside-avoid">
+                <div className="rounded-3xl overflow-hidden border-4 border-white shadow-xl group">
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
