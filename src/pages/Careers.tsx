@@ -27,7 +27,7 @@ const Careers = () => {
     <Layout>
       {/* 1. STRATEGIC HERO */}
       <section className="relative pt-40 pb-24 bg-[#4F3C1C] overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/industrial-team.jpg')] bg-cover bg-center opacity-10 grayscale" />
+        <div className="absolute inset-0 bg-[url('/src/assets/staff-1.jpg')] bg-cover bg-center opacity-10 grayscale" />
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <AnimatedSection>
             <p className="text-[#FEA42A] text-[10px] uppercase tracking-[0.6em] mb-8 font-black italic">Human Capital & Systems</p>
@@ -123,7 +123,7 @@ const Careers = () => {
                </div>
                <div className="relative">
                   <div className="aspect-video bg-[#4F3C1C] rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl rotate-2">
-                     <img src="/training-session.jpg" alt="National Capacity" className="w-full h-full object-cover opacity-60" />
+                     <img src="/src/assets/people.jpg" alt="National Capacity" className="w-full h-full object-cover opacity-60" />
                   </div>
                </div>
             </div>

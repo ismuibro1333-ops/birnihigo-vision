@@ -30,7 +30,7 @@ const About = () => {
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.2 }}
           transition={{ duration: 2 }}
-          className="absolute inset-0 bg-[url('/poultry-bg.jpg')] bg-cover bg-center"
+          className="absolute inset-0 bg-[url('/src/assets/poultry-farm.jpg')] bg-cover bg-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-[#EFE7DC]" />
         
@@ -164,7 +164,7 @@ const About = () => {
             <div className="relative w-full aspect-[4/5] rounded-[3.5rem] overflow-hidden border-8 border-white/5 shadow-2xl">
               <motion.div 
                 style={{ scale: useTransform(scrollYProgress, [0, 1], [1, 1.15]) }}
-                className="w-full h-full bg-[url('/industrial-poultry.jpg')] bg-cover bg-center"
+                className="w-full h-full bg-[url('/src/assets/many-chickins.jpg')] bg-cover bg-center"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#4F3C1C] via-transparent to-transparent opacity-60" />
               <div className="absolute bottom-12 left-12 right-12">

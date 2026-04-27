@@ -29,7 +29,7 @@ const insights = [
       "Analyzing why fragmentation is the primary constraint to scale in Ethiopia's poultry value chain and how integrated models solve for efficiency.",
     author: "Milkias B.",
     date: "April 2026",
-    image: "/insight-system.jpg",
+    image: "/src/assets/poultry-farm2.jpg",
     featured: true,
     readTime: "8 min read",
   },
@@ -41,7 +41,7 @@ const insights = [
       "How localizing the entire value chain—from parent stock to processing—reduces import dependency and stabilizes market prices.",
     author: "Strategic Liaison Team",
     date: "March 2026",
-    image: "/insight-security.jpg",
+    image: "/src/assets/many-chickins2.jpg",
     featured: false,
     readTime: "6 min read",
   },
@@ -53,7 +53,7 @@ const insights = [
       "Our technical roadmap for converting 100% of industrial poultry waste into high-grade fertilizer for 2,000Ha of sustainable cultivation.",
     author: "Operations Lead",
     date: "March 2026",
-    image: "/insight-climate.jpg",
+    image: "/src/assets/mountain.jpg",
     featured: false,
     readTime: "5 min read",
   },
@@ -65,13 +65,13 @@ const insights = [
       "Evaluating the impact of our 1,500+ target contract farmer model on rural youth employment and regional economic resilience.",
     author: "Economic Research Div.",
     date: "Feb 2026",
-    image: "/insight-economics.jpg",
+    image: "/src/assets/poultry-farm3.jpg",
     featured: false,
     readTime: "7 min read",
   },
 ];
 
-const Insights = () => {
+const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("All Insights");
 
   const filteredInsights =
@@ -255,4 +255,4 @@ const Insights = () => {
   );
 };
 
-export default Insights;
+export default Blog;

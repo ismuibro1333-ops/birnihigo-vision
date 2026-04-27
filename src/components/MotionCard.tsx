@@ -12,7 +12,7 @@ const MotionCard = ({ children, className = "" }: Props) => (
       scale: 1.02,
       transition: { type: "spring", stiffness: 300, damping: 20 },
     }}
-    className={`bg-card border border-border rounded-2xl hover:border-primary/30 hover:card-hover-shadow transition-colors ${className}`}
+    className={`bg-[#EFE7DC] border border-[#CD8C24]/10 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow ${className}`}
   >
     {children}
   </motion.article>

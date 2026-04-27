@@ -1,78 +1,281 @@
-"use client";
+import Layout from "@/components/Layout";
+import AnimatedSection from "@/components/AnimatedSection";
+import MotionCard from "@/components/MotionCard";
+import ScrollytellingHero from "@/components/ScrollytellingHero";
+import ValueChain from "@/components/ValueChain";
+import OperationalDashboard from "@/components/OperationalDashboard";
+import pic1 from "@/assets/pic1.jpg";
+import pic2 from "@/assets/pic2.jpg";
+import pic3 from "@/assets/pic3.jpg";
+import {
+  Leaf,
+  Sprout,
+  ArrowRight,
+  Shield,
+  TrendingUp,
+  Globe,
+  Droplets,
+  Zap,
+  Users,
+  Package,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-import React from "react";
-import { motion } from "framer-motion";
-import Layout from "@/components/layout";
-import { ArrowRight, CheckCircle2, Factory, ShieldCheck, Globe } from "lucide-react";
+const Index = () => (
+  <Layout>
+    <ScrollytellingHero />
 
-const Index = () => {
-  return (
-    <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/hero-bg.jpg"
-            alt="Poultry Facility"
-            className="w-full h-full object-cover opacity-40"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
-        </div>
-
-        <div className="container mx-auto px-4 z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
-          >
-            <span className="inline-block py-1 px-3 rounded-full bg-[#FEA42A]/20 text-[#FEA42A] text-sm font-bold tracking-widest uppercase mb-6">
-              Establishment of Excellence
-            </span>
-            <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-8">
-              Revolutionizing <span className="text-[#FEA42A]">Poultry</span> Systems in Ethiopia
-            </h1>
-            <p className="text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
-              Birnihigo is an integrated industrial poultry ecosystem, delivering infrastructure-scale production and processing for the horn of Africa.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="bg-[#FEA42A] text-black px-8 py-4 rounded-full font-bold flex items-center justify-center gap-2 hover:bg-[#e89322] transition-all transform hover:scale-105">
-                Explore Solutions <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="border border-white/30 text-white px-8 py-4 rounded-full font-bold backdrop-blur-sm hover:bg-white/10 transition-all">
-                Investor Relations
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {[
-              { label: "Production Capacity", value: "5M+", detail: "Annual Units" },
-              { label: "Standardization", value: "100%", detail: "Industrial Grade" },
-              { label: "Market Reach", value: "Regional", detail: "East Africa" }
-            ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.2 }}
-                className="text-center"
-              >
-                <div className="text-4xl font-black text-[#2C2C2C] mb-2">{stat.value}</div>
-                <div className="text-[#FEA42A] font-bold uppercase tracking-wider text-sm mb-1">{stat.label}</div>
-                <div className="text-gray-500 text-sm">{stat.detail}</div>
-              </motion.div>
-            ))}
+    {/* VISION STRIPE */}
+    <section className="py-16 bg-[#4F3C1C] text-[#EFE7DC] overflow-hidden border-y border-[#FEA42A]/20">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="max-w-2xl">
+            <h2 className="text-2xl md:text-3xl font-black tracking-tighter leading-tight italic">
+              "Driving national food sovereignty through integrated, science-based poultry systems."
+            </h2>
           </div>
+          <div className="h-px w-24 bg-[#FEA42A] hidden md:block" />
+          <p className="text-[#FEA42A] font-bold uppercase tracking-[0.2em] text-xs text-center md:text-right">
+            Transforming production into a reliable source of <br /> safe, affordable protein for 135M+ citizens.
+          </p>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    {/* STRATEGIC STATEMENT */}
+    <section className="py-24 bg-[#EFE7DC]">
+      <div className="max-w-4xl mx-auto px-6">
+        <AnimatedSection className="text-center">
+          <p className="text-[#CD8C24] text-xs uppercase tracking-[0.4em] mb-8 font-black">
+            Strategic Statement
+          </p>
+          <p className="text-2xl md:text-3xl text-[#4F3C1C] font-bold leading-relaxed mb-8 tracking-tight">
+            Ethiopia's poultry challenge is not primarily a production issue—it is a{" "}
+            <span className="text-[#FEA42A] italic">systems integration challenge.</span>
+          </p>
+          <div className="w-16 h-1 bg-[#CD8C24]/30 mx-auto my-8 rounded-full" />
+          <p className="text-lg text-[#4F3C1C]/70 leading-relaxed font-medium mb-6">
+            A significant market opportunity exists across the 135M+ national market, yet fragmentation continues to constrain scale and affordability.
+          </p>
+          <p className="text-lg text-[#4F3C1C] font-black uppercase tracking-widest">
+            Birnihigo is designed as an integrated, execution-driven model to close this gap.
+          </p>
+        </AnimatedSection>
+      </div>
+    </section>
+
+    <ValueChain />
+
+    {/* NATIONAL IMPACT */}
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="national-impact-heading">
+      <div className="absolute bottom-0 left-1/3 w-[500px] h-[500px] bg-[#FEA42A]/5 blur-[120px] rounded-full" />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#FEA42A] text-xs uppercase tracking-[0.4em] mb-4 font-bold">
+            National Impact
+          </p>
+          <h2
+            id="national-impact-heading"
+            className="text-4xl md:text-5xl text-[#EFE7DC] font-black tracking-tighter italic"
+          >
+            Transforming Ethiopia's Protein Economy
+          </h2>
+        </AnimatedSection>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { icon: Package, label: "Expanding access to affordable protein for 135M+" },
+            { icon: Globe, label: "Reducing national import dependency" },
+            { icon: Users, label: "Creating sustainable jobs for youth and women" },
+            { icon: TrendingUp, label: "Enabling export-ready poultry production" },
+            { icon: Shield, label: "Strengthening national food sovereignty" },
+          ].map((item, i) => (
+            <AnimatedSection key={item.label} delay={i * 0.1}>
+              <div className="flex items-start gap-5 bg-white/5 border border-white/10 rounded-2xl p-7 hover:bg-[#FEA42A]/10 transition-all duration-300 h-full">
+                <div className="w-12 h-12 rounded-xl bg-[#FEA42A]/10 border border-[#FEA42A]/20 flex items-center justify-center shrink-0">
+                  <item.icon size={22} className="text-[#FEA42A]" />
+                </div>
+                <p className="text-[#EFE7DC] font-semibold text-base leading-snug mt-1">
+                  {item.label}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
-      </section>
-    </Layout>
-  );
-};
+      </div>
+    </section>
+
+    {/* THE NUMBERS */}
+    <section className="py-24 bg-[#EFE7DC] border-y border-[#CD8C24]/10">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#CD8C24] text-xs uppercase tracking-[0.4em] mb-4 font-black">
+            Industrial Scale
+          </p>
+          <h2 className="text-4xl md:text-5xl text-[#4F3C1C] font-black tracking-tighter italic">
+            The Numbers That Define Us
+          </h2>
+        </AnimatedSection>
+        <div className="max-w-6xl mx-auto">
+          <OperationalDashboard />
+        </div>
+      </div>
+    </section>
+
+    {/* PHOTO GALLERY */}
+    <section className="py-24 bg-[#EFE7DC]/50" aria-labelledby="gallery-heading">
+      <div className="max-w-7xl mx-auto px-6">
+        <AnimatedSection className="text-center mb-16">
+          <p className="text-[#CD8C24] text-xs uppercase tracking-[0.4em] mb-4 font-bold">
+            On the Ground
+          </p>
+          <h2
+            id="gallery-heading"
+            className="text-4xl md:text-5xl text-[#4F3C1C] font-black tracking-tight italic"
+          >
+            Our Operations in Action
+          </h2>
+          <div className="w-24 h-1.5 bg-[#FEA42A] mx-auto mt-6 rounded-full" />
+        </AnimatedSection>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { src: pic1, alt: "Birnihigo farm aerial view" },
+            { src: pic2, alt: "Industrial Feed Mill" },
+            { src: pic3, alt: "Bio-secure processing" },
+          ].map((img, i) => (
+            <AnimatedSection key={img.alt} delay={i * 0.15}>
+              <div className="group relative rounded-3xl overflow-hidden aspect-[4/3] border-4 border-[#4F3C1C]/5 shadow-2xl bg-[#4F3C1C]">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full h-full object-cover group-hover:scale-110 group-hover:opacity-60 transition-all duration-700 ease-out"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#4F3C1C]/40 backdrop-blur-[4px]">
+                  <p className="text-[#FEA42A] font-black text-xl tracking-widest uppercase">
+                    Science-Driven
+                  </p>
+                  <p className="text-[#EFE7DC] text-xs font-bold uppercase mt-1 tracking-[0.3em]">
+                    Industrial Excellence
+                  </p>
+                </div>
+              </div>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* SUSTAINABILITY */}
+    <section className="py-24 bg-[#4F3C1C] relative overflow-hidden" aria-labelledby="sustainability-heading">
+      <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-[#FEA42A]/5 blur-[150px] rounded-full" />
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <AnimatedSection className="text-center mb-20">
+          <p className="text-[#FEA42A] text-xs uppercase tracking-[0.4em] mb-4 font-bold">
+            Sustainability
+          </p>
+          <h2
+            id="sustainability-heading"
+            className="text-5xl md:text-6xl text-[#EFE7DC] font-black tracking-tighter italic mb-6"
+          >
+            100% Circular Waste-to-Resource
+          </h2>
+          <p className="text-[#EFE7DC]/60 max-w-2xl mx-auto font-medium">
+            At Birnihigo Farms, no resource is wasted. We transform organic waste into high-grade outputs, fueling our entire ecosystem.
+          </p>
+        </AnimatedSection>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { icon: Sprout, title: "Fertilizer", desc: "Organic solid waste transformed into high-grade fertilizer for crop cultivation.", stat: "Soil Health" },
+            { icon: Droplets, title: "Clean Water", desc: "Advanced treatment systems returning purified water to the production cycle.", stat: "Zero Liquid Waste" },
+            { icon: Zap, title: "Renewable Energy", desc: "Converting organic liquid waste into biogas energy for on-site operations.", stat: "Clean Power" },
+            { icon: Leaf, title: "Moringa Innovation", desc: "Moringa-based feed integration enhancing nutrition and reducing dependency.", stat: "Feed Innovation" },
+          ].map((item, i) => (
+            <AnimatedSection key={item.title} delay={i * 0.15}>
+              <article className="text-center group bg-white/5 p-10 rounded-3xl border border-white/10 hover:bg-[#FEA42A]/10 transition-all duration-500 h-full">
+                <div className="w-20 h-20 rounded-2xl bg-[#FEA42A]/10 border border-[#FEA42A]/20 mx-auto mb-8 flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:bg-[#FEA42A]">
+                  <item.icon size={32} className="text-[#FEA42A] group-hover:text-[#4F3C1C] transition-colors duration-500" />
+                </div>
+                <p className="text-[#FEA42A] font-black text-[10px] uppercase tracking-widest mb-2">
+                  {item.stat}
+                </p>
+                <h3 className="text-xl text-[#EFE7DC] mb-4 font-bold uppercase tracking-widest">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-[#EFE7DC]/60 leading-relaxed font-medium">
+                  {item.desc}
+                </p>
+              </article>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* INVESTOR & BIOSECURITY */}
+    <section className="py-24 bg-[#EFE7DC]/30" aria-labelledby="investor-portal-heading">
+      <div className="max-w-6xl mx-auto px-6">
+        <AnimatedSection className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6 border-b border-[#CD8C24]/20 pb-12">
+          <div className="text-left">
+            <p className="text-[#CD8C24] text-xs uppercase tracking-[0.4em] mb-4 font-black">
+              Strategic Growth
+            </p>
+            <h2
+              id="investor-portal-heading"
+              className="text-4xl md:text-5xl text-[#4F3C1C] font-black tracking-tighter italic"
+            >
+              Biosecurity Excellence
+            </h2>
+          </div>
+          <Link
+            to="/investors"
+            className="group flex items-center gap-3 bg-[#4F3C1C] text-[#EFE7DC] px-8 py-4 rounded-full font-bold hover:bg-[#FEA42A] hover:text-[#4F3C1C] transition-all duration-300 shadow-xl text-sm"
+          >
+            Investor Center
+            <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+          </Link>
+        </AnimatedSection>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            { icon: Shield, title: "Risk Mitigation", desc: "Science-based biosecurity protocols ensure a zero-risk production environment." },
+            { icon: Globe, title: "Market Leadership", desc: "Advancing toward Halal-certified production for regional trade and national supply." },
+            { icon: TrendingUp, title: "Vertical Integration", desc: "100% internal supply chain control via automated feed milling and 2,000+ Ha cultivation." },
+          ].map((item, i) => (
+            <AnimatedSection key={item.title} delay={i * 0.15}>
+              <MotionCard className="p-10 h-full border-b-8 border-[#CD8C24] hover:border-[#FEA42A] transition-colors">
+                <div className="w-16 h-16 rounded-2xl bg-[#4F3C1C] flex items-center justify-center mb-8 transform -rotate-3 shadow-2xl">
+                  <item.icon size={28} className="text-[#FEA42A]" />
+                </div>
+                <h3 className="text-2xl text-[#4F3C1C] font-black mb-4 tracking-tight italic">
+                  {item.title}
+                </h3>
+                <p className="text-base text-[#4F3C1C]/70 leading-relaxed font-semibold">
+                  {item.desc}
+                </p>
+              </MotionCard>
+            </AnimatedSection>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* PURPOSE */}
+    <section className="py-24 bg-[#4F3C1C]" aria-labelledby="purpose-heading">
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <AnimatedSection>
+          <p className="text-[#FEA42A] text-xs uppercase tracking-[0.4em] mb-6 font-bold">
+            Purpose
+          </p>
+          <h2
+            id="purpose-heading"
+            className="text-3xl md:text-5xl text-[#EFE7DC] font-black tracking-tighter leading-tight italic"
+          >
+            "Nourishing lives through safe, affordable, and scalable protein production for Ethiopia."
+          </h2>
+          <div className="w-16 h-1 bg-[#FEA42A]/40 mx-auto mt-10 rounded-full" />
+        </AnimatedSection>
+      </div>
+    </section>
+  </Layout>
+);
 
 export default Index;

@@ -110,7 +110,7 @@ const Sustainability = () => (
         
         <AnimatedSection delay={0.3} className="relative">
           <div className="rounded-[4rem] overflow-hidden aspect-square border-[12px] border-[#EFE7DC] shadow-2xl">
-            <img src="/climate-resilience.jpg" alt="Integrated Model" className="w-full h-full object-cover" />
+            <img src="/src/assets/mountain.jpg" alt="Integrated Model" className="w-full h-full object-cover" />
           </div>
           <div className="absolute -bottom-10 -left-10 bg-[#4F3C1C] p-10 rounded-[3rem] text-[#FEA42A] shadow-2xl">
              <p className="text-4xl font-black italic tracking-tighter leading-none mb-2">99%</p>
