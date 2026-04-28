@@ -60,7 +60,7 @@
   /* BRAND TYPOGRAPHY SYSTEM */
   h1, h2, h3, h4 {
     /* Guidelines specify Bold for headers */
-    @apply font-black tracking-tighter text-foreground uppercase;
+    @apply font-extrabold tracking-tighter text-foreground uppercase;
   }
   
   h1 { @apply text-6xl lg:text-8xl leading-[0.85] mb-6; }
